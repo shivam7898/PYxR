@@ -99,10 +99,23 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="preface.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imported (Basic) Modules in Python </span></span>
 <span id="cb4-2"><a href="preface.html#cb4-2" aria-hidden="true" tabindex="-1"></a>allmodules <span class="op">=</span> [v.<span class="va">__name__</span> <span class="cf">for</span> k, v <span class="kw">in</span> <span class="bu">globals</span>().items() </span>
 <span id="cb4-3"><a href="preface.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(v) <span class="kw">is</span> types.ModuleType <span class="kw">and</span> <span class="kw">not</span> k.startswith(<span class="st">'__'</span>)]</span>
-<span id="cb4-4"><a href="preface.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(allmodules)</span>
-<span id="cb4-5"><a href="preface.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 7</span></span>
-<span id="cb4-6"><a href="preface.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">", "</span>.join(allmodules)</span>
-<span id="cb4-7"><a href="preface.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 'sys, os, pip, copy, types, pandas, numpy'</span></span></code></pre></div>
+<span id="cb4-4"><a href="preface.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="preface.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(allmodules)</span>
+<span id="cb4-6"><a href="preface.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">## 7</span></span>
+<span id="cb4-7"><a href="preface.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">", "</span>.join(allmodules)</span>
+<span id="cb4-8"><a href="preface.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 'sys, os, pip, copy, types, pandas, numpy'</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Python Configuration with Reticulate</span>
+<span class="fu">py_config</span><span class="op">(</span><span class="op">)</span>
+<span class="co">## python:         C:/Softwares/Python/Python310/python.exe</span>
+<span class="co">## libpython:      C:/Softwares/Python/Python310/python310.dll</span>
+<span class="co">## pythonhome:     C:/Softwares/Python/Python310</span>
+<span class="co">## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span>
+<span class="co">## Architecture:   64bit</span>
+<span class="co">## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy</span>
+<span class="co">## numpy_version:  1.22.4</span>
+<span class="co">## </span>
+<span class="co">## NOTE: Python version was forced by use_python function</span></code></pre></div>
 
 </div>
 </div>

@@ -1,5 +1,7 @@
 # Preface {#preface .unnumbered}
 
+
+
 ## Prerequisites
 
 
@@ -52,9 +54,24 @@ sessionInfo()
 # Imported (Basic) Modules in Python 
 allmodules = [v.__name__ for k, v in globals().items() 
     if type(v) is types.ModuleType and not k.startswith('__')]
+
 len(allmodules)
 ## 7
 ", ".join(allmodules)
 ## 'sys, os, pip, copy, types, pandas, numpy'
 ```
 
+
+```r
+# Python Configuration with Reticulate
+py_config()
+## python:         C:/Softwares/Python/Python310/python.exe
+## libpython:      C:/Softwares/Python/Python310/python310.dll
+## pythonhome:     C:/Softwares/Python/Python310
+## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]
+## Architecture:   64bit
+## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy
+## numpy_version:  1.22.4
+## 
+## NOTE: Python version was forced by use_python function
+```
