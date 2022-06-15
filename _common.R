@@ -1,6 +1,9 @@
 # Attach (Basic) Packages in R 
 sys.source("./code/Packages.R", envir = knitr::knit_global())
 
+# Provide the path to the specific Python binary.
+reticulate::use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
+  
 # Import (Basic) Modules in Python 
 reticulate::source_python("./code/Modules.py", convert = FALSE)
 

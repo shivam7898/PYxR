@@ -1,27 +1,37 @@
 # Preface {#preface .unnumbered}
 
+```{r 'setup', include=FALSE}
+source("_common.R")
+```
+
 ## Prerequisites
 
-```{r 'R-Version', decorate=TRUE}
+```{r 'R-Version'}
 R.version.string
 ```
 
-```{python 'Y-Version', decorate=TRUE}
+```{python 'Y-Version'}
 print(sys.version)
 
 ```
 
-```{r 'Attached-Packages', decorate=TRUE}
+```{r 'Attached-Packages'}
 # Attached (Basic) Packages in R 
 sessionInfo()
 ```
 
-```{python 'Loaded-Modules', decorate=TRUE}
+```{python 'Loaded-Modules'}
 # Imported (Basic) Modules in Python 
 allmodules = [v.__name__ for k, v in globals().items() 
     if type(v) is types.ModuleType and not k.startswith('__')]
+
 len(allmodules)
+
 ", ".join(allmodules)
 
 ```
 
+```{r 'Python-Configuration'}
+# Python Configuration with Reticulate
+py_config()
+```

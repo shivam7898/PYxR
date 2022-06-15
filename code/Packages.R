@@ -11,6 +11,6 @@ if (!("conflicted" %in% (.packages()))) {
   rm(pkg)
   
   # Provide the path to the specific Python binary.
-  use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
+  #use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
 
 } else print("R Packages not loaded again.")

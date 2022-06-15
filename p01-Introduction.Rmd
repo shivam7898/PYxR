@@ -1,16 +1,20 @@
 # Introduction {#introduction-p01}
 
+```{r 'setup', include=FALSE}
+source("_common.R")
+```
+
 ## Verify
 
-```{r 'R-Version', decorate=TRUE}
+```{r 'R-Version'}
 R.version.string
 ```
 
-```{python 'Y-Version', decorate=TRUE}
+```{python 'Y-Version'}
 print(sys.version)
 
 ```
 
-```{r 'list-objects', decorate=TRUE}
+```{r 'list-objects'}
 ls()
 ```
