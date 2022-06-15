@@ -15,6 +15,6 @@ print(sys.version)
 
 ```
 
-```{r 'list-objects'}
+```{r 'List-Objects'}
 ls()
 ```
