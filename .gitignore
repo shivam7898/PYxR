@@ -1,0 +1,12 @@
+.Rhistory
+docs/NoGitDocs/
+images/NoGitImages/
+.Rproj.user/
+_bookdown_files/
+_book/
+_main.html
+_main.md
+_main.Rmd
+my.patch
+PYxR.md
+PYxR.rds

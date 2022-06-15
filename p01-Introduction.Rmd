@@ -1,0 +1,16 @@
+# Preface {#introduction-p01}
+
+## Verify
+
+```{r 'R-Version', decorate=TRUE}
+R.version.string
+```
+
+```{python 'Y-Version', decorate=TRUE}
+print(sys.version)
+
+```
+
+```{r 'list-objects', decorate=TRUE}
+ls()
+```
