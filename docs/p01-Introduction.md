@@ -50,15 +50,15 @@
 
 ```r
 # Load Packages: "lobstr"
-# Create an object i.e. Create an object containing a value and bind that object to name 'aa'
+# Create an object containing a value and bind that object to name 'aa'
 aa <- 10 
-# Copy an object i.e. Create another binding with the name 'bb' to an already existing value
+# Copy an object i.e. Create another binding to an already existing value
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x2b06c6fd2e0"
+## [1] "0x14a7a8ef880"
 obj_addr(bb)
-## [1] "0x2b06c6fd2e0"
+## [1] "0x14a7a8ef880"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -71,27 +71,27 @@ print(bb)
 ## [1] 5
 print(aa)
 ## [1] 10
-# However, now the copy (modified) points to a different memory address than earlier
+# Now the copy (modified) points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x2b06c6fd120"
-# Whereas the original is still pointing to same address containing the original object
+## [1] "0x14a7a8ef6c0"
+# Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x2b06c6fd2e0"
+## [1] "0x14a7a8ef880"
 ```
 
 
 ```python
-# Create a variable i.e. Create a variable containing a value and bind that variable to name 'pp'
+# Create a variable containing a value and bind that variable to name 'pp'
 pp = 10 
-# Copy a variable i.e. Create another binding with the name 'qq' to an already existing value
+# Copy a variable i.e. Create another binding to an already existing value
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 2956822315536
+## 1419458445840
 id(qq)
 
 # Print the copy
-## 2956822315536
+## 1419458445840
 print(qq)
 # Modify the copy
 ## 10
@@ -100,13 +100,13 @@ qq = 5
 print(qq)
 ## 5
 print(pp)
-# However, now the copy (modified) points to a different memory address than earlier
+# Now the copy (modified) points to a different memory address than earlier
 ## 10
 id(qq)
-# Whereas the original is still pointing to same address containing the original object
-## 2956822315376
+# Original is still pointing to the same address containing original variable
+## 1419458445680
 id(pp)
-## 2956822315536
+## 1419458445840
 ```
 
 ## Verify

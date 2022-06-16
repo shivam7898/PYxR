@@ -1,6 +1,5 @@
 prerequisites
 introduction-p01
-verify
 similarity-between-r-and-python
 differences-between-r-and-python
 indentation
@@ -9,3 +8,4 @@ indexing
 pipe
 assignment-operator
 copy-objects-or-variables
+verify

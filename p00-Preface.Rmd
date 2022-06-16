@@ -2,7 +2,8 @@
 
 ```{r 'setup', include=FALSE}
 source("_common.R")
-#lapply(c("lobstr"), FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
+if(FALSE) lapply(c("lobstr"), 
+       FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
 ```
 
 ## Prerequisites

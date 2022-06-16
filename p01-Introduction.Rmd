@@ -1,8 +1,10 @@
 # Introduction {#introduction-p01}
 
 ```{r 'setup', include=FALSE}
+################################################################################
 source("_common.R")
-lapply(c("lobstr"), FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
+if(TRUE) lapply(c("lobstr"), 
+       FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
 ```
 
 ## Similarity between R and Python
@@ -52,9 +54,9 @@ lapply(c("lobstr"), FUN = function(x) {suppressMessages(library(x, character.onl
   
 ```{r 'R-Copy'}
 # Load Packages: "lobstr"
-# Create an object i.e. Create an object containing a value and bind that object to name 'aa'
+# Create an object containing a value and bind that object to name 'aa'
 aa <- 10 
-# Copy an object i.e. Create another binding with the name 'bb' to an already existing value
+# Copy an object i.e. Create another binding to an already existing value
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
@@ -68,16 +70,16 @@ bb <- 5
 # Print the copy and the original (original is unmodified)
 print(bb)
 print(aa)
-# However, now the copy (modified) points to a different memory address than earlier
+# Now the copy (modified) points to a different memory address than earlier
 obj_addr(bb)
-# Whereas the original is still pointing to same address containing the original object
+# Original is still pointing to the same address containing original object
 obj_addr(aa)
 ```
 
 ```{python 'Y-Copy'}
-# Create a variable i.e. Create a variable containing a value and bind that variable to name 'pp'
+# Create a variable containing a value and bind that variable to name 'pp'
 pp = 10 
-# Copy a variable i.e. Create another binding with the name 'qq' to an already existing value
+# Copy a variable i.e. Create another binding to an already existing value
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
@@ -90,9 +92,9 @@ qq = 5
 # Print the copy and the original (original is unmodified)
 print(qq)
 print(pp)
-# However, now the copy (modified) points to a different memory address than earlier
+# Now the copy (modified) points to a different memory address than earlier
 id(qq)
-# Whereas the original is still pointing to same address containing the original object
+# Original is still pointing to the same address containing original variable
 id(pp)
 
 ```

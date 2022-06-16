@@ -43,7 +43,11 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 1</span> Introduction</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="active" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/shivam7898/PYxR">View book source <i class="fab fa-github"></i></a></p>
@@ -136,17 +140,17 @@
 <li><p>R <a href="https://adv-r.hadley.nz/names-values.html" title="https://adv-r.hadley.nz/names-values.html">Advanced R, Hadley</a></p></li>
 <li><p>Python Similar but different</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load Packages: "lobstr"</span>
-<span class="co"># Create an object i.e. Create an object containing a value and bind that object to name 'aa'</span>
+<span class="co"># Create an object containing a value and bind that object to name 'aa'</span>
 <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">10</span> 
-<span class="co"># Copy an object i.e. Create another binding with the name 'bb' to an already existing value</span>
+<span class="co"># Copy an object i.e. Create another binding to an already existing value</span>
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x2b06c6fd2e0"</span>
+<span class="co">## [1] "0x14a7a8ef880"</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x2b06c6fd2e0"</span>
+<span class="co">## [1] "0x14a7a8ef880"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
@@ -159,65 +163,80 @@
 <span class="co">## [1] 5</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
 <span class="co">## [1] 10</span>
-<span class="co"># However, now the copy (modified) points to a different memory address than earlier</span>
+<span class="co"># Now the copy (modified) points to a different memory address than earlier</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x2b06c6fd120"</span>
-<span class="co"># Whereas the original is still pointing to same address containing the original object</span>
+<span class="co">## [1] "0x14a7a8ef6c0"</span>
+<span class="co"># Original is still pointing to the same address containing original object</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x2b06c6fd2e0"</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="introduction-p01.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable i.e. Create a variable containing a value and bind that variable to name 'pp'</span></span>
-<span id="cb2-2"><a href="introduction-p01.html#cb2-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
-<span id="cb2-3"><a href="introduction-p01.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding with the name 'qq' to an already existing value</span></span>
-<span id="cb2-4"><a href="introduction-p01.html#cb2-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
-<span id="cb2-5"><a href="introduction-p01.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
-<span id="cb2-6"><a href="introduction-p01.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb2-7"><a href="introduction-p01.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2956822315536</span></span>
-<span id="cb2-8"><a href="introduction-p01.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb2-9"><a href="introduction-p01.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="introduction-p01.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
-<span id="cb2-11"><a href="introduction-p01.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 2956822315536</span></span>
-<span id="cb2-12"><a href="introduction-p01.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb2-13"><a href="introduction-p01.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
-<span id="cb2-14"><a href="introduction-p01.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb2-15"><a href="introduction-p01.html#cb2-15" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb2-16"><a href="introduction-p01.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
-<span id="cb2-17"><a href="introduction-p01.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb2-18"><a href="introduction-p01.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
-<span id="cb2-19"><a href="introduction-p01.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
-<span id="cb2-20"><a href="introduction-p01.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># However, now the copy (modified) points to a different memory address than earlier</span></span>
-<span id="cb2-21"><a href="introduction-p01.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb2-22"><a href="introduction-p01.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb2-23"><a href="introduction-p01.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Whereas the original is still pointing to same address containing the original object</span></span>
-<span id="cb2-24"><a href="introduction-p01.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">## 2956822315376</span></span>
-<span id="cb2-25"><a href="introduction-p01.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb2-26"><a href="introduction-p01.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">## 2956822315536</span></span></code></pre></div>
+<span class="co">## [1] "0x14a7a8ef880"</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introduction-p01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable containing a value and bind that variable to name 'pp'</span></span>
+<span id="cb7-2"><a href="introduction-p01.html#cb7-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb7-3"><a href="introduction-p01.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding to an already existing value</span></span>
+<span id="cb7-4"><a href="introduction-p01.html#cb7-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
+<span id="cb7-5"><a href="introduction-p01.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
+<span id="cb7-6"><a href="introduction-p01.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb7-7"><a href="introduction-p01.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span>
+<span id="cb7-8"><a href="introduction-p01.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb7-9"><a href="introduction-p01.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="introduction-p01.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
+<span id="cb7-11"><a href="introduction-p01.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span>
+<span id="cb7-12"><a href="introduction-p01.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb7-13"><a href="introduction-p01.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
+<span id="cb7-14"><a href="introduction-p01.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb7-15"><a href="introduction-p01.html#cb7-15" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-16"><a href="introduction-p01.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
+<span id="cb7-17"><a href="introduction-p01.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb7-18"><a href="introduction-p01.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
+<span id="cb7-19"><a href="introduction-p01.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb7-20"><a href="introduction-p01.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the copy (modified) points to a different memory address than earlier</span></span>
+<span id="cb7-21"><a href="introduction-p01.html#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb7-22"><a href="introduction-p01.html#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb7-23"><a href="introduction-p01.html#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
+<span id="cb7-24"><a href="introduction-p01.html#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445680</span></span>
+<span id="cb7-25"><a href="introduction-p01.html#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb7-26"><a href="introduction-p01.html#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span></code></pre></div>
 </div>
 </div>
 <div id="verify" class="section level2" number="1.3">
 <h2>
 <span class="header-section-number">1.3</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">R.version.string</span>
 <span class="co">## [1] "R version 4.2.0 (2022-04-22 ucrt)"</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="introduction-p01.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
-<span id="cb4-2"><a href="introduction-p01.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introduction-p01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb9-2"><a href="introduction-p01.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">## [1] "aa" "bb" "r"</span></code></pre></div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
+<div class="prev"><a href="preface.html">Preface</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-p01"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="nav-link" href="#similarity-between-r-and-python"><span class="header-section-number">1.1</span> Similarity between R and Python</a></li>
+<li>
+<a class="nav-link" href="#differences-between-r-and-python"><span class="header-section-number">1.2</span> Differences between R and Python</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indentation"><span class="header-section-number">1.2.1</span> Indentation</a></li>
+<li><a class="nav-link" href="#boolean"><span class="header-section-number">1.2.2</span> Boolean</a></li>
+<li><a class="nav-link" href="#indexing"><span class="header-section-number">1.2.3</span> Indexing</a></li>
+<li><a class="nav-link" href="#pipe"><span class="header-section-number">1.2.4</span> Pipe</a></li>
+<li><a class="nav-link" href="#assignment-operator"><span class="header-section-number">1.2.5</span> Assignment Operator</a></li>
+<li><a class="nav-link" href="#copy-objects-or-variables"><span class="header-section-number">1.2.6</span> Copy Objects or Variables</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#verify"><span class="header-section-number">1.3</span> Verify</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/shivam7898/PYxR/blob/main/p01-Introduction.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/shivam7898/PYxR/edit/main/p01-Introduction.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
