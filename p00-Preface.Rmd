@@ -2,6 +2,7 @@
 
 ```{r 'setup', include=FALSE}
 source("_common.R")
+#lapply(c("lobstr"), FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
 ```
 
 ## Prerequisites
@@ -15,12 +16,12 @@ print(sys.version)
 
 ```
 
-```{r 'Attached-Packages'}
+```{r 'R-Attached-Packages'}
 # Attached (Basic) Packages in R 
 sessionInfo()
 ```
 
-```{python 'Loaded-Modules'}
+```{python 'Y-Loaded-Modules'}
 # Imported (Basic) Modules in Python 
 allmodules = [v.__name__ for k, v in globals().items() 
     if type(v) is types.ModuleType and not k.startswith('__')]
@@ -31,7 +32,7 @@ len(allmodules)
 
 ```
 
-```{r 'Python-Configuration'}
+```{r 'R-Python-Configuration'}
 # Python Configuration with Reticulate
 py_config()
 ```
