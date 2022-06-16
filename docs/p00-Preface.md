@@ -43,7 +43,7 @@ sessionInfo()
 ##  [9] rlang_1.0.2     fastmap_1.1.0   stringr_1.4.0   tools_4.2.0    
 ## [13] grid_4.2.0      xfun_0.31       png_0.1-7       cli_3.3.0      
 ## [17] jquerylib_0.1.4 htmltools_0.5.2 yaml_2.3.5      rprojroot_2.0.3
-## [21] digest_0.6.29   bookdown_0.25   Matrix_1.4-1    fs_1.5.2       
+## [21] digest_0.6.29   bookdown_0.27   Matrix_1.4-1    fs_1.5.2       
 ## [25] sass_0.4.1      memoise_2.0.1   cachem_1.0.6    evaluate_0.15  
 ## [29] rmarkdown_2.14  stringi_1.7.6   compiler_4.2.0  bslib_0.3.1    
 ## [33] jsonlite_1.8.0
