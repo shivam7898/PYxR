@@ -116,7 +116,7 @@ else:
 
 - Python Similar but different
   
-```{r 'R-Copy'}
+```{r 'R-Copy', decorate=TRUE}
 # Load Packages: "lobstr"
 # Create an object containing a value and bind that object to name 'aa'
 aa <- 10 
@@ -140,7 +140,7 @@ obj_addr(bb)
 obj_addr(aa)
 ```
 
-```{python 'Y-Copy'}
+```{python 'Y-Copy', decorate=TRUE}
 # Create a variable containing a value and bind that variable to name 'pp'
 pp = 10 
 # Copy a variable i.e. Create another binding to an already existing value
@@ -178,15 +178,15 @@ id(pp)
 
 ## Verify
 
-```{r 'R-Version'}
+```{r 'R-Version', decorate=TRUE}
 R.version.string
 ```
 
-```{python 'Y-Version'}
+```{python 'Y-Version', decorate=TRUE}
 print(sys.version.split()[0])
 
 ```
 
-```{r 'R-List-Objects'}
+```{r 'R-List-Objects', decorate=TRUE}
 ls()
 ```

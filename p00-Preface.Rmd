@@ -8,21 +8,21 @@ if(FALSE) lapply(c("lobstr"),
 
 ## Prerequisites
 
-```{r 'R-Version'}
+```{r 'R-Version', decorate=TRUE}
 R.version.string
 ```
 
-```{python 'Y-Version'}
+```{python 'Y-Version', decorate=TRUE}
 print(sys.version.split()[0])
 
 ```
 
-```{r 'R-Attached-Packages'}
+```{r 'R-Attached-Packages', decorate=TRUE}
 # Attached (Basic) Packages in R 
 sessionInfo()
 ```
 
-```{python 'Y-Loaded-Modules'}
+```{python 'Y-Loaded-Modules', decorate=TRUE}
 # Imported (Basic) Modules in Python 
 allmodules = [v.__name__ for k, v in globals().items() 
     if type(v) is types.ModuleType and not k.startswith('__')]
@@ -33,7 +33,7 @@ len(allmodules)
 
 ```
 
-```{r 'R-Python-Configuration'}
+```{r 'R-Python-Configuration', decorate=TRUE}
 # Python Configuration with Reticulate
 py_config()
 ```
