@@ -7,7 +7,7 @@
 - Both R and Python are case-sensitive
 - Both R and Python use the Hash Sign "#" to comment out anything after it, till the newline
 - Both R and Python keep the Backslash "\\" as reserved to escape the character that follows it
-- 
+
 
 ## Differences between R and Python
 
@@ -23,6 +23,88 @@
 ### Boolean
 
 - R (TRUE, FALSE) vs. Python (True, False) - Case is different
+
+### NULL & None
+
+- `NULL` represents the null object in R: it is a reserved word. NULL is often returned by expressions and functions whose value is undefined. 
+  - There is only one null object in memory
+  - Inside if condition, NULL throws error, use 'is.null(x)' syntax
+- Python uses the keyword `None` to define null objects and variables
+  - Inside if condition, None acts as False, use 'x is None' syntax
+  - None is a singleton. There is only one None in memory
+  - [Real Python](https://realpython.com/null-in-python/)
+
+
+```r
+# Return of str() is NULL which is passed to print()
+print(str("This returns NULL in R"))
+##  chr "This returns NULL in R"
+## NULL
+
+# Assign NULL
+aa <- NULL
+# Type
+typeof(aa)
+## [1] "NULL"
+# Check
+is.null(aa)
+## [1] TRUE
+
+# A name pointing to NULL is different from a name which does not exist 'bb'
+exists("aa")
+## [1] TRUE
+exists("bb")
+## [1] FALSE
+tryCatch(expr = print(bb), error = \(e) print(e))
+## <simpleError in print(bb): object 'bb' not found>
+
+# Usage inside if conditional: NULL throws Error, use is.null()
+if(is.null(aa)) {
+  print("IF Block") 
+} else {
+  print("ELSE Block")
+}
+## [1] "IF Block"
+```
+
+
+```python
+# Return of print() is None which is passed to print()
+print(print("This returns None in Python"))
+
+# Assign None
+## This returns None in Python
+## None
+pp = None
+# Type
+type(pp)
+# Check
+## <class 'NoneType'>
+pp is None
+
+# A name pointing to None is different from a name which does not exist 'qq'
+## True
+'pp' in globals()
+## True
+'qq' in globals()
+## False
+try:
+    print(qq)
+except NameError as e:
+    print(e) #e.args type(e)
+
+#
+# Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' 
+## name 'qq' is not defined
+if(pp):
+    print("IF Block")
+else:
+    print("ELSE Block")
+
+#
+## ELSE Block
+```
+
 
 ### Indexing
 
@@ -56,9 +138,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x14a7a8ef880"
+## [1] "0x1fbb1638a48"
 obj_addr(bb)
-## [1] "0x14a7a8ef880"
+## [1] "0x1fbb1638a48"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -71,12 +153,12 @@ print(bb)
 ## [1] 5
 print(aa)
 ## [1] 10
-# Now the copy (modified) points to a different memory address than earlier
+# Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x14a7a8ef6c0"
+## [1] "0x1fbb1638888"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x14a7a8ef880"
+## [1] "0x1fbb1638a48"
 ```
 
 
@@ -87,11 +169,12 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 1419458445840
+## 2180568121872
 id(qq)
+## 2180568121872
+assert(id(pp) == id(qq))
 
 # Print the copy
-## 1419458445840
 print(qq)
 # Modify the copy
 ## 10
@@ -100,14 +183,26 @@ qq = 5
 print(qq)
 ## 5
 print(pp)
-# Now the copy (modified) points to a different memory address than earlier
+# Now the modified name points to a different memory address than earlier
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 1419458445680
+## 2180568121712
 id(pp)
-## 1419458445840
+## 2180568121872
 ```
+
+### Reticulate Type conversion
+
+- R : Python
+- Single element vector : Scalar
+- Multi element vector : List
+- List of multiple types : Tuple
+- Named List : Dictionary
+- Matrix /Array : NumPy ndarray
+- Data Frame : Pandas Data Frame
+- Function: Function
+- Raw : Byte array
 
 ## Verify
 

@@ -4,8 +4,10 @@ similarity-between-r-and-python
 differences-between-r-and-python
 indentation
 boolean
+null-none
 indexing
 pipe
 assignment-operator
 copy-objects-or-variables
+reticulate-type-conversion
 verify

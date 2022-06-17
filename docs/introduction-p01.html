@@ -66,7 +66,6 @@
 <li>Both R and Python are case-sensitive</li>
 <li>Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline</li>
 <li>Both R and Python keep the Backslash “\” as reserved to escape the character that follows it</li>
-<li>
 </ul>
 </div>
 <div id="differences-between-r-and-python" class="section level2" number="1.2">
@@ -97,17 +96,102 @@
 <li>R (TRUE, FALSE) vs. Python (True, False) - Case is different</li>
 </ul>
 </div>
-<div id="indexing" class="section level3" number="1.2.3">
+<div id="null-none" class="section level3" number="1.2.3">
 <h3>
-<span class="header-section-number">1.2.3</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.3</span> NULL &amp; None<a class="anchor" aria-label="anchor" href="#null-none"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<code>NULL</code> represents the null object in R: it is a reserved word. NULL is often returned by expressions and functions whose value is undefined.
+<ul>
+<li>There is only one null object in memory</li>
+<li>Inside if condition, NULL throws error, use ‘is.null(x)’ syntax</li>
+</ul>
+</li>
+<li>Python uses the keyword <code>None</code> to define null objects and variables
+<ul>
+<li>Inside if condition, None acts as False, use ‘x is None’ syntax</li>
+<li>None is a singleton. There is only one None in memory</li>
+<li><a href="https://realpython.com/null-in-python/">Real Python</a></li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Return of str() is NULL which is passed to print()</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="st">"This returns NULL in R"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">##  chr "This returns NULL in R"</span>
+<span class="co">## NULL</span>
+
+<span class="co"># Assign NULL</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+<span class="co"># Type</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] "NULL"</span>
+<span class="co"># Check</span>
+<span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+
+<span class="co"># A name pointing to NULL is different from a name which does not exist 'bb'</span>
+<span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"bb"</span><span class="op">)</span>
+<span class="co">## [1] FALSE</span>
+<span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>, error <span class="op">=</span> \<span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## &lt;simpleError in print(bb): object 'bb' not found&gt;</span>
+
+<span class="co"># Usage inside if conditional: NULL throws Error, use is.null()</span>
+<span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"IF Block"</span><span class="op">)</span> 
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"ELSE Block"</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="co">## [1] "IF Block"</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introduction-p01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return of print() is None which is passed to print()</span></span>
+<span id="cb7-2"><a href="introduction-p01.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">print</span>(<span class="st">"This returns None in Python"</span>))</span>
+<span id="cb7-3"><a href="introduction-p01.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="introduction-p01.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign None</span></span>
+<span id="cb7-5"><a href="introduction-p01.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">## This returns None in Python</span></span>
+<span id="cb7-6"><a href="introduction-p01.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">## None</span></span>
+<span id="cb7-7"><a href="introduction-p01.html#cb7-7" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-8"><a href="introduction-p01.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Type</span></span>
+<span id="cb7-9"><a href="introduction-p01.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pp)</span>
+<span id="cb7-10"><a href="introduction-p01.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check</span></span>
+<span id="cb7-11"><a href="introduction-p01.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'NoneType'&gt;</span></span>
+<span id="cb7-12"><a href="introduction-p01.html#cb7-12" aria-hidden="true" tabindex="-1"></a>pp <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb7-13"><a href="introduction-p01.html#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="introduction-p01.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A name pointing to None is different from a name which does not exist 'qq'</span></span>
+<span id="cb7-15"><a href="introduction-p01.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb7-16"><a href="introduction-p01.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
+<span id="cb7-17"><a href="introduction-p01.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb7-18"><a href="introduction-p01.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">'qq'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
+<span id="cb7-19"><a href="introduction-p01.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb7-20"><a href="introduction-p01.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb7-21"><a href="introduction-p01.html#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq)</span>
+<span id="cb7-22"><a href="introduction-p01.html#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> e:</span>
+<span id="cb7-23"><a href="introduction-p01.html#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#e.args type(e)</span></span>
+<span id="cb7-24"><a href="introduction-p01.html#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="introduction-p01.html#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb7-26"><a href="introduction-p01.html#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' </span></span>
+<span id="cb7-27"><a href="introduction-p01.html#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">## name 'qq' is not defined</span></span>
+<span id="cb7-28"><a href="introduction-p01.html#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(pp):</span>
+<span id="cb7-29"><a href="introduction-p01.html#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"IF Block"</span>)</span>
+<span id="cb7-30"><a href="introduction-p01.html#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-31"><a href="introduction-p01.html#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"ELSE Block"</span>)</span>
+<span id="cb7-32"><a href="introduction-p01.html#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="introduction-p01.html#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb7-34"><a href="introduction-p01.html#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">## ELSE Block</span></span></code></pre></div>
+</div>
+<div id="indexing" class="section level3" number="1.2.4">
+<h3>
+<span class="header-section-number">1.2.4</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Indexing starts at 1 in R. Whereas, it starts at 0 in Python</li>
 </ul>
 </div>
-<div id="pipe" class="section level3" number="1.2.4">
+<div id="pipe" class="section level3" number="1.2.5">
 <h3>
-<span class="header-section-number">1.2.4</span> Pipe<a class="anchor" aria-label="anchor" href="#pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.5</span> Pipe<a class="anchor" aria-label="anchor" href="#pipe"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Python uses dot “.” as pipe operator</li>
@@ -118,9 +202,9 @@
 </li>
 </ul>
 </div>
-<div id="assignment-operator" class="section level3" number="1.2.5">
+<div id="assignment-operator" class="section level3" number="1.2.6">
 <h3>
-<span class="header-section-number">1.2.5</span> Assignment Operator<a class="anchor" aria-label="anchor" href="#assignment-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.6</span> Assignment Operator<a class="anchor" aria-label="anchor" href="#assignment-operator"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Python uses ‘equal to’ ” = ” as assignment operator</li>
@@ -132,15 +216,15 @@
 </li>
 </ul>
 </div>
-<div id="copy-objects-or-variables" class="section level3" number="1.2.6">
+<div id="copy-objects-or-variables" class="section level3" number="1.2.7">
 <h3>
-<span class="header-section-number">1.2.6</span> Copy Objects or Variables<a class="anchor" aria-label="anchor" href="#copy-objects-or-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.7</span> Copy Objects or Variables<a class="anchor" aria-label="anchor" href="#copy-objects-or-variables"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li><p>R <a href="https://adv-r.hadley.nz/names-values.html" title="https://adv-r.hadley.nz/names-values.html">Advanced R, Hadley</a></p></li>
 <li><p>Python Similar but different</p></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load Packages: "lobstr"</span>
 <span class="co"># Create an object containing a value and bind that object to name 'aa'</span>
 <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">10</span> 
@@ -148,9 +232,9 @@
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x14a7a8ef880"</span>
+<span class="co">## [1] "0x1fbb1638a48"</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x14a7a8ef880"</span>
+<span class="co">## [1] "0x1fbb1638a48"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
@@ -163,50 +247,67 @@
 <span class="co">## [1] 5</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
 <span class="co">## [1] 10</span>
-<span class="co"># Now the copy (modified) points to a different memory address than earlier</span>
+<span class="co"># Now the modified name points to a different memory address than earlier</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x14a7a8ef6c0"</span>
+<span class="co">## [1] "0x1fbb1638888"</span>
 <span class="co"># Original is still pointing to the same address containing original object</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x14a7a8ef880"</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introduction-p01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable containing a value and bind that variable to name 'pp'</span></span>
-<span id="cb7-2"><a href="introduction-p01.html#cb7-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
-<span id="cb7-3"><a href="introduction-p01.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding to an already existing value</span></span>
-<span id="cb7-4"><a href="introduction-p01.html#cb7-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
-<span id="cb7-5"><a href="introduction-p01.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
-<span id="cb7-6"><a href="introduction-p01.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb7-7"><a href="introduction-p01.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span>
-<span id="cb7-8"><a href="introduction-p01.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb7-9"><a href="introduction-p01.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="introduction-p01.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
-<span id="cb7-11"><a href="introduction-p01.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span>
-<span id="cb7-12"><a href="introduction-p01.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb7-13"><a href="introduction-p01.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
-<span id="cb7-14"><a href="introduction-p01.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb7-15"><a href="introduction-p01.html#cb7-15" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb7-16"><a href="introduction-p01.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
-<span id="cb7-17"><a href="introduction-p01.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb7-18"><a href="introduction-p01.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
-<span id="cb7-19"><a href="introduction-p01.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
-<span id="cb7-20"><a href="introduction-p01.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the copy (modified) points to a different memory address than earlier</span></span>
-<span id="cb7-21"><a href="introduction-p01.html#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb7-22"><a href="introduction-p01.html#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb7-23"><a href="introduction-p01.html#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb7-24"><a href="introduction-p01.html#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445680</span></span>
-<span id="cb7-25"><a href="introduction-p01.html#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb7-26"><a href="introduction-p01.html#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">## 1419458445840</span></span></code></pre></div>
+<span class="co">## [1] "0x1fbb1638a48"</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introduction-p01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable containing a value and bind that variable to name 'pp'</span></span>
+<span id="cb9-2"><a href="introduction-p01.html#cb9-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb9-3"><a href="introduction-p01.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding to an already existing value</span></span>
+<span id="cb9-4"><a href="introduction-p01.html#cb9-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
+<span id="cb9-5"><a href="introduction-p01.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
+<span id="cb9-6"><a href="introduction-p01.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb9-7"><a href="introduction-p01.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2180568121872</span></span>
+<span id="cb9-8"><a href="introduction-p01.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb9-9"><a href="introduction-p01.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2180568121872</span></span>
+<span id="cb9-10"><a href="introduction-p01.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
+<span id="cb9-11"><a href="introduction-p01.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="introduction-p01.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
+<span id="cb9-13"><a href="introduction-p01.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb9-14"><a href="introduction-p01.html#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
+<span id="cb9-15"><a href="introduction-p01.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb9-16"><a href="introduction-p01.html#cb9-16" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-17"><a href="introduction-p01.html#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
+<span id="cb9-18"><a href="introduction-p01.html#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb9-19"><a href="introduction-p01.html#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
+<span id="cb9-20"><a href="introduction-p01.html#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb9-21"><a href="introduction-p01.html#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the modified name points to a different memory address than earlier</span></span>
+<span id="cb9-22"><a href="introduction-p01.html#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb9-23"><a href="introduction-p01.html#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb9-24"><a href="introduction-p01.html#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
+<span id="cb9-25"><a href="introduction-p01.html#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2180568121712</span></span>
+<span id="cb9-26"><a href="introduction-p01.html#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb9-27"><a href="introduction-p01.html#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2180568121872</span></span></code></pre></div>
+</div>
+<div id="reticulate-type-conversion" class="section level3" number="1.2.8">
+<h3>
+<span class="header-section-number">1.2.8</span> Reticulate Type conversion<a class="anchor" aria-label="anchor" href="#reticulate-type-conversion"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>R : Python</li>
+<li>Single element vector : Scalar</li>
+<li>Multi element vector : List</li>
+<li>List of multiple types : Tuple</li>
+<li>Named List : Dictionary</li>
+<li>Matrix /Array : NumPy ndarray</li>
+<li>Data Frame : Pandas Data Frame</li>
+<li>Function: Function</li>
+<li>Raw : Byte array</li>
+</ul>
 </div>
 </div>
 <div id="verify" class="section level2" number="1.3">
 <h2>
 <span class="header-section-number">1.3</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">R.version.string</span>
 <span class="co">## [1] "R version 4.2.0 (2022-04-22 ucrt)"</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introduction-p01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
-<span id="cb9-2"><a href="introduction-p01.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="introduction-p01.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb11-2"><a href="introduction-p01.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">## [1] "aa" "bb" "r"</span></code></pre></div>
 
@@ -224,10 +325,12 @@
 <a class="nav-link" href="#differences-between-r-and-python"><span class="header-section-number">1.2</span> Differences between R and Python</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#indentation"><span class="header-section-number">1.2.1</span> Indentation</a></li>
 <li><a class="nav-link" href="#boolean"><span class="header-section-number">1.2.2</span> Boolean</a></li>
-<li><a class="nav-link" href="#indexing"><span class="header-section-number">1.2.3</span> Indexing</a></li>
-<li><a class="nav-link" href="#pipe"><span class="header-section-number">1.2.4</span> Pipe</a></li>
-<li><a class="nav-link" href="#assignment-operator"><span class="header-section-number">1.2.5</span> Assignment Operator</a></li>
-<li><a class="nav-link" href="#copy-objects-or-variables"><span class="header-section-number">1.2.6</span> Copy Objects or Variables</a></li>
+<li><a class="nav-link" href="#null-none"><span class="header-section-number">1.2.3</span> NULL &amp; None</a></li>
+<li><a class="nav-link" href="#indexing"><span class="header-section-number">1.2.4</span> Indexing</a></li>
+<li><a class="nav-link" href="#pipe"><span class="header-section-number">1.2.5</span> Pipe</a></li>
+<li><a class="nav-link" href="#assignment-operator"><span class="header-section-number">1.2.6</span> Assignment Operator</a></li>
+<li><a class="nav-link" href="#copy-objects-or-variables"><span class="header-section-number">1.2.7</span> Copy Objects or Variables</a></li>
+<li><a class="nav-link" href="#reticulate-type-conversion"><span class="header-section-number">1.2.8</span> Reticulate Type conversion</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#verify"><span class="header-section-number">1.3</span> Verify</a></li>
@@ -248,7 +351,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-16.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
