@@ -39,7 +39,7 @@ if(TRUE) lapply(c("lobstr"),
   - None is a singleton. There is only one None in memory
   - [Real Python](https://realpython.com/null-in-python/)
 
-```{r 'R-NULL'}
+```{r 'R-NULL', decorate=TRUE}
 # Return of str() is NULL which is passed to print()
 print(str("This returns NULL in R"))
 
@@ -63,7 +63,7 @@ if(is.null(aa)) {
 }
 ```
 
-```{python 'Y-None'}
+```{python 'Y-None', decorate=TRUE}
 # Return of print() is None which is passed to print()
 print(print("This returns None in Python"))
 
@@ -183,7 +183,7 @@ R.version.string
 ```
 
 ```{python 'Y-Version'}
-print(sys.version)
+print(sys.version.split()[0])
 
 ```
 

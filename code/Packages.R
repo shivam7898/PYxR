@@ -1,8 +1,8 @@
 if (!("conflicted" %in% (.packages()))) {
   pkg <- character(0)
-  pkg <- c(pkg, "conflicted", "knitr", "reticulate")
+  pkg <- c(pkg, "conflicted", "knitr", "reticulate", "fontawesome")
   
-  lapply(pkg, FUN = function(x) {suppressMessages(library(x, character.only = TRUE))})
+  lapply(pkg, FUN = \(x) library(x, character.only = TRUE))
   
   # Set Precedence
   # dplyr::filter | stats::filter
