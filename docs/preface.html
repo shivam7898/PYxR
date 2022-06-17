@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Preface | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version) ## 3.10.5 (tags/v3.10.5:f377153, Jun 6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] # Attached...'>
+<meta name="description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version.split()[0]) ## 3.10.5 # Attached (Basic) Packages in R sessionInfo() ## R version 4.2.0 (2022-04-22...'>
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Preface | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/preface.html">
-<meta property="og:description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version) ## 3.10.5 (tags/v3.10.5:f377153, Jun 6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] # Attached...'>
+<meta property="og:description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version.split()[0]) ## 3.10.5 # Attached (Basic) Packages in R sessionInfo() ## R version 4.2.0 (2022-04-22...'>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Preface | PYxR">
-<meta name="twitter:description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version) ## 3.10.5 (tags/v3.10.5:f377153, Jun 6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] # Attached...'>
+<meta name="twitter:description" content='0.1 Prerequisites R.version.string ## [1] "R version 4.2.0 (2022-04-22 ucrt)" print(sys.version.split()[0]) ## 3.10.5 # Attached (Basic) Packages in R sessionInfo() ## R version 4.2.0 (2022-04-22...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -64,8 +64,8 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">R.version.string</span>
 <span class="co">## [1] "R version 4.2.0 (2022-04-22 ucrt)"</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="preface.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
-<span id="cb2-2"><a href="preface.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="preface.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version.split()[<span class="dv">0</span>])</span>
+<span id="cb2-2"><a href="preface.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Attached (Basic) Packages in R </span>
 <span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
@@ -84,15 +84,15 @@
 <span class="co">## [1] stats     graphics  grDevices datasets  utils     methods   base     </span>
 <span class="co">## </span>
 <span class="co">## other attached packages:</span>
-<span class="co">## [1] reticulate_1.25  knitr_1.39       conflicted_1.1.0</span>
+<span class="co">## [1] fontawesome_0.2.2 reticulate_1.25   knitr_1.39        conflicted_1.1.0 </span>
 <span class="co">## </span>
 <span class="co">## loaded via a namespace (and not attached):</span>
 <span class="co">##  [1] Rcpp_1.0.8.3    rstudioapi_0.13 magrittr_2.0.3  xml2_1.3.3     </span>
 <span class="co">##  [5] downlit_0.4.0   lattice_0.20-45 here_1.0.1      R6_2.5.1       </span>
 <span class="co">##  [9] rlang_1.0.2     fastmap_1.1.0   stringr_1.4.0   tools_4.2.0    </span>
 <span class="co">## [13] grid_4.2.0      xfun_0.31       png_0.1-7       cli_3.3.0      </span>
-<span class="co">## [17] jquerylib_0.1.4 htmltools_0.5.2 yaml_2.3.5      rprojroot_2.0.3</span>
-<span class="co">## [21] digest_0.6.29   bookdown_0.27   Matrix_1.4-1    fs_1.5.2       </span>
+<span class="co">## [17] jquerylib_0.1.4 htmltools_0.5.2 yaml_2.3.5      digest_0.6.29  </span>
+<span class="co">## [21] rprojroot_2.0.3 bookdown_0.27   Matrix_1.4-1    fs_1.5.2       </span>
 <span class="co">## [25] sass_0.4.1      memoise_2.0.1   cachem_1.0.6    evaluate_0.15  </span>
 <span class="co">## [29] rmarkdown_2.14  stringi_1.7.6   compiler_4.2.0  bslib_0.3.1    </span>
 <span class="co">## [33] jsonlite_1.8.0</span></code></pre></div>

@@ -13,7 +13,7 @@ R.version.string
 ```
 
 ```{python 'Y-Version'}
-print(sys.version)
+print(sys.version.split()[0])
 
 ```
 
