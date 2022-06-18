@@ -1,4 +1,13 @@
 # Links {#links .unnumbered}
 
+
 - [custom colorization to the code chunks](https://f0nzie.github.io/matplotlib-with-rmarkdown/index.html)
   - Decorate the chunks based on Engine using knitr hooks
+
+
+## Books
+
+- [Knitr Options - Yihui](https://yihui.org/knitr/options/)
+- [R Markdown Guide - Yihui](https://bookdown.org/yihui/rmarkdown/)
+- [R Markdown Cookbook - Yihui](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [R Bookdown - Yihui](https://bookdown.org/yihui/bookdown/)
