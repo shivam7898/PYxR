@@ -13,17 +13,18 @@ pre code {
   white-space: inherit;
 }
 
-/*Formatting for Language Specific Code Blocks under Decorate */
+/*custom formatting for code chunks based on language engine using knitr hook */
+/*css unused because it shows a horizonal scroll bar under each chunk */
 /*margin: Top, Right, Bottom, Left*/
-/*   margin: 0px 0px 0px 0px;
+/*
+.decocode {
+  margin: 0px 0px 0px 0px;
   border-radius: 2px;
   overflow-x: auto;
-  overflow-y: auto; */
-.decocode {
+  overflow-y: auto; 
+} */
 
-}
-
-/* padding: 1px; */
+/*
 .decocode * {
-
-}
+  padding: 1px; 
+} */
