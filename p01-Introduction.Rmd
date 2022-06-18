@@ -106,7 +106,7 @@ else:
 ### Assignment Operator
 
 - Python uses 'equal to' " = " as assignment operator 
-- R uses equal to " <- " as assignment operator
+- R uses 'left arrow' " <- " as assignment operator
   - In R, while the " = " can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
   - Convention is to use " = " only during function calls for arguments association (syntactic token)
 
