@@ -12,3 +12,18 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+/*Formatting for Language Specific Code Blocks under Decorate */
+/*margin: Top, Right, Bottom, Left*/
+/*   margin: 0px 0px 0px 0px;
+  border-radius: 2px;
+  overflow-x: auto;
+  overflow-y: auto; */
+.decocode {
+
+}
+
+/* padding: 1px; */
+.decocode * {
+
+}
