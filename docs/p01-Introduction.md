@@ -4,7 +4,7 @@
 
 ## Similarity between R and Python
 
-- Both R and Python are case-sensitive
+- \textcolor{pink}{Both R and Python are case-sensitive}
 - Both R and Python use the Hash Sign "#" to comment out anything after it, till the newline
 - Both R and Python keep the Backslash "\\" as reserved to escape the character that follows it
 
@@ -125,7 +125,7 @@ else:
 ### Assignment Operator
 
 - Python uses 'equal to' " = " as assignment operator 
-- R uses equal to " <- " as assignment operator
+- R uses 'left arrow' " <- " as assignment operator
   - In R, while the " = " can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
   - Convention is to use " = " only during function calls for arguments association (syntactic token)
 
@@ -145,9 +145,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x24669973910"
+## [1] "0x22d9829b8f0"
 obj_addr(bb)
-## [1] "0x24669973910"
+## [1] "0x22d9829b8f0"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -162,10 +162,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x24669973788"
+## [1] "0x22d9829b768"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x24669973910"
+## [1] "0x22d9829b8f0"
 ```
 
 </div><br></div>
@@ -179,9 +179,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 2501490442768
+## 2394642842128
 id(qq)
-## 2501490442768
+## 2394642842128
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -197,9 +197,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 2501490442608
+## 2394642841968
 id(pp)
-## 2501490442768
+## 2394642842128
 ```
 
 </div><br></div>

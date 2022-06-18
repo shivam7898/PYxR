@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 Introduction | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta name="description" content="1.1 Similarity between R and Python  Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the Backslash “\” as reserved to escape the...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Introduction | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/introduction-p01.html">
-<meta property="og:description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta property="og:description" content="1.1 Similarity between R and Python  Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the Backslash “\” as reserved to escape the...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Introduction | PYxR">
-<meta name="twitter:description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta name="twitter:description" content="1.1 Similarity between R and Python  Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the Backslash “\” as reserved to escape the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -63,7 +63,7 @@
 <span class="header-section-number">1.1</span> Similarity between R and Python<a class="anchor" aria-label="anchor" href="#similarity-between-r-and-python"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Both R and Python are case-sensitive</li>
+<li>
 <li>Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline</li>
 <li>Both R and Python keep the Backslash “\” as reserved to escape the character that follows it</li>
 </ul>
@@ -220,7 +220,7 @@
 </h3>
 <ul>
 <li>Python uses ‘equal to’ ” = ” as assignment operator</li>
-<li>R uses equal to ” &lt;- ” as assignment operator
+<li>R uses ‘left arrow’ ” &lt;- ” as assignment operator
 <ul>
 <li>In R, while the ” = ” can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug</li>
 <li>Convention is to use ” = ” only during function calls for arguments association (syntactic token)</li>
@@ -247,9 +247,9 @@
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x24669973910"</span>
+<span class="co">## [1] "0x22d9829b8f0"</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x24669973910"</span>
+<span class="co">## [1] "0x22d9829b8f0"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
@@ -264,10 +264,10 @@
 <span class="co">## [1] 10</span>
 <span class="co"># Now the modified name points to a different memory address than earlier</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x24669973788"</span>
+<span class="co">## [1] "0x22d9829b768"</span>
 <span class="co"># Original is still pointing to the same address containing original object</span>
 <span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x24669973910"</span></code></pre></div>
+<span class="co">## [1] "0x22d9829b8f0"</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -280,9 +280,9 @@
 <span id="cb9-4"><a href="introduction-p01.html#cb9-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb9-5"><a href="introduction-p01.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span id="cb9-6"><a href="introduction-p01.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb9-7"><a href="introduction-p01.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2501490442768</span></span>
+<span id="cb9-7"><a href="introduction-p01.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2394642842128</span></span>
 <span id="cb9-8"><a href="introduction-p01.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb9-9"><a href="introduction-p01.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2501490442768</span></span>
+<span id="cb9-9"><a href="introduction-p01.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2394642842128</span></span>
 <span id="cb9-10"><a href="introduction-p01.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb9-11"><a href="introduction-p01.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-12"><a href="introduction-p01.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
@@ -298,9 +298,9 @@
 <span id="cb9-22"><a href="introduction-p01.html#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
 <span id="cb9-23"><a href="introduction-p01.html#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
 <span id="cb9-24"><a href="introduction-p01.html#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb9-25"><a href="introduction-p01.html#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2501490442608</span></span>
+<span id="cb9-25"><a href="introduction-p01.html#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2394642841968</span></span>
 <span id="cb9-26"><a href="introduction-p01.html#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb9-27"><a href="introduction-p01.html#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2501490442768</span></span></code></pre></div>
+<span id="cb9-27"><a href="introduction-p01.html#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2394642842128</span></span></code></pre></div>
 </div>
 <br>
 </div>

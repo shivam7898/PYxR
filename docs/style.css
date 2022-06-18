@@ -14,7 +14,7 @@ pre code {
 }
 
 /*custom formatting for code chunks based on language engine using knitr hook */
-/*unused because it shows a horizonal scroll bar under each chunk */
+/*css unused because it shows a horizonal scroll bar under each chunk */
 /*margin: Top, Right, Bottom, Left*/
 /*
 .decocode {
