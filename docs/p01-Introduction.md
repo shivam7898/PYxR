@@ -145,9 +145,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x2df86fdb500"
+## [1] "0x24669973910"
 obj_addr(bb)
-## [1] "0x2df86fdb500"
+## [1] "0x24669973910"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -162,10 +162,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x2df86fdb378"
+## [1] "0x24669973788"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x2df86fdb500"
+## [1] "0x24669973910"
 ```
 
 </div><br></div>
@@ -179,9 +179,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 3159114449424
+## 2501490442768
 id(qq)
-## 3159114449424
+## 2501490442768
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -197,9 +197,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 3159114449264
+## 2501490442608
 id(pp)
-## 3159114449424
+## 2501490442768
 ```
 
 </div><br></div>

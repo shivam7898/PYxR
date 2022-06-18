@@ -12,3 +12,19 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+/*custom formatting for code chunks based on language engine using knitr hook */
+/*unused because it shows a horizonal scroll bar under each chunk */
+/*margin: Top, Right, Bottom, Left*/
+/*
+.decocode {
+  margin: 0px 0px 0px 0px;
+  border-radius: 2px;
+  overflow-x: auto;
+  overflow-y: auto; 
+} */
+
+/*
+.decocode * {
+  padding: 1px; 
+} */
