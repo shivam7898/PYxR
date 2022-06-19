@@ -3,6 +3,33 @@
 
 - [custom colorization to the code chunks](https://f0nzie.github.io/matplotlib-with-rmarkdown/index.html)
   - Decorate the chunks based on Engine using knitr hooks
+- [Encode Cyclical Features in 2 dimensions](https://ianlondon.github.io/blog/encoding-cyclical-features-24hour-time/)
+- Network
+  - [Network visualization with R by Ognyanova](https://kateto.net/network-visualization)
+  - [Awesone Network Analysis](https://github.com/briatte/awesome-network-analysis)
+    - GitHub List of resources to construct, analyze and visualize network data
+- Datasets
+  - [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday)
+  - [UCI Machine Learning Datasets](https://archive-beta.ics.uci.edu/)
+  - [UCI Network Datasets](https://networkdata.ics.uci.edu/resources.php)
+
+- Statistics
+  - [Basic Statistical Concepts - Penn State Eberly](https://online.stat.psu.edu/statprogram/reviews/statistical-concepts)
+  - [Stat 414 - Penn State Eberly](https://online.stat.psu.edu/stat414/)
+  - [Statistics 50](https://www.csus.edu/indiv/j/jgehrman/courses/stat50/s50content.htm)
+  - [Undergraduate Advanced Data Analysis - CMU](https://www.stat.cmu.edu/~cshalizi/uADA/19/)
+
+- Machine Learning
+  - [Machine Learning Resources in Python](https://www.ritchieng.com/machine-learning-resources/)
+  - [Random Forest - Berkeley](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm)
+
+- Courses
+  - [ESPM 157: Data Science for Global Change Ecology](https://espm-157.carlboettiger.info/syllabus)
+  - [STA 199: Intro to Data Science](https://www2.stat.duke.edu/courses/Spring21/sta199.003/)
+  - [Data Visualisation - Andrewheiss](https://datavizm20.classes.andrewheiss.com/schedule/)
+  - [MPA 612: Economy, Society, and Public Policy - Andrewheiss](https://econw19.classes.andrewheiss.com/schedule/)
+
+
 
 
 ## Books
@@ -11,3 +38,58 @@
 - [R Markdown Guide - Yihui](https://bookdown.org/yihui/rmarkdown/)
 - [R Markdown Cookbook - Yihui](https://bookdown.org/yihui/rmarkdown-cookbook/)
 - [R Bookdown - Yihui](https://bookdown.org/yihui/bookdown/)
+- [R for Data Science - Hadley](https://r4ds.hadley.nz/)
+  - [Solutions - Jeffrey Arnold](https://jrnold.github.io/r4ds-exercise-solutions/)
+- [Advanced R - Hadley](https://adv-r.hadley.nz/index.html)
+  - [Solutions - Malte Grosser](https://advanced-r-solutions.rbind.io/index.html)
+
+- [ggplot2: Elegant Graphics for Data Analysis - Hadley](https://ggplot2-book.org/)
+- [Mastering Software Development in R - Roger Peng](https://rdpeng.github.io/RProgDA/) 
+- [Efficient R programming - Colin Gillespie](https://bookdown.org/csgillespie/efficientR/)
+- [Applied Network Science with R - George Yon](https://gvegayon.github.io/appliedsnar/)
+- [Handbook of Graphs and Networks in People Analytics - Keith McNulty](https://ona-book.org/index.html)
+    - iGraph examples in R and Python
+- [Basic R Guide for NSC Statistics - Deanna Li](https://bookdown.org/dli/rguide/)
+- [Forecasting: Principles and Practice - Rob Hyndman](https://otexts.com/fpp3/)
+- [Book Template - Lisa DeBruine](https://psyteachr.github.io/book-template/)
+  - Usage of 'webex' package in Bookdown for dropdown boxes, hidden boxes etc.
+- [Making Lecture Notes with Bookdown - Vicky Scowcroft](https://vickyscowcroft.github.io/bookdown_lecture_notes_guide/)
+- [Introduction to Econometrics with R- Christoph Hanck](https://www.econometrics-with-r.org/index.html)
+- [Flexible Imputation of Missing Data - Stef van Buuren](https://stefvanbuuren.name/fimd/)
+- [Data Science in R - James Scott](https://bookdown.org/jgscott/DSGI/)
+- [ECON 41 Labs - Gabriel Butler](https://bookdown.org/gabriel_butler/ECON41Labs/)
+- [Data Science for Psychologists - Hansjorg Neth](https://bookdown.org/hneth/ds4psy/)
+- [A Probabilistic Comparison of Commonly Used Interest Measures for Association Rules - Michael Hahsler](https://mhahsler.github.io/arules/docs/measures)
+- [Geographic Data Analysis](https://pjbartlein.github.io/GeogDataAnalysis/index.html)
+- [Notes for Predictive Modeling - Eduardo Garcia-Portugues](https://bookdown.org/egarpor/PM-UC3M/)
+- [Data Science for Biological, Medical and Health Research](https://thomaselove.github.io/431-notes/index.html)
+- [Lab Guide to Quantitative Research Methods in Political Science, Public Policy & Public Administration- Joseph Ripberger](https://bookdown.org/ripberjt/labbook/)
+- [ISLR tidymodels Labs](https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/index.html)
+- [Data Science Desktop Survival Guide - Graham Williams](https://onepager.togaware.com/index.html)
+- [Statistical Inference via Data Science - Chester Ismay](https://moderndive.com/index.html)
+- [SOC 4015 & 5050: Quantitative Analysis - Christopher Prener](https://slu-soc5050.github.io/syllabus/)
+- [APS 135: Introduction to Exploratory Data Analysis with R - Dylan Childs](https://dzchilds.github.io/eda-for-bio/)
+- [Data Science - Tiffany Timbers](https://datasciencebook.ca/)
+- [A Handbook for Teaching and Learning with R and RStudio - Desiree Leon](https://rstudio4edu.github.io/rstudio4edu-book/index.html)
+- [Big Book of R - Oscar Baruffa](https://www.bigbookofr.com/index.html)
+
+## Blogs
+
+- [R News](https://stat.ethz.ch/R-manual/R-devel/doc/html/NEWS.html)
+- [R Studio Release Notes](https://www.rstudio.com/products/rstudio/release-notes/)
+- [R Developers Blog](https://developer.r-project.org/Blog/public/)
+- [R Help Archieve](https://stat.ethz.ch/pipermail/r-help/)
+- [R Bloggers](https://www.r-bloggers.com/)
+- [Tidyverse](https://www.tidyverse.org/blog/)
+- [GitHub Bookdown](https://github.com/rstudio/bookdown/issues?q=sort%3Aupdated-desc)
+- [Yihui Xie](https://yihui.org/en/)
+- [RStudio](https://www.rstudio.com/blog/)
+- [STHDA](http://www.sthda.com/english/)
+- [t-redactyl](https://t-redactyl.io/)
+  - Statistics
+- [Blog A](https://data-se.netlify.app/)
+- [Blog B](https://win-vector.com/blog-2/)
+- [Blog C](https://janhove.github.io/)
+
+
+
