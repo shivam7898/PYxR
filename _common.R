@@ -46,15 +46,16 @@ if(TRUE){# Chunk Decoration based on Language Engine: R & Python
       #if (q_engine %in% q_eng_v) {
         if (q_engine == "python") {
             label <- "<b> Python</b>"
-            bc <- "#417FB1"
+            bc <- "inherit" #"#417FB1"
             sz <- "100%"
             tc <- "#FFD94C"
             icon <- fa("python", fill = tc)
         } else if (q_engine == "R") {
             label <- "<b> R</b>"
-            bc <- "#4C78DB"
+            bc <- "inherit" #"#4C78DB"
             sz <- "100%"
-            tc <- "#ffffff"
+            #tc <- "#ffffff"
+            tc <- "#4C78DB"
             icon <- fa("r-project", fill = tc)
         } #else if (options$engine == "bash") {
         #    label <- "<b>Shell</b>"
@@ -63,7 +64,7 @@ if(TRUE){# Chunk Decoration based on Language Engine: R & Python
         #    tc <- "#ffffff"
         #    icon <- "<i class=\"fas fa-terminal\"></i>"
         #}
-        paste0("<div class=decocode>", "<div style=\"background-color:", bc,
+        paste0("<div class=decocode>", "<div style=\"background-color:", "inherit",
                "\">", "<span style=\"font-size:", sz, ";color:", tc, "\">", icon, label, "</span>")
       #}
     } else {
