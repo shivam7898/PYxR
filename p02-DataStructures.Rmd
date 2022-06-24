@@ -1,0 +1,180 @@
+# Data Structures {#structures-p02}
+
+```{r 'setup', include=FALSE}
+################################################################################
+source("_common.R")
+if(FALSE) c("lobstr") |> 
+  lapply(library, character.only=TRUE)
+```
+
+## R Atomic Vectors or Data Types
+
+- R has 6 basic data types (`logical`, `integer`, `double`, `character`, `complex`, and `raw`). These data types can be combined to form Data Structures (`vector`, `list`, `matrix`, `dataframe`, `factor`). 
+  - Vectors are the simplest type of data structure in R. A vector is a sequence of data elements of the same basic type. 
+  - Members of a vector are called 'components'.
+  - Atomic vectors are homogeneous i.e. each component has the same datatype. 
+  - A vector type can be checked with the `typeof()` function.
+  - `list` is a `vector` but not an 'atomic vector'.
+
+- Create a vector or a list by `c()`
+  - In R, a literal character or number is just a vector of length 1. 
+  - So, `c()` 'combines' them together in a series of 1-length vectors. It neither 'creates' nor 'concatenates' the vectors. It combines lists into a list and vectors into a vector.
+  - All attributes (e.g. `dim`) except `names` are removed.
+  - All arguments are coerced to a common type 
+  - The output type is determined from the highest type of the components in the hierarchy `NULL` < `raw` < `logical` < `integer` < `double` < `complex` < `character` < `list` < `expression`.
+  
+```{r 'R-DataTypes', decorate=TRUE}
+# Integer: To declare as integer "L" (not "l") is added as Suffix
+str(c(1L, 2L, NA, 4L, 5L))
+
+# Double (& Default)
+str(c(1, 2, NA, 4, 5))
+
+# Character
+str(c('a', 'b', NA, 'd', 'e'))
+
+# Logical
+str(c(TRUE, FALSE, NA, FALSE, TRUE))
+```
+
+## Examination of R Data Types
+
+```{r 'R-About', decorate=TRUE}
+# To know about an Object Named Vector (pi, letters are predefined)
+aa <- setNames(c(1, 2, NA, pi, 4), nm = letters[1:5])
+
+typeof(aa)              # Type
+class(aa)               # Class
+str(aa)                 # Structure
+length(aa)              # Length
+dim(aa)                 # Dimensions
+is(aa)                  # Inheritance
+names(attributes(aa))   # Attributes
+names(aa)               # Names
+```
+
+## R Matrices and Arrays
+
+- `Matrices` and `arrays` are simply vectors with the attribute `dim` attached to the vector. 
+  - The data elements must be of the same basic type.
+  - A `matrix` is a two-dimensional rectangular data set. 
+  - `Arrays` are multi-dimensional Data structures. Data is stored in the form of matrices, row, and as well as in columns. 
+
+```{r 'R-Matrix', decorate=TRUE}
+# Create Matrix
+aa <- matrix(1:6, nrow=3, ncol=2, byrow=TRUE, dimnames=list(NULL, c("x", "y")))
+bb <- matrix(1:6, nrow=3, ncol=2, byrow=FALSE, dimnames=list(NULL, c("x", "y")))
+
+print(aa)
+print(bb)
+
+# About
+str(aa)
+dim(aa)
+length(aa)
+
+# Matrices have 'dimnames' attribute instead of usual 'names'
+names(attributes(aa))
+names(aa)
+dimnames(aa) 
+```
+
+## R Lists
+
+- Lists have 'elements', each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
+  - `list` is a `vector` but not an 'atomic vector'.
+
+```{r 'R-List', decorate=TRUE}
+# Create List (letters is predefined vector of 26 elements)
+aa <- list(x = 4:6, y = letters[4:8])
+print(aa)
+
+# About
+str(aa)
+length(aa)              # Number of elements in the List
+lengths(aa)             # Number of components of each element of the List
+stopifnot(identical(lengths(aa), sapply(aa, length)))
+
+names(attributes(aa))   # Attributes
+names(aa)               # Names of elements
+```
+
+## R DataFrames
+
+- Data frame is a list of `vectors`, `factors`, and/or `matrices` all having the same length (number of rows in the case of matrices).
+  - A `data frame` can contain a `list` that is the same length as the other components. 
+
+```{r 'R-DataFrame', decorate=TRUE}
+# Create DataFrame (letters is predefined vector of 26 elements)
+aa <- data.frame(x = 4:6, y = letters[4:6])
+print(aa)
+
+# About
+str(aa)
+dim(aa)                 #Dimensions Row x Column
+stopifnot(all(identical(nrow(aa), dim(aa)[1]),
+              identical(ncol(aa), dim(aa)[2])))
+
+names(attributes(aa))   # Attributes
+names(aa)               # Names of column headers
+
+is.list(aa)
+is.vector(aa)
+is.atomic(aa)
+```
+
+## R Factors
+
+- `Factors` are used to describe items that can have a finite number of values (gender, social class, etc.). A factor has a `levels` attribute and class `factor`. 
+  - A factor may be purely nominal or may have ordered categories. 
+
+```{r 'R-Factor', decorate=TRUE}
+# Create Factors Unordered
+aa <- factor(c("female", "male", "male", "female", "male"), ordered = FALSE)
+# Create Factors Ordered
+bb <- factor(c("female", "male", "male", "female", "male"), ordered = TRUE)
+
+print(aa)
+print(bb)
+
+# About
+str(aa)
+str(bb)
+
+nlevels(aa)             # Count of Levels
+levels(aa)              # Vector of Levels
+names(attributes(aa))   # Attributes
+```
+
+## Membership Functions
+
+- `anyNA()` is `TRUE` if there is an `NA` present, `FALSE` otherwise
+- `is.atomic()` is `TRUE` for all atomic vectors, factors, matrices but is `FALSE` for lists and dataframes
+- `is.vector()` is `TRUE` for all atomic vectors, lists but is `FALSE` for factors, matrices, DATE & POSIXct
+  - It returns `FALSE` if the vector has attributes (except `names`) ex: DATE, POSIXct, DataFrames (even though a Dataframe is a list and a list is a vector)
+- `is.numeric()` is `TRUE` for both `integer` and `double`
+- `is.integer()`, `is.double()`, `is.character()`, `is.logical()` are `TRUE` for their respective datatypes only
+- `is.factor()`, `is.ordered()` are membership functions for factors with or without ordering
+
+```{r 'R-is', decorate=TRUE}
+# Create Objects
+aa_num <- setNames(c(1, 2, NA, pi, 4), nm = letters[1:5])
+bb_mat <- matrix(1:6, nrow=3, ncol=2, byrow=TRUE, dimnames=list(NULL, c("x", "y")))
+dd_dft <- data.frame(x = 4:6, y = letters[4:6])
+ee_lst <- list(x = 4:6, y = letters[4:8])
+ff_fct <- factor(c("female", "male", "male", "female", "male"), ordered = FALSE)
+
+# List of Objects
+gg <- list(Vector = aa_num, Matrix = bb_mat, DataFrame = dd_dft, 
+            List = ee_lst, Factor = ff_fct)
+
+# Apply a membership function on all of the objects inside the list
+names(which(sapply(gg, is.atomic)))
+names(which(sapply(gg, is.vector)))
+names(which(sapply(gg, is.matrix)))
+names(which(sapply(gg, is.list)))
+names(which(sapply(gg, is.data.frame)))
+names(which(sapply(gg, is.factor)))
+```
+
+
