@@ -74,9 +74,9 @@ if(False):
 - R uses braces `{}` to group expressions in code blocks and ignores indentation
 - Indentation and white spaces are extremely significant in Python (unlike R)
   - 4 Spaces (not Tab) are being used, in this book, for Python chunks
-  - A backslash "\\" allows you to break up one long piece of code into several parts
+  - A backslash `\` allows you to break up one long piece of code into several parts
   - Any character (including whitespace) after the backslash will cause an error
-  - Parentheses "()" can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
+  - Parentheses `()` can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
   - An extra newline is being added in Python chunks, in this book, to indicate that the command /block has been completed
 
 ## NA NaN 0/0 - nan
@@ -90,19 +90,20 @@ if(False):
   - `NaN` is a float value, so we cannot have explicit missing values in non-float columns. In R, `NA` can be of any type.
 
 - Comparison operation with `NaN` (even with itself) 
-  - Python: `==` returns `FALSE`, `!=` returns `TRUE` (IEEE754 Standard)
+  - Python: `==` returns `False`, `!=` returns `True` (IEEE754 Standard)
   - R: All such operations (`==`, `!=`, `>=` `<=`, `>`, `<`) results in `NA` 
   - R: `NA` or `NaN` compared to anything is `NA`.
 
-- Coercion of `NaN` in R
-  - To `integer` gives `NA_integer_` 
-  - To `logical` gives `NA`
-  - However to `numeric` gives `NaN` and to `character` gives `"NaN"`
+- Coercion of `NaN` in R (Or Casting or Conversion)
+  - `NaN` coercion to `integer` gives `NA_integer_` 
+  - `NaN` coercion to `logical` gives `NA`
+  - `NaN` coercion to `numeric` gives `NaN` 
+  - `NaN` coercion to `character` gives `"NaN"`
   
 - Reticulate: 
   - In python, missing values are also `NaN`
   - Both `np.nan` and `math.nan` of Python are converted to `NaN` of R
-  - `NaN` of R is converted to `NaN` of Python with either np or math (not confirmed which one this is) #ForLater
+  - `NaN` of R is converted to `NaN` of Python 
   
 - Pandas
   - Both `np.nan` and `math.nan` are treated as 'missing values' with class as `numpy.float64`
@@ -143,7 +144,7 @@ try:
 except ZeroDivisionError as e:
     print(e) #e.args type(e)
 
-# There are Two NaN in modules NumPy and Math, use 
+# There are Two NaN in modules NumPy and Math
 # Use module specific methods but not the 'is' keyword
 pp = float("NaN") # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
 print(pp)
@@ -223,7 +224,7 @@ True and 3
   - Inside if condition, `NULL` throws error, use `is.null(x)` syntax
   - If the output of an expression does not show numbers in brackets like '[1]' then it is a NULL type return. [Numbers] show that it is a Vector. Ex: `str()` and `cat()` outputs are of NULL Type.
 - Python uses the keyword `None` to define null objects and variables
-  - Inside if condition, `None` acts as `False`, use `x is None` syntax
+  - Inside `if` condition, `None` acts as `False`, use `x is None` syntax
   - `None` is a singleton. There is only one `None` in memory
   - [Real Python](https://realpython.com/null-in-python/)
 
@@ -288,16 +289,16 @@ else:
 
 ## Pipe
 
-- Python uses dot "." as pipe operator
-- R uses "|>" as pipe operator along with underscore "_" as placeholder
+- Python uses dot `.` as pipe operator
+- R uses `|>` as pipe operator along with underscore `_` as placeholder
   - To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names
 
 ## Assignment Operator
 
-- Python uses 'equal to' " = " as assignment operator 
-- R uses 'left arrow' " <- " as assignment operator
-  - In R, while the " = " can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
-  - Convention is to use " = " only during function calls for arguments association (syntactic token)
+- Python uses 'equal to' ` = ` as assignment operator 
+- R uses 'left arrow' ` <- ` as assignment operator
+  - In R, while the ` = ` can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
+  - Convention is to use ` = `  only during function calls for arguments association (syntactic token)
 
 ## Copy Objects or Variables
 
@@ -400,21 +401,20 @@ os.getcwd()         # Working Directory
 ## Verify R & Python Installation
 
 ```{r 'R-Version', decorate=TRUE}
-R.version.string                        # R Version
-packageVersion("knitr")                 # Package Version: knitr
+strsplit(R.version.string, " ")[[1]][3]           # R Version
+packageVersion("knitr")                           # Package Version: knitr
 ```
 
 - Python (in PowerShell Terminal)
   - If the cmd can locate python correctly but PowerShell cannot, then execute following  
-    - \$env:path="\$env:Path;C:\\Softwares\\Python\\Python310"
-    - `$env:path="$env:Path;C:\\Softwares\\Python\\Python310"`
+    - `$env:path="$env:Path;C:\Softwares\Python\Python310"`
   - If the python command leads to Microsoft Store
     - Windows | Start | Manage app execution aliases | Disable two for 'python.exe' and 'python3.exe'
     - It hides access to the actual exe PATH because it comes before the actual 
   - The executable gives different path depending upon from where it is being executed
     - Python: `C:\\Softwares\\Python\\Python310`
     - Local RMarkdown: `C:\\Program Files\\RStudio\\bin`
-    - Knit: `C:\\PROGRA~1\\R\\R-41~1.3\\bin\\x64`
+    - Knit: `C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64`
 
 ```{bash 'Z-Python-Version'}
 # Check, in BASH, if the python has been installed 
@@ -441,11 +441,13 @@ print(pd.__version__)                   # Module Version: pandas
 ## Install & Update of R Packages and Python Modules
 
 ```{r 'R-Package-Install', decorate=TRUE, eval=FALSE}
-# Install R Packages
-if(FALSE) install.packages("knitr", dependencies = TRUE)
-
-# Find whether a package is installed or not (slow)
-installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+if(FALSE) {
+  # Install R Packages  
+  install.packages("knitr", dependencies = TRUE)
+  
+  # Find whether a package is installed or not (slow)
+  installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+}
 ```
 
 - R: Use HMI
@@ -493,7 +495,9 @@ if(False):
     # Use k to list alias or use v.__name__ to list actual module names
     allmodules = [v.__name__ for k, v in globals().items() 
         if type(v) is types.ModuleType and not k.startswith('__')]
+    
     len(allmodules)
+    
     ", ".join(allmodules)
 
 ```

@@ -9,11 +9,11 @@ if(FALSE) c("lobstr") |>
 ## Prerequisites
 
 ```{r 'R-Version', decorate=TRUE}
-R.version.string                        # R Version
+strsplit(R.version.string, " ")[[1]][3]           # R Version
 ```
 
 ```{python 'Y-Version', decorate=TRUE}
-print(sys.version.split()[0])           # Python Version
+print(sys.version.split()[0])                     # Python Version
 
 ```
 
