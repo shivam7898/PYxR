@@ -3,21 +3,75 @@
 ```{r 'setup', include=FALSE}
 ################################################################################
 source("_common.R")
-if(TRUE) lapply(c("lobstr"), 
-                FUN = \(x) library(x, character.only = TRUE))
+if(TRUE) c("lobstr") |> 
+  lapply(library, character.only=TRUE)
 ```
 
-## Similarity between R and Python
+## Basics
 
 - Both R and Python are case-sensitive
-- Both R and Python use the Hash Sign "#" to comment out anything after it, till the newline
-- Both R and Python keep the Backslash "\\" as reserved to escape the character that follows it
+- Both R and Python use the Hash sign `#` to comment out anything after it, till the newline
+- Both R and Python keep the Backslash `\` as reserved to escape the character that follows it
+
+## Mathematical Operators
+
+- R and Python both have following operators:  
+  - Addition `+`, Subtraction `-`, Multiplication `*`, Division `/`
+  - Exponent is given by caret `^` or `**` in R and by `**` in Python
+    - Python uses caret for bitwise `XOR`
+  - Modulus (Remainder) is given by `%%` in R and by `%` in Python
+    - Python uses `%%` to escape the percent sign in strings
+    - R does not use standalone `%` as an operator (except for special cases like `sprintf()`)
+    - However, R uses `%...%` syntax to define some special operators (infix operators) like `%*%`, `%in%`, etc.
+  - Integer Division (Quotient) is given by `%/%` in R and by `//` in Python
+    - Python does not use `%/%` and R does not use `//`
+
+```{r 'R-Operators-Math', decorate=TRUE}
+# Exponent
+5 ** 3
+5 ^ 3
+
+5 %% 3    # Modulus (Remainder)
+5 %/% 3   # Integer Division (Quotient)
+```
+
+```{python 'Y-Operators-Math', decorate=TRUE}
+# Exponent
+5 ** 3
+
+5 % 3     # Modulus (Remainder)
+5 // 3    # Integer Division (Quotient)
+
+```
+
+## Help
+
+- Both R and Python have `help()` to get details about the topic
+  - R also has a shorthand to get help by prefixing `?` before the topic
+
+```{r 'R-Help', decorate=TRUE, eval=FALSE}
+if(FALSE) {
+  help(print)
+  ?print
+  ?`+`
+}
+```
+
+```{python 'Y-Help', decorate=TRUE, eval=FALSE}
+if(False):
+    help(print)
+
+```
+
+## Print
+
+- Printing is largely handled by `print()` in both R and Python
+  - Explicit and Implicit both types of printing is available
 
 
-## Differences between R and Python
+## Braces & Indentation
 
-### Indentation
-
+- R uses braces `{}` to group expressions in code blocks and ignores indentation
 - Indentation and white spaces are extremely significant in Python (unlike R)
   - 4 Spaces (not Tab) are being used, in this book, for Python chunks
   - A backslash "\\" allows you to break up one long piece of code into several parts
@@ -25,18 +79,152 @@ if(TRUE) lapply(c("lobstr"),
   - Parentheses "()" can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
   - An extra newline is being added in Python chunks, in this book, to indicate that the command /block has been completed
 
-### Boolean
+## NA NaN 0/0 - nan
+
+- 0/0 is `NaN` (Not a Number) in R but is undefined in Python
+  - The IEEE754 standard defines three special floating-point numbers, `Inf`, `-Inf` and `NaN`
+  - `NaN` is 'not well-defined real number'
+  - In numerical computing, if the result can not be written in regular real number, or `Inf` or `-Inf`, it is expressed as `NaN`. 
+- `NA` and `NaN`
+  - Python does not distinguish between 'missing values' and 'not a number'. whereas, R clearly distinguish between `NA` and `NaN`
+  - `NaN` is a float value, so we cannot have explicit missing values in non-float columns. In R, `NA` can be of any type.
+
+- Comparison operation with `NaN` (even with itself) 
+  - Python: `==` returns `FALSE`, `!=` returns `TRUE` (IEEE754 Standard)
+  - R: All such operations (`==`, `!=`, `>=` `<=`, `>`, `<`) results in `NA` 
+  - R: `NA` or `NaN` compared to anything is `NA`.
+
+- Coercion of `NaN` in R
+  - To `integer` gives `NA_integer_` 
+  - To `logical` gives `NA`
+  - However to `numeric` gives `NaN` and to `character` gives `"NaN"`
+  
+- Reticulate: 
+  - In python, missing values are also `NaN`
+  - Both `np.nan` and `math.nan` of Python are converted to `NaN` of R
+  - `NaN` of R is converted to `NaN` of Python with either np or math (not confirmed which one this is) #ForLater
+  
+- Pandas
+  - Both `np.nan` and `math.nan` are treated as 'missing values' with class as `numpy.float64`
+  - `None` is also treated as a missing value. For numeric columns, `None` is converted to `nan`. For columns of `object` type, it is kept as `None` but is treated as missing value.
+  - There exist a `pd.NA` scalar in Pandas, similar to R `NA`. However, it is experimental and currently treated as `np.nan` internally. So, not being used for now, in this book.
+
+```{r 'R-0by0', decorate=TRUE}
+# 0/0 is defined as NaN in R (unlike Python)
+is.nan(NaN)
+is.nan(0/0)
+
+# NaN is treated as NA, however, NA is not treated as NaN
+is.na(NaN)
+is.nan(NA)
+
+# NaN is numeric
+stopifnot(is.numeric(NaN))
+
+# Comparison with NaN: All operations are NA, use is.nan() (unlike IEEE, Python)
+stopifnot(all(identical(NaN == NaN, NA),
+              identical(NaN != NaN, NA),
+              identical(NaN <= NaN, NA),
+              identical(NaN >= NaN, NA),
+              identical(NaN <  NaN, NA),
+              identical(NaN >  NaN, NA)))
+
+# Coercion of NaN
+stopifnot(all(identical(as.integer(NaN), NA_integer_),
+              identical(as.logical(NaN), NA),
+              identical(as.character(NaN), "NaN"),
+              identical(as.numeric(NaN), NaN)))
+```
+
+```{python 'Y-0by0', decorate=TRUE}
+# 0/0 is undefined in Python (unlike R)
+try:
+    print(0/0)
+except ZeroDivisionError as e:
+    print(e) #e.args type(e)
+
+# There are Two NaN in modules NumPy and Math, use 
+# Use module specific methods but not the 'is' keyword
+pp = float("NaN") # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
+print(pp)
+type(pp)
+
+assert(math.isnan(math.nan) and math.isnan(np.nan) and math.isnan(pp))
+assert(np.isnan(np.nan) and np.isnan(math.nan) and np.isnan(pp))
+
+# 'is' returns True if and only if the two references are to the same object
+np.nan is math.nan            # False
+
+# Comparison with NaN: == is False, != is True (as per IEEE but unlike R)
+np.nan == np.nan
+math.nan == math.nan
+ 
+np.nan != np.nan
+math.nan != math.nan
+
+```
+
+## Boolean
 
 - R (TRUE, FALSE) vs. Python (True, False) - Case is different
+- Python:
+  - All values are considered "truthy" except for the following, which are "falsy"
+    - `None`, `False`, `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
+    - Empty: list `[]`, dictionary `{}`, tuple `()`, string `''`, range `range(0)` etc.
+    - objects for which:
+      - `obj.__bool__()` returns `False`
+      - `obj.__len__()` returns `0`
+    - A "truthy" value will satisfy the check performed by `if` or `while` statements. 
+    - We use "truthy" and "falsy" to differentiate from the bool values `True` and `False`.
+    - Python determines the truthiness by applying `bool()` to the type, which returns `True` or `False` which is used in an expression like `if` or `while`. 
+      - Instances of a user-defined class are considered truthy by default.
 
-### NULL & None
+
+## Short-circuit
+
+- Both R and Python short-circuit the evaluation
+  - However, in Python, `and` and `or` are lazy whereas `&` and `|` are not
+
+```{r 'R-Short-Circuit', decorate=TRUE}
+# Only the First expression is evaluated if it is enough to determine the result
+TRUE | NaN
+FALSE & NaN
+
+# Here the Second expression is also evaluated because first is not sufficient
+TRUE & NaN
+FALSE | NaN
+
+# Logical evaluation returns TRUE, FALSE or NA in R (unlike Python)
+# 0 is FALSE
+3 | NaN
+0 & NaN
+0 | NaN
+```
+
+```{python 'Y-Short-Circuit', decorate=TRUE}
+# Only the First expression is evaluated if it is enough to determine the result
+True or np.nan
+False and np.nan
+
+# Here the Second expression is also evaluated because first is not sufficient
+True and np.nan 
+False or np.nan
+
+# Logical evaluation returns the value of final expression evaluated (unlike R)
+3 or np.nan
+True and 3
+
+```
+
+## NULL - None
 
 - `NULL` represents the null object in R: it is a reserved word. NULL is often returned by expressions and functions whose value is undefined. 
   - There is only one null object in memory
-  - Inside if condition, NULL throws error, use 'is.null(x)' syntax
+  - Inside if condition, `NULL` throws error, use `is.null(x)` syntax
+  - If the output of an expression does not show numbers in brackets like '[1]' then it is a NULL type return. [Numbers] show that it is a Vector. Ex: `str()` and `cat()` outputs are of NULL Type.
 - Python uses the keyword `None` to define null objects and variables
-  - Inside if condition, None acts as False, use 'x is None' syntax
-  - None is a singleton. There is only one None in memory
+  - Inside if condition, `None` acts as `False`, use `x is None` syntax
+  - `None` is a singleton. There is only one `None` in memory
   - [Real Python](https://realpython.com/null-in-python/)
 
 ```{r 'R-NULL', decorate=TRUE}
@@ -49,6 +237,8 @@ aa <- NULL
 typeof(aa)
 # Check
 is.null(aa)
+# is.na() returns logical(0) for NULL
+is.na(aa)
 
 # A name pointing to NULL is different from a name which does not exist 'bb'
 exists("aa")
@@ -57,9 +247,9 @@ tryCatch(expr = print(bb), error = \(e) print(e))
 
 # Usage inside if conditional: NULL throws Error, use is.null()
 if(is.null(aa)) {
-  print("IF Block") 
+  print("Object is NULL") 
 } else {
-  print("ELSE Block")
+  print("Object is Not NULL")
 }
 ```
 
@@ -85,39 +275,38 @@ except NameError as e:
 #
 # Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' 
 if(pp):
-    print("IF Block")
+    print("Variable is None")
 else:
-    print("ELSE Block")
+    print("Variable is Not None")
 
 #
 ```
 
-
-### Indexing
+## Indexing
 
 - Indexing starts at 1 in R. Whereas, it starts at 0 in Python
 
-### Pipe
+## Pipe
 
 - Python uses dot "." as pipe operator
 - R uses "|>" as pipe operator along with underscore "_" as placeholder
   - To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names
 
-### Assignment Operator
+## Assignment Operator
 
 - Python uses 'equal to' " = " as assignment operator 
 - R uses 'left arrow' " <- " as assignment operator
   - In R, while the " = " can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
   - Convention is to use " = " only during function calls for arguments association (syntactic token)
 
-### Copy Objects or Variables
+## Copy Objects or Variables
 
 - R [Advanced R, Hadley](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html")
 
 - Python Similar but different
   
 ```{r 'R-Copy', decorate=TRUE}
-# Load Packages: "lobstr"
+if(FALSE) library("lobstr")
 # Create an object containing a value and bind that object to name 'aa'
 aa <- 10 
 # Copy an object i.e. Create another binding to an already existing value
@@ -164,28 +353,179 @@ id(pp)
 
 ```
 
-### Reticulate Type conversion
+## Reticulate Type conversion
 
-- R : Python
-- Single element vector : Scalar
-- Multi element vector : List
-- List of multiple types : Tuple
-- Named List : Dictionary
-- Matrix /Array : NumPy ndarray
-- Data Frame : Pandas Data Frame
-- Function: Function
-- Raw : Byte array
+- Refer Table \@ref(tab:P01T01) for conversion rules
+  - Python variables are available to R as the elements of `py` object 
+  - R objects are available to Python as the elements of `r` class
 
-## Verify
+Table: (\#tab:P01T01) (P01T01) Reticulate Type conversion
+
+| R | Python |
+| :--- | :--- | 
+| Single element vector | Scalar |
+| Multi element vector | List |
+| List of multiple types | Tuple |
+| Named List | Dictionary |
+| Matrix or Array | NumPy ndarray |
+| Data Frame | Pandas Data Frame |
+
+
+## Setup Python with Reticulate in R
+
+```{r 'R-Load-Python', decorate=TRUE, eval=FALSE}
+if(FALSE) {
+  # In R package::reticulate handles Python
+  library("reticulate")
+  
+  # Provide the path to the specific Python binary.
+  use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
+  
+  # PATH: C:\Softwares\Python\Python310\python.exe
+  Sys.which("python")
+}
+```
+
+## Working Directory
+
+```{r 'R-Directory', decorate=TRUE}
+getwd()             # Working Directory
+```
+
+```{python 'Y-Directory', decorate=TRUE}
+os.getcwd()         # Working Directory
+
+```
+
+## Verify R & Python Installation
 
 ```{r 'R-Version', decorate=TRUE}
-R.version.string
+R.version.string                        # R Version
+packageVersion("knitr")                 # Package Version: knitr
 ```
 
-```{python 'Y-Version', decorate=TRUE}
-print(sys.version.split()[0])
+- Python (in PowerShell Terminal)
+  - If the cmd can locate python correctly but PowerShell cannot, then execute following  
+    - \$env:path="\$env:Path;C:\\Softwares\\Python\\Python310"
+    - `$env:path="$env:Path;C:\\Softwares\\Python\\Python310"`
+  - If the python command leads to Microsoft Store
+    - Windows | Start | Manage app execution aliases | Disable two for 'python.exe' and 'python3.exe'
+    - It hides access to the actual exe PATH because it comes before the actual 
+  - The executable gives different path depending upon from where it is being executed
+    - Python: `C:\\Softwares\\Python\\Python310`
+    - Local RMarkdown: `C:\\Program Files\\RStudio\\bin`
+    - Knit: `C:\\PROGRA~1\\R\\R-41~1.3\\bin\\x64`
+
+```{bash 'Z-Python-Version'}
+# Check, in BASH, if the python has been installed 
+python --version
+
+# PATH
+where.exe python
+
+# Get the pip Version
+bool_as_str=true;
+if [[ "$bool_as_str" == "true" ]]; then pip --version; fi
 
 ```
+
+```{python 'Y-Executable'}
+# Sys Executable Path
+os.path.dirname(sys.executable)
+
+print(sys.version.split()[0])           # Python Version
+print(pd.__version__)                   # Module Version: pandas
+
+```
+
+## Install & Update of R Packages and Python Modules
+
+```{r 'R-Package-Install', decorate=TRUE, eval=FALSE}
+# Install R Packages
+if(FALSE) install.packages("knitr", dependencies = TRUE)
+
+# Find whether a package is installed or not (slow)
+installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+```
+
+- R: Use HMI
+  - RStudio | Tools | Check for Package Updates | Select | Install Updates
+    - Packages which are 'loaded via a namespace' by RStudio on start-up (e.g. `knitr`), can be updated in R
+  - R | Packages | Update Packages | Select | OK
+    - Packages which are bundled with R (e.g. `MASS`), can be updated by starting R in Administrator Mode.
+
+- Python: Use `pip` (in a PowerShell Terminal)
+  - Install modules : `pip install pandas`
+  - Upgrade `pip` itself : `python -m pip install --upgrade pip`
+  - Upgrade other modules :
+    - Get a List of Outdated Modules in Freeze Format, split to get only Module Names, upgrade
+    - `pip list --outdated --format=freeze | %{$_.split("==")[0]} #| %{pip install --upgrade $_}`
+    - Note: Upgrade step of the pipe has been commented out to prevent accidents.
+  - Find whether a module is installed or not : `pip list | grep pandas`
+
+## Attach an R Package & Load a Python Module
+
+```{r 'R-Package-Attach', decorate=TRUE, eval=FALSE}
+if(FALSE) {
+  # Attach an R Package
+  library(knitr)
+  
+  # Attach multiple R Packages
+  c("reticulate", "knitr") |> lapply(library, character.only=TRUE)
+  
+  # List all attached Packages
+  print(.packages())
+}
+```
+
+```{python 'Y-Module-Load', decorate=TRUE}
+if(False):
+    # Load a Python Module
+    import sys
+    import pandas as pd
+    import numpy as np
+    
+    # Load multiple Python Modules
+    import sys, pandas as pd, numpy as np
+    
+    # List all imported Modules
+    # Works except the implicit import: 'from x import y' (avoid this)
+    # Use k to list alias or use v.__name__ to list actual module names
+    allmodules = [v.__name__ for k, v in globals().items() 
+        if type(v) is types.ModuleType and not k.startswith('__')]
+    len(allmodules)
+    ", ".join(allmodules)
+
+```
+
+## R sessionInfo()
+
+- R `sessionInfo()` provides a quick look at OS, locale, and the packages loaded
+- Python does not have similar in-built method. However,
+  - `pip list` can be used along with `globals()`
+  - Module `session_info` attempts to provide similar output
+
+```{r 'R-sessionInfo', decorate=TRUE, eval=FALSE}
+if(FALSE) {
+  # List of all attached packages and OS related information
+  sessionInfo()
+  
+  # Base Packages
+  aa <- c("stats","graphics","grDevices","datasets","utils","methods","base")
+  stopifnot(identical(setdiff(sessionInfo()$basePkgs, aa), character(0)))
+  
+  # other attached packages
+  names(sessionInfo()$otherPkgs)
+  
+  # loaded via a namespace (and not attached)
+  names(sessionInfo()$loadedOnly)
+}
+```
+
+
+
+
+## Verify
 
 ```{r 'R-List-Objects', decorate=TRUE}
 ls()
