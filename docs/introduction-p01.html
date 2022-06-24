@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 Introduction | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta name="description" content="1.1 Basics Both R and Python are case-sensitive Both R and Python use the Hash sign # to comment out anything after it, till the newline Both R and Python keep the Backslash \ as reserved to...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Introduction | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/introduction-p01.html">
-<meta property="og:description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta property="og:description" content="1.1 Basics Both R and Python are case-sensitive Both R and Python use the Hash sign # to comment out anything after it, till the newline Both R and Python keep the Backslash \ as reserved to...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Introduction | PYxR">
-<meta name="twitter:description" content="1.1 Similarity between R and Python Both R and Python are case-sensitive Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline Both R and Python keep the...">
+<meta name="twitter:description" content="1.1 Basics Both R and Python are case-sensitive Both R and Python use the Hash sign # to comment out anything after it, till the newline Both R and Python keep the Backslash \ as reserved to...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -47,6 +47,7 @@
 <li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="active" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
 </ul>
 
         <div class="book-extra">
@@ -58,25 +59,128 @@
 <h1>
 <span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-p01"><i class="fas fa-link"></i></a>
 </h1>
-<div id="similarity-between-r-and-python" class="section level2" number="1.1">
+<div id="basics" class="section level2" number="1.1">
 <h2>
-<span class="header-section-number">1.1</span> Similarity between R and Python<a class="anchor" aria-label="anchor" href="#similarity-between-r-and-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1</span> Basics<a class="anchor" aria-label="anchor" href="#basics"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Both R and Python are case-sensitive</li>
-<li>Both R and Python use the Hash Sign “#” to comment out anything after it, till the newline</li>
-<li>Both R and Python keep the Backslash “\” as reserved to escape the character that follows it</li>
+<li>Both R and Python use the Hash sign <code>#</code> to comment out anything after it, till the newline</li>
+<li>Both R and Python keep the Backslash <code>\</code> as reserved to escape the character that follows it</li>
 </ul>
 </div>
-<div id="differences-between-r-and-python" class="section level2" number="1.2">
+<div id="mathematical-operators" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Differences between R and Python<a class="anchor" aria-label="anchor" href="#differences-between-r-and-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Mathematical Operators<a class="anchor" aria-label="anchor" href="#mathematical-operators"><i class="fas fa-link"></i></a>
 </h2>
-<div id="indentation" class="section level3" number="1.2.1">
-<h3>
-<span class="header-section-number">1.2.1</span> Indentation<a class="anchor" aria-label="anchor" href="#indentation"><i class="fas fa-link"></i></a>
-</h3>
 <ul>
+<li>R and Python both have following operators:
+<ul>
+<li>Addition <code>+</code>, Subtraction <code>-</code>, Multiplication <code>*</code>, Division <code>/</code>
+</li>
+<li>Exponent is given by caret <code>^</code> or <code>**</code> in R and by <code>**</code> in Python
+<ul>
+<li>Python uses caret for bitwise <code>XOR</code>
+</li>
+</ul>
+</li>
+<li>Modulus (Remainder) is given by <code>%%</code> in R and by <code>%</code> in Python
+<ul>
+<li>Python uses <code>%%</code> to escape the percent sign in strings</li>
+<li>R does not use standalone <code>%</code> as an operator (except for special cases like <code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code>)</li>
+<li>However, R uses <code>%...%</code> syntax to define some special operators (infix operators) like <code>%*%</code>, <code>%in%</code>, etc.</li>
+</ul>
+</li>
+<li>Integer Division (Quotient) is given by <code>%/%</code> in R and by <code>//</code> in Python
+<ul>
+<li>Python does not use <code>%/%</code> and R does not use <code>//</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Exponent</span>
+<span class="fl">5</span> <span class="op">**</span> <span class="fl">3</span>
+<span class="co">## [1] 125</span>
+<span class="fl">5</span> <span class="op">^</span> <span class="fl">3</span>
+<span class="co">## [1] 125</span>
+
+<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span>    <span class="co"># Modulus (Remainder)</span>
+<span class="co">## [1] 2</span>
+<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">3</span>   <span class="co"># Integer Division (Quotient)</span>
+<span class="co">## [1] 1</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introduction-p01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponent</span></span>
+<span id="cb7-2"><a href="introduction-p01.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">**</span> <span class="dv">3</span></span>
+<span id="cb7-3"><a href="introduction-p01.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 125</span></span>
+<span id="cb7-4"><a href="introduction-p01.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">%</span> <span class="dv">3</span>     <span class="co"># Modulus (Remainder)</span></span>
+<span id="cb7-5"><a href="introduction-p01.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 2</span></span>
+<span id="cb7-6"><a href="introduction-p01.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">//</span> <span class="dv">3</span>    <span class="co"># Integer Division (Quotient)</span></span>
+<span id="cb7-7"><a href="introduction-p01.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="help" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Help<a class="anchor" aria-label="anchor" href="#help"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Both R and Python have <code>help()</code> to get details about the topic
+<ul>
+<li>R also has a shorthand to get help by prefixing <code>?</code> before the topic</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">print</span><span class="op">)</span>
+  <span class="op">?</span><span class="va">print</span>
+  <span class="op">?</span><span class="va">`+`</span>
+<span class="op">}</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introduction-p01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb9-2"><a href="introduction-p01.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">help</span>(<span class="bu">print</span>)</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="print" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Print<a class="anchor" aria-label="anchor" href="#print"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Printing is largely handled by <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> in both R and Python
+<ul>
+<li>Explicit and Implicit both types of printing is available</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="braces-indentation" class="section level2" number="1.5">
+<h2>
+<span class="header-section-number">1.5</span> Braces &amp; Indentation<a class="anchor" aria-label="anchor" href="#braces-indentation"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R uses braces <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> to group expressions in code blocks and ignores indentation</li>
 <li>Indentation and white spaces are extremely significant in Python (unlike R)
 <ul>
 <li>4 Spaces (not Tab) are being used, in this book, for Python chunks</li>
@@ -88,30 +192,256 @@
 </li>
 </ul>
 </div>
-<div id="boolean" class="section level3" number="1.2.2">
-<h3>
-<span class="header-section-number">1.2.2</span> Boolean<a class="anchor" aria-label="anchor" href="#boolean"><i class="fas fa-link"></i></a>
-</h3>
+<div id="na-nan-00---nan" class="section level2" number="1.6">
+<h2>
+<span class="header-section-number">1.6</span> NA NaN 0/0 - nan<a class="anchor" aria-label="anchor" href="#na-nan-00---nan"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>0/0 is <code>NaN</code> (Not a Number) in R but is undefined in Python
+<ul>
+<li>The IEEE754 standard defines three special floating-point numbers, <code>Inf</code>, <code>-Inf</code> and <code>NaN</code>
+</li>
+<li>
+<code>NaN</code> is ‘not well-defined real number’</li>
+<li>In numerical computing, if the result can not be written in regular real number, or <code>Inf</code> or <code>-Inf</code>, it is expressed as <code>NaN</code>.</li>
+</ul>
+</li>
+<li>
+<code>NA</code> and <code>NaN</code>
+<ul>
+<li>Python does not distinguish between ‘missing values’ and ‘not a number’. whereas, R clearly distinguish between <code>NA</code> and <code>NaN</code>
+</li>
+<li>
+<code>NaN</code> is a float value, so we cannot have explicit missing values in non-float columns. In R, <code>NA</code> can be of any type.</li>
+</ul>
+</li>
+<li>Comparison operation with <code>NaN</code> (even with itself)
+<ul>
+<li>Python: <code>==</code> returns <code>FALSE</code>, <code>!=</code> returns <code>TRUE</code> (IEEE754 Standard)</li>
+<li>R: All such operations (<code>==</code>, <code>!=</code>, <code>&gt;=</code> <code>&lt;=</code>, <code>&gt;</code>, <code>&lt;</code>) results in <code>NA</code>
+</li>
+<li>R: <code>NA</code> or <code>NaN</code> compared to anything is <code>NA</code>.</li>
+</ul>
+</li>
+<li>Coercion of <code>NaN</code> in R
+<ul>
+<li>To <code>integer</code> gives <code>NA_integer_</code>
+</li>
+<li>To <code>logical</code> gives <code>NA</code>
+</li>
+<li>However to <code>numeric</code> gives <code>NaN</code> and to <code>character</code> gives <code>"NaN"</code>
+</li>
+</ul>
+</li>
+<li>Reticulate:
+<ul>
+<li>In python, missing values are also <code>NaN</code>
+</li>
+<li>Both <code>np.nan</code> and <code>math.nan</code> of Python are converted to <code>NaN</code> of R</li>
+<li>
+<code>NaN</code> of R is converted to <code>NaN</code> of Python with either np or math (not confirmed which one this is) #ForLater</li>
+</ul>
+</li>
+<li>Pandas
+<ul>
+<li>Both <code>np.nan</code> and <code>math.nan</code> are treated as ‘missing values’ with class as <code>numpy.float64</code>
+</li>
+<li>
+<code>None</code> is also treated as a missing value. For numeric columns, <code>None</code> is converted to <code>nan</code>. For columns of <code>object</code> type, it is kept as <code>None</code> but is treated as missing value.</li>
+<li>There exist a <code>pd.NA</code> scalar in Pandas, similar to R <code>NA</code>. However, it is experimental and currently treated as <code>np.nan</code> internally. So, not being used for now, in this book.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># 0/0 is defined as NaN in R (unlike Python)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+
+<span class="co"># NaN is treated as NA, however, NA is not treated as NaN</span>
+<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>
+<span class="co">## [1] FALSE</span>
+
+<span class="co"># NaN is numeric</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Comparison with NaN: All operations are NA, use is.nan() (unlike IEEE, Python)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">==</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">!=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Coercion of NaN</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA_integer_</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="st">"NaN"</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NaN</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="introduction-p01.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0/0 is undefined in Python (unlike R)</span></span>
+<span id="cb11-2"><a href="introduction-p01.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb11-3"><a href="introduction-p01.html#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">0</span><span class="op">/</span><span class="dv">0</span>)</span>
+<span id="cb11-4"><a href="introduction-p01.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span> <span class="im">as</span> e:</span>
+<span id="cb11-5"><a href="introduction-p01.html#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#e.args type(e)</span></span>
+<span id="cb11-6"><a href="introduction-p01.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="introduction-p01.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># There are Two NaN in modules NumPy and Math, use </span></span>
+<span id="cb11-8"><a href="introduction-p01.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use module specific methods but not the 'is' keyword</span></span>
+<span id="cb11-9"><a href="introduction-p01.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">## division by zero</span></span>
+<span id="cb11-10"><a href="introduction-p01.html#cb11-10" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="bu">float</span>(<span class="st">"NaN"</span>) <span class="co"># Not case sensitive i.e. NaN, NAN, nan etc. all are valid</span></span>
+<span id="cb11-11"><a href="introduction-p01.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb11-12"><a href="introduction-p01.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">## nan</span></span>
+<span id="cb11-13"><a href="introduction-p01.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pp)</span>
+<span id="cb11-14"><a href="introduction-p01.html#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'float'&gt;</span></span>
+<span id="cb11-15"><a href="introduction-p01.html#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(math.isnan(math.nan) <span class="kw">and</span> math.isnan(np.nan) <span class="kw">and</span> math.isnan(pp))</span>
+<span id="cb11-16"><a href="introduction-p01.html#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(np.nan) <span class="kw">and</span> np.isnan(math.nan) <span class="kw">and</span> np.isnan(pp))</span>
+<span id="cb11-17"><a href="introduction-p01.html#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="introduction-p01.html#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 'is' returns True if and only if the two references are to the same object</span></span>
+<span id="cb11-19"><a href="introduction-p01.html#cb11-19" aria-hidden="true" tabindex="-1"></a>np.nan <span class="kw">is</span> math.nan            <span class="co"># False</span></span>
+<span id="cb11-20"><a href="introduction-p01.html#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="introduction-p01.html#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparison with NaN: == is False, != is True (as per IEEE but unlike R)</span></span>
+<span id="cb11-22"><a href="introduction-p01.html#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb11-23"><a href="introduction-p01.html#cb11-23" aria-hidden="true" tabindex="-1"></a>np.nan <span class="op">==</span> np.nan</span>
+<span id="cb11-24"><a href="introduction-p01.html#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb11-25"><a href="introduction-p01.html#cb11-25" aria-hidden="true" tabindex="-1"></a>math.nan <span class="op">==</span> math.nan</span>
+<span id="cb11-26"><a href="introduction-p01.html#cb11-26" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb11-27"><a href="introduction-p01.html#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb11-28"><a href="introduction-p01.html#cb11-28" aria-hidden="true" tabindex="-1"></a>np.nan <span class="op">!=</span> np.nan</span>
+<span id="cb11-29"><a href="introduction-p01.html#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb11-30"><a href="introduction-p01.html#cb11-30" aria-hidden="true" tabindex="-1"></a>math.nan <span class="op">!=</span> math.nan</span>
+<span id="cb11-31"><a href="introduction-p01.html#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="boolean" class="section level2" number="1.7">
+<h2>
+<span class="header-section-number">1.7</span> Boolean<a class="anchor" aria-label="anchor" href="#boolean"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>R (TRUE, FALSE) vs. Python (True, False) - Case is different</li>
+<li>Python:
+<ul>
+<li>All values are considered “truthy” except for the following, which are “falsy”
+<ul>
+<li>
+<code>None</code>, <code>False</code>, <code>0</code>, <code>0.0</code>, <code>0j</code>, <code>Decimal(0)</code>, <code>Fraction(0, 1)</code>
+</li>
+<li>Empty: list <code>[]</code>, dictionary <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, tuple <code>()</code>, string <code>''</code>, range <code>range(0)</code> etc.</li>
+<li>objects for which:
+<ul>
+<li>
+<code>obj.__bool__()</code> returns <code>False</code>
+</li>
+<li>
+<code>obj.__len__()</code> returns <code>0</code>
+</li>
+</ul>
+</li>
+<li>A “truthy” value will satisfy the check performed by <code>if</code> or <code>while</code> statements.</li>
+<li>We use “truthy” and “falsy” to differentiate from the bool values <code>True</code> and <code>False</code>.</li>
+<li>Python determines the truthiness by applying <code>bool()</code> to the type, which returns <code>True</code> or <code>False</code> which is used in an expression like <code>if</code> or <code>while</code>.
+<ul>
+<li>Instances of a user-defined class are considered truthy by default.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
-<div id="null-none" class="section level3" number="1.2.3">
-<h3>
-<span class="header-section-number">1.2.3</span> NULL &amp; None<a class="anchor" aria-label="anchor" href="#null-none"><i class="fas fa-link"></i></a>
-</h3>
+<div id="short-circuit" class="section level2" number="1.8">
+<h2>
+<span class="header-section-number">1.8</span> Short-circuit<a class="anchor" aria-label="anchor" href="#short-circuit"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Both R and Python short-circuit the evaluation
+<ul>
+<li>However, in Python, <code>and</code> and <code>or</code> are lazy whereas <code>&amp;</code> and <code>|</code> are not</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Only the First expression is evaluated if it is enough to determine the result</span>
+<span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">NaN</span>
+<span class="co">## [1] TRUE</span>
+<span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
+<span class="co">## [1] FALSE</span>
+
+<span class="co"># Here the Second expression is also evaluated because first is not sufficient</span>
+<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
+<span class="co">## [1] NA</span>
+<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">NaN</span>
+<span class="co">## [1] NA</span>
+
+<span class="co"># Logical evaluation returns TRUE, FALSE or NA in R (unlike Python)</span>
+<span class="co"># 0 is FALSE</span>
+<span class="fl">3</span> <span class="op">|</span> <span class="cn">NaN</span>
+<span class="co">## [1] TRUE</span>
+<span class="fl">0</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
+<span class="co">## [1] FALSE</span>
+<span class="fl">0</span> <span class="op">|</span> <span class="cn">NaN</span>
+<span class="co">## [1] NA</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="introduction-p01.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only the First expression is evaluated if it is enough to determine the result</span></span>
+<span id="cb13-2"><a href="introduction-p01.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">or</span> np.nan</span>
+<span id="cb13-3"><a href="introduction-p01.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb13-4"><a href="introduction-p01.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">and</span> np.nan</span>
+<span id="cb13-5"><a href="introduction-p01.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="introduction-p01.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Here the Second expression is also evaluated because first is not sufficient</span></span>
+<span id="cb13-7"><a href="introduction-p01.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb13-8"><a href="introduction-p01.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> np.nan </span>
+<span id="cb13-9"><a href="introduction-p01.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">## nan</span></span>
+<span id="cb13-10"><a href="introduction-p01.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">or</span> np.nan</span>
+<span id="cb13-11"><a href="introduction-p01.html#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="introduction-p01.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical evaluation returns the value of final expression evaluated (unlike R)</span></span>
+<span id="cb13-13"><a href="introduction-p01.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">## nan</span></span>
+<span id="cb13-14"><a href="introduction-p01.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="kw">or</span> np.nan</span>
+<span id="cb13-15"><a href="introduction-p01.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 3</span></span>
+<span id="cb13-16"><a href="introduction-p01.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> <span class="dv">3</span></span>
+<span id="cb13-17"><a href="introduction-p01.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">## 3</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="null---none" class="section level2" number="1.9">
+<h2>
+<span class="header-section-number">1.9</span> NULL - None<a class="anchor" aria-label="anchor" href="#null---none"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>
 <code>NULL</code> represents the null object in R: it is a reserved word. NULL is often returned by expressions and functions whose value is undefined.
 <ul>
 <li>There is only one null object in memory</li>
-<li>Inside if condition, NULL throws error, use ‘is.null(x)’ syntax</li>
+<li>Inside if condition, <code>NULL</code> throws error, use <code>is.null(x)</code> syntax</li>
+<li>If the output of an expression does not show numbers in brackets like ‘[1]’ then it is a NULL type return. [Numbers] show that it is a Vector. Ex: <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> and <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> outputs are of NULL Type.</li>
 </ul>
 </li>
 <li>Python uses the keyword <code>None</code> to define null objects and variables
 <ul>
-<li>Inside if condition, None acts as False, use ‘x is None’ syntax</li>
-<li>None is a singleton. There is only one None in memory</li>
+<li>Inside if condition, <code>None</code> acts as <code>False</code>, use <code>x is None</code> syntax</li>
+<li>
+<code>None</code> is a singleton. There is only one <code>None</code> in memory</li>
 <li><a href="https://realpython.com/null-in-python/">Real Python</a></li>
 </ul>
 </li>
@@ -119,7 +449,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Return of str() is NULL which is passed to print()</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="st">"This returns NULL in R"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">##  chr "This returns NULL in R"</span>
@@ -133,6 +463,9 @@
 <span class="co"># Check</span>
 <span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
 <span class="co">## [1] TRUE</span>
+<span class="co"># is.na() returns logical(0) for NULL</span>
+<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## logical(0)</span>
 
 <span class="co"># A name pointing to NULL is different from a name which does not exist 'bb'</span>
 <span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span>
@@ -144,67 +477,67 @@
 
 <span class="co"># Usage inside if conditional: NULL throws Error, use is.null()</span>
 <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"IF Block"</span><span class="op">)</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is NULL"</span><span class="op">)</span> 
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"ELSE Block"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is Not NULL"</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="co">## [1] "IF Block"</span></code></pre></div>
+<span class="co">## [1] "Object is NULL"</span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introduction-p01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return of print() is None which is passed to print()</span></span>
-<span id="cb7-2"><a href="introduction-p01.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">print</span>(<span class="st">"This returns None in Python"</span>))</span>
-<span id="cb7-3"><a href="introduction-p01.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="introduction-p01.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign None</span></span>
-<span id="cb7-5"><a href="introduction-p01.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">## This returns None in Python</span></span>
-<span id="cb7-6"><a href="introduction-p01.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">## None</span></span>
-<span id="cb7-7"><a href="introduction-p01.html#cb7-7" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-8"><a href="introduction-p01.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Type</span></span>
-<span id="cb7-9"><a href="introduction-p01.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pp)</span>
-<span id="cb7-10"><a href="introduction-p01.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check</span></span>
-<span id="cb7-11"><a href="introduction-p01.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'NoneType'&gt;</span></span>
-<span id="cb7-12"><a href="introduction-p01.html#cb7-12" aria-hidden="true" tabindex="-1"></a>pp <span class="kw">is</span> <span class="va">None</span></span>
-<span id="cb7-13"><a href="introduction-p01.html#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="introduction-p01.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A name pointing to None is different from a name which does not exist 'qq'</span></span>
-<span id="cb7-15"><a href="introduction-p01.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
-<span id="cb7-16"><a href="introduction-p01.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
-<span id="cb7-17"><a href="introduction-p01.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
-<span id="cb7-18"><a href="introduction-p01.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">'qq'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
-<span id="cb7-19"><a href="introduction-p01.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
-<span id="cb7-20"><a href="introduction-p01.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb7-21"><a href="introduction-p01.html#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq)</span>
-<span id="cb7-22"><a href="introduction-p01.html#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> e:</span>
-<span id="cb7-23"><a href="introduction-p01.html#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#e.args type(e)</span></span>
-<span id="cb7-24"><a href="introduction-p01.html#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="introduction-p01.html#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb7-26"><a href="introduction-p01.html#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' </span></span>
-<span id="cb7-27"><a href="introduction-p01.html#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">## name 'qq' is not defined</span></span>
-<span id="cb7-28"><a href="introduction-p01.html#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(pp):</span>
-<span id="cb7-29"><a href="introduction-p01.html#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"IF Block"</span>)</span>
-<span id="cb7-30"><a href="introduction-p01.html#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb7-31"><a href="introduction-p01.html#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"ELSE Block"</span>)</span>
-<span id="cb7-32"><a href="introduction-p01.html#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-33"><a href="introduction-p01.html#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb7-34"><a href="introduction-p01.html#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">## ELSE Block</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="introduction-p01.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return of print() is None which is passed to print()</span></span>
+<span id="cb15-2"><a href="introduction-p01.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">print</span>(<span class="st">"This returns None in Python"</span>))</span>
+<span id="cb15-3"><a href="introduction-p01.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="introduction-p01.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign None</span></span>
+<span id="cb15-5"><a href="introduction-p01.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">## This returns None in Python</span></span>
+<span id="cb15-6"><a href="introduction-p01.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">## None</span></span>
+<span id="cb15-7"><a href="introduction-p01.html#cb15-7" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb15-8"><a href="introduction-p01.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Type</span></span>
+<span id="cb15-9"><a href="introduction-p01.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pp)</span>
+<span id="cb15-10"><a href="introduction-p01.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check</span></span>
+<span id="cb15-11"><a href="introduction-p01.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'NoneType'&gt;</span></span>
+<span id="cb15-12"><a href="introduction-p01.html#cb15-12" aria-hidden="true" tabindex="-1"></a>pp <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb15-13"><a href="introduction-p01.html#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="introduction-p01.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A name pointing to None is different from a name which does not exist 'qq'</span></span>
+<span id="cb15-15"><a href="introduction-p01.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb15-16"><a href="introduction-p01.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
+<span id="cb15-17"><a href="introduction-p01.html#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb15-18"><a href="introduction-p01.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co">'qq'</span> <span class="kw">in</span> <span class="bu">globals</span>()</span>
+<span id="cb15-19"><a href="introduction-p01.html#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span>
+<span id="cb15-20"><a href="introduction-p01.html#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb15-21"><a href="introduction-p01.html#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq)</span>
+<span id="cb15-22"><a href="introduction-p01.html#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> e:</span>
+<span id="cb15-23"><a href="introduction-p01.html#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#e.args type(e)</span></span>
+<span id="cb15-24"><a href="introduction-p01.html#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="introduction-p01.html#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb15-26"><a href="introduction-p01.html#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' </span></span>
+<span id="cb15-27"><a href="introduction-p01.html#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co">## name 'qq' is not defined</span></span>
+<span id="cb15-28"><a href="introduction-p01.html#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(pp):</span>
+<span id="cb15-29"><a href="introduction-p01.html#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Variable is None"</span>)</span>
+<span id="cb15-30"><a href="introduction-p01.html#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb15-31"><a href="introduction-p01.html#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Variable is Not None"</span>)</span>
+<span id="cb15-32"><a href="introduction-p01.html#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="introduction-p01.html#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb15-34"><a href="introduction-p01.html#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co">## Variable is Not None</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="indexing" class="section level3" number="1.2.4">
-<h3>
-<span class="header-section-number">1.2.4</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
-</h3>
+<div id="indexing" class="section level2" number="1.10">
+<h2>
+<span class="header-section-number">1.10</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Indexing starts at 1 in R. Whereas, it starts at 0 in Python</li>
 </ul>
 </div>
-<div id="pipe" class="section level3" number="1.2.5">
-<h3>
-<span class="header-section-number">1.2.5</span> Pipe<a class="anchor" aria-label="anchor" href="#pipe"><i class="fas fa-link"></i></a>
-</h3>
+<div id="pipe" class="section level2" number="1.11">
+<h2>
+<span class="header-section-number">1.11</span> Pipe<a class="anchor" aria-label="anchor" href="#pipe"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Python uses dot “.” as pipe operator</li>
 <li>R uses “|&gt;” as pipe operator along with underscore “_” as placeholder
@@ -214,10 +547,10 @@
 </li>
 </ul>
 </div>
-<div id="assignment-operator" class="section level3" number="1.2.6">
-<h3>
-<span class="header-section-number">1.2.6</span> Assignment Operator<a class="anchor" aria-label="anchor" href="#assignment-operator"><i class="fas fa-link"></i></a>
-</h3>
+<div id="assignment-operator" class="section level2" number="1.12">
+<h2>
+<span class="header-section-number">1.12</span> Assignment Operator<a class="anchor" aria-label="anchor" href="#assignment-operator"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Python uses ‘equal to’ ” = ” as assignment operator</li>
 <li>R uses ‘left arrow’ ” &lt;- ” as assignment operator
@@ -228,10 +561,10 @@
 </li>
 </ul>
 </div>
-<div id="copy-objects-or-variables" class="section level3" number="1.2.7">
-<h3>
-<span class="header-section-number">1.2.7</span> Copy Objects or Variables<a class="anchor" aria-label="anchor" href="#copy-objects-or-variables"><i class="fas fa-link"></i></a>
-</h3>
+<div id="copy-objects-or-variables" class="section level2" number="1.13">
+<h2>
+<span class="header-section-number">1.13</span> Copy Objects or Variables<a class="anchor" aria-label="anchor" href="#copy-objects-or-variables"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><p>R <a href="https://adv-r.hadley.nz/names-values.html" title="https://adv-r.hadley.nz/names-values.html">Advanced R, Hadley</a></p></li>
 <li><p>Python Similar but different</p></li>
@@ -239,18 +572,18 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Load Packages: "lobstr"</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://lobstr.r-lib.org/">"lobstr"</a></span><span class="op">)</span>
 <span class="co"># Create an object containing a value and bind that object to name 'aa'</span>
 <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">10</span> 
 <span class="co"># Copy an object i.e. Create another binding to an already existing value</span>
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
-<span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x20079cc81f0"</span>
-<span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x20079cc81f0"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] "0x1a45a6c5b60"</span>
+<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
+<span class="co">## [1] "0x1a45a6c5b60"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
@@ -263,90 +596,342 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
 <span class="co">## [1] 10</span>
 <span class="co"># Now the modified name points to a different memory address than earlier</span>
-<span class="fu">obj_addr</span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x20079cdc008"</span>
+<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
+<span class="co">## [1] "0x1a45a6c59d8"</span>
 <span class="co"># Original is still pointing to the same address containing original object</span>
-<span class="fu">obj_addr</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x20079cc81f0"</span></code></pre></div>
+<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] "0x1a45a6c5b60"</span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introduction-p01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable containing a value and bind that variable to name 'pp'</span></span>
-<span id="cb9-2"><a href="introduction-p01.html#cb9-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
-<span id="cb9-3"><a href="introduction-p01.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding to an already existing value</span></span>
-<span id="cb9-4"><a href="introduction-p01.html#cb9-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
-<span id="cb9-5"><a href="introduction-p01.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
-<span id="cb9-6"><a href="introduction-p01.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb9-7"><a href="introduction-p01.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2200859771408</span></span>
-<span id="cb9-8"><a href="introduction-p01.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb9-9"><a href="introduction-p01.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2200859771408</span></span>
-<span id="cb9-10"><a href="introduction-p01.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
-<span id="cb9-11"><a href="introduction-p01.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="introduction-p01.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
-<span id="cb9-13"><a href="introduction-p01.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb9-14"><a href="introduction-p01.html#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
-<span id="cb9-15"><a href="introduction-p01.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb9-16"><a href="introduction-p01.html#cb9-16" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb9-17"><a href="introduction-p01.html#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
-<span id="cb9-18"><a href="introduction-p01.html#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
-<span id="cb9-19"><a href="introduction-p01.html#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
-<span id="cb9-20"><a href="introduction-p01.html#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
-<span id="cb9-21"><a href="introduction-p01.html#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the modified name points to a different memory address than earlier</span></span>
-<span id="cb9-22"><a href="introduction-p01.html#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
-<span id="cb9-23"><a href="introduction-p01.html#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb9-24"><a href="introduction-p01.html#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb9-25"><a href="introduction-p01.html#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2200859771248</span></span>
-<span id="cb9-26"><a href="introduction-p01.html#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb9-27"><a href="introduction-p01.html#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2200859771408</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="introduction-p01.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable containing a value and bind that variable to name 'pp'</span></span>
+<span id="cb17-2"><a href="introduction-p01.html#cb17-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb17-3"><a href="introduction-p01.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy a variable i.e. Create another binding to an already existing value</span></span>
+<span id="cb17-4"><a href="introduction-p01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
+<span id="cb17-5"><a href="introduction-p01.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
+<span id="cb17-6"><a href="introduction-p01.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span>
+<span id="cb17-8"><a href="introduction-p01.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span>
+<span id="cb17-10"><a href="introduction-p01.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
+<span id="cb17-11"><a href="introduction-p01.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="introduction-p01.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
+<span id="cb17-13"><a href="introduction-p01.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb17-14"><a href="introduction-p01.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the copy</span></span>
+<span id="cb17-15"><a href="introduction-p01.html#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb17-16"><a href="introduction-p01.html#cb17-16" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb17-17"><a href="introduction-p01.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy and the original (original is unmodified)</span></span>
+<span id="cb17-18"><a href="introduction-p01.html#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
+<span id="cb17-19"><a href="introduction-p01.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co">## 5</span></span>
+<span id="cb17-20"><a href="introduction-p01.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb17-21"><a href="introduction-p01.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the modified name points to a different memory address than earlier</span></span>
+<span id="cb17-22"><a href="introduction-p01.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
+<span id="cb17-23"><a href="introduction-p01.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
+<span id="cb17-24"><a href="introduction-p01.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
+<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829744</span></span>
+<span id="cb17-26"><a href="introduction-p01.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="reticulate-type-conversion" class="section level3" number="1.2.8">
-<h3>
-<span class="header-section-number">1.2.8</span> Reticulate Type conversion<a class="anchor" aria-label="anchor" href="#reticulate-type-conversion"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li>R : Python</li>
-<li>Single element vector : Scalar</li>
-<li>Multi element vector : List</li>
-<li>List of multiple types : Tuple</li>
-<li>Named List : Dictionary</li>
-<li>Matrix /Array : NumPy ndarray</li>
-<li>Data Frame : Pandas Data Frame</li>
-<li>Function: Function</li>
-<li>Raw : Byte array</li>
-</ul>
-</div>
-</div>
-<div id="verify" class="section level2" number="1.3">
+<div id="reticulate-type-conversion" class="section level2" number="1.14">
 <h2>
-<span class="header-section-number">1.3</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.14</span> Reticulate Type conversion<a class="anchor" aria-label="anchor" href="#reticulate-type-conversion"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Refer Table <a href="introduction-p01.html#tab:P01T01">1.1</a> for conversion rules
+<ul>
+<li>Python variables are available to R as the elements of <code>py</code> object</li>
+<li>R objects are available to Python as the elements of <code>r</code> class</li>
+</ul>
+</li>
+</ul>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:P01T01">Table 1.1: </span> (P01T01) Reticulate Type conversion</caption>
+<thead><tr class="header">
+<th align="left">R</th>
+<th align="left">Python</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Single element vector</td>
+<td align="left">Scalar</td>
+</tr>
+<tr class="even">
+<td align="left">Multi element vector</td>
+<td align="left">List</td>
+</tr>
+<tr class="odd">
+<td align="left">List of multiple types</td>
+<td align="left">Tuple</td>
+</tr>
+<tr class="even">
+<td align="left">Named List</td>
+<td align="left">Dictionary</td>
+</tr>
+<tr class="odd">
+<td align="left">Matrix or Array</td>
+<td align="left">NumPy ndarray</td>
+</tr>
+<tr class="even">
+<td align="left">Data Frame</td>
+<td align="left">Pandas Data Frame</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="setup-python-with-reticulate-in-r" class="section level2" number="1.15">
+<h2>
+<span class="header-section-number">1.15</span> Setup Python with Reticulate in R<a class="anchor" aria-label="anchor" href="#setup-python-with-reticulate-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">R.version.string</span>
-<span class="co">## [1] "R version 4.2.0 (2022-04-22 ucrt)"</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># In R package::reticulate handles Python</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rstudio.github.io/reticulate/">"reticulate"</a></span><span class="op">)</span>
+  
+  <span class="co"># Provide the path to the specific Python binary.</span>
+  <span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_python</a></span><span class="op">(</span><span class="st">"C:\\Softwares\\Python\\Python310\\python.exe"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  
+  <span class="co"># PATH: C:\Softwares\Python\Python310\python.exe</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/Sys.which.html">Sys.which</a></span><span class="op">(</span><span class="st">"python"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="working-directory" class="section level2" number="1.16">
+<h2>
+<span class="header-section-number">1.16</span> Working Directory<a class="anchor" aria-label="anchor" href="#working-directory"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>             <span class="co"># Working Directory</span>
+<span class="co">## [1] "D:/Analytics/PYxR"</span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="introduction-p01.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version.split()[<span class="dv">0</span>])</span>
-<span id="cb11-2"><a href="introduction-p01.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="introduction-p01.html#cb20-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()         <span class="co"># Working Directory</span></span>
+<span id="cb20-2"><a href="introduction-p01.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 'D:\\Analytics\\PYxR'</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="verify-r-python-installation" class="section level2" number="1.17">
+<h2>
+<span class="header-section-number">1.17</span> Verify R &amp; Python Installation<a class="anchor" aria-label="anchor" href="#verify-r-python-installation"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">R.version.string</span>                        <span class="co"># R Version</span>
+<span class="co">## [1] "R version 4.2.1 (2022-06-23 ucrt)"</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"knitr"</span><span class="op">)</span>                 <span class="co"># Package Version: knitr</span>
+<span class="co">## [1] '1.39'</span></code></pre></div>
+</div>
+<br>
+</div>
+<ul>
+<li>Python (in PowerShell Terminal)
+<ul>
+<li>If the cmd can locate python correctly but PowerShell cannot, then execute following
+<ul>
+<li>$env:path=“$env:Path;C:\Softwares\Python\Python310”</li>
+<li><code>$env:path="$env:Path;C:\\Softwares\\Python\\Python310"</code></li>
+</ul>
+</li>
+<li>If the python command leads to Microsoft Store
+<ul>
+<li>Windows | Start | Manage app execution aliases | Disable two for ‘python.exe’ and ‘python3.exe’</li>
+<li>It hides access to the actual exe PATH because it comes before the actual</li>
+</ul>
+</li>
+<li>The executable gives different path depending upon from where it is being executed
+<ul>
+<li>Python: <code>C:\\Softwares\\Python\\Python310</code>
+</li>
+<li>Local RMarkdown: <code>C:\\Program Files\\RStudio\\bin</code>
+</li>
+<li>Knit: <code>C:\\PROGRA~1\\R\\R-41~1.3\\bin\\x64</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="introduction-p01.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check, in BASH, if the python has been installed </span></span>
+<span id="cb22-2"><a href="introduction-p01.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span>
+<span id="cb22-3"><a href="introduction-p01.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="introduction-p01.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># PATH</span></span>
+<span id="cb22-5"><a href="introduction-p01.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">where.exe</span> python</span>
+<span id="cb22-6"><a href="introduction-p01.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="introduction-p01.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the pip Version</span></span>
+<span id="cb22-8"><a href="introduction-p01.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="va">bool_as_str</span><span class="op">=</span>true<span class="kw">;</span></span>
+<span id="cb22-9"><a href="introduction-p01.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$bool_as_str</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"true"</span> <span class="kw">]];</span> <span class="cf">then</span> <span class="ex">pip</span> <span class="at">--version</span><span class="kw">;</span> <span class="cf">fi</span></span>
+<span id="cb22-10"><a href="introduction-p01.html#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="introduction-p01.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Python 3.10.5</span></span>
+<span id="cb22-12"><a href="introduction-p01.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">## C:\Softwares\Python\Python310\python.exe</span></span>
+<span id="cb22-13"><a href="introduction-p01.html#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">## pip 22.1.2 from C:\Softwares\Python\Python310\lib\site-packages\pip (python 3.10)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="introduction-p01.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys Executable Path</span></span>
+<span id="cb23-2"><a href="introduction-p01.html#cb23-2" aria-hidden="true" tabindex="-1"></a>os.path.dirname(sys.executable)</span>
+<span id="cb23-3"><a href="introduction-p01.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 'C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64'</span></span>
+<span id="cb23-4"><a href="introduction-p01.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version.split()[<span class="dv">0</span>])           <span class="co"># Python Version</span></span>
+<span id="cb23-5"><a href="introduction-p01.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5</span></span>
+<span id="cb23-6"><a href="introduction-p01.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)                   <span class="co"># Module Version: pandas</span></span>
+<span id="cb23-7"><a href="introduction-p01.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1.4.2</span></span></code></pre></div>
+</div>
+<div id="install-update-of-r-packages-and-python-modules" class="section level2" number="1.18">
+<h2>
+<span class="header-section-number">1.18</span> Install &amp; Update of R Packages and Python Modules<a class="anchor" aria-label="anchor" href="#install-update-of-r-packages-and-python-modules"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Install R Packages</span>
+<span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"knitr"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># Find whether a package is installed or not (slow)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/sets.html">is.element</a></span><span class="op">(</span>el <span class="op">=</span> <span class="st">"knitr"</span>, set <span class="op">=</span> _<span class="op">)</span></code></pre></div>
+</div>
+<br>
+</div>
+<ul>
+<li>R: Use HMI
+<ul>
+<li>RStudio | Tools | Check for Package Updates | Select | Install Updates
+<ul>
+<li>Packages which are ‘loaded via a namespace’ by RStudio on start-up (e.g. <code>knitr</code>), can be updated in R</li>
+</ul>
+</li>
+<li>R | Packages | Update Packages | Select | OK
+<ul>
+<li>Packages which are bundled with R (e.g. <code>MASS</code>), can be updated by starting R in Administrator Mode.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Python: Use <code>pip</code> (in a PowerShell Terminal)
+<ul>
+<li>Install modules : <code>pip install pandas</code>
+</li>
+<li>Upgrade <code>pip</code> itself : <code>python -m pip install --upgrade pip</code>
+</li>
+<li>Upgrade other modules :
+<ul>
+<li>Get a List of Outdated Modules in Freeze Format, split to get only Module Names, upgrade</li>
+<li><code>pip list --outdated --format=freeze | %{$_.split("==")[0]} #| %{pip install --upgrade $_}</code></li>
+<li>Note: Upgrade step of the pipe has been commented out to prevent accidents.</li>
+</ul>
+</li>
+<li>Find whether a module is installed or not : <code>pip list | grep pandas</code>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="attach-an-r-package-load-a-python-module" class="section level2" number="1.19">
+<h2>
+<span class="header-section-number">1.19</span> Attach an R Package &amp; Load a Python Module<a class="anchor" aria-label="anchor" href="#attach-an-r-package-load-a-python-module"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Attach an R Package</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
+  
+  <span class="co"># Attach multiple R Packages</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"reticulate"</span>, <span class="st">"knitr"</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">library</span>, character.only<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+  
+  <span class="co"># List all attached Packages</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/zpackages.html">.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="introduction-p01.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb26-2"><a href="introduction-p01.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load a Python Module</span></span>
+<span id="cb26-3"><a href="introduction-p01.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> sys</span>
+<span id="cb26-4"><a href="introduction-p01.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-5"><a href="introduction-p01.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-6"><a href="introduction-p01.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-7"><a href="introduction-p01.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load multiple Python Modules</span></span>
+<span id="cb26-8"><a href="introduction-p01.html#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> sys, pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np</span>
+<span id="cb26-9"><a href="introduction-p01.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-10"><a href="introduction-p01.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># List all imported Modules</span></span>
+<span id="cb26-11"><a href="introduction-p01.html#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Works except the implicit import: 'from x import y' (avoid this)</span></span>
+<span id="cb26-12"><a href="introduction-p01.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use k to list alias or use v.__name__ to list actual module names</span></span>
+<span id="cb26-13"><a href="introduction-p01.html#cb26-13" aria-hidden="true" tabindex="-1"></a>    allmodules <span class="op">=</span> [v.<span class="va">__name__</span> <span class="cf">for</span> k, v <span class="kw">in</span> <span class="bu">globals</span>().items() </span>
+<span id="cb26-14"><a href="introduction-p01.html#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">type</span>(v) <span class="kw">is</span> types.ModuleType <span class="kw">and</span> <span class="kw">not</span> k.startswith(<span class="st">'__'</span>)]</span>
+<span id="cb26-15"><a href="introduction-p01.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(allmodules)</span>
+<span id="cb26-16"><a href="introduction-p01.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">", "</span>.join(allmodules)</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="r-sessioninfo" class="section level2" number="1.20">
+<h2>
+<span class="header-section-number">1.20</span> R sessionInfo()<a class="anchor" aria-label="anchor" href="#r-sessioninfo"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code> provides a quick look at OS, locale, and the packages loaded</li>
+<li>Python does not have similar in-built method. However,
+<ul>
+<li>
+<code>pip list</code> can be used along with <code>globals()</code>
+</li>
+<li>Module <code>session_info</code> attempts to provide similar output</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># List of all attached packages and OS related information</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+  
+  <span class="co"># Base Packages</span>
+  <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"stats"</span>,<span class="st">"graphics"</span>,<span class="st">"grDevices"</span>,<span class="st">"datasets"</span>,<span class="st">"utils"</span>,<span class="st">"methods"</span>,<span class="st">"base"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">basePkgs</span>, <span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  
+  <span class="co"># other attached packages</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">otherPkgs</span><span class="op">)</span>
+  
+  <span class="co"># loaded via a namespace (and not attached)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">loadedOnly</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="verify" class="section level2" number="1.21">
+<h2>
+<span class="header-section-number">1.21</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">## [1] "aa" "bb" "r"</span></code></pre></div>
 </div>
@@ -357,25 +942,32 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="preface.html">Preface</a></div>
-<div class="empty"></div>
+<div class="next"><a href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#introduction-p01"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="nav-link" href="#similarity-between-r-and-python"><span class="header-section-number">1.1</span> Similarity between R and Python</a></li>
-<li>
-<a class="nav-link" href="#differences-between-r-and-python"><span class="header-section-number">1.2</span> Differences between R and Python</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#indentation"><span class="header-section-number">1.2.1</span> Indentation</a></li>
-<li><a class="nav-link" href="#boolean"><span class="header-section-number">1.2.2</span> Boolean</a></li>
-<li><a class="nav-link" href="#null-none"><span class="header-section-number">1.2.3</span> NULL &amp; None</a></li>
-<li><a class="nav-link" href="#indexing"><span class="header-section-number">1.2.4</span> Indexing</a></li>
-<li><a class="nav-link" href="#pipe"><span class="header-section-number">1.2.5</span> Pipe</a></li>
-<li><a class="nav-link" href="#assignment-operator"><span class="header-section-number">1.2.6</span> Assignment Operator</a></li>
-<li><a class="nav-link" href="#copy-objects-or-variables"><span class="header-section-number">1.2.7</span> Copy Objects or Variables</a></li>
-<li><a class="nav-link" href="#reticulate-type-conversion"><span class="header-section-number">1.2.8</span> Reticulate Type conversion</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#verify"><span class="header-section-number">1.3</span> Verify</a></li>
+<li><a class="nav-link" href="#basics"><span class="header-section-number">1.1</span> Basics</a></li>
+<li><a class="nav-link" href="#mathematical-operators"><span class="header-section-number">1.2</span> Mathematical Operators</a></li>
+<li><a class="nav-link" href="#help"><span class="header-section-number">1.3</span> Help</a></li>
+<li><a class="nav-link" href="#print"><span class="header-section-number">1.4</span> Print</a></li>
+<li><a class="nav-link" href="#braces-indentation"><span class="header-section-number">1.5</span> Braces &amp; Indentation</a></li>
+<li><a class="nav-link" href="#na-nan-00---nan"><span class="header-section-number">1.6</span> NA NaN 0/0 - nan</a></li>
+<li><a class="nav-link" href="#boolean"><span class="header-section-number">1.7</span> Boolean</a></li>
+<li><a class="nav-link" href="#short-circuit"><span class="header-section-number">1.8</span> Short-circuit</a></li>
+<li><a class="nav-link" href="#null---none"><span class="header-section-number">1.9</span> NULL - None</a></li>
+<li><a class="nav-link" href="#indexing"><span class="header-section-number">1.10</span> Indexing</a></li>
+<li><a class="nav-link" href="#pipe"><span class="header-section-number">1.11</span> Pipe</a></li>
+<li><a class="nav-link" href="#assignment-operator"><span class="header-section-number">1.12</span> Assignment Operator</a></li>
+<li><a class="nav-link" href="#copy-objects-or-variables"><span class="header-section-number">1.13</span> Copy Objects or Variables</a></li>
+<li><a class="nav-link" href="#reticulate-type-conversion"><span class="header-section-number">1.14</span> Reticulate Type conversion</a></li>
+<li><a class="nav-link" href="#setup-python-with-reticulate-in-r"><span class="header-section-number">1.15</span> Setup Python with Reticulate in R</a></li>
+<li><a class="nav-link" href="#working-directory"><span class="header-section-number">1.16</span> Working Directory</a></li>
+<li><a class="nav-link" href="#verify-r-python-installation"><span class="header-section-number">1.17</span> Verify R &amp; Python Installation</a></li>
+<li><a class="nav-link" href="#install-update-of-r-packages-and-python-modules"><span class="header-section-number">1.18</span> Install &amp; Update of R Packages and Python Modules</a></li>
+<li><a class="nav-link" href="#attach-an-r-package-load-a-python-module"><span class="header-section-number">1.19</span> Attach an R Package &amp; Load a Python Module</a></li>
+<li><a class="nav-link" href="#r-sessioninfo"><span class="header-section-number">1.20</span> R sessionInfo()</a></li>
+<li><a class="nav-link" href="#verify"><span class="header-section-number">1.21</span> Verify</a></li>
 </ul>
 
       <div class="book-extra">
@@ -393,7 +985,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-21.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

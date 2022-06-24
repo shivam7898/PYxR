@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Data Structures | PYxR</title>
+<meta name="author" content="Shivam Upadhyay">
+<meta name="description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Data Structures | PYxR">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://shivam7898.github.io/PYxR/structures-p02.html">
+<meta property="og:description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Data Structures | PYxR">
+<meta name="twitter:description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PYxR</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="active" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/shivam7898/PYxR">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="structures-p02" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Data Structures<a class="anchor" aria-label="anchor" href="#structures-p02"><i class="fas fa-link"></i></a>
+</h1>
+<div id="r-atomic-vectors-or-data-types" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> R Atomic Vectors or Data Types<a class="anchor" aria-label="anchor" href="#r-atomic-vectors-or-data-types"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R has 6 basic data types (<code>logical</code>, <code>integer</code>, <code>double</code>, <code>character</code>, <code>complex</code>, and <code>raw</code>). These data types can be combined to form Data Structures (<code>vector</code>, <code>list</code>, <code>matrix</code>, <code>dataframe</code>, <code>factor</code>).
+<ul>
+<li>Vectors are the simplest type of data structure in R. A vector is a sequence of data elements of the same basic type.</li>
+<li>Members of a vector are called ‘components’.</li>
+<li>Atomic vectors are homogeneous i.e. each component has the same datatype.</li>
+<li>A vector type can be checked with the <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> function.</li>
+<li>
+<code>list</code> is a <code>vector</code> but not an ‘atomic vector’.</li>
+</ul>
+</li>
+<li>Create a vector or a list by <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>
+<ul>
+<li>In R, a literal character or number is just a vector of length 1.</li>
+<li>So, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> ‘combines’ them together in a series of 1-length vectors. It neither ‘creates’ nor ‘concatenates’ the vectors. It combines lists into a list and vectors into a vector.</li>
+<li>All attributes (e.g. <code>dim</code>) except <code>names</code> are removed.</li>
+<li>All arguments are coerced to a common type</li>
+<li>The output type is determined from the highest type of the components in the hierarchy <code>NULL</code> &lt; <code>raw</code> &lt; <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>complex</code> &lt; <code>character</code> &lt; <code>list</code> &lt; <code>expression</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Integer: To declare as integer "L" (not "l") is added as Suffix</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="cn">NA</span>, <span class="fl">4L</span>, <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>
+<span class="co">##  int [1:5] 1 2 NA 4 5</span>
+
+<span class="co"># Double (&amp; Default)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
+<span class="co">##  num [1:5] 1 2 NA 4 5</span>
+
+<span class="co"># Character</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="st">'b'</span>, <span class="cn">NA</span>, <span class="st">'d'</span>, <span class="st">'e'</span><span class="op">)</span><span class="op">)</span>
+<span class="co">##  chr [1:5] "a" "b" NA "d" "e"</span>
+
+<span class="co"># Logical</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="co">##  logi [1:5] TRUE FALSE NA FALSE TRUE</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="examination-of-r-data-types" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Examination of R Data Types<a class="anchor" aria-label="anchor" href="#examination-of-r-data-types"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># To know about an Object Named Vector (pi, letters are predefined)</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="va">pi</span>, <span class="fl">4</span><span class="op">)</span>, nm <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>              <span class="co"># Type</span>
+<span class="co">## [1] "double"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>               <span class="co"># Class</span>
+<span class="co">## [1] "numeric"</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                 <span class="co"># Structure</span>
+<span class="co">##  Named num [1:5] 1 2 NA 3.14 4</span>
+<span class="co">##  - attr(*, "names")= chr [1:5] "a" "b" "c" "d" ...</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>              <span class="co"># Length</span>
+<span class="co">## [1] 5</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                 <span class="co"># Dimensions</span>
+<span class="co">## NULL</span>
+<span class="fu">is</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                  <span class="co"># Inheritance</span>
+<span class="co">## [1] "numeric"      "vector"       "index"        "replValue"    "numLike"     </span>
+<span class="co">## [6] "number"       "atomicVector" "replValueSp"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>   <span class="co"># Attributes</span>
+<span class="co">## [1] "names"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>               <span class="co"># Names</span>
+<span class="co">## [1] "a" "b" "c" "d" "e"</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="r-matrices-and-arrays" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> R Matrices and Arrays<a class="anchor" aria-label="anchor" href="#r-matrices-and-arrays"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<code>Matrices</code> and <code>arrays</code> are simply vectors with the attribute <code>dim</code> attached to the vector.
+<ul>
+<li>The data elements must be of the same basic type.</li>
+<li>A <code>matrix</code> is a two-dimensional rectangular data set.</li>
+<li>
+<code>Arrays</code> are multi-dimensional Data structures. Data is stored in the form of matrices, row, and as well as in columns.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create Matrix</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">TRUE</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">FALSE</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">##      x y</span>
+<span class="co">## [1,] 1 2</span>
+<span class="co">## [2,] 3 4</span>
+<span class="co">## [3,] 5 6</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
+<span class="co">##      x y</span>
+<span class="co">## [1,] 1 4</span>
+<span class="co">## [2,] 2 5</span>
+<span class="co">## [3,] 3 6</span>
+
+<span class="co"># About</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">##  int [1:3, 1:2] 1 3 5 2 4 6</span>
+<span class="co">##  - attr(*, "dimnames")=List of 2</span>
+<span class="co">##   ..$ : NULL</span>
+<span class="co">##   ..$ : chr [1:2] "x" "y"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] 3 2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] 6</span>
+
+<span class="co"># Matrices have 'dimnames' attribute instead of usual 'names'</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "dim"      "dimnames"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## NULL</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span> 
+<span class="co">## [[1]]</span>
+<span class="co">## NULL</span>
+<span class="co">## </span>
+<span class="co">## [[2]]</span>
+<span class="co">## [1] "x" "y"</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="r-lists" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> R Lists<a class="anchor" aria-label="anchor" href="#r-lists"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Lists have ‘elements’, each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
+<ul>
+<li>
+<code>list</code> is a <code>vector</code> but not an ‘atomic vector’.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create List (letters is predefined vector of 26 elements)</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## $x</span>
+<span class="co">## [1] 4 5 6</span>
+<span class="co">## </span>
+<span class="co">## $y</span>
+<span class="co">## [1] "d" "e" "f" "g" "h"</span>
+
+<span class="co"># About</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## List of 2</span>
+<span class="co">##  $ x: int [1:3] 4 5 6</span>
+<span class="co">##  $ y: chr [1:5] "d" "e" "f" "g" ...</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>              <span class="co"># Number of elements in the List</span>
+<span class="co">## [1] 2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>             <span class="co"># Number of components of each element of the List</span>
+<span class="co">## x y </span>
+<span class="co">## 3 5</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">aa</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>   <span class="co"># Attributes</span>
+<span class="co">## [1] "names"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>               <span class="co"># Names of elements</span>
+<span class="co">## [1] "x" "y"</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="r-dataframes" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> R DataFrames<a class="anchor" aria-label="anchor" href="#r-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Data frame is a list of <code>vectors</code>, <code>factors</code>, and/or <code>matrices</code> all having the same length (number of rows in the case of matrices).
+<ul>
+<li>A <code>data frame</code> can contain a <code>list</code> that is the same length as the other components.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create DataFrame (letters is predefined vector of 26 elements)</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">##   x y</span>
+<span class="co">## 1 4 d</span>
+<span class="co">## 2 5 e</span>
+<span class="co">## 3 6 f</span>
+
+<span class="co"># About</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## 'data.frame':    3 obs. of  2 variables:</span>
+<span class="co">##  $ x: int  4 5 6</span>
+<span class="co">##  $ y: chr  "d" "e" "f"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                 <span class="co">#Dimensions Row x Column</span>
+<span class="co">## [1] 3 2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
+              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>   <span class="co"># Attributes</span>
+<span class="co">## [1] "names"     "class"     "row.names"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>               <span class="co"># Names of column headers</span>
+<span class="co">## [1] "x" "y"</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/list.html">is.list</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/vector.html">is.vector</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] FALSE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/is.recursive.html">is.atomic</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] FALSE</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="r-factors" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> R Factors<a class="anchor" aria-label="anchor" href="#r-factors"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<code>Factors</code> are used to describe items that can have a finite number of values (gender, social class, etc.). A factor has a <code>levels</code> attribute and class <code>factor</code>.
+<ul>
+<li>A factor may be purely nominal or may have ordered categories.</li>
+</ul>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create Factors Unordered</span>
+<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="co"># Create Factors Ordered</span>
+<span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">## [1] female male   male   female male  </span>
+<span class="co">## Levels: female male</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
+<span class="co">## [1] female male   male   female male  </span>
+<span class="co">## Levels: female &lt; male</span>
+
+<span class="co"># About</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
+<span class="co">##  Factor w/ 2 levels "female","male": 1 2 2 1 2</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
+<span class="co">##  Ord.factor w/ 2 levels "female"&lt;"male": 1 2 2 1 2</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/nlevels.html">nlevels</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>             <span class="co"># Count of Levels</span>
+<span class="co">## [1] 2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>              <span class="co"># Vector of Levels</span>
+<span class="co">## [1] "female" "male"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>   <span class="co"># Attributes</span>
+<span class="co">## [1] "levels" "class"</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="membership-functions" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Membership Functions<a class="anchor" aria-label="anchor" href="#membership-functions"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/NA.html">anyNA()</a></code> is <code>TRUE</code> if there is an <code>NA</code> present, <code>FALSE</code> otherwise</li>
+<li>
+<code><a href="https://rdrr.io/r/base/is.recursive.html">is.atomic()</a></code> is <code>TRUE</code> for all atomic vectors, factors, matrices but is <code>FALSE</code> for lists and dataframes</li>
+<li>
+<code><a href="https://rdrr.io/r/base/vector.html">is.vector()</a></code> is <code>TRUE</code> for all atomic vectors, lists but is <code>FALSE</code> for factors, matrices, DATE &amp; POSIXct
+<ul>
+<li>It returns <code>FALSE</code> if the vector has attributes (except <code>names</code>) ex: DATE, POSIXct, DataFrames (even though a Dataframe is a list and a list is a vector)</li>
+</ul>
+</li>
+<li>
+<code><a href="https://rdrr.io/r/base/numeric.html">is.numeric()</a></code> is <code>TRUE</code> for both <code>integer</code> and <code>double</code>
+</li>
+<li>
+<code><a href="https://rdrr.io/r/base/integer.html">is.integer()</a></code>, <code><a href="https://rdrr.io/r/base/double.html">is.double()</a></code>, <code><a href="https://rdrr.io/r/base/character.html">is.character()</a></code>, <code><a href="https://rdrr.io/r/base/logical.html">is.logical()</a></code> are <code>TRUE</code> for their respective datatypes only</li>
+<li>
+<code><a href="https://rdrr.io/r/base/factor.html">is.factor()</a></code>, <code><a href="https://rdrr.io/r/base/factor.html">is.ordered()</a></code> are membership functions for factors with or without ordering</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create Objects</span>
+<span class="va">aa_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="va">pi</span>, <span class="fl">4</span><span class="op">)</span>, nm <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span>
+<span class="va">bb_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">TRUE</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dd_dft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span>
+<span class="va">ee_lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span>
+<span class="va">ff_fct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="co"># List of Objects</span>
+<span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>Vector <span class="op">=</span> <span class="va">aa_num</span>, Matrix <span class="op">=</span> <span class="va">bb_mat</span>, DataFrame <span class="op">=</span> <span class="va">dd_dft</span>, 
+            List <span class="op">=</span> <span class="va">ee_lst</span>, Factor <span class="op">=</span> <span class="va">ff_fct</span><span class="op">)</span>
+
+<span class="co"># Apply a membership function on all of the objects inside the list</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.atomic</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "Vector" "Matrix" "Factor"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.vector</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "Vector" "List"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.matrix</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "Matrix"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.list</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "DataFrame" "List"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.data.frame</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "DataFrame"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gg</span>, <span class="va">is.factor</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## [1] "Factor"</span></code></pre></div>
+</div>
+<br>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#structures-p02"><span class="header-section-number">2</span> Data Structures</a></li>
+<li><a class="nav-link" href="#r-atomic-vectors-or-data-types"><span class="header-section-number">2.1</span> R Atomic Vectors or Data Types</a></li>
+<li><a class="nav-link" href="#examination-of-r-data-types"><span class="header-section-number">2.2</span> Examination of R Data Types</a></li>
+<li><a class="nav-link" href="#r-matrices-and-arrays"><span class="header-section-number">2.3</span> R Matrices and Arrays</a></li>
+<li><a class="nav-link" href="#r-lists"><span class="header-section-number">2.4</span> R Lists</a></li>
+<li><a class="nav-link" href="#r-dataframes"><span class="header-section-number">2.5</span> R DataFrames</a></li>
+<li><a class="nav-link" href="#r-factors"><span class="header-section-number">2.6</span> R Factors</a></li>
+<li><a class="nav-link" href="#membership-functions"><span class="header-section-number">2.7</span> Membership Functions</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/shivam7898/PYxR/blob/main/p02-DataStructures.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/shivam7898/PYxR/edit/main/p02-DataStructures.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

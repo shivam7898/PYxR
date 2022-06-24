@@ -12,7 +12,8 @@ rmd_files:
     
     "p00-Preface.Rmd", 
     
-    "p01-Introduction.Rmd"
+    "p01-Introduction.Rmd", 
+    "p02-DataStructures.Rmd"
   ]
 
 # _bookdown.yml
