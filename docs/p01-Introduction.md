@@ -90,9 +90,9 @@ if(False):
 - R uses braces `{}` to group expressions in code blocks and ignores indentation
 - Indentation and white spaces are extremely significant in Python (unlike R)
   - 4 Spaces (not Tab) are being used, in this book, for Python chunks
-  - A backslash "\\" allows you to break up one long piece of code into several parts
+  - A backslash `\` allows you to break up one long piece of code into several parts
   - Any character (including whitespace) after the backslash will cause an error
-  - Parentheses "()" can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
+  - Parentheses `()` can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
   - An extra newline is being added in Python chunks, in this book, to indicate that the command /block has been completed
 
 ## NA NaN 0/0 - nan
@@ -106,19 +106,20 @@ if(False):
   - `NaN` is a float value, so we cannot have explicit missing values in non-float columns. In R, `NA` can be of any type.
 
 - Comparison operation with `NaN` (even with itself) 
-  - Python: `==` returns `FALSE`, `!=` returns `TRUE` (IEEE754 Standard)
+  - Python: `==` returns `False`, `!=` returns `True` (IEEE754 Standard)
   - R: All such operations (`==`, `!=`, `>=` `<=`, `>`, `<`) results in `NA` 
   - R: `NA` or `NaN` compared to anything is `NA`.
 
-- Coercion of `NaN` in R
-  - To `integer` gives `NA_integer_` 
-  - To `logical` gives `NA`
-  - However to `numeric` gives `NaN` and to `character` gives `"NaN"`
+- Coercion of `NaN` in R (Or Casting or Conversion)
+  - `NaN` coercion to `integer` gives `NA_integer_` 
+  - `NaN` coercion to `logical` gives `NA`
+  - `NaN` coercion to `numeric` gives `NaN` 
+  - `NaN` coercion to `character` gives `"NaN"`
   
 - Reticulate: 
   - In python, missing values are also `NaN`
   - Both `np.nan` and `math.nan` of Python are converted to `NaN` of R
-  - `NaN` of R is converted to `NaN` of Python with either np or math (not confirmed which one this is) #ForLater
+  - `NaN` of R is converted to `NaN` of Python 
   
 - Pandas
   - Both `np.nan` and `math.nan` are treated as 'missing values' with class as `numpy.float64`
@@ -169,7 +170,7 @@ try:
 except ZeroDivisionError as e:
     print(e) #e.args type(e)
 
-# There are Two NaN in modules NumPy and Math, use 
+# There are Two NaN in modules NumPy and Math
 # Use module specific methods but not the 'is' keyword
 ## division by zero
 pp = float("NaN") # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
@@ -277,7 +278,7 @@ True and 3
   - Inside if condition, `NULL` throws error, use `is.null(x)` syntax
   - If the output of an expression does not show numbers in brackets like '[1]' then it is a NULL type return. [Numbers] show that it is a Vector. Ex: `str()` and `cat()` outputs are of NULL Type.
 - Python uses the keyword `None` to define null objects and variables
-  - Inside if condition, `None` acts as `False`, use `x is None` syntax
+  - Inside `if` condition, `None` acts as `False`, use `x is None` syntax
   - `None` is a singleton. There is only one `None` in memory
   - [Real Python](https://realpython.com/null-in-python/)
 
@@ -367,16 +368,16 @@ else:
 
 ## Pipe
 
-- Python uses dot "." as pipe operator
-- R uses "|>" as pipe operator along with underscore "_" as placeholder
+- Python uses dot `.` as pipe operator
+- R uses `|>` as pipe operator along with underscore `_` as placeholder
   - To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names
 
 ## Assignment Operator
 
-- Python uses 'equal to' " = " as assignment operator 
-- R uses 'left arrow' " <- " as assignment operator
-  - In R, while the " = " can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
-  - Convention is to use " = " only during function calls for arguments association (syntactic token)
+- Python uses 'equal to' ` = ` as assignment operator 
+- R uses 'left arrow' ` <- ` as assignment operator
+  - In R, while the ` = ` can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
+  - Convention is to use ` = `  only during function calls for arguments association (syntactic token)
 
 ## Copy Objects or Variables
 
@@ -394,9 +395,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x1a45a6c5b60"
+## [1] "0x1e457e168a0"
 obj_addr(bb)
-## [1] "0x1a45a6c5b60"
+## [1] "0x1e457e168a0"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -411,10 +412,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x1a45a6c59d8"
+## [1] "0x1e457e16718"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x1a45a6c5b60"
+## [1] "0x1e457e168a0"
 ```
 
 </div><br></div>
@@ -428,9 +429,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 1805209829904
+## 2080045335056
 id(qq)
-## 1805209829904
+## 2080045335056
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -446,9 +447,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 1805209829744
+## 2080045334896
 id(pp)
-## 1805209829904
+## 2080045335056
 ```
 
 </div><br></div>
@@ -515,9 +516,9 @@ os.getcwd()         # Working Directory
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
-R.version.string                        # R Version
-## [1] "R version 4.2.1 (2022-06-23 ucrt)"
-packageVersion("knitr")                 # Package Version: knitr
+strsplit(R.version.string, " ")[[1]][3]           # R Version
+## [1] "4.2.1"
+packageVersion("knitr")                           # Package Version: knitr
 ## [1] '1.39'
 ```
 
@@ -525,15 +526,14 @@ packageVersion("knitr")                 # Package Version: knitr
 
 - Python (in PowerShell Terminal)
   - If the cmd can locate python correctly but PowerShell cannot, then execute following  
-    - \$env:path="\$env:Path;C:\\Softwares\\Python\\Python310"
-    - `$env:path="$env:Path;C:\\Softwares\\Python\\Python310"`
+    - `$env:path="$env:Path;C:\Softwares\Python\Python310"`
   - If the python command leads to Microsoft Store
     - Windows | Start | Manage app execution aliases | Disable two for 'python.exe' and 'python3.exe'
     - It hides access to the actual exe PATH because it comes before the actual 
   - The executable gives different path depending upon from where it is being executed
     - Python: `C:\\Softwares\\Python\\Python310`
     - Local RMarkdown: `C:\\Program Files\\RStudio\\bin`
-    - Knit: `C:\\PROGRA~1\\R\\R-41~1.3\\bin\\x64`
+    - Knit: `C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64`
 
 
 ```bash
@@ -568,11 +568,13 @@ print(pd.__version__)                   # Module Version: pandas
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
-# Install R Packages
-if(FALSE) install.packages("knitr", dependencies = TRUE)
-
-# Find whether a package is installed or not (slow)
-installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+if(FALSE) {
+  # Install R Packages  
+  install.packages("knitr", dependencies = TRUE)
+  
+  # Find whether a package is installed or not (slow)
+  installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+}
 ```
 
 </div><br></div>
@@ -628,7 +630,9 @@ if(False):
     # Use k to list alias or use v.__name__ to list actual module names
     allmodules = [v.__name__ for k, v in globals().items() 
         if type(v) is types.ModuleType and not k.startswith('__')]
+    
     len(allmodules)
+    
     ", ".join(allmodules)
 ```
 

@@ -184,9 +184,9 @@
 <li>Indentation and white spaces are extremely significant in Python (unlike R)
 <ul>
 <li>4 Spaces (not Tab) are being used, in this book, for Python chunks</li>
-<li>A backslash “\” allows you to break up one long piece of code into several parts</li>
+<li>A backslash <code>\</code> allows you to break up one long piece of code into several parts</li>
 <li>Any character (including whitespace) after the backslash will cause an error</li>
-<li>Parentheses “()” can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end</li>
+<li>Parentheses <code>()</code> can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end</li>
 <li>An extra newline is being added in Python chunks, in this book, to indicate that the command /block has been completed</li>
 </ul>
 </li>
@@ -217,19 +217,25 @@
 </li>
 <li>Comparison operation with <code>NaN</code> (even with itself)
 <ul>
-<li>Python: <code>==</code> returns <code>FALSE</code>, <code>!=</code> returns <code>TRUE</code> (IEEE754 Standard)</li>
+<li>Python: <code>==</code> returns <code>False</code>, <code>!=</code> returns <code>True</code> (IEEE754 Standard)</li>
 <li>R: All such operations (<code>==</code>, <code>!=</code>, <code>&gt;=</code> <code>&lt;=</code>, <code>&gt;</code>, <code>&lt;</code>) results in <code>NA</code>
 </li>
 <li>R: <code>NA</code> or <code>NaN</code> compared to anything is <code>NA</code>.</li>
 </ul>
 </li>
-<li>Coercion of <code>NaN</code> in R
+<li>Coercion of <code>NaN</code> in R (Or Casting or Conversion)
 <ul>
-<li>To <code>integer</code> gives <code>NA_integer_</code>
+<li>
+<code>NaN</code> coercion to <code>integer</code> gives <code>NA_integer_</code>
 </li>
-<li>To <code>logical</code> gives <code>NA</code>
+<li>
+<code>NaN</code> coercion to <code>logical</code> gives <code>NA</code>
 </li>
-<li>However to <code>numeric</code> gives <code>NaN</code> and to <code>character</code> gives <code>"NaN"</code>
+<li>
+<code>NaN</code> coercion to <code>numeric</code> gives <code>NaN</code>
+</li>
+<li>
+<code>NaN</code> coercion to <code>character</code> gives <code>"NaN"</code>
 </li>
 </ul>
 </li>
@@ -239,7 +245,7 @@
 </li>
 <li>Both <code>np.nan</code> and <code>math.nan</code> of Python are converted to <code>NaN</code> of R</li>
 <li>
-<code>NaN</code> of R is converted to <code>NaN</code> of Python with either np or math (not confirmed which one this is) #ForLater</li>
+<code>NaN</code> of R is converted to <code>NaN</code> of Python</li>
 </ul>
 </li>
 <li>Pandas
@@ -296,7 +302,7 @@
 <span id="cb11-4"><a href="introduction-p01.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span> <span class="im">as</span> e:</span>
 <span id="cb11-5"><a href="introduction-p01.html#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e) <span class="co">#e.args type(e)</span></span>
 <span id="cb11-6"><a href="introduction-p01.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="introduction-p01.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># There are Two NaN in modules NumPy and Math, use </span></span>
+<span id="cb11-7"><a href="introduction-p01.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># There are Two NaN in modules NumPy and Math</span></span>
 <span id="cb11-8"><a href="introduction-p01.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use module specific methods but not the 'is' keyword</span></span>
 <span id="cb11-9"><a href="introduction-p01.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">## division by zero</span></span>
 <span id="cb11-10"><a href="introduction-p01.html#cb11-10" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="bu">float</span>(<span class="st">"NaN"</span>) <span class="co"># Not case sensitive i.e. NaN, NAN, nan etc. all are valid</span></span>
@@ -439,7 +445,7 @@
 </li>
 <li>Python uses the keyword <code>None</code> to define null objects and variables
 <ul>
-<li>Inside if condition, <code>None</code> acts as <code>False</code>, use <code>x is None</code> syntax</li>
+<li>Inside <code>if</code> condition, <code>None</code> acts as <code>False</code>, use <code>x is None</code> syntax</li>
 <li>
 <code>None</code> is a singleton. There is only one <code>None</code> in memory</li>
 <li><a href="https://realpython.com/null-in-python/">Real Python</a></li>
@@ -539,8 +545,8 @@
 <span class="header-section-number">1.11</span> Pipe<a class="anchor" aria-label="anchor" href="#pipe"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Python uses dot “.” as pipe operator</li>
-<li>R uses “|&gt;” as pipe operator along with underscore “_” as placeholder
+<li>Python uses dot <code>.</code> as pipe operator</li>
+<li>R uses <code>|&gt;</code> as pipe operator along with underscore <code>_</code> as placeholder
 <ul>
 <li>To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names</li>
 </ul>
@@ -552,11 +558,11 @@
 <span class="header-section-number">1.12</span> Assignment Operator<a class="anchor" aria-label="anchor" href="#assignment-operator"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Python uses ‘equal to’ ” = ” as assignment operator</li>
-<li>R uses ‘left arrow’ ” &lt;- ” as assignment operator
+<li>Python uses ‘equal to’ <code>=</code> as assignment operator</li>
+<li>R uses ‘left arrow’ <code>&lt;-</code> as assignment operator
 <ul>
-<li>In R, while the ” = ” can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug</li>
-<li>Convention is to use ” = ” only during function calls for arguments association (syntactic token)</li>
+<li>In R, while the <code>=</code> can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug</li>
+<li>Convention is to use <code>=</code> only during function calls for arguments association (syntactic token)</li>
 </ul>
 </li>
 </ul>
@@ -580,9 +586,9 @@
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x1a45a6c5b60"</span>
+<span class="co">## [1] "0x1e457e168a0"</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x1a45a6c5b60"</span>
+<span class="co">## [1] "0x1e457e168a0"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
@@ -597,10 +603,10 @@
 <span class="co">## [1] 10</span>
 <span class="co"># Now the modified name points to a different memory address than earlier</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x1a45a6c59d8"</span>
+<span class="co">## [1] "0x1e457e16718"</span>
 <span class="co"># Original is still pointing to the same address containing original object</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x1a45a6c5b60"</span></code></pre></div>
+<span class="co">## [1] "0x1e457e168a0"</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -613,9 +619,9 @@
 <span id="cb17-4"><a href="introduction-p01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb17-5"><a href="introduction-p01.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span id="cb17-6"><a href="introduction-p01.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span>
+<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span>
 <span id="cb17-8"><a href="introduction-p01.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span>
+<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span>
 <span id="cb17-10"><a href="introduction-p01.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb17-11"><a href="introduction-p01.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="introduction-p01.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
@@ -631,9 +637,9 @@
 <span id="cb17-22"><a href="introduction-p01.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
 <span id="cb17-23"><a href="introduction-p01.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
 <span id="cb17-24"><a href="introduction-p01.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829744</span></span>
+<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045334896</span></span>
 <span id="cb17-26"><a href="introduction-p01.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1805209829904</span></span></code></pre></div>
+<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -737,9 +743,9 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">R.version.string</span>                        <span class="co"># R Version</span>
-<span class="co">## [1] "R version 4.2.1 (2022-06-23 ucrt)"</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"knitr"</span><span class="op">)</span>                 <span class="co"># Package Version: knitr</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">R.version.string</span>, <span class="st">" "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>           <span class="co"># R Version</span>
+<span class="co">## [1] "4.2.1"</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"knitr"</span><span class="op">)</span>                           <span class="co"># Package Version: knitr</span>
 <span class="co">## [1] '1.39'</span></code></pre></div>
 </div>
 <br>
@@ -749,8 +755,7 @@
 <ul>
 <li>If the cmd can locate python correctly but PowerShell cannot, then execute following
 <ul>
-<li>$env:path=“$env:Path;C:\Softwares\Python\Python310”</li>
-<li><code>$env:path="$env:Path;C:\\Softwares\\Python\\Python310"</code></li>
+<li><code>$env:path="$env:Path;C:\Softwares\Python\Python310"</code></li>
 </ul>
 </li>
 <li>If the python command leads to Microsoft Store
@@ -765,7 +770,7 @@
 </li>
 <li>Local RMarkdown: <code>C:\\Program Files\\RStudio\\bin</code>
 </li>
-<li>Knit: <code>C:\\PROGRA~1\\R\\R-41~1.3\\bin\\x64</code>
+<li>Knit: <code>C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64</code>
 </li>
 </ul>
 </li>
@@ -801,11 +806,13 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Install R Packages</span>
-<span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"knitr"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co"># Find whether a package is installed or not (slow)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/sets.html">is.element</a></span><span class="op">(</span>el <span class="op">=</span> <span class="st">"knitr"</span>, set <span class="op">=</span> _<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Install R Packages  </span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"knitr"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  
+  <span class="co"># Find whether a package is installed or not (slow)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/sets.html">is.element</a></span><span class="op">(</span>el <span class="op">=</span> <span class="st">"knitr"</span>, set <span class="op">=</span> _<span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -881,8 +888,10 @@
 <span id="cb26-12"><a href="introduction-p01.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use k to list alias or use v.__name__ to list actual module names</span></span>
 <span id="cb26-13"><a href="introduction-p01.html#cb26-13" aria-hidden="true" tabindex="-1"></a>    allmodules <span class="op">=</span> [v.<span class="va">__name__</span> <span class="cf">for</span> k, v <span class="kw">in</span> <span class="bu">globals</span>().items() </span>
 <span id="cb26-14"><a href="introduction-p01.html#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">type</span>(v) <span class="kw">is</span> types.ModuleType <span class="kw">and</span> <span class="kw">not</span> k.startswith(<span class="st">'__'</span>)]</span>
-<span id="cb26-15"><a href="introduction-p01.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(allmodules)</span>
-<span id="cb26-16"><a href="introduction-p01.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">", "</span>.join(allmodules)</span></code></pre></div>
+<span id="cb26-15"><a href="introduction-p01.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-16"><a href="introduction-p01.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(allmodules)</span>
+<span id="cb26-17"><a href="introduction-p01.html#cb26-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-18"><a href="introduction-p01.html#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">", "</span>.join(allmodules)</span></code></pre></div>
 </div>
 <br>
 </div>
