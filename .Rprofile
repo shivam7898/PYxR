@@ -40,7 +40,7 @@ options(prompt="> ")
 options(continue="... ")
 
 # #Setup Max Width
-options(width = 100)
+options(width = 80)
 
 # #Avoid GUI Dialogs in R (as implemented in RStudio)
 options(menu.graphics=FALSE)
