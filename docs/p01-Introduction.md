@@ -395,9 +395,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x1e457e168a0"
+## [1] "0x22f1d58dbf0"
 obj_addr(bb)
-## [1] "0x1e457e168a0"
+## [1] "0x22f1d58dbf0"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -412,10 +412,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x1e457e16718"
+## [1] "0x22f1d58c140"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x1e457e168a0"
+## [1] "0x22f1d58dbf0"
 ```
 
 </div><br></div>
@@ -429,9 +429,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 2080045335056
+## 2401194869264
 id(qq)
-## 2080045335056
+## 2401194869264
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -447,9 +447,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 2080045334896
+## 2401194869104
 id(pp)
-## 2080045335056
+## 2401194869264
 ```
 
 </div><br></div>
@@ -560,7 +560,7 @@ os.path.dirname(sys.executable)
 print(sys.version.split()[0])           # Python Version
 ## 3.10.5
 print(pd.__version__)                   # Module Version: pandas
-## 1.4.2
+## 1.4.3
 ```
 
 ## Install & Update of R Packages and Python Modules

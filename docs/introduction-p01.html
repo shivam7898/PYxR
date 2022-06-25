@@ -586,9 +586,9 @@
 <span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
 <span class="co"># Note that both names are pointing to same memory address</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x1e457e168a0"</span>
+<span class="co">## [1] "0x22f1d58dbf0"</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x1e457e168a0"</span>
+<span class="co">## [1] "0x22f1d58dbf0"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Print the copy</span>
@@ -603,10 +603,10 @@
 <span class="co">## [1] 10</span>
 <span class="co"># Now the modified name points to a different memory address than earlier</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x1e457e16718"</span>
+<span class="co">## [1] "0x22f1d58c140"</span>
 <span class="co"># Original is still pointing to the same address containing original object</span>
 <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x1e457e168a0"</span></code></pre></div>
+<span class="co">## [1] "0x22f1d58dbf0"</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -619,9 +619,9 @@
 <span id="cb17-4"><a href="introduction-p01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb17-5"><a href="introduction-p01.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span id="cb17-6"><a href="introduction-p01.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span>
+<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2401194869264</span></span>
 <span id="cb17-8"><a href="introduction-p01.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span>
+<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 2401194869264</span></span>
 <span id="cb17-10"><a href="introduction-p01.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb17-11"><a href="introduction-p01.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="introduction-p01.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
@@ -637,9 +637,9 @@
 <span id="cb17-22"><a href="introduction-p01.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
 <span id="cb17-23"><a href="introduction-p01.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
 <span id="cb17-24"><a href="introduction-p01.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045334896</span></span>
+<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 2401194869104</span></span>
 <span id="cb17-26"><a href="introduction-p01.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2080045335056</span></span></code></pre></div>
+<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 2401194869264</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -796,7 +796,7 @@
 <span id="cb23-4"><a href="introduction-p01.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version.split()[<span class="dv">0</span>])           <span class="co"># Python Version</span></span>
 <span id="cb23-5"><a href="introduction-p01.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">## 3.10.5</span></span>
 <span id="cb23-6"><a href="introduction-p01.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)                   <span class="co"># Module Version: pandas</span></span>
-<span id="cb23-7"><a href="introduction-p01.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1.4.2</span></span></code></pre></div>
+<span id="cb23-7"><a href="introduction-p01.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1.4.3</span></span></code></pre></div>
 </div>
 <div id="install-update-of-r-packages-and-python-modules" class="section level2" number="1.18">
 <h2>
@@ -994,7 +994,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-24.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
