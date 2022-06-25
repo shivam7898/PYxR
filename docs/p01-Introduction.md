@@ -8,6 +8,34 @@
 - Both R and Python use the Hash sign `#` to comment out anything after it, till the newline
 - Both R and Python keep the Backslash `\` as reserved to escape the character that follows it
 
+- Refer [This](#object-p01)
+
+> In R & Python, Everything that exists is an `object`.  
+
+- Indexing starts at 1 in R. Whereas, it starts at 0 in Python
+- Periods `.` (dots)
+  - In Python, dot `.` is a member access operator use to access methods of the object(class instance). Thus, it can be used to pipe or chain together multiple operations. 
+  - In Python, dot cannot be part of object name. Whereas, R does not treat dot as special.
+  - R uses `|>` as pipe operator along with underscore `_` as placeholder
+  - To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names
+- R functions implicitly return the last object evaluated. Whereas, Python functions return explicitly only. 
+
+- [Primer on Python for R Users](https://cran.r-project.org/web/packages/reticulate/vignettes/python_primer.html)
+- Information on R for Python Users
+  - In R, Methods (or Functions) are not part of the class definitions. Methods in R look at the `class` of the objects and may behave differently based on them. 
+  - Ex: `summary()` of `numeric vector` and `factor vector` will be different i.e. these will be summarised differently. `summary()` checks the `class` attribute of the object and it calls a method for summarizing objects of that class. 
+
+
+## Braces & Indentation
+
+- R uses braces `{}` to group expressions in code blocks and ignores indentation
+- Indentation and white spaces are extremely significant in Python (unlike R)
+  - 4 Spaces (not Tab) are being used, in this book, for Python chunks
+  - A backslash `\` allows you to break up one long piece of code into several parts
+  - Any character (including whitespace) after the backslash will cause an error
+  - Parentheses `()` can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
+
+
 ## Mathematical Operators
 
 - R and Python both have following operators:  
@@ -84,16 +112,6 @@ if(False):
 - Printing is largely handled by `print()` in both R and Python
   - Explicit and Implicit both types of printing is available
 
-
-## Braces & Indentation
-
-- R uses braces `{}` to group expressions in code blocks and ignores indentation
-- Indentation and white spaces are extremely significant in Python (unlike R)
-  - 4 Spaces (not Tab) are being used, in this book, for Python chunks
-  - A backslash `\` allows you to break up one long piece of code into several parts
-  - Any character (including whitespace) after the backslash will cause an error
-  - Parentheses `()` can be used to enclose all of the code. Parentheses work like the backslash, but allow extra characters at the end
-  - An extra newline is being added in Python chunks, in this book, to indicate that the command /block has been completed
 
 ## NA NaN 0/0 - nan
 
@@ -215,10 +233,33 @@ math.nan != math.nan
       - Instances of a user-defined class are considered truthy by default.
 
 
-## Short-circuit
+## Logical Operators
 
 - Both R and Python short-circuit the evaluation
-  - However, in Python, `and` and `or` are lazy whereas `&` and `|` are not
+
+- R uses `&`, `&&` to indicate `logical AND` and `|`, `||` to indicate `logical OR`. 
+  - R does not use 'and' or 'or'
+  - The shorter operators (`&`, `|`) are vectorized. Given two vectors, they will logically compare pairs of elements from each vector. 
+    - Output will have length equal to the length of longer vector using `vector recycling`
+    - `Warning: longer object length is not a multiple of shorter object length` will trigger if lengths of both vector are not multiple of each other.
+    - `all()` and `any()` can be used to reduce the length of a logical vector to one
+  - In contrast, the longer operators (`&&`, `||`) only work on length-one vectors. 
+    - The longer form is appropriate for programming control-flow and typically preferred in `if`
+clauses.
+    - Output is always a vector of length 1.
+    - If the length of either vector is not one, currently (R 4.2.1), `Warning: 'length(x) = 2 > 1' in coercion to 'logical(1)'` triggers but after next R release, it will be converted to `Error`.
+    - Currently (R 4.2.1), the comparison happen between only the first elements of each vector. 
+  - Short-circuit: 
+    - R will not evaluate the second operand for `&&` and `||` if it can learn the answer from the first operand (Left First).
+    - However, shorter operators (`&`, `|`) do not short-circuit
+  - `NA` is similarly handled by both shorter and longer operators
+    - If `NA` being either `TRUE` or `FALSE` does not change the outcome, then that value is returned, otherwise `NA` is returned. In that case it can be read as 'cannot be determined'.
+    - `isTRUE()` and `isFALSE()` can be used to convert `NA` to `TRUE` or `FALSE`
+  - [Refer This](https://www.r-bloggers.com/2021/06/think-of-as-a-stricter/)
+
+- Python uses `and` to indicate `logical AND` and `or` to indicate `logical OR`. 
+  - Python uses `&` and `|` for bitwise comparison
+  - In Python, `and` and `or` are lazy whereas `&` and `|` are not
 
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
@@ -362,16 +403,6 @@ else:
 
 </div><br></div>
 
-## Indexing
-
-- Indexing starts at 1 in R. Whereas, it starts at 0 in Python
-
-## Pipe
-
-- Python uses dot `.` as pipe operator
-- R uses `|>` as pipe operator along with underscore `_` as placeholder
-  - To minimize the issues, in this book, underscore will be used (and dot will be avoided) in names of objects or variables names
-
 ## Assignment Operator
 
 - Python uses 'equal to' ` = ` as assignment operator 
@@ -379,11 +410,36 @@ else:
   - In R, while the ` = ` can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
   - Convention is to use ` = `  only during function calls for arguments association (syntactic token)
 
-## Copy Objects or Variables
+## Copy Objects or Variables {#object-p01}
 
-- R [Advanced R, Hadley](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html")
+> In R, Everything that exists is an `object`.  
+> In R, Everything that happens is a function call.
 
-- Python Similar but different
+- Refer [This (SO)](https://stackoverflow.com/questions/34376318)
+  - 'Everything' here excludes 'reserved' keywords which can be found by `?reserved`
+  - "Everything that exists in R is an `object`" in the sense that it is a kind of data structure that can be manipulated.
+    - Think of R objects as collections of data of all kinds. The data contained and the way the data is organized depend on the class from which the object was generated.
+    - The key concept is that expressions for evaluation are themselves objects. Evaluation consists of taking the object representing an expression and returning the object that is the value of that expression.
+
+> In Python, Everything is an object.
+
+- It means that 'everything' is an instance of a `class` and (almost) everything has `attributes`
+  - 'Everything' here excludes 'reserved' keywords which can be found by `help("keywords")`
+
+- R uses 'copy-on-modify' semantics [Advanced R, Hadley](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html")
+  - On assignment, two names (e.g. aa, bb) might be pointing to the same object address. However, as soon as the object is modified, using one of the name (bb), R creates another copy of the original and points the modified name (bb) to that new address. Unmodified name (aa) keeps pointing to the original address containing the original object. Effectively, this is a deepcopy operation.
+
+- Python mutable and immutable objects
+  - `list`, `set`, `dict`, `numpy arrays`, `pandas dataframes` are **mutable**, so these are modified in place i.e. an append on this will result in modification of the value. Thus, all names pointing to this address will show the new value. `id()` of names would remain the same.
+  - `numbers`, `strings`, `bool`, `Tuples`, `Frozen Sets` are **immutable**, so a new object will be created for modifications to apply. Thus, the name (which was used for modification) will now point to a different address containing the new value. `id()` of this name will be different. Other names which were pointing to the original address would keep pointing to the same value, address.
+  - Many `numpy` operations modify the array in place.
+  - Further, a `tuple` containing a `list` by itself is immutable, however, it contains items which are mutable
+  - Further:
+    - All manipulations of immutable types create new objects
+    - Some manipulations of mutable types create new objects
+    - Thus, appending something to the end of a `list` is an in-place mutation (the existing list is changed). But slicing `:` or doubling `*` a list creates new lists.
+  - Further, 'pass by object-reference' may result in impact of modification on different object names which were not passed to the function but which were shallow copy of the name that was passed to it.
+  - Verify in case of doubt
   
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
@@ -395,9 +451,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x22f1d58dbf0"
+## [1] "0x16dc8e664d0"
 obj_addr(bb)
-## [1] "0x22f1d58dbf0"
+## [1] "0x16dc8e664d0"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -412,10 +468,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x22f1d58c140"
+## [1] "0x16dc8e66230"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x22f1d58dbf0"
+## [1] "0x16dc8e664d0"
 ```
 
 </div><br></div>
@@ -429,9 +485,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 2401194869264
+## 1571105669648
 id(qq)
-## 2401194869264
+## 1571105669648
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -447,9 +503,80 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 2401194869104
+## 1571105669488
 id(pp)
-## 2401194869264
+## 1571105669648
+```
+
+</div><br></div>
+
+<div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
+
+```python
+# Python Lists (mutable) are modified in place i.e. shallow copy is used
+pp = [11, 22, 33]             #variable named 'pp' pointing to a list
+qq = pp                       #variable named 'qq' pointing to the same list
+assert(id(pp) == id(qq))      #verify both are pointing to same address
+id(pp)                        #Actual address
+
+# Unlike the string.upper() below, list.append() need not to be assigned 
+## 1571351972096
+qq.append(44)
+print(pp)                     #Original 'pp' is also pointing to modified list
+## [11, 22, 33, 44]
+assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
+id(pp)                        #Object address has not changed from earlier
+
+# Python Dictionaries (mutable) are also modified in place
+## 1571351972096
+pp = {"key1": 11, "key2": 22, "key3": 33}
+qq = pp
+qq["key4"] = 44               #Modify 'qq' by adding another key
+assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
+print(pp)                     #Original 'pp' is also pointing to modified dict
+
+# However, Python strings are immutable (like R)
+## {'key1': 11, 'key2': 22, 'key3': 33, 'key4': 44}
+pp = 'abc'
+qq = pp
+assert(id(pp) == id(qq))
+id(pp)
+
+# Unlike the list.append() above, string.upper() needs to be assigned 
+## 1571106954928
+qq.upper()
+## 'ABC'
+assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
+id(qq)
+## 1571106954928
+print(qq)                     #'qq' is still pointing to the same object
+## abc
+qq = qq.upper()               #binding the new object created to 'qq'
+id(qq)                        #'qq' now points to a different object
+## 1571371672688
+print(qq)
+## ABC
+id(pp)                        #Original 'pp' still points to the same address 
+## 1571106954928
+print(pp)                     #with same value
+
+# Mutability (shallow copy) can impact other objects unexpectedly
+## abc
+pp = [11, 22, 33]
+qq = pp
+
+# Define Function
+def append_44(lst):
+    lst.append(44)
+    return lst
+
+# Call function using 'pass by object-reference' for 'pp'
+append_44(pp)
+
+#However, 'qq' keeps pointing to original address (which now have new values)
+## [11, 22, 33, 44]
+print(qq)
+## [11, 22, 33, 44]
 ```
 
 </div><br></div>
@@ -467,7 +594,7 @@ Table: (\#tab:P01T01) (P01T01) Reticulate Type conversion
 | Single element vector | Scalar |
 | Multi element vector | List |
 | List of multiple types | Tuple |
-| Named List | Dictionary |
+| Named List, R Environment | Dictionary |
 | Matrix or Array | NumPy ndarray |
 | Data Frame | Pandas Data Frame |
 
