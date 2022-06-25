@@ -37,7 +37,7 @@ str(c('a', 'b', NA, 'd', 'e'))
 str(c(TRUE, FALSE, NA, FALSE, TRUE))
 ```
 
-## Examination of R Data Types
+### Examination of R Data Types
 
 ```{r 'R-About', decorate=TRUE}
 # To know about an Object Named Vector (pi, letters are predefined)
@@ -53,7 +53,7 @@ names(attributes(aa))   # Attributes
 names(aa)               # Names
 ```
 
-## R Matrices and Arrays
+### R Matrices and Arrays
 
 - `Matrices` and `arrays` are simply vectors with the attribute `dim` attached to the vector. 
   - The data elements must be of the same basic type.
@@ -79,7 +79,7 @@ names(aa)
 dimnames(aa) 
 ```
 
-## R Lists
+### R Lists
 
 - Lists have 'elements', each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
   - `list` is a `vector` but not an 'atomic vector'.
@@ -99,7 +99,7 @@ names(attributes(aa))   # Attributes
 names(aa)               # Names of elements
 ```
 
-## R DataFrames
+### R DataFrames
 
 - Data frame is a list of `vectors`, `factors`, and/or `matrices` all having the same length (number of rows in the case of matrices).
   - A `data frame` can contain a `list` that is the same length as the other components. 
@@ -123,7 +123,7 @@ is.vector(aa)
 is.atomic(aa)
 ```
 
-## R Factors
+### R Factors
 
 - `Factors` are used to describe items that can have a finite number of values (gender, social class, etc.). A factor has a `levels` attribute and class `factor`. 
   - A factor may be purely nominal or may have ordered categories. 
@@ -146,7 +146,7 @@ levels(aa)              # Vector of Levels
 names(attributes(aa))   # Attributes
 ```
 
-## Membership Functions
+### Membership Functions
 
 - `anyNA()` is `TRUE` if there is an `NA` present, `FALSE` otherwise
 - `is.atomic()` is `TRUE` for all atomic vectors, factors, matrices but is `FALSE` for lists and dataframes
@@ -177,4 +177,24 @@ names(which(sapply(gg, is.data.frame)))
 names(which(sapply(gg, is.factor)))
 ```
 
+
+## Python
+
+### Collections: List, Tuple, Set, Dictionary
+
+
+- Python `list` is ordered and changeable. 
+  - It allows duplicate members. 
+  - It is defined using square brackets `[]`
+  - Python lists are modified in place. 
+- `Tuple` is ordered and unchangeable. 
+  - It allows duplicate members. 
+  - It is defined using parentheses `()`
+- `Set` is unordered, unchangeable, and unindexed. 
+  - It does not allow duplicate members. 
+  - Set items are unchangeable, but we can remove and/or add items.
+- `Dictionary` is ordered and changeable. 
+  - It does not allow duplicate members. 
+  - It is defined using braces `{}`
+  - Duplicate values will overwrite existing values
 
