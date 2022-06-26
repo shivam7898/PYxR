@@ -29,7 +29,10 @@ if(TRUE) c("lobstr") |>
 - Information on R for Python Users
   - In R, Methods (or Functions) are not part of the class definitions. Methods in R look at the `class` of the objects and may behave differently based on them. 
   - Ex: `summary()` of `numeric vector` and `factor vector` will be different i.e. these will be summarised differently. `summary()` checks the `class` attribute of the object and it calls a method for summarizing objects of that class. 
-
+  - Slicing / Subsetting:
+    - In R, both start and stop values are inclusive during slicing, unlike Python where stop value is exclusive.
+    - In R, both start and stop values are to be specified during slicing, unlike Python where if you do not specify the start/stop value it refers to the first/last value respectively.
+    - Dash `-` (or Minus) acts as reverse index in Python, whereas in R it removes the specified elements
 
 ## Braces & Indentation
 
