@@ -37,7 +37,7 @@ str(c('a', 'b', NA, 'd', 'e'))
 str(c(TRUE, FALSE, NA, FALSE, TRUE))
 ```
 
-### Examination of R Data Types
+## Examination of R Data Types
 
 ```{r 'R-About', decorate=TRUE}
 # To know about an Object Named Vector (pi, letters are predefined)
@@ -53,7 +53,7 @@ names(attributes(aa))   # Attributes
 names(aa)               # Names
 ```
 
-### R Matrices and Arrays
+## R Matrices and Arrays
 
 - `Matrices` and `arrays` are simply vectors with the attribute `dim` attached to the vector. 
   - The data elements must be of the same basic type.
@@ -79,7 +79,7 @@ names(aa)
 dimnames(aa) 
 ```
 
-### R Lists
+## R Lists
 
 - Lists have 'elements', each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
   - `list` is a `vector` but not an 'atomic vector'.
@@ -99,7 +99,7 @@ names(attributes(aa))   # Attributes
 names(aa)               # Names of elements
 ```
 
-### R DataFrames
+## R DataFrames
 
 - Data frame is a list of `vectors`, `factors`, and/or `matrices` all having the same length (number of rows in the case of matrices).
   - A `data frame` can contain a `list` that is the same length as the other components. 
@@ -123,7 +123,7 @@ is.vector(aa)
 is.atomic(aa)
 ```
 
-### R Factors
+## R Factors
 
 - `Factors` are used to describe items that can have a finite number of values (gender, social class, etc.). A factor has a `levels` attribute and class `factor`. 
   - A factor may be purely nominal or may have ordered categories. 
@@ -146,7 +146,7 @@ levels(aa)              # Vector of Levels
 names(attributes(aa))   # Attributes
 ```
 
-### Membership Functions
+## Membership Functions
 
 - `anyNA()` is `TRUE` if there is an `NA` present, `FALSE` otherwise
 - `is.atomic()` is `TRUE` for all atomic vectors, factors, matrices but is `FALSE` for lists and dataframes
@@ -177,11 +177,9 @@ names(which(sapply(gg, is.data.frame)))
 names(which(sapply(gg, is.factor)))
 ```
 
+## Python Collections
 
-## Python
-
-### Collections: List, Tuple, Set, Dictionary
-
+### List, Tuple, Set, Dictionary
 
 - Python `list` is ordered and changeable. 
   - It allows duplicate members. 
@@ -198,3 +196,77 @@ names(which(sapply(gg, is.factor)))
   - It is defined using braces `{}`
   - Duplicate values will overwrite existing values
 
+
+```{python 'Y-Lists', decorate=TRUE}
+pp = 11                                           # int
+print(f"{type(pp) = }   |     ...     | {pp = }")
+pp = 11,                                          # Implicit Tuple
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+pp = (11, )                                       # Length 1 Tuple needs comma
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+pp = (11, 22, 33)                                 # Tuple
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+pp = [11, 22, 33]                                 # List
+print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+pp = {11, 22, 33}                                 # Set (unordered)
+print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
+pp = {"x": 11, "y": 22, "z": 33}
+print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+
+```
+
+### Dictionary
+
+
+```{python 'Y-Dictionary', decorate=TRUE}
+# Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten
+pp = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964,
+  "year": 2000,
+  "electric": False,
+  "colors": ["red", "white"]
+}
+
+print(f"{type(pp) = } | {len(pp) = } | \n{pp = }")          #Print
+print(pp["brand"])                                #Access Specific Item
+pp.keys()                                         #ALL Keys
+pp.values()                                       #ALL Values 
+pp.items()                                        #ALL Items 
+
+qq = 'brand'                                      #Find x in Keys
+if(qq in pp.keys()):
+    print(qq + " is Present in Keys.")
+else:
+    print(qq + " is Absent in Keys. Check Values.")
+
+qq = list(pp)                                     #Dictionary To List (Keys)
+ss = list(pp.values())                            #Dictionary To List (Values)
+print(f"{type(qq) = } | {len(qq) = } | \n{qq = }")          #Print
+print(f"{type(ss) = } | {len(ss) = } | \n{ss = }")          #Print
+
+```
+
+##### PRINT VERTICALLY 
+
+
+## NumPy Array
+
+
+```{python 'Y-NumPy-Array', decorate=TRUE}
+pp = np.arange(12).reshape((3,4))
+print(type(pp))
+print(pp)
+assert(np.array_equal(pp[0, :], pp[0, ]))         #Verify same shape & values
+print(pp[0, ])                                    #Subset First Row
+
+```
+
+## Pandas DataFrame
+
+
+```{python 'Y-Pandas-DataFrame', decorate=TRUE}
+# This
+
+```
