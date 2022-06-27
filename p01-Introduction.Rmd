@@ -427,9 +427,9 @@ assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 id(pp)                        #Object address has not changed from earlier
 
 # Python Dictionaries (mutable) are also modified in place
-pp = {"key1": 11, "key2": 22, "key3": 33}
+pp = {"a": 11, "b": 22, "c": 33}
 qq = pp
-qq["key4"] = 44               #Modify 'qq' by adding another key
+qq["d"] = 44                  #Modify 'qq' by adding another key
 assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 print(pp)                     #Original 'pp' is also pointing to modified dict
 
@@ -515,6 +515,8 @@ os.getcwd()         # Working Directory
 
 ```{r 'R-Version', decorate=TRUE}
 strsplit(R.version.string, " ")[[1]][3]           # R Version
+
+# The loaded packages and namespaces are searched before the libraries
 packageVersion("knitr")                           # Package Version: knitr
 ```
 
@@ -560,6 +562,9 @@ if(FALSE) {
   
   # Find whether a package is installed or not (slow)
   installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+  
+  # Version of installed package (not loaded)
+  installed.packages()["knitr", "Version"]
 }
 ```
 

@@ -181,20 +181,18 @@ names(which(sapply(gg, is.factor)))
 
 ### List, Tuple, Set, Dictionary
 
-- Python `list` is ordered and changeable. 
-  - It allows duplicate members. 
-  - It is defined using square brackets `[]`
-  - Python lists are modified in place. 
-- `Tuple` is ordered and unchangeable. 
-  - It allows duplicate members. 
-  - It is defined using parentheses `()`
+- Python Collections:
+  - `tuple`: Literal `()`, Ordered, Immutable, Allows Duplicates
+  - `list` : Literal `[]`, Ordered, Mutable, Allows Duplicates
+  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates
+  
+
+
+
 - `Set` is unordered, unchangeable, and unindexed. 
   - It does not allow duplicate members. 
   - Set items are unchangeable, but we can remove and/or add items.
-- `Dictionary` is ordered and changeable. 
-  - It does not allow duplicate members. 
-  - It is defined using braces `{}`
-  - Duplicate values will overwrite existing values
+
 
 
 ```{python 'Y-Lists', decorate=TRUE}
@@ -210,7 +208,7 @@ pp = [11, 22, 33]                                 # List
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 pp = {11, 22, 33}                                 # Set (unordered)
 print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
-pp = {"x": 11, "y": 22, "z": 33}
+pp = {"a": 11, "b": 22, "c": 33}
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 
 ```
@@ -248,7 +246,19 @@ print(f"{type(ss) = } | {len(ss) = } | \n{ss = }")          #Print
 
 ```
 
-##### PRINT VERTICALLY 
+
+```{python 'Y-', decorate=TRUE}
+print(pp)
+#print("\n".join("{}\t{}".format(k, v) for k, v in pp.items()))
+
+```
+
+
+```{r 'R-', decorate=TRUE}
+aa <- py$pp
+print(aa)
+
+```
 
 
 ## NumPy Array

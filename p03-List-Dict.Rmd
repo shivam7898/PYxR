@@ -1,0 +1,29 @@
+# R List & Python Dictionary {#list-dict-p03}
+
+```{r 'setup', include=FALSE}
+################################################################################
+source("_common.R")
+if(FALSE) c("lobstr") |> 
+  lapply(library, character.only=TRUE)
+```
+
+- R `list` :
+  
+- Python `dict` (Dictionary) :
+  - 
+
+
+```{python 'Y-', decorate=TRUE}
+pp = {"a": 11, "b": 22, "c": 33}                  #Simple Dictionary
+print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+
+```
+
+```{r 'R-', decorate=TRUE}
+aa <- py$pp
+typeof(aa)
+print(aa)
+
+
+
+```
