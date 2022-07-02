@@ -53,7 +53,7 @@ ff$b <- 22L
 stopifnot(identical(bb, ff))
 ```
 
-```{python 'Y-Dictionary', decorate=TRUE}
+```{python 'Y-Dict', decorate=TRUE}
 pp = {}                                           #Empty Dictionary
 print(f"{type(pp) = } | {len(pp) = } | {pp = }")
 pp = {"a": 11, "b": 22}                           #Normal Dictionary
@@ -85,8 +85,6 @@ assert(qq == uu)
 
 vv = pp | tt | {"b": 22}                #Merge using | , Last seen overwrite
 assert(qq == vv)
-#print(f"{len(uu)=}, {uu = }")
-#print(f"{len(vv)=}, {vv = }")
 
 ww = copy.deepcopy(pp)
 ww |= tt                      #Update in-place using |= , Last seen overwrite
@@ -95,23 +93,86 @@ assert(qq == ww)
 
 ```
 
-```{r 'R-Compare-List-Dict', decorate=TRUE}
-bb_y <- py$qq
+```{r 'R-Compare-List-Dict', decorate=TRUE, include=FALSE}
+bb_y <- py$qq                           #Convert Python dictionary to R List
 str(bb_y)
-stopifnot(identical(bb, bb_y))
+stopifnot(identical(bb, bb_y))          #These are Identical
 ```
 
-```{python 'Y-Compare-List-Dict', decorate=TRUE}
-qq_r = r.bb
+```{python 'Y-Compare-List-Dict', decorate=TRUE, include=FALSE}
+qq_r = r.bb                             #Convert R List to Python dictionary
 print(f"{len(qq_r)=}, {qq_r = }")
-assert(qq == qq_r)
+assert(qq == qq_r)                      #These are Identical
 
 ```
 
 ## Nested
 
+```{r 'R-List-Nest', decorate=TRUE}
+aa <- list("a" = 11L, "b" = 22L)
+bb <- list("c" = 33L, "d" = 44L, "e" = aa)         #Nested List
+str(bb)
 
+```
 
-## Compare
+```{python 'Y-Dict-Nest', decorate=TRUE}
+pp = {"a": 11, "b": 22}
+qq = {"c": 33, "d": 44, "e": pp}                  #Nested Dictionary
+print(f"{len(qq)=}, {qq = }")
+
+```
+
+```{r 'R-Compare-List-Dict-Nest', decorate=TRUE, include=FALSE}
+bb_y <- py$qq                           #Convert Python dictionary to R List
+str(bb_y)
+stopifnot(identical(bb, bb_y))          #These are Identical
+```
+
+```{python 'Y-Compare-List-Dict-Nest', decorate=TRUE, include=FALSE}
+qq_r = r.bb                             #Convert R List to Python dictionary
+print(f"{len(qq_r)=}, {qq_r = }")
+assert(qq == qq_r)                      #These are Identical
+
+```
+
+## With Multiple DataTypes
+
+```{r 'R-List-Multi', decorate=TRUE}
+aa_lst <- list(11L, 22L)                #Unnamed List
+bb_lst <- list(a = 11L, b = 22L)        #Named List
+dd_vec <- c(11L, 22L)                   #Unnamed Vector
+
+ee <- list(a = 11L, b = "x", c = FALSE, d = NULL, 
+           e = aa_lst, f = dd_vec, g = bb_lst)
+```
+
+```{python 'Y-Dict-Multi', decorate=TRUE}
+# Exclude Python sets because these are converted to R Environment
+#tt_set = {11, 22}            # Set: Unordered, Mutable
+pp_tup = (11, 22)             # Tuple: Ordered, Immutable | Unnamed List
+qq_lst = [11, 22]             # List: Ordered, Mutable | Vector
+ss_dic = {"a": 11, "b": 22}   # Dict: Ordered, Mutable | Named List
+
+uu = {"a": 11, "b": "x", "c": False, "d": None, 
+      "e": pp_tup, "f": qq_lst, "g": ss_dic}
+print("\n".join([k + " : " + str(type(uu[k]).__name__) + " : " + str(v) 
+                for k, v in uu.items()]))
+
+```
+
+```{r 'R-Compare-List-Dict-Multi', decorate=TRUE, include=FALSE}
+ee_y <- py$uu                           #Convert Python dictionary to R List
+str(ee_y)
+stopifnot(identical(ee, ee_y))          #These are Identical
+```
+
+```{python 'Y-Compare-List-Dict-Multi', decorate=TRUE, include=FALSE}
+uu_r = r.ee                             #Convert R List to Python dictionary
+uu_r["e"] = tuple(uu_r["e"])            #List to Tuple
+print("\n".join([k + " : " + str(type(uu_r[k]).__name__) + " : " + str(v) 
+                for k, v in uu_r.items()]))
+assert(uu == uu_r)                      #These are Identical
+
+```
 
 

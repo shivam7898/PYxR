@@ -481,6 +481,7 @@ Table: (\#tab:P01T01) (P01T01) Reticulate Type conversion
 | Multi element vector | List |
 | List of multiple types | Tuple |
 | Named List, R Environment | Dictionary |
+| R Environment | Set |
 | Matrix or Array | NumPy ndarray |
 | Data Frame | Pandas Data Frame |
 

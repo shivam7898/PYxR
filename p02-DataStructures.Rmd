@@ -298,6 +298,7 @@ list(range(10, 1, -2))
     - Effectively, 'sets' are 'dictionaries' without keys
     - Indexing and slicing does not work on `set` because it is unordered
     - Immutable objects include `numbers`, `strings` and `tuples`. [Refer](https://docs.python.org/3/glossary.html). 
+    - `set` is converted to `R environment`. However, it is tricky to handle, so it is being put on hold for now. Note that python set operations like 'set difference' can be applied using scope resolution i.e. `py$set_x$difference(set_y)`
 
 
 ```{python 'Y-Lists', decorate=TRUE}
@@ -323,7 +324,6 @@ pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 
 ```
-
 
 ### Dictionary
 
