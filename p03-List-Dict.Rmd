@@ -8,22 +8,110 @@ if(FALSE) c("lobstr") |>
 ```
 
 - R `list` :
-  
+
 - Python `dict` (Dictionary) :
-  - 
+  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
 
+> Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).[Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)  
 
-```{python 'Y-', decorate=TRUE}
-pp = {"a": 11, "b": 22, "c": 33}                  #Simple Dictionary
-print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+- `dict` is ordered
+  - Essentially it means 'insertion ordered' which is different from ordered like `OrderedDict`
+  - Equality comparisons with `OrderedDict` are order sensitive but this is not the case for `dict`
+- [Refer](https://docs.python.org/3.9/whatsnew/3.9.html#dictionary-merge-update-operators)
+
+## Basic
+
+```{r 'R-List', decorate=TRUE}
+aa = list()                                       #Empty List
+str(aa)
+aa <- list("a" = 11L, "b" = 22L)                   #Normal List
+str(aa)
+
+bb <- setNames(as.list(c(11L, 22L, 33L)), nm = c("a", "b", "c")) #Named List
+str(bb)
+
+# R List equality comparison is order sensitive (unlike Python Dictionary)
+dd <- list("b" = 22L, "a" = 11L)
+stopifnot(!identical(aa, dd))                     #Order Sensitive
+stopifnot(identical(aa[order(names(aa))], dd[order(names(dd))])) #Sort, Compare
+
+ee <- list("c" = 33L, "b" = 999L)
+xx <- c(aa, ee)                         #Merge, keep duplicates (Avoid)
+str(xx)
+xx <- modifyList(aa, val = ee)          #Merge, overwrite duplicates
+str(xx)
+xx <- within(xx, rm("b"))               #Delete, Key not found Error
+xx[c("b")] <- NULL                      #Delete, No Key error
+xx <- xx[setdiff(names(xx), "bb")]      #Delete, No Key error
+str(xx)
+
+# Merge, overwrite duplicates: This may result in position change of key
+str(c(aa, ee)[!duplicated(c(names(aa), names(ee)), fromLast = TRUE)])
+
+ff <- modifyList(aa, val = ee)          #Merge, overwrite duplicates
+ff$b <- 22L
+stopifnot(identical(bb, ff))
+```
+
+```{python 'Y-Dictionary', decorate=TRUE}
+pp = {}                                           #Empty Dictionary
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+pp = {"a": 11, "b": 22}                           #Normal Dictionary
+print(f"{len(pp)=}, {pp = }")
+
+qq = {zip(["a", "b", "c"], [11, 22, 33])}         #zip() creates set with {}
+assert(type(qq) is set)
+qq = dict(zip(["a", "b", "c"], [11, 22, 33]))     #zip() needs dict()
+print(f"{len(qq)=}, {qq = }")
+
+# Python Dictionary equality comparison is order insensitive (unlike R List)
+ss = {"b": 22, "a": 11}
+assert(pp == ss)                                  #Ignore Key Position
+assert(not(list(ss.items()) == list(pp.items()))) #Consider Key Position
+
+tt = {"c": 33, "b": 999}
+pp.update(tt)                           #Merge in-place, Last seen overwrite
+print(f"{len(pp)=}, {pp = }")
+pp.update({"b": 22}) 
+del pp["c"]                   #Delete in-place, return None, Key not found Error
+tt.pop("b")                   #Pop in-place, return value, Key not found Error
+tt.pop("b", None)             #Pop in-place, return value, No Key error
+tt["b"] = 999                           #Add element using subscript notation
+print(f"{len(pp)=}, {pp = }")
+print(f"{len(tt)=}, {tt = }")
+
+uu = {**pp, **tt, **{"b": 22}}          #Merge using **, Last seen overwrite
+assert(qq == uu)
+
+vv = pp | tt | {"b": 22}                #Merge using | , Last seen overwrite
+assert(qq == vv)
+#print(f"{len(uu)=}, {uu = }")
+#print(f"{len(vv)=}, {vv = }")
+
+ww = copy.deepcopy(pp)
+ww |= tt                      #Update in-place using |= , Last seen overwrite
+ww |= {"b": 22}
+assert(qq == ww)
 
 ```
 
-```{r 'R-', decorate=TRUE}
-aa <- py$pp
-typeof(aa)
-print(aa)
+```{r 'R-Compare-List-Dict', decorate=TRUE}
+bb_y <- py$qq
+str(bb_y)
+stopifnot(identical(bb, bb_y))
+```
 
-
+```{python 'Y-Compare-List-Dict', decorate=TRUE}
+qq_r = r.bb
+print(f"{len(qq_r)=}, {qq_r = }")
+assert(qq == qq_r)
 
 ```
+
+## Nested
+
+
+
+## Compare
+
+
