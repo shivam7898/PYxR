@@ -138,9 +138,9 @@ assert(qq == qq_r)                      #These are Identical
 ## With Multiple DataTypes
 
 ```{r 'R-List-Multi', decorate=TRUE}
-aa_lst <- list(11L, 22L)                #Unnamed List
-bb_lst <- list(a = 11L, b = 22L)        #Named List
-dd_vec <- c(11L, 22L)                   #Unnamed Vector
+aa_lst <- list(11L, 22L)                #Unnamed List   | Tuple
+bb_lst <- list(a = 11L, b = 22L)        #Named List     | Dict
+dd_vec <- c(11L, 22L)                   #Unnamed Vector | List
 
 ee <- list(a = 11L, b = "x", c = FALSE, d = NULL, 
            e = aa_lst, f = dd_vec, g = bb_lst)
@@ -148,10 +148,10 @@ ee <- list(a = 11L, b = "x", c = FALSE, d = NULL,
 
 ```{python 'Y-Dict-Multi', decorate=TRUE}
 # Exclude Python sets because these are converted to R Environment
-#tt_set = {11, 22}            # Set: Unordered, Mutable
-pp_tup = (11, 22)             # Tuple: Ordered, Immutable | Unnamed List
-qq_lst = [11, 22]             # List: Ordered, Mutable | Vector
-ss_dic = {"a": 11, "b": 22}   # Dict: Ordered, Mutable | Named List
+#tt_set = {11, 22}            #Set: Unordered, Mutable
+pp_tup = (11, 22)             #Tuple: Ordered, Immutable | Unnamed List
+qq_lst = [11, 22]             #List: Ordered, Mutable    | Unnamed Vector
+ss_dic = {"a": 11, "b": 22}   #Dict: Ordered, Mutable    | Named List
 
 uu = {"a": 11, "b": "x", "c": False, "d": None, 
       "e": pp_tup, "f": qq_lst, "g": ss_dic}
