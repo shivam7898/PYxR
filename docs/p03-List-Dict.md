@@ -166,9 +166,9 @@ print(f"{len(qq)=}, {qq = }")
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
-aa_lst <- list(11L, 22L)                #Unnamed List
-bb_lst <- list(a = 11L, b = 22L)        #Named List
-dd_vec <- c(11L, 22L)                   #Unnamed Vector
+aa_lst <- list(11L, 22L)                #Unnamed List   | Tuple
+bb_lst <- list(a = 11L, b = 22L)        #Named List     | Dict
+dd_vec <- c(11L, 22L)                   #Unnamed Vector | List
 
 ee <- list(a = 11L, b = "x", c = FALSE, d = NULL, 
            e = aa_lst, f = dd_vec, g = bb_lst)
@@ -180,10 +180,10 @@ ee <- list(a = 11L, b = "x", c = FALSE, d = NULL,
 
 ```python
 # Exclude Python sets because these are converted to R Environment
-#tt_set = {11, 22}            # Set: Unordered, Mutable
-pp_tup = (11, 22)             # Tuple: Ordered, Immutable | Unnamed List
-qq_lst = [11, 22]             # List: Ordered, Mutable | Vector
-ss_dic = {"a": 11, "b": 22}   # Dict: Ordered, Mutable | Named List
+#tt_set = {11, 22}            #Set: Unordered, Mutable
+pp_tup = (11, 22)             #Tuple: Ordered, Immutable | Unnamed List
+qq_lst = [11, 22]             #List: Ordered, Mutable    | Unnamed Vector
+ss_dic = {"a": 11, "b": 22}   #Dict: Ordered, Mutable    | Named List
 
 uu = {"a": 11, "b": "x", "c": False, "d": None, 
       "e": pp_tup, "f": qq_lst, "g": ss_dic}

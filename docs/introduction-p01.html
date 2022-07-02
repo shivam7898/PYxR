@@ -690,9 +690,9 @@ In R, Everything that happens is a function call.</p>
 <span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span></span>
 <span><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
-<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span>
+<span><span class="co">## [1] "0x18e1335cd28"</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
-<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span>
+<span><span class="co">## [1] "0x18e1335cd28"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print the copy</span></span>
@@ -707,10 +707,10 @@ In R, Everything that happens is a function call.</p>
 <span><span class="co">## [1] 10</span></span>
 <span><span class="co"># Now the modified name points to a different memory address than earlier</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
-<span><span class="co">## [1] "0x1cd6b3ebb20"</span></span>
+<span><span class="co">## [1] "0x18e1335cb68"</span></span>
 <span><span class="co"># Original is still pointing to the same address containing original object</span></span>
 <span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
-<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span></code></pre></div>
+<span><span class="co">## [1] "0x18e1335cd28"</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -723,9 +723,9 @@ In R, Everything that happens is a function call.</p>
 <span id="cb17-4"><a href="introduction-p01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb17-5"><a href="introduction-p01.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span id="cb17-6"><a href="introduction-p01.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span>
+<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709793149456</span></span>
 <span id="cb17-8"><a href="introduction-p01.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span>
+<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709793149456</span></span>
 <span id="cb17-10"><a href="introduction-p01.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb17-11"><a href="introduction-p01.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="introduction-p01.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
@@ -741,9 +741,9 @@ In R, Everything that happens is a function call.</p>
 <span id="cb17-22"><a href="introduction-p01.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
 <span id="cb17-23"><a href="introduction-p01.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
 <span id="cb17-24"><a href="introduction-p01.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893552</span></span>
+<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709793149296</span></span>
 <span id="cb17-26"><a href="introduction-p01.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span></code></pre></div>
+<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709793149456</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -757,7 +757,7 @@ In R, Everything that happens is a function call.</p>
 <span id="cb18-5"><a href="introduction-p01.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Actual address</span></span>
 <span id="cb18-6"><a href="introduction-p01.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-7"><a href="introduction-p01.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Unlike the string.upper() below, list.append() need not to be assigned </span></span>
-<span id="cb18-8"><a href="introduction-p01.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982090135808</span></span>
+<span id="cb18-8"><a href="introduction-p01.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 1710039386368</span></span>
 <span id="cb18-9"><a href="introduction-p01.html#cb18-9" aria-hidden="true" tabindex="-1"></a>qq.append(<span class="dv">44</span>)</span>
 <span id="cb18-10"><a href="introduction-p01.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)                     <span class="co">#Original 'pp' is also pointing to modified list</span></span>
 <span id="cb18-11"><a href="introduction-p01.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">## [11, 22, 33, 44]</span></span>
@@ -765,7 +765,7 @@ In R, Everything that happens is a function call.</p>
 <span id="cb18-13"><a href="introduction-p01.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Object address has not changed from earlier</span></span>
 <span id="cb18-14"><a href="introduction-p01.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-15"><a href="introduction-p01.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Python Dictionaries (mutable) are also modified in place</span></span>
-<span id="cb18-16"><a href="introduction-p01.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982090135808</span></span>
+<span id="cb18-16"><a href="introduction-p01.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">## 1710039386368</span></span>
 <span id="cb18-17"><a href="introduction-p01.html#cb18-17" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"c"</span>: <span class="dv">33</span>}</span>
 <span id="cb18-18"><a href="introduction-p01.html#cb18-18" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb18-19"><a href="introduction-p01.html#cb18-19" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">"d"</span>] <span class="op">=</span> <span class="dv">44</span>                  <span class="co">#Modify 'qq' by adding another key</span></span>
@@ -780,21 +780,21 @@ In R, Everything that happens is a function call.</p>
 <span id="cb18-28"><a href="introduction-p01.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
 <span id="cb18-29"><a href="introduction-p01.html#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="introduction-p01.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Unlike the list.append() above, string.upper() needs to be assigned </span></span>
-<span id="cb18-31"><a href="introduction-p01.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
+<span id="cb18-31"><a href="introduction-p01.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709794434736</span></span>
 <span id="cb18-32"><a href="introduction-p01.html#cb18-32" aria-hidden="true" tabindex="-1"></a>qq.upper()</span>
 <span id="cb18-33"><a href="introduction-p01.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="co">## 'ABC'</span></span>
 <span id="cb18-34"><a href="introduction-p01.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))      <span class="co">#both 'pp' &amp; 'qq' still point to same address</span></span>
 <span id="cb18-35"><a href="introduction-p01.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb18-36"><a href="introduction-p01.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
+<span id="cb18-36"><a href="introduction-p01.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709794434736</span></span>
 <span id="cb18-37"><a href="introduction-p01.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)                     <span class="co">#'qq' is still pointing to the same object</span></span>
 <span id="cb18-38"><a href="introduction-p01.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="co">## abc</span></span>
 <span id="cb18-39"><a href="introduction-p01.html#cb18-39" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> qq.upper()               <span class="co">#binding the new object created to 'qq'</span></span>
 <span id="cb18-40"><a href="introduction-p01.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)                        <span class="co">#'qq' now points to a different object</span></span>
-<span id="cb18-41"><a href="introduction-p01.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982126124592</span></span>
+<span id="cb18-41"><a href="introduction-p01.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="co">## 1710075947632</span></span>
 <span id="cb18-42"><a href="introduction-p01.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
 <span id="cb18-43"><a href="introduction-p01.html#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="co">## ABC</span></span>
 <span id="cb18-44"><a href="introduction-p01.html#cb18-44" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Original 'pp' still points to the same address </span></span>
-<span id="cb18-45"><a href="introduction-p01.html#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
+<span id="cb18-45"><a href="introduction-p01.html#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="co">## 1709794434736</span></span>
 <span id="cb18-46"><a href="introduction-p01.html#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)                     <span class="co">#with same value</span></span>
 <span id="cb18-47"><a href="introduction-p01.html#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-48"><a href="introduction-p01.html#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutability (shallow copy) can impact other objects unexpectedly</span></span>
@@ -855,10 +855,14 @@ In R, Everything that happens is a function call.</p>
 <td align="left">Dictionary</td>
 </tr>
 <tr class="odd">
+<td align="left">R Environment</td>
+<td align="left">Set</td>
+</tr>
+<tr class="even">
 <td align="left">Matrix or Array</td>
 <td align="left">NumPy ndarray</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Data Frame</td>
 <td align="left">Pandas Data Frame</td>
 </tr>
@@ -1171,7 +1175,7 @@ In R, Everything that happens is a function call.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-02.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
