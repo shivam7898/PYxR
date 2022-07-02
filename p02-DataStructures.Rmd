@@ -55,10 +55,10 @@ names(aa)               # Names
 
 ## R Matrices and Arrays
 
-- `Matrices` and `arrays` are simply vectors with the attribute `dim` attached to the vector. 
+- `Matrices` and `arrays` are vectors with the attribute `dim` attached to them 
   - The data elements must be of the same basic type.
   - A `matrix` is a two-dimensional rectangular data set. 
-  - `Arrays` are multi-dimensional Data structures. Data is stored in the form of matrices, row, and as well as in columns. 
+  - 'Arrays' are multi-dimensional Data structures. Data is stored in the form of matrices, row, and as well as in columns. 
 
 ```{r 'R-Matrix', decorate=TRUE}
 # Create Matrix
@@ -154,7 +154,7 @@ names(attributes(aa))   # Attributes
   - It returns `FALSE` if the vector has attributes (except `names`) ex: DATE, POSIXct, DataFrames (even though a Dataframe is a list and a list is a vector)
 - `is.numeric()` is `TRUE` for both `integer` and `double`
 - `is.integer()`, `is.double()`, `is.character()`, `is.logical()` are `TRUE` for their respective datatypes only
-- `is.factor()`, `is.ordered()` are membership functions for factors with or without ordering
+- `is.factor()`, `is.ordered()` are membership functions for factors with and without ordering respectively
 
 ```{r 'R-is', decorate=TRUE}
 # Create Objects
@@ -177,22 +177,127 @@ names(which(sapply(gg, is.data.frame)))
 names(which(sapply(gg, is.factor)))
 ```
 
+## Python Types
+
+- [(doc) Built-in Types](https://docs.python.org/3/library/stdtypes.html#)
+
+- General
+  - The principal built-in types are numerics, sequences, mappings, classes, instances and exceptions.
+  - Some collection classes are `mutable`. The methods that add, subtract, or rearrange their members in place, and do not return a specific item, never return the collection instance itself but `None`.
+  - Practically all objects can be compared for equality, tested for truth value, and converted to a string.
+
+- Truth Value Testing
+  - constants defined to be false: `None` and `False`.
+  - zero of any numeric type: `0, 0.0, 0j, Decimal(0), Fraction(0, 1)`
+  - empty sequences and collections: `'', (), [], {}, set(), range(0)`
+
+- Boolean Operations in ascending order: `and`, `or`, `not`
+- There are eight comparison operations in Python.
+
+- Numeric Types: `int`, `float`, `complex`
+  - Booleans are a subtype of integers
+  - Python Integers have unlimited precision. Whereas, R integers are limited to $(2^{31} - 1 = 2147483647)$
+
+- Iterator Types
+  - Sequences always support the iteration methods.
+
+- Sequence Types: `list`, `tuple`, `range`
+  - Negative value of index is relative to the end of the sequence in Python. Whereas, it acts to exclude those indices
+  - Concatenating immutable sequences always results in a new object. 
+  - The `range` type represents an immutable sequence of numbers and is commonly used for looping a specific number of times in `for` loops.
+
+- Text Sequence Type: `str`
+  - Strings are immutable sequences of Unicode code points.
+
+- Set Types: `set` (mutable), `frozenset` (immutable)
+
+- Mapping Types: `dict`
+
+
+## Similarity (R & Python)
+
+```{r 'R-Outcome-Same', decorate=TRUE}
+# R results are same as Python
+stopifnot(0  == 1 %/% 2 )
+stopifnot(-1 == (-1) %/% 2 )
+stopifnot(-1 == 1 %/% (-2) )
+stopifnot(0  == (-1) %/% (-2) )
+
+# 1^y and y^0 are 1, ALWAYS in both R and Python
+stopifnot(all(1 == 0   ** 0, 
+              1 == NaN ** 0, 
+              1 == NA  ** 0,
+              1 == Inf ** 0,
+              1 == 1   ** NA,
+              1 == 1   ** NaN))
+
+stopifnot(is.nan(NaN * 0))
+stopifnot(is.na(NA * 0) & !is.nan(NA * 0))        #NA
+
+stopifnot(is.nan(Inf * 0))
+```
+
+```{python 'Y-Outcome-Same', decorate=TRUE}
+# Python results are same as R
+assert(0  == 1//2 )
+assert(-1 == (-1) // 2 )
+assert(-1 == 1 // (-2) )
+assert(0  == (-1) // (-2) )
+
+# 1^y and y^0 are 1, ALWAYS in both R and Python
+assert(1  == 0 ** 0 and 
+       1 == np.nan ** 0 and 
+       1  == 1 ** np.nan)
+
+assert(np.isnan(np.nan * 0))
+assert(np.isnan(math.inf * 0))
+
+```
+
+## Differences (R & Python)
+
+```{r 'R-Outcome-Different', decorate=TRUE}
+# R allows division by zero whereas Python throws ZeroDivisionError
+stopifnot(is.na(0L %/% 0L) & !is.nan(0L %/% 0L))  #NA
+stopifnot(is.nan(0 %/% 0 ))                       #NaN
+stopifnot(is.infinite(1 %/% 0))                   #Inf
+```
+
+```{r 'R-Sequence', decorate=TRUE}
+# R index starts from 1, whereas Python index starts from 0
+# R range includes the maximum value, whereas Python excludes it
+seq.int(length.out = 5)
+seq.int(from = 0, length.out = 5)
+seq.int(to = 10, length.out = 5)
+seq.int(by = -2, length.out = 5)
+
+# Colon ":" acts as sequence in R, Python uses colon for dictionary key:value
+# Colon should be avoided in R if the range limits may change
+1:5
+1:0
+```
+
+```{python 'Y-Sequence', decorate=TRUE}
+# Python index starts from 0, whereas R index starts from 1
+# Python range excludes the maximum value, whereas R includes it
+list(range(5))
+list(range(1, 6))
+list(range(10, 1, -2))
+
+```
+
 ## Python Collections
 
 ### List, Tuple, Set, Dictionary
 
 - Python Collections:
-  - `tuple`: Literal `()`, Ordered, Immutable, Allows Duplicates
-  - `list` : Literal `[]`, Ordered, Mutable, Allows Duplicates
-  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates
-  
-
-
-
-- `Set` is unordered, unchangeable, and unindexed. 
-  - It does not allow duplicate members. 
-  - Set items are unchangeable, but we can remove and/or add items.
-
+  - `tuple`: Literal `()`, Ordered, Immutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#tuples)
+  - `list` : Literal `[]`, Ordered, Mutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#lists)
+  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+  - `set`  : Literal `{}`, Unordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)
+    - Effectively, 'sets' are 'dictionaries' without keys
+    - Indexing and slicing does not work on `set` because it is unordered
+    - Immutable objects include `numbers`, `strings` and `tuples`. [Refer](https://docs.python.org/3/glossary.html). 
 
 
 ```{python 'Y-Lists', decorate=TRUE}
@@ -208,13 +313,13 @@ pp = [11, 22, 33]                                 # List
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 pp = {11, 22, 33}                                 # Set (unordered)
 print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
-pp = {"a": 11, "b": 22, "c": 33}
+pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 
 ```
 
-### Dictionary
 
+### Dictionary
 
 ```{python 'Y-Dictionary', decorate=TRUE}
 # Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten
@@ -246,23 +351,7 @@ print(f"{type(ss) = } | {len(ss) = } | \n{ss = }")          #Print
 
 ```
 
-
-```{python 'Y-', decorate=TRUE}
-print(pp)
-#print("\n".join("{}\t{}".format(k, v) for k, v in pp.items()))
-
-```
-
-
-```{r 'R-', decorate=TRUE}
-aa <- py$pp
-print(aa)
-
-```
-
-
 ## NumPy Array
-
 
 ```{python 'Y-NumPy-Array', decorate=TRUE}
 pp = np.arange(12).reshape((3,4))
@@ -275,8 +364,7 @@ print(pp[0, ])                                    #Subset First Row
 
 ## Pandas DataFrame
 
-
 ```{python 'Y-Pandas-DataFrame', decorate=TRUE}
-# This
+#
 
 ```
