@@ -48,7 +48,7 @@ class(aa)               # Class
 str(aa)                 # Structure
 length(aa)              # Length
 dim(aa)                 # Dimensions
-is(aa)                  # Inheritance
+is(aa)[1:6]             # Inheritance
 names(attributes(aa))   # Attributes
 names(aa)               # Names
 ```
@@ -303,16 +303,22 @@ list(range(10, 1, -2))
 ```{python 'Y-Lists', decorate=TRUE}
 pp = 11                                           # int
 print(f"{type(pp) = }   |     ...     | {pp = }")
+
 pp = 11,                                          # Implicit Tuple
 print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+
 pp = (11, )                                       # Length 1 Tuple needs comma
 print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+
 pp = (11, 22, 33)                                 # Tuple
 print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+
 pp = [11, 22, 33]                                 # List
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+
 pp = {11, 22, 33}                                 # Set (unordered)
 print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
+
 pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 
