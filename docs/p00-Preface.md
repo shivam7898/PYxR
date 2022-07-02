@@ -46,8 +46,8 @@ sessionInfo()
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.8.3    rstudioapi_0.13 magrittr_2.0.3  xml2_1.3.3     
-##  [5] downlit_0.4.0   lattice_0.20-45 here_1.0.1      R6_2.5.1       
-##  [9] rlang_1.0.2     fastmap_1.1.0   stringr_1.4.0   tools_4.2.1    
+##  [5] downlit_0.4.1   lattice_0.20-45 here_1.0.1      R6_2.5.1       
+##  [9] rlang_1.0.3     fastmap_1.1.0   stringr_1.4.0   tools_4.2.1    
 ## [13] grid_4.2.1      xfun_0.31       png_0.1-7       cli_3.3.0      
 ## [17] jquerylib_0.1.4 htmltools_0.5.2 yaml_2.3.5      digest_0.6.29  
 ## [21] rprojroot_2.0.3 bookdown_0.27   Matrix_1.4-1    fs_1.5.2       

@@ -48,6 +48,7 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="active" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
+<li><a class="" href="list-dict-p03.html"><span class="header-section-number">3</span> R List &amp; Python Dictionary</a></li>
 </ul>
 
         <div class="book-extra">
@@ -90,6 +91,13 @@
 <ul>
 <li>In R, Methods (or Functions) are not part of the class definitions. Methods in R look at the <code>class</code> of the objects and may behave differently based on them.</li>
 <li>Ex: <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of <code>numeric vector</code> and <code>factor vector</code> will be different i.e. these will be summarised differently. <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> checks the <code>class</code> attribute of the object and it calls a method for summarizing objects of that class.</li>
+<li>Slicing / Subsetting:
+<ul>
+<li>In R, both start and stop values are inclusive during slicing, unlike Python where stop value is exclusive.</li>
+<li>In R, both start and stop values are to be specified during slicing, unlike Python where if you do not specify the start/stop value it refers to the first/last value respectively.</li>
+<li>Dash <code>-</code> (or Minus) acts as reverse index in Python, whereas in R it removes the specified elements</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -145,16 +153,16 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Exponent</span>
-<span class="fl">5</span> <span class="op">**</span> <span class="fl">3</span>
-<span class="co">## [1] 125</span>
-<span class="fl">5</span> <span class="op">^</span> <span class="fl">3</span>
-<span class="co">## [1] 125</span>
-
-<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span>    <span class="co"># Modulus (Remainder)</span>
-<span class="co">## [1] 2</span>
-<span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">3</span>   <span class="co"># Integer Division (Quotient)</span>
-<span class="co">## [1] 1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Exponent</span></span>
+<span><span class="fl">5</span> <span class="op">**</span> <span class="fl">3</span></span>
+<span><span class="co">## [1] 125</span></span>
+<span><span class="fl">5</span> <span class="op">^</span> <span class="fl">3</span></span>
+<span><span class="co">## [1] 125</span></span>
+<span></span>
+<span><span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span>    <span class="co"># Modulus (Remainder)</span></span>
+<span><span class="co">## [1] 2</span></span>
+<span><span class="fl">5</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">3</span>   <span class="co"># Integer Division (Quotient)</span></span>
+<span><span class="co">## [1] 1</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -177,7 +185,7 @@
 <span class="header-section-number">1.4</span> Help<a class="anchor" aria-label="anchor" href="#help"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Both R and Python have <code>help()</code> to get details about the topic
+<li>Both R and Python have <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> to get details about the topic
 <ul>
 <li>R also has a shorthand to get help by prefixing <code>?</code> before the topic</li>
 </ul>
@@ -187,11 +195,11 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">print</span><span class="op">)</span>
-  <span class="op">?</span><span class="va">print</span>
-  <span class="op">?</span><span class="va">`+`</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">print</span><span class="op">)</span></span>
+<span>  <span class="op">?</span><span class="va">print</span></span>
+<span>  <span class="op">?</span><span class="va">`+`</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -286,34 +294,34 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># 0/0 is defined as NaN in R (unlike Python)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>
-<span class="co">## [1] TRUE</span>
-<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span><span class="op">)</span>
-<span class="co">## [1] TRUE</span>
-
-<span class="co"># NaN is treated as NA, however, NA is not treated as NaN</span>
-<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>
-<span class="co">## [1] TRUE</span>
-<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>
-<span class="co">## [1] FALSE</span>
-
-<span class="co"># NaN is numeric</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Comparison with NaN: All operations are NA, use is.nan() (unlike IEEE, Python)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">==</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">!=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Coercion of NaN</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA_integer_</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="st">"NaN"</span><span class="op">)</span>,
-              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NaN</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># 0/0 is defined as NaN in R (unlike Python)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span></span>
+<span><span class="co"># NaN is treated as NA, however, NA is not treated as NaN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="co">## [1] FALSE</span></span>
+<span></span>
+<span><span class="co"># NaN is numeric</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Comparison with NaN: All operations are NA, use is.nan() (unlike IEEE, Python)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">==</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">!=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;=</span> <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&lt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">&gt;</span>  <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Coercion of NaN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA_integer_</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="st">"NaN"</span><span class="op">)</span>,</span>
+<span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="cn">NaN</span><span class="op">)</span>, <span class="cn">NaN</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -451,26 +459,26 @@ clauses.</li>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Only the First expression is evaluated if it is enough to determine the result</span>
-<span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">NaN</span>
-<span class="co">## [1] TRUE</span>
-<span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
-<span class="co">## [1] FALSE</span>
-
-<span class="co"># Here the Second expression is also evaluated because first is not sufficient</span>
-<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
-<span class="co">## [1] NA</span>
-<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">NaN</span>
-<span class="co">## [1] NA</span>
-
-<span class="co"># Logical evaluation returns TRUE, FALSE or NA in R (unlike Python)</span>
-<span class="co"># 0 is FALSE</span>
-<span class="fl">3</span> <span class="op">|</span> <span class="cn">NaN</span>
-<span class="co">## [1] TRUE</span>
-<span class="fl">0</span> <span class="op">&amp;</span> <span class="cn">NaN</span>
-<span class="co">## [1] FALSE</span>
-<span class="fl">0</span> <span class="op">|</span> <span class="cn">NaN</span>
-<span class="co">## [1] NA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Only the First expression is evaluated if it is enough to determine the result</span></span>
+<span><span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] FALSE</span></span>
+<span></span>
+<span><span class="co"># Here the Second expression is also evaluated because first is not sufficient</span></span>
+<span><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] NA</span></span>
+<span><span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] NA</span></span>
+<span></span>
+<span><span class="co"># Logical evaluation returns TRUE, FALSE or NA in R (unlike Python)</span></span>
+<span><span class="co"># 0 is FALSE</span></span>
+<span><span class="fl">3</span> <span class="op">|</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fl">0</span> <span class="op">&amp;</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] FALSE</span></span>
+<span><span class="fl">0</span> <span class="op">|</span> <span class="cn">NaN</span></span>
+<span><span class="co">## [1] NA</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -524,38 +532,38 @@ clauses.</li>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Return of str() is NULL which is passed to print()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="st">"This returns NULL in R"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">##  chr "This returns NULL in R"</span>
-<span class="co">## NULL</span>
-
-<span class="co"># Assign NULL</span>
-<span class="va">aa</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-<span class="co"># Type</span>
-<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "NULL"</span>
-<span class="co"># Check</span>
-<span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] TRUE</span>
-<span class="co"># is.na() returns logical(0) for NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## logical(0)</span>
-
-<span class="co"># A name pointing to NULL is different from a name which does not exist 'bb'</span>
-<span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span>
-<span class="co">## [1] TRUE</span>
-<span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"bb"</span><span class="op">)</span>
-<span class="co">## [1] FALSE</span>
-<span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>, error <span class="op">=</span> \<span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span><span class="op">)</span>
-<span class="co">## &lt;simpleError in print(bb): object 'bb' not found&gt;</span>
-
-<span class="co"># Usage inside if conditional: NULL throws Error, use is.null()</span>
-<span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is NULL"</span><span class="op">)</span> 
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is Not NULL"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="co">## [1] "Object is NULL"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Return of str() is NULL which is passed to print()</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="st">"This returns NULL in R"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">##  chr "This returns NULL in R"</span></span>
+<span><span class="co">## NULL</span></span>
+<span></span>
+<span><span class="co"># Assign NULL</span></span>
+<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="co"># Type</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "NULL"</span></span>
+<span><span class="co"># Check</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="co"># is.na() returns logical(0) for NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## logical(0)</span></span>
+<span></span>
+<span><span class="co"># A name pointing to NULL is different from a name which does not exist 'bb'</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"bb"</span><span class="op">)</span></span>
+<span><span class="co">## [1] FALSE</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span>expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>, error <span class="op">=</span> \<span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## &lt;simpleError in print(bb): object 'bb' not found&gt;</span></span>
+<span></span>
+<span><span class="co"># Usage inside if conditional: NULL throws Error, use is.null()</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is NULL"</span><span class="op">)</span> </span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Object is Not NULL"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">## [1] "Object is NULL"</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -675,34 +683,34 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://lobstr.r-lib.org/">"lobstr"</a></span><span class="op">)</span>
-<span class="co"># Create an object containing a value and bind that object to name 'aa'</span>
-<span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">10</span> 
-<span class="co"># Copy an object i.e. Create another binding to an already existing value</span>
-<span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span>
-<span class="co"># Note that both names are pointing to same memory address</span>
-<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x16dc8e664d0"</span>
-<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x16dc8e664d0"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Print the copy</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] 10</span>
-<span class="co"># Modify the copy</span>
-<span class="va">bb</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-<span class="co"># Print the copy and the original (original is unmodified)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] 5</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] 10</span>
-<span class="co"># Now the modified name points to a different memory address than earlier</span>
-<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>
-<span class="co">## [1] "0x16dc8e66230"</span>
-<span class="co"># Original is still pointing to the same address containing original object</span>
-<span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>
-<span class="co">## [1] "0x16dc8e664d0"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://lobstr.r-lib.org/">"lobstr"</a></span><span class="op">)</span></span>
+<span><span class="co"># Create an object containing a value and bind that object to name 'aa'</span></span>
+<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">10</span> </span>
+<span><span class="co"># Copy an object i.e. Create another binding to an already existing value</span></span>
+<span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span></span>
+<span><span class="co"># Note that both names are pointing to same memory address</span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Print the copy</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## [1] 10</span></span>
+<span><span class="co"># Modify the copy</span></span>
+<span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="co"># Print the copy and the original (original is unmodified)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## [1] 5</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] 10</span></span>
+<span><span class="co"># Now the modified name points to a different memory address than earlier</span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## [1] "0x1cd6b3ebb20"</span></span>
+<span><span class="co"># Original is still pointing to the same address containing original object</span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "0x1cd6b3ebce0"</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -715,9 +723,9 @@ In R, Everything that happens is a function call.</p>
 <span id="cb17-4"><a href="introduction-p01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb17-5"><a href="introduction-p01.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that both names are pointing to same memory address</span></span>
 <span id="cb17-6"><a href="introduction-p01.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571105669648</span></span>
+<span id="cb17-7"><a href="introduction-p01.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span>
 <span id="cb17-8"><a href="introduction-p01.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571105669648</span></span>
+<span id="cb17-9"><a href="introduction-p01.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span>
 <span id="cb17-10"><a href="introduction-p01.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb17-11"><a href="introduction-p01.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="introduction-p01.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the copy</span></span>
@@ -733,9 +741,9 @@ In R, Everything that happens is a function call.</p>
 <span id="cb17-22"><a href="introduction-p01.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 10</span></span>
 <span id="cb17-23"><a href="introduction-p01.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
 <span id="cb17-24"><a href="introduction-p01.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Original is still pointing to the same address containing original variable</span></span>
-<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571105669488</span></span>
+<span id="cb17-25"><a href="introduction-p01.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893552</span></span>
 <span id="cb17-26"><a href="introduction-p01.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
-<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571105669648</span></span></code></pre></div>
+<span id="cb17-27"><a href="introduction-p01.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981596893712</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -749,7 +757,7 @@ In R, Everything that happens is a function call.</p>
 <span id="cb18-5"><a href="introduction-p01.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Actual address</span></span>
 <span id="cb18-6"><a href="introduction-p01.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-7"><a href="introduction-p01.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Unlike the string.upper() below, list.append() need not to be assigned </span></span>
-<span id="cb18-8"><a href="introduction-p01.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571351972096</span></span>
+<span id="cb18-8"><a href="introduction-p01.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982090135808</span></span>
 <span id="cb18-9"><a href="introduction-p01.html#cb18-9" aria-hidden="true" tabindex="-1"></a>qq.append(<span class="dv">44</span>)</span>
 <span id="cb18-10"><a href="introduction-p01.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)                     <span class="co">#Original 'pp' is also pointing to modified list</span></span>
 <span id="cb18-11"><a href="introduction-p01.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">## [11, 22, 33, 44]</span></span>
@@ -757,36 +765,36 @@ In R, Everything that happens is a function call.</p>
 <span id="cb18-13"><a href="introduction-p01.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Object address has not changed from earlier</span></span>
 <span id="cb18-14"><a href="introduction-p01.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-15"><a href="introduction-p01.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Python Dictionaries (mutable) are also modified in place</span></span>
-<span id="cb18-16"><a href="introduction-p01.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571351972096</span></span>
-<span id="cb18-17"><a href="introduction-p01.html#cb18-17" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"key1"</span>: <span class="dv">11</span>, <span class="st">"key2"</span>: <span class="dv">22</span>, <span class="st">"key3"</span>: <span class="dv">33</span>}</span>
+<span id="cb18-16"><a href="introduction-p01.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982090135808</span></span>
+<span id="cb18-17"><a href="introduction-p01.html#cb18-17" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"c"</span>: <span class="dv">33</span>}</span>
 <span id="cb18-18"><a href="introduction-p01.html#cb18-18" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
-<span id="cb18-19"><a href="introduction-p01.html#cb18-19" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">"key4"</span>] <span class="op">=</span> <span class="dv">44</span>               <span class="co">#Modify 'qq' by adding another key</span></span>
+<span id="cb18-19"><a href="introduction-p01.html#cb18-19" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">"d"</span>] <span class="op">=</span> <span class="dv">44</span>                  <span class="co">#Modify 'qq' by adding another key</span></span>
 <span id="cb18-20"><a href="introduction-p01.html#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))      <span class="co">#both 'pp' &amp; 'qq' still point to same address</span></span>
 <span id="cb18-21"><a href="introduction-p01.html#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)                     <span class="co">#Original 'pp' is also pointing to modified dict</span></span>
 <span id="cb18-22"><a href="introduction-p01.html#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-23"><a href="introduction-p01.html#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co"># However, Python strings are immutable (like R)</span></span>
-<span id="cb18-24"><a href="introduction-p01.html#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co">## {'key1': 11, 'key2': 22, 'key3': 33, 'key4': 44}</span></span>
+<span id="cb18-24"><a href="introduction-p01.html#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co">## {'a': 11, 'b': 22, 'c': 33, 'd': 44}</span></span>
 <span id="cb18-25"><a href="introduction-p01.html#cb18-25" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="st">'abc'</span></span>
 <span id="cb18-26"><a href="introduction-p01.html#cb18-26" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp</span>
 <span id="cb18-27"><a href="introduction-p01.html#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))</span>
 <span id="cb18-28"><a href="introduction-p01.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
 <span id="cb18-29"><a href="introduction-p01.html#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="introduction-p01.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Unlike the list.append() above, string.upper() needs to be assigned </span></span>
-<span id="cb18-31"><a href="introduction-p01.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571106954928</span></span>
+<span id="cb18-31"><a href="introduction-p01.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
 <span id="cb18-32"><a href="introduction-p01.html#cb18-32" aria-hidden="true" tabindex="-1"></a>qq.upper()</span>
 <span id="cb18-33"><a href="introduction-p01.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="co">## 'ABC'</span></span>
 <span id="cb18-34"><a href="introduction-p01.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">==</span> <span class="bu">id</span>(qq))      <span class="co">#both 'pp' &amp; 'qq' still point to same address</span></span>
 <span id="cb18-35"><a href="introduction-p01.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)</span>
-<span id="cb18-36"><a href="introduction-p01.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571106954928</span></span>
+<span id="cb18-36"><a href="introduction-p01.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
 <span id="cb18-37"><a href="introduction-p01.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)                     <span class="co">#'qq' is still pointing to the same object</span></span>
 <span id="cb18-38"><a href="introduction-p01.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="co">## abc</span></span>
 <span id="cb18-39"><a href="introduction-p01.html#cb18-39" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> qq.upper()               <span class="co">#binding the new object created to 'qq'</span></span>
 <span id="cb18-40"><a href="introduction-p01.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(qq)                        <span class="co">#'qq' now points to a different object</span></span>
-<span id="cb18-41"><a href="introduction-p01.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571371672688</span></span>
+<span id="cb18-41"><a href="introduction-p01.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="co">## 1982126124592</span></span>
 <span id="cb18-42"><a href="introduction-p01.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(qq)</span>
 <span id="cb18-43"><a href="introduction-p01.html#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="co">## ABC</span></span>
 <span id="cb18-44"><a href="introduction-p01.html#cb18-44" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                        <span class="co">#Original 'pp' still points to the same address </span></span>
-<span id="cb18-45"><a href="introduction-p01.html#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="co">## 1571106954928</span></span>
+<span id="cb18-45"><a href="introduction-p01.html#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="co">## 1981598178992</span></span>
 <span id="cb18-46"><a href="introduction-p01.html#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)                     <span class="co">#with same value</span></span>
 <span id="cb18-47"><a href="introduction-p01.html#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-48"><a href="introduction-p01.html#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutability (shallow copy) can impact other objects unexpectedly</span></span>
@@ -865,16 +873,16 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># In R package::reticulate handles Python</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rstudio.github.io/reticulate/">"reticulate"</a></span><span class="op">)</span>
-  
-  <span class="co"># Provide the path to the specific Python binary.</span>
-  <span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_python</a></span><span class="op">(</span><span class="st">"C:\\Softwares\\Python\\Python310\\python.exe"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  
-  <span class="co"># PATH: C:\Softwares\Python\Python310\python.exe</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/Sys.which.html">Sys.which</a></span><span class="op">(</span><span class="st">"python"</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># In R package::reticulate handles Python</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rstudio.github.io/reticulate/">"reticulate"</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Provide the path to the specific Python binary.</span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_python</a></span><span class="op">(</span><span class="st">"C:\\Softwares\\Python\\Python310\\python.exe"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># PATH: C:\Softwares\Python\Python310\python.exe</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.which.html">Sys.which</a></span><span class="op">(</span><span class="st">"python"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -887,8 +895,8 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>             <span class="co"># Working Directory</span>
-<span class="co">## [1] "D:/Analytics/PYxR"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>             <span class="co"># Working Directory</span></span>
+<span><span class="co">## [1] "D:/Analytics/PYxR"</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -909,10 +917,12 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">R.version.string</span>, <span class="st">" "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>           <span class="co"># R Version</span>
-<span class="co">## [1] "4.2.1"</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"knitr"</span><span class="op">)</span>                           <span class="co"># Package Version: knitr</span>
-<span class="co">## [1] '1.39'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">R.version.string</span>, <span class="st">" "</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>           <span class="co"># R Version</span></span>
+<span><span class="co">## [1] "4.2.1"</span></span>
+<span></span>
+<span><span class="co"># The loaded packages and namespaces are searched before the libraries</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"knitr"</span><span class="op">)</span>                           <span class="co"># Package Version: knitr</span></span>
+<span><span class="co">## [1] '1.39'</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -972,13 +982,16 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># Install R Packages  </span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"knitr"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  
-  <span class="co"># Find whether a package is installed or not (slow)</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/sets.html">is.element</a></span><span class="op">(</span>el <span class="op">=</span> <span class="st">"knitr"</span>, set <span class="op">=</span> _<span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># Install R Packages  </span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"knitr"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Find whether a package is installed or not (slow)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html">is.element</a></span><span class="op">(</span>el <span class="op">=</span> <span class="st">"knitr"</span>, set <span class="op">=</span> <span class="va">_</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Version of installed package (not loaded)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="st">"knitr"</span>, <span class="st">"Version"</span><span class="op">]</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -1024,16 +1037,16 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># Attach an R Package</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
-  
-  <span class="co"># Attach multiple R Packages</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"reticulate"</span>, <span class="st">"knitr"</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">library</span>, character.only<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-  
-  <span class="co"># List all attached Packages</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/zpackages.html">.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># Attach an R Package</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Attach multiple R Packages</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"reticulate"</span>, <span class="st">"knitr"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">library</span>, character.only<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># List all attached Packages</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/zpackages.html">.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -1081,20 +1094,20 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># List of all attached packages and OS related information</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-  
-  <span class="co"># Base Packages</span>
-  <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"stats"</span>,<span class="st">"graphics"</span>,<span class="st">"grDevices"</span>,<span class="st">"datasets"</span>,<span class="st">"utils"</span>,<span class="st">"methods"</span>,<span class="st">"base"</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">basePkgs</span>, <span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  
-  <span class="co"># other attached packages</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">otherPkgs</span><span class="op">)</span>
-  
-  <span class="co"># loaded via a namespace (and not attached)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">loadedOnly</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># List of all attached packages and OS related information</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Base Packages</span></span>
+<span>  <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"stats"</span>,<span class="st">"graphics"</span>,<span class="st">"grDevices"</span>,<span class="st">"datasets"</span>,<span class="st">"utils"</span>,<span class="st">"methods"</span>,<span class="st">"base"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">basePkgs</span>, <span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># other attached packages</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">otherPkgs</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># loaded via a namespace (and not attached)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">loadedOnly</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -1107,8 +1120,8 @@ In R, Everything that happens is a function call.</p>
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">## [1] "aa" "bb" "r"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## [1] "aa" "bb" "r"</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -1158,7 +1171,7 @@ In R, Everything that happens is a function call.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-06-25.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1166,6 +1179,34 @@ In R, Everything that happens is a function call.</p>
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>
