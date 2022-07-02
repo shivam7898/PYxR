@@ -40,3 +40,4 @@ list-dict-p03
 basic
 nested
 compare
+with-multiple-datatypes
