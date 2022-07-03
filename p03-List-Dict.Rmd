@@ -1,10 +1,7 @@
 # R List & Python Dictionary {#list-dict-p03}
 
 ```{r 'setup', include=FALSE}
-################################################################################
 source("_common.R")
-if(FALSE) c("lobstr") |> 
-  lapply(library, character.only=TRUE)
 ```
 
 - R `list` :
