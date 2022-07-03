@@ -1,5 +1,25 @@
 # Links {#links .unnumbered}
 
+## Manuals
+
+Note: These are also mentioned in Preface.
+
+- [CRAN R Manuals](https://cran.r-project.org/doc/manuals/) or [CRAN Duplicate](https://cran.r-project.org/manuals.html) :
+  - [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)
+  - [R Installation and Administration](https://cran.r-project.org/doc/manuals/R-admin.html)
+  - [R Data Import/Export](https://cran.r-project.org/doc/manuals/R-data.html)
+  - [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html)
+  - [R Internals](https://cran.r-project.org/doc/manuals/R-ints.html)
+  - [R Language Definition](https://cran.r-project.org/doc/manuals/R-lang.html)
+  - [R FAQ](https://cran.r-project.org/doc/manuals/R-FAQ.html)
+
+- [Python](https://docs.python.org/3/index.html) :
+  - [Python Standard Library](https://docs.python.org/3/library/index.html)
+  - [Python Language Reference](https://docs.python.org/3/reference/index.html)
+  - [Python Tutorial](https://docs.python.org/3/tutorial/index.html)
+  - [Python HOWTO](https://docs.python.org/3/howto/index.html)
+
+## General
 
 - [custom colorization to the code chunks](https://f0nzie.github.io/matplotlib-with-rmarkdown/index.html)
   - Decorate the chunks based on Engine using knitr hooks
@@ -28,9 +48,6 @@
   - [STA 199: Intro to Data Science](https://www2.stat.duke.edu/courses/Spring21/sta199.003/)
   - [Data Visualisation - Andrewheiss](https://datavizm20.classes.andrewheiss.com/schedule/)
   - [MPA 612: Economy, Society, and Public Policy - Andrewheiss](https://econw19.classes.andrewheiss.com/schedule/)
-
-
-
 
 ## Books
 
