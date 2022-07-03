@@ -8,7 +8,7 @@ source("_common.R")
 
 - R has 6 basic data types (`logical`, `integer`, `double`, `character`, `complex`, and `raw`). These data types can be combined to form Data Structures (`vector`, `list`, `matrix`, `dataframe`, `factor`). 
   - Vectors are the simplest type of data structure in R. A `vector` is a sequence of data elements of the same basic type. 
-  - Members of a `vector` are called 'components'.
+  - Members of a `vector` are called 'elements'.
   - Atomic vectors are homogeneous i.e. each component has the same datatype. 
   - A vector type can be checked with the `typeof()` function.
   - `list` is a `vector` but not an 'atomic vector'.
@@ -74,26 +74,6 @@ length(aa)
 names(attributes(aa))
 names(aa)
 dimnames(aa) 
-```
-
-## R Lists
-
-- Lists have 'elements', each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
-  - `list` is a `vector` but not an 'atomic vector'.
-
-```{r 'R-List', decorate=TRUE}
-# Create List (letters is predefined vector of 26 elements)
-aa <- list(x = 4:6, y = letters[4:8])
-print(aa)
-
-# About
-str(aa)
-length(aa)              # Number of elements in the List
-lengths(aa)             # Number of components of each element of the List
-stopifnot(identical(lengths(aa), sapply(aa, length)))
-
-names(attributes(aa))   # Attributes
-names(aa)               # Names of elements
 ```
 
 ## R DataFrames

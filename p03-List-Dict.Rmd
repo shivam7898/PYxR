@@ -4,12 +4,69 @@
 source("_common.R")
 ```
 
-- R `list` :
+## R List
+
+- R `list` : [CRAN Lists](https://cran.r-project.org/doc/manuals/R-intro.html#Lists)
+  - An R `list` is an object consisting of an ordered collection of objects known as its 'components'. 
+    - Each component can be of any type of R object and of any length. It can even include `list`, `environment` etc.
+  - Components are always numbered. Components may also be named.
+  - The vector of `names` is in fact simply an attribute of the list.
+  - $[[ \ldots ]]$ vs. $[ \ldots ]$
+    - `[[ ]]` is the operator used to select a single element, whereas `[ ]` is a general subscripting operator. 
+    - Thus `[[ ]]` provides the first object in the list, and if it is a named list the `name` is not included. 
+    - However, `[ ]` provides a sublist of the list consisting of the first entry only. If it is a named list, the `names` are transferred to the sublist.
+  - `list` is a `vector` but not an 'atomic vector'
+
+```{r 'R-List-1', decorate=TRUE}
+aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+print(aa)                                         #Print
+
+str(aa)                                           #Structure
+```
+
+```{r 'R-List-2'}
+aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+length(aa)                                        #Count components
+
+lengths(aa)                                       #Count elements of components
+```
+
+```{r 'R-List-3'}
+aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+names(attributes(aa))                             #Attributes
+
+names(aa)                                         #Names of components
+
+sapply(aa, typeof)                                #Type of components
+```
+
+```{r 'R-List-4'}
+aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+
+bb <- aa[[1]]                                     #[[ ]] First Object
+print(bb)
+str(bb)
+
+dd <- aa[1]                                       #[ ] Sublist with First Entry
+print(dd)
+str(dd)
+```
+
+```{r 'R-List-5'}
+aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+
+# 'list' is a 'vector' but not an 'atomic vector'
+is.list(aa)
+is.vector(aa)
+is.atomic(aa)
+```
+
+## Python Dictionary
 
 - Python `dict` (Dictionary) :
   - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
 
-> Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).[Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)  
+> Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering). [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)  
 
 - `dict` is ordered
   - Essentially it means 'insertion ordered' which is different from ordered like `OrderedDict`
