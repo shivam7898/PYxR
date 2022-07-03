@@ -14,7 +14,7 @@ csl: chicago-fullnote-bibliography.csl
 
 # Welcome {.unnumbered}
 
-This is a book to compare and contrast Python and R using minimum working examples (MWE).
+This is a book to compare and contrast Python and R using minimum working examples (MWE). 
 
 ## License {.unnumbered}
 

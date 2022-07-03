@@ -1,5 +1,7 @@
 tab:P01T01
+guidelines
 prerequisites
+environment
 introduction-p01
 basics
 braces-indentation
