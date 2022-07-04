@@ -68,7 +68,7 @@
 <li>R has 6 basic data types (<code>logical</code>, <code>integer</code>, <code>double</code>, <code>character</code>, <code>complex</code>, and <code>raw</code>). These data types can be combined to form Data Structures (<code>vector</code>, <code>list</code>, <code>matrix</code>, <code>dataframe</code>, <code>factor</code>).
 <ul>
 <li>Vectors are the simplest type of data structure in R. A <code>vector</code> is a sequence of data elements of the same basic type.</li>
-<li>Members of a <code>vector</code> are called ‘components’.</li>
+<li>Members of a <code>vector</code> are called ‘elements’.</li>
 <li>Atomic vectors are homogeneous i.e. each component has the same datatype.</li>
 <li>A vector type can be checked with the <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> function.</li>
 <li>
@@ -199,54 +199,9 @@
 <br>
 </div>
 </div>
-<div id="r-lists" class="section level2" number="2.4">
+<div id="r-dataframes" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.4</span> R Lists<a class="anchor" aria-label="anchor" href="#r-lists"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li>Lists have ‘elements’, each of which can contain any type of R object, i.e. the elements of a list do not have to be of the same type.
-<ul>
-<li>
-<code>list</code> is a <code>vector</code> but not an ‘atomic vector’.</li>
-</ul>
-</li>
-</ul>
-<div class="decocode">
-<div style="background-color:inherit">
-<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create List (letters is predefined vector of 26 elements)</span></span>
-<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
-<span><span class="co">## $x</span></span>
-<span><span class="co">## [1] 4 5 6</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## $y</span></span>
-<span><span class="co">## [1] "d" "e" "f" "g" "h"</span></span>
-<span></span>
-<span><span class="co"># About</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
-<span><span class="co">## List of 2</span></span>
-<span><span class="co">##  $ x: int [1:3] 4 5 6</span></span>
-<span><span class="co">##  $ y: chr [1:5] "d" "e" "f" "g" ...</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>              <span class="co"># Number of elements in the List</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>             <span class="co"># Number of components of each element of the List</span></span>
-<span><span class="co">## x y </span></span>
-<span><span class="co">## 3 5</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">aa</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>   <span class="co"># Attributes</span></span>
-<span><span class="co">## [1] "names"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>               <span class="co"># Names of elements</span></span>
-<span><span class="co">## [1] "x" "y"</span></span></code></pre></div>
-</div>
-<br>
-</div>
-</div>
-<div id="r-dataframes" class="section level2" number="2.5">
-<h2>
-<span class="header-section-number">2.5</span> R DataFrames<a class="anchor" aria-label="anchor" href="#r-dataframes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> R DataFrames<a class="anchor" aria-label="anchor" href="#r-dataframes"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Data frame is a list of <code>vectors</code>, <code>factors</code>, and/or <code>matrices</code> all having the same length (number of rows in the case of matrices).
@@ -258,7 +213,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create DataFrame (letters is predefined vector of 26 elements)</span></span>
 <span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
@@ -292,9 +247,9 @@
 <br>
 </div>
 </div>
-<div id="r-factors" class="section level2" number="2.6">
+<div id="r-factors" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.6</span> R Factors<a class="anchor" aria-label="anchor" href="#r-factors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> R Factors<a class="anchor" aria-label="anchor" href="#r-factors"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -307,7 +262,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create Factors Unordered</span></span>
 <span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># Create Factors Ordered</span></span>
@@ -336,9 +291,9 @@
 <br>
 </div>
 </div>
-<div id="membership-functions" class="section level2" number="2.7">
+<div id="membership-functions" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.7</span> Membership Functions<a class="anchor" aria-label="anchor" href="#membership-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Membership Functions<a class="anchor" aria-label="anchor" href="#membership-functions"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -362,7 +317,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create Objects</span></span>
 <span><span class="va">aa_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="va">pi</span>, <span class="fl">4</span><span class="op">)</span>, nm <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">bb_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -391,9 +346,9 @@
 <br>
 </div>
 </div>
-<div id="python-types" class="section level2" number="2.8">
+<div id="python-types" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.8</span> Python Types<a class="anchor" aria-label="anchor" href="#python-types"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Python Types<a class="anchor" aria-label="anchor" href="#python-types"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p><a href="https://docs.python.org/3/library/stdtypes.html#">(doc) Built-in Types</a></p></li>
@@ -449,14 +404,14 @@
 <li><p>Mapping Types: <code>dict</code></p></li>
 </ul>
 </div>
-<div id="similarity-r-python" class="section level2" number="2.9">
+<div id="similarity-r-python" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.9</span> Similarity (R &amp; Python)<a class="anchor" aria-label="anchor" href="#similarity-r-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Similarity (R &amp; Python)<a class="anchor" aria-label="anchor" href="#similarity-r-python"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># R results are same as Python</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fl">0</span>  <span class="op">==</span> <span class="fl">1</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">2</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span> <span class="op">==</span> <span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">2</span> <span class="op">)</span></span>
@@ -481,31 +436,31 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="structures-p02.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python results are same as R</span></span>
-<span id="cb38-2"><a href="structures-p02.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">0</span>  <span class="op">==</span> <span class="dv">1</span><span class="op">//</span><span class="dv">2</span> )</span>
-<span id="cb38-3"><a href="structures-p02.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">==</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span> )</span>
-<span id="cb38-4"><a href="structures-p02.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">==</span> <span class="dv">1</span> <span class="op">//</span> (<span class="op">-</span><span class="dv">2</span>) )</span>
-<span id="cb38-5"><a href="structures-p02.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">0</span>  <span class="op">==</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">//</span> (<span class="op">-</span><span class="dv">2</span>) )</span>
-<span id="cb38-6"><a href="structures-p02.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="structures-p02.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1^y and y^0 are 1, ALWAYS in both R and Python</span></span>
-<span id="cb38-8"><a href="structures-p02.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">1</span>  <span class="op">==</span> <span class="dv">0</span> <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
-<span id="cb38-9"><a href="structures-p02.html#cb38-9" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span> <span class="op">==</span> np.nan <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
-<span id="cb38-10"><a href="structures-p02.html#cb38-10" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span>  <span class="op">==</span> <span class="dv">1</span> <span class="op">**</span> np.nan)</span>
-<span id="cb38-11"><a href="structures-p02.html#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="structures-p02.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(np.nan <span class="op">*</span> <span class="dv">0</span>))</span>
-<span id="cb38-13"><a href="structures-p02.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(math.inf <span class="op">*</span> <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="structures-p02.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python results are same as R</span></span>
+<span id="cb37-2"><a href="structures-p02.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">0</span>  <span class="op">==</span> <span class="dv">1</span><span class="op">//</span><span class="dv">2</span> )</span>
+<span id="cb37-3"><a href="structures-p02.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">==</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span> )</span>
+<span id="cb37-4"><a href="structures-p02.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">==</span> <span class="dv">1</span> <span class="op">//</span> (<span class="op">-</span><span class="dv">2</span>) )</span>
+<span id="cb37-5"><a href="structures-p02.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">0</span>  <span class="op">==</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">//</span> (<span class="op">-</span><span class="dv">2</span>) )</span>
+<span id="cb37-6"><a href="structures-p02.html#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="structures-p02.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1^y and y^0 are 1, ALWAYS in both R and Python</span></span>
+<span id="cb37-8"><a href="structures-p02.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">1</span>  <span class="op">==</span> <span class="dv">0</span> <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
+<span id="cb37-9"><a href="structures-p02.html#cb37-9" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span> <span class="op">==</span> np.nan <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
+<span id="cb37-10"><a href="structures-p02.html#cb37-10" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span>  <span class="op">==</span> <span class="dv">1</span> <span class="op">**</span> np.nan)</span>
+<span id="cb37-11"><a href="structures-p02.html#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="structures-p02.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(np.nan <span class="op">*</span> <span class="dv">0</span>))</span>
+<span id="cb37-13"><a href="structures-p02.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(math.inf <span class="op">*</span> <span class="dv">0</span>))</span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="differences-r-python" class="section level2" number="2.10">
+<div id="differences-r-python" class="section level2" number="2.9">
 <h2>
-<span class="header-section-number">2.10</span> Differences (R &amp; Python)<a class="anchor" aria-label="anchor" href="#differences-r-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9</span> Differences (R &amp; Python)<a class="anchor" aria-label="anchor" href="#differences-r-python"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># R allows division by zero whereas Python throws ZeroDivisionError</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fl">0L</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">0L</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="fl">0L</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">0L</span><span class="op">)</span><span class="op">)</span>  <span class="co">#NA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="fl">0</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">0</span> <span class="op">)</span><span class="op">)</span>                       <span class="co">#NaN</span></span>
@@ -516,7 +471,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># R index starts from 1, whereas Python index starts from 0</span></span>
 <span><span class="co"># R range includes the maximum value, whereas Python excludes it</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq.int</a></span><span class="op">(</span>length.out <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -540,25 +495,25 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="structures-p02.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python index starts from 0, whereas R index starts from 1</span></span>
-<span id="cb41-2"><a href="structures-p02.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Python range excludes the maximum value, whereas R includes it</span></span>
-<span id="cb41-3"><a href="structures-p02.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>))</span>
-<span id="cb41-4"><a href="structures-p02.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">## [0, 1, 2, 3, 4]</span></span>
-<span id="cb41-5"><a href="structures-p02.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
-<span id="cb41-6"><a href="structures-p02.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">## [1, 2, 3, 4, 5]</span></span>
-<span id="cb41-7"><a href="structures-p02.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>))</span>
-<span id="cb41-8"><a href="structures-p02.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">## [10, 8, 6, 4, 2]</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="structures-p02.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python index starts from 0, whereas R index starts from 1</span></span>
+<span id="cb40-2"><a href="structures-p02.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Python range excludes the maximum value, whereas R includes it</span></span>
+<span id="cb40-3"><a href="structures-p02.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>))</span>
+<span id="cb40-4"><a href="structures-p02.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">## [0, 1, 2, 3, 4]</span></span>
+<span id="cb40-5"><a href="structures-p02.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
+<span id="cb40-6"><a href="structures-p02.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">## [1, 2, 3, 4, 5]</span></span>
+<span id="cb40-7"><a href="structures-p02.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb40-8"><a href="structures-p02.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">## [10, 8, 6, 4, 2]</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="python-collections" class="section level2" number="2.11">
+<div id="python-collections" class="section level2" number="2.10">
 <h2>
-<span class="header-section-number">2.11</span> Python Collections<a class="anchor" aria-label="anchor" href="#python-collections"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10</span> Python Collections<a class="anchor" aria-label="anchor" href="#python-collections"><i class="fas fa-link"></i></a>
 </h2>
-<div id="list-tuple-set-dictionary" class="section level3" number="2.11.1">
+<div id="list-tuple-set-dictionary" class="section level3" number="2.10.1">
 <h3>
-<span class="header-section-number">2.11.1</span> List, Tuple, Set, Dictionary<a class="anchor" aria-label="anchor" href="#list-tuple-set-dictionary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10.1</span> List, Tuple, Set, Dictionary<a class="anchor" aria-label="anchor" href="#list-tuple-set-dictionary"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Python Collections:
@@ -589,107 +544,107 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="structures-p02.html#cb42-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">11</span>                                           <span class="co"># int</span></span>
-<span id="cb42-2"><a href="structures-p02.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">   |     ...     | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-3"><a href="structures-p02.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'int'&gt;   |     ...     | pp = 11</span></span>
-<span id="cb42-4"><a href="structures-p02.html#cb42-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">11</span>,                                          <span class="co"># Implicit Tuple</span></span>
-<span id="cb42-5"><a href="structures-p02.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-6"><a href="structures-p02.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 1 | pp = (11,)</span></span>
-<span id="cb42-7"><a href="structures-p02.html#cb42-7" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> (<span class="dv">11</span>, )                                       <span class="co"># Length 1 Tuple needs comma</span></span>
-<span id="cb42-8"><a href="structures-p02.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-9"><a href="structures-p02.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 1 | pp = (11,)</span></span>
-<span id="cb42-10"><a href="structures-p02.html#cb42-10" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> (<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>)                                 <span class="co"># Tuple</span></span>
-<span id="cb42-11"><a href="structures-p02.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-12"><a href="structures-p02.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 3 | pp = (11, 22, 33)</span></span>
-<span id="cb42-13"><a href="structures-p02.html#cb42-13" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>]                                 <span class="co"># List</span></span>
-<span id="cb42-14"><a href="structures-p02.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">  | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-15"><a href="structures-p02.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'list'&gt;  | len(pp) = 3 | pp = [11, 22, 33]</span></span>
-<span id="cb42-16"><a href="structures-p02.html#cb42-16" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>}                                 <span class="co"># Set (unordered)</span></span>
-<span id="cb42-17"><a href="structures-p02.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">   | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-18"><a href="structures-p02.html#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'set'&gt;   | len(pp) = 3 | pp = {33, 11, 22}</span></span>
-<span id="cb42-19"><a href="structures-p02.html#cb42-19" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"c"</span>: <span class="dv">33</span>}                  <span class="co"># Dictionary</span></span>
-<span id="cb42-20"><a href="structures-p02.html#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">  | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-21"><a href="structures-p02.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt;  | len(pp) = 3 | pp = {'a': 11, 'b': 22, 'c': 33}</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="structures-p02.html#cb41-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">11</span>                                           <span class="co"># int</span></span>
+<span id="cb41-2"><a href="structures-p02.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">   |     ...     | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-3"><a href="structures-p02.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'int'&gt;   |     ...     | pp = 11</span></span>
+<span id="cb41-4"><a href="structures-p02.html#cb41-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> <span class="dv">11</span>,                                          <span class="co"># Implicit Tuple</span></span>
+<span id="cb41-5"><a href="structures-p02.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-6"><a href="structures-p02.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 1 | pp = (11,)</span></span>
+<span id="cb41-7"><a href="structures-p02.html#cb41-7" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> (<span class="dv">11</span>, )                                       <span class="co"># Length 1 Tuple needs comma</span></span>
+<span id="cb41-8"><a href="structures-p02.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-9"><a href="structures-p02.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 1 | pp = (11,)</span></span>
+<span id="cb41-10"><a href="structures-p02.html#cb41-10" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> (<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>)                                 <span class="co"># Tuple</span></span>
+<span id="cb41-11"><a href="structures-p02.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-12"><a href="structures-p02.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'tuple'&gt; | len(pp) = 3 | pp = (11, 22, 33)</span></span>
+<span id="cb41-13"><a href="structures-p02.html#cb41-13" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>]                                 <span class="co"># List</span></span>
+<span id="cb41-14"><a href="structures-p02.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">  | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-15"><a href="structures-p02.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'list'&gt;  | len(pp) = 3 | pp = [11, 22, 33]</span></span>
+<span id="cb41-16"><a href="structures-p02.html#cb41-16" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>}                                 <span class="co"># Set (unordered)</span></span>
+<span id="cb41-17"><a href="structures-p02.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">   | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-18"><a href="structures-p02.html#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'set'&gt;   | len(pp) = 3 | pp = {33, 11, 22}</span></span>
+<span id="cb41-19"><a href="structures-p02.html#cb41-19" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"c"</span>: <span class="dv">33</span>}                  <span class="co"># Dictionary</span></span>
+<span id="cb41-20"><a href="structures-p02.html#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss">  | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb41-21"><a href="structures-p02.html#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt;  | len(pp) = 3 | pp = {'a': 11, 'b': 22, 'c': 33}</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="dictionary" class="section level3" number="2.11.2">
+<div id="dictionary" class="section level3" number="2.10.2">
 <h3>
-<span class="header-section-number">2.11.2</span> Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10.2</span> Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"><i class="fas fa-link"></i></a>
 </h3>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="structures-p02.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten</span></span>
-<span id="cb43-2"><a href="structures-p02.html#cb43-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {</span>
-<span id="cb43-3"><a href="structures-p02.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
-<span id="cb43-4"><a href="structures-p02.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"model"</span>: <span class="st">"Mustang"</span>,</span>
-<span id="cb43-5"><a href="structures-p02.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">1964</span>,</span>
-<span id="cb43-6"><a href="structures-p02.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">2000</span>,</span>
-<span id="cb43-7"><a href="structures-p02.html#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"electric"</span>: <span class="va">False</span>,</span>
-<span id="cb43-8"><a href="structures-p02.html#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"colors"</span>: [<span class="st">"red"</span>, <span class="st">"white"</span>]</span>
-<span id="cb43-9"><a href="structures-p02.html#cb43-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb43-10"><a href="structures-p02.html#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="structures-p02.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb43-12"><a href="structures-p02.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 5 | </span></span>
-<span id="cb43-13"><a href="structures-p02.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">## pp = {'brand': 'Ford', 'model': 'Mustang', 'year': 2000, 'electric': False, 'colors': ['red', 'white']}</span></span>
-<span id="cb43-14"><a href="structures-p02.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="st">"brand"</span>])                                <span class="co">#Access Specific Item</span></span>
-<span id="cb43-15"><a href="structures-p02.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Ford</span></span>
-<span id="cb43-16"><a href="structures-p02.html#cb43-16" aria-hidden="true" tabindex="-1"></a>pp.keys()                                         <span class="co">#ALL Keys</span></span>
-<span id="cb43-17"><a href="structures-p02.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_keys(['brand', 'model', 'year', 'electric', 'colors'])</span></span>
-<span id="cb43-18"><a href="structures-p02.html#cb43-18" aria-hidden="true" tabindex="-1"></a>pp.values()                                       <span class="co">#ALL Values </span></span>
-<span id="cb43-19"><a href="structures-p02.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_values(['Ford', 'Mustang', 2000, False, ['red', 'white']])</span></span>
-<span id="cb43-20"><a href="structures-p02.html#cb43-20" aria-hidden="true" tabindex="-1"></a>pp.items()                                        <span class="co">#ALL Items </span></span>
-<span id="cb43-21"><a href="structures-p02.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 2000), ('electric', False), ('colors', ['red', 'white'])])</span></span>
-<span id="cb43-22"><a href="structures-p02.html#cb43-22" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="st">'brand'</span>                                      <span class="co">#Find x in Keys</span></span>
-<span id="cb43-23"><a href="structures-p02.html#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(qq <span class="kw">in</span> pp.keys()):</span>
-<span id="cb43-24"><a href="structures-p02.html#cb43-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Present in Keys."</span>)</span>
-<span id="cb43-25"><a href="structures-p02.html#cb43-25" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb43-26"><a href="structures-p02.html#cb43-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Absent in Keys. Check Values."</span>)</span>
-<span id="cb43-27"><a href="structures-p02.html#cb43-27" aria-hidden="true" tabindex="-1"></a><span class="co">## brand is Present in Keys.</span></span>
-<span id="cb43-28"><a href="structures-p02.html#cb43-28" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">list</span>(pp)                                     <span class="co">#Dictionary To List (Keys)</span></span>
-<span id="cb43-29"><a href="structures-p02.html#cb43-29" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> <span class="bu">list</span>(pp.values())                            <span class="co">#Dictionary To List (Values)</span></span>
-<span id="cb43-30"><a href="structures-p02.html#cb43-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb43-31"><a href="structures-p02.html#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="co">## type(qq) = &lt;class 'list'&gt; | len(qq) = 5 | </span></span>
-<span id="cb43-32"><a href="structures-p02.html#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="co">## qq = ['brand', 'model', 'year', 'electric', 'colors']</span></span>
-<span id="cb43-33"><a href="structures-p02.html#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>ss <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb43-34"><a href="structures-p02.html#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="co">## type(ss) = &lt;class 'list'&gt; | len(ss) = 5 | </span></span>
-<span id="cb43-35"><a href="structures-p02.html#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="co">## ss = ['Ford', 'Mustang', 2000, False, ['red', 'white']]</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="structures-p02.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten</span></span>
+<span id="cb42-2"><a href="structures-p02.html#cb42-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {</span>
+<span id="cb42-3"><a href="structures-p02.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
+<span id="cb42-4"><a href="structures-p02.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"model"</span>: <span class="st">"Mustang"</span>,</span>
+<span id="cb42-5"><a href="structures-p02.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">1964</span>,</span>
+<span id="cb42-6"><a href="structures-p02.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">2000</span>,</span>
+<span id="cb42-7"><a href="structures-p02.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"electric"</span>: <span class="va">False</span>,</span>
+<span id="cb42-8"><a href="structures-p02.html#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"colors"</span>: [<span class="st">"red"</span>, <span class="st">"white"</span>]</span>
+<span id="cb42-9"><a href="structures-p02.html#cb42-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-10"><a href="structures-p02.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="structures-p02.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
+<span id="cb42-12"><a href="structures-p02.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 5 | </span></span>
+<span id="cb42-13"><a href="structures-p02.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">## pp = {'brand': 'Ford', 'model': 'Mustang', 'year': 2000, 'electric': False, 'colors': ['red', 'white']}</span></span>
+<span id="cb42-14"><a href="structures-p02.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="st">"brand"</span>])                                <span class="co">#Access Specific Item</span></span>
+<span id="cb42-15"><a href="structures-p02.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Ford</span></span>
+<span id="cb42-16"><a href="structures-p02.html#cb42-16" aria-hidden="true" tabindex="-1"></a>pp.keys()                                         <span class="co">#ALL Keys</span></span>
+<span id="cb42-17"><a href="structures-p02.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_keys(['brand', 'model', 'year', 'electric', 'colors'])</span></span>
+<span id="cb42-18"><a href="structures-p02.html#cb42-18" aria-hidden="true" tabindex="-1"></a>pp.values()                                       <span class="co">#ALL Values </span></span>
+<span id="cb42-19"><a href="structures-p02.html#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_values(['Ford', 'Mustang', 2000, False, ['red', 'white']])</span></span>
+<span id="cb42-20"><a href="structures-p02.html#cb42-20" aria-hidden="true" tabindex="-1"></a>pp.items()                                        <span class="co">#ALL Items </span></span>
+<span id="cb42-21"><a href="structures-p02.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 2000), ('electric', False), ('colors', ['red', 'white'])])</span></span>
+<span id="cb42-22"><a href="structures-p02.html#cb42-22" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="st">'brand'</span>                                      <span class="co">#Find x in Keys</span></span>
+<span id="cb42-23"><a href="structures-p02.html#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(qq <span class="kw">in</span> pp.keys()):</span>
+<span id="cb42-24"><a href="structures-p02.html#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Present in Keys."</span>)</span>
+<span id="cb42-25"><a href="structures-p02.html#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb42-26"><a href="structures-p02.html#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Absent in Keys. Check Values."</span>)</span>
+<span id="cb42-27"><a href="structures-p02.html#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="co">## brand is Present in Keys.</span></span>
+<span id="cb42-28"><a href="structures-p02.html#cb42-28" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">list</span>(pp)                                     <span class="co">#Dictionary To List (Keys)</span></span>
+<span id="cb42-29"><a href="structures-p02.html#cb42-29" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> <span class="bu">list</span>(pp.values())                            <span class="co">#Dictionary To List (Values)</span></span>
+<span id="cb42-30"><a href="structures-p02.html#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
+<span id="cb42-31"><a href="structures-p02.html#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="co">## type(qq) = &lt;class 'list'&gt; | len(qq) = 5 | </span></span>
+<span id="cb42-32"><a href="structures-p02.html#cb42-32" aria-hidden="true" tabindex="-1"></a><span class="co">## qq = ['brand', 'model', 'year', 'electric', 'colors']</span></span>
+<span id="cb42-33"><a href="structures-p02.html#cb42-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>ss <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
+<span id="cb42-34"><a href="structures-p02.html#cb42-34" aria-hidden="true" tabindex="-1"></a><span class="co">## type(ss) = &lt;class 'list'&gt; | len(ss) = 5 | </span></span>
+<span id="cb42-35"><a href="structures-p02.html#cb42-35" aria-hidden="true" tabindex="-1"></a><span class="co">## ss = ['Ford', 'Mustang', 2000, False, ['red', 'white']]</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
 </div>
-<div id="numpy-array" class="section level2" number="2.12">
+<div id="numpy-array" class="section level2" number="2.11">
 <h2>
-<span class="header-section-number">2.12</span> NumPy Array<a class="anchor" aria-label="anchor" href="#numpy-array"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.11</span> NumPy Array<a class="anchor" aria-label="anchor" href="#numpy-array"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="structures-p02.html#cb44-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb44-2"><a href="structures-p02.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pp))</span>
-<span id="cb44-3"><a href="structures-p02.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'numpy.ndarray'&gt;</span></span>
-<span id="cb44-4"><a href="structures-p02.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
-<span id="cb44-5"><a href="structures-p02.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">## [[ 0  1  2  3]</span></span>
-<span id="cb44-6"><a href="structures-p02.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 4  5  6  7]</span></span>
-<span id="cb44-7"><a href="structures-p02.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 8  9 10 11]]</span></span>
-<span id="cb44-8"><a href="structures-p02.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.array_equal(pp[<span class="dv">0</span>, :], pp[<span class="dv">0</span>, ]))         <span class="co">#Verify same shape &amp; values</span></span>
-<span id="cb44-9"><a href="structures-p02.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="dv">0</span>, ])                                    <span class="co">#Subset First Row</span></span>
-<span id="cb44-10"><a href="structures-p02.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">## [0 1 2 3]</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="structures-p02.html#cb43-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb43-2"><a href="structures-p02.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pp))</span>
+<span id="cb43-3"><a href="structures-p02.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb43-4"><a href="structures-p02.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb43-5"><a href="structures-p02.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">## [[ 0  1  2  3]</span></span>
+<span id="cb43-6"><a href="structures-p02.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 4  5  6  7]</span></span>
+<span id="cb43-7"><a href="structures-p02.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 8  9 10 11]]</span></span>
+<span id="cb43-8"><a href="structures-p02.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.array_equal(pp[<span class="dv">0</span>, :], pp[<span class="dv">0</span>, ]))         <span class="co">#Verify same shape &amp; values</span></span>
+<span id="cb43-9"><a href="structures-p02.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="dv">0</span>, ])                                    <span class="co">#Subset First Row</span></span>
+<span id="cb43-10"><a href="structures-p02.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">## [0 1 2 3]</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="pandas-dataframe" class="section level2" number="2.13">
+<div id="pandas-dataframe" class="section level2" number="2.12">
 <h2>
-<span class="header-section-number">2.13</span> Pandas DataFrame<a class="anchor" aria-label="anchor" href="#pandas-dataframe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.12</span> Pandas DataFrame<a class="anchor" aria-label="anchor" href="#pandas-dataframe"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="structures-p02.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="structures-p02.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -706,21 +661,20 @@
 <li><a class="nav-link" href="#r-atomic-vectors-or-data-types"><span class="header-section-number">2.1</span> R Atomic Vectors or Data Types</a></li>
 <li><a class="nav-link" href="#examination-of-r-data-types"><span class="header-section-number">2.2</span> Examination of R Data Types</a></li>
 <li><a class="nav-link" href="#r-matrices-and-arrays"><span class="header-section-number">2.3</span> R Matrices and Arrays</a></li>
-<li><a class="nav-link" href="#r-lists"><span class="header-section-number">2.4</span> R Lists</a></li>
-<li><a class="nav-link" href="#r-dataframes"><span class="header-section-number">2.5</span> R DataFrames</a></li>
-<li><a class="nav-link" href="#r-factors"><span class="header-section-number">2.6</span> R Factors</a></li>
-<li><a class="nav-link" href="#membership-functions"><span class="header-section-number">2.7</span> Membership Functions</a></li>
-<li><a class="nav-link" href="#python-types"><span class="header-section-number">2.8</span> Python Types</a></li>
-<li><a class="nav-link" href="#similarity-r-python"><span class="header-section-number">2.9</span> Similarity (R &amp; Python)</a></li>
-<li><a class="nav-link" href="#differences-r-python"><span class="header-section-number">2.10</span> Differences (R &amp; Python)</a></li>
+<li><a class="nav-link" href="#r-dataframes"><span class="header-section-number">2.4</span> R DataFrames</a></li>
+<li><a class="nav-link" href="#r-factors"><span class="header-section-number">2.5</span> R Factors</a></li>
+<li><a class="nav-link" href="#membership-functions"><span class="header-section-number">2.6</span> Membership Functions</a></li>
+<li><a class="nav-link" href="#python-types"><span class="header-section-number">2.7</span> Python Types</a></li>
+<li><a class="nav-link" href="#similarity-r-python"><span class="header-section-number">2.8</span> Similarity (R &amp; Python)</a></li>
+<li><a class="nav-link" href="#differences-r-python"><span class="header-section-number">2.9</span> Differences (R &amp; Python)</a></li>
 <li>
-<a class="nav-link" href="#python-collections"><span class="header-section-number">2.11</span> Python Collections</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#list-tuple-set-dictionary"><span class="header-section-number">2.11.1</span> List, Tuple, Set, Dictionary</a></li>
-<li><a class="nav-link" href="#dictionary"><span class="header-section-number">2.11.2</span> Dictionary</a></li>
+<a class="nav-link" href="#python-collections"><span class="header-section-number">2.10</span> Python Collections</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#list-tuple-set-dictionary"><span class="header-section-number">2.10.1</span> List, Tuple, Set, Dictionary</a></li>
+<li><a class="nav-link" href="#dictionary"><span class="header-section-number">2.10.2</span> Dictionary</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#numpy-array"><span class="header-section-number">2.12</span> NumPy Array</a></li>
-<li><a class="nav-link" href="#pandas-dataframe"><span class="header-section-number">2.13</span> Pandas DataFrame</a></li>
+<li><a class="nav-link" href="#numpy-array"><span class="header-section-number">2.11</span> NumPy Array</a></li>
+<li><a class="nav-link" href="#pandas-dataframe"><span class="header-section-number">2.12</span> Pandas DataFrame</a></li>
 </ul>
 
       <div class="book-extra">
@@ -738,7 +692,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-03.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

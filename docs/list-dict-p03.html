@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 R List &amp; Python Dictionary | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="R list : Python dict (Dictionary) : dict : Literal {}, Ordered, Mutable, No Duplicates, Refer  Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of...">
+<meta name="description" content="3.1 R List R list : CRAN Lists An R list is an object consisting of an ordered collection of objects known as its ‘components’. Each component can be of any type of R object and of any length. It...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 3 R List &amp; Python Dictionary | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/list-dict-p03.html">
-<meta property="og:description" content="R list : Python dict (Dictionary) : dict : Literal {}, Ordered, Mutable, No Duplicates, Refer  Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of...">
+<meta property="og:description" content="3.1 R List R list : CRAN Lists An R list is an object consisting of an ordered collection of objects known as its ‘components’. Each component can be of any type of R object and of any length. It...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 R List &amp; Python Dictionary | PYxR">
-<meta name="twitter:description" content="R list : Python dict (Dictionary) : dict : Literal {}, Ordered, Mutable, No Duplicates, Refer  Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of...">
+<meta name="twitter:description" content="3.1 R List R list : CRAN Lists An R list is an object consisting of an ordered collection of objects known as its ‘components’. Each component can be of any type of R object and of any length. It...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -60,24 +60,113 @@
 <h1>
 <span class="header-section-number">3</span> R List &amp; Python Dictionary<a class="anchor" aria-label="anchor" href="#list-dict-p03"><i class="fas fa-link"></i></a>
 </h1>
+<div id="r-list" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> R List<a class="anchor" aria-label="anchor" href="#r-list"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
-<li><p>R <code>list</code> :</p></li>
-<li>
-<p>Python <code>dict</code> (Dictionary) :</p>
+<li>R <code>list</code> : <a href="https://cran.r-project.org/doc/manuals/R-intro.html#Lists">CRAN Lists</a>
 <ul>
-<li>
-<code>dict</code> : Literal <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, Ordered, Mutable, No Duplicates, <a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">Refer</a>
+<li>An R <code>list</code> is an object consisting of an ordered collection of objects known as its ‘components’.
+<ul>
+<li>Each component can be of any type of R object and of any length. It can even include <code>list</code>, <code>environment</code> etc.</li>
+</ul>
 </li>
+<li>Components are always numbered. Components may also be named.</li>
+<li>The vector of <code>names</code> is in fact simply an attribute of the list.</li>
+<li>
+<span class="math inline">\([[ \ldots ]]\)</span> vs. <span class="math inline">\([ \ldots ]\)</span>
+<ul>
+<li>
+<code>[[ ]]</code> is the operator used to select a single element, whereas <code>[ ]</code> is a general subscripting operator.</li>
+<li>Thus <code>[[ ]]</code> provides the first object in the list, and if it is a named list the <code>name</code> is not included.</li>
+<li>However, <code>[ ]</code> provides a sublist of the list consisting of the first entry only. If it is a named list, the <code>names</code> are transferred to the sublist.</li>
+</ul>
+</li>
+<li>
+<code>list</code> is a <code>vector</code> but not an ‘atomic vector’</li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).<a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">Refer</a></p>
-</blockquote>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>                                       <span class="co">#Empty List</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## list()</span></span>
+<span></span>
+<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>   <span class="co">#Simple List</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                         <span class="co">#Print</span></span>
+<span><span class="co">## $x</span></span>
+<span><span class="co">## [1] 11 12</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $y</span></span>
+<span><span class="co">## [1] "a" "b" "c"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                           <span class="co">#Structure</span></span>
+<span><span class="co">## List of 2</span></span>
+<span><span class="co">##  $ x: num [1:2] 11 12</span></span>
+<span><span class="co">##  $ y: chr [1:3] "a" "b" "c"</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>   <span class="co">#Simple List</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                        <span class="co">#Count components</span></span>
+<span><span class="co">## [1] 2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                       <span class="co">#Count elements of components</span></span>
+<span><span class="co">## x y </span></span>
+<span><span class="co">## 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>   <span class="co">#Simple List</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span>                             <span class="co">#Attributes</span></span>
+<span><span class="co">## [1] "names"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                         <span class="co">#Names of components</span></span>
+<span><span class="co">## [1] "x" "y"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">aa</span>, <span class="va">typeof</span><span class="op">)</span>                                <span class="co">#Type of components</span></span>
+<span><span class="co">##           x           y </span></span>
+<span><span class="co">##    "double" "character"</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>   <span class="co">#Simple List</span></span>
+<span></span>
+<span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>                                     <span class="co">#[[ ]] First Object: index 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## [1] 11 12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">##  num [1:2] 11 12</span></span>
+<span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="va">aa</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>                                       <span class="co">#[ ] Sublist with First Entry</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span>
+<span><span class="co">## $x</span></span>
+<span><span class="co">## [1] 11 12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span>
+<span><span class="co">## List of 1</span></span>
+<span><span class="co">##  $ x: num [1:2] 11 12</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>   <span class="co">#Simple List</span></span>
+<span></span>
+<span><span class="co"># 'list' is a 'vector' but not an 'atomic vector'</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html">is.list</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/vector.html">is.vector</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/is.recursive.html">is.atomic</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] FALSE</span></span></code></pre></div>
+</div>
+<div id="python-dictionary" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Python Dictionary<a class="anchor" aria-label="anchor" href="#python-dictionary"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Python <code>dict</code> : <a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">Python Dictionary</a>
 <ul>
 <li>
-<code>dict</code> is ordered
-<ul>
+<code>dict</code> : Literal <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, Ordered, Mutable, No Duplicates</li>
+<li>Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).</li>
 <li>Essentially it means ‘insertion ordered’ which is different from ordered like <code>OrderedDict</code>
 </li>
 <li>Equality comparisons with <code>OrderedDict</code> are order sensitive but this is not the case for <code>dict</code>
@@ -86,18 +175,69 @@
 </li>
 <li><a href="https://docs.python.org/3.9/whatsnew/3.9.html#dictionary-merge-update-operators">Refer</a></li>
 </ul>
-<div id="basic" class="section level2" number="3.1">
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="list-dict-p03.html#cb50-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {}                                           <span class="co">#Empty Dictionary</span></span>
+<span id="cb50-2"><a href="list-dict-p03.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb50-3"><a href="list-dict-p03.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 0 | pp = {}</span></span>
+<span id="cb50-4"><a href="list-dict-p03.html#cb50-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"x"</span>: [<span class="fl">11.0</span>, <span class="fl">12.0</span>], <span class="st">"y"</span>: (<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)}    <span class="co">#Simple Dictionary</span></span>
+<span id="cb50-5"><a href="list-dict-p03.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb50-6"><a href="list-dict-p03.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=2, pp = {'x': [11.0, 12.0], 'y': ('a', 'b', 'c')}</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="list-dict-p03.html#cb51-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"x"</span>: [<span class="fl">11.0</span>, <span class="fl">12.0</span>], <span class="st">"y"</span>: (<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)}    <span class="co">#Simple Dictionary</span></span>
+<span id="cb51-2"><a href="list-dict-p03.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(pp)                                           <span class="co">#Count key: value pairs</span></span>
+<span id="cb51-3"><a href="list-dict-p03.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 2</span></span>
+<span id="cb51-4"><a href="list-dict-p03.html#cb51-4" aria-hidden="true" tabindex="-1"></a>{k:<span class="bu">len</span>(v) <span class="cf">for</span> k, v <span class="kw">in</span> pp.items()}                 <span class="co">#Count length of each pair</span></span>
+<span id="cb51-5"><a href="list-dict-p03.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">## {'x': 2, 'y': 3}</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="list-dict-p03.html#cb52-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"x"</span>: [<span class="fl">11.0</span>, <span class="fl">12.0</span>], <span class="st">"y"</span>: (<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)}    <span class="co">#Simple Dictionary</span></span>
+<span id="cb52-2"><a href="list-dict-p03.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="list-dict-p03.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.keys())                                   <span class="co">#List of keys</span></span>
+<span id="cb52-4"><a href="list-dict-p03.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co">## ['x', 'y']</span></span>
+<span id="cb52-5"><a href="list-dict-p03.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.values())                                 <span class="co">#List of Values</span></span>
+<span id="cb52-6"><a href="list-dict-p03.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">## [[11.0, 12.0], ('a', 'b', 'c')]</span></span>
+<span id="cb52-7"><a href="list-dict-p03.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.items())                                  <span class="co">#List of items</span></span>
+<span id="cb52-8"><a href="list-dict-p03.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">## [('x', [11.0, 12.0]), ('y', ('a', 'b', 'c'))]</span></span>
+<span id="cb52-9"><a href="list-dict-p03.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([k <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">type</span>(pp[k]).<span class="va">__name__</span>) </span>
+<span id="cb52-10"><a href="list-dict-p03.html#cb52-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k, v <span class="kw">in</span> pp.items()]))         <span class="co">#Type of items</span></span>
+<span id="cb52-11"><a href="list-dict-p03.html#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co">## x : list</span></span>
+<span id="cb52-12"><a href="list-dict-p03.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co">## y : tuple</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="list-dict-p03.html#cb53-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"x"</span>: [<span class="fl">11.0</span>, <span class="fl">12.0</span>], <span class="st">"y"</span>: (<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)}    <span class="co">#Simple Dictionary</span></span>
+<span id="cb53-2"><a href="list-dict-p03.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="list-dict-p03.html#cb53-3" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">list</span>(pp.items())[<span class="dv">0</span>]                          <span class="co">#First Object: index 0</span></span>
+<span id="cb53-4"><a href="list-dict-p03.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)  <span class="co">#Converted to Tuple</span></span>
+<span id="cb53-5"><a href="list-dict-p03.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">## type(qq) = &lt;class 'tuple'&gt; | len(qq) = 2 | qq = ('x', [11.0, 12.0])</span></span>
+<span id="cb53-6"><a href="list-dict-p03.html#cb53-6" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp[<span class="st">'x'</span>]                                    </span>
+<span id="cb53-7"><a href="list-dict-p03.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)  <span class="co">#Keep original as list</span></span>
+<span id="cb53-8"><a href="list-dict-p03.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">## type(qq) = &lt;class 'list'&gt; | len(qq) = 2 | qq = [11.0, 12.0]</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="list-dict-p03.html#cb54-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"x"</span>: [<span class="fl">11.0</span>, <span class="fl">12.0</span>], <span class="st">"y"</span>: (<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)}    <span class="co">#Simple Dictionary</span></span>
+<span id="cb54-2"><a href="list-dict-p03.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="list-dict-p03.html#cb54-3" aria-hidden="true" tabindex="-1"></a>pp.__class__ <span class="kw">is</span> <span class="bu">dict</span>                              <span class="co">#same as type() (Avoid)</span></span>
+<span id="cb54-4"><a href="list-dict-p03.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb54-5"><a href="list-dict-p03.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pp) <span class="kw">is</span> <span class="bu">dict</span>                                  <span class="co">#type() (Strict)</span></span>
+<span id="cb54-6"><a href="list-dict-p03.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb54-7"><a href="list-dict-p03.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pp, <span class="bu">dict</span>)                              <span class="co">#isinstance() allows subtypes</span></span>
+<span id="cb54-8"><a href="list-dict-p03.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb54-9"><a href="list-dict-p03.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="va">False</span>, <span class="bu">int</span>)                            <span class="co">#bool is a subtype of int</span></span>
+<span id="cb54-10"><a href="list-dict-p03.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">## True</span></span>
+<span id="cb54-11"><a href="list-dict-p03.html#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="va">False</span>) <span class="kw">is</span> <span class="bu">int</span>                                <span class="co">#But type() is strict</span></span>
+<span id="cb54-12"><a href="list-dict-p03.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">## False</span></span></code></pre></div>
+</div>
+<div id="basic" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">3.1</span> Basic<a class="anchor" aria-label="anchor" href="#basic"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Basic<a class="anchor" aria-label="anchor" href="#basic"><i class="fas fa-link"></i></a>
 </h2>
+<ul>
+<li>Empty R <code>list</code> &amp; Empty Python <code>dict</code>
+</li>
+</ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>                                       <span class="co">#Empty List</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
-<span><span class="co">##  list()</span></span>
-<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">11L</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">22L</span><span class="op">)</span>                   <span class="co">#Normal List</span></span>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">11L</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">22L</span><span class="op">)</span>                  <span class="co">#Simple List</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
 <span><span class="co">## List of 2</span></span>
 <span><span class="co">##  $ a: int 11</span></span>
@@ -153,59 +293,59 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="list-dict-p03.html#cb47-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {}                                           <span class="co">#Empty Dictionary</span></span>
-<span id="cb47-2"><a href="list-dict-p03.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-3"><a href="list-dict-p03.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 0 | pp = {}</span></span>
-<span id="cb47-4"><a href="list-dict-p03.html#cb47-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}                           <span class="co">#Normal Dictionary</span></span>
-<span id="cb47-5"><a href="list-dict-p03.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-6"><a href="list-dict-p03.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=2, pp = {'a': 11, 'b': 22}</span></span>
-<span id="cb47-7"><a href="list-dict-p03.html#cb47-7" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> {<span class="bu">zip</span>([<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>], [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>])}         <span class="co">#zip() creates set with {}</span></span>
-<span id="cb47-8"><a href="list-dict-p03.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">type</span>(qq) <span class="kw">is</span> <span class="bu">set</span>)</span>
-<span id="cb47-9"><a href="list-dict-p03.html#cb47-9" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>([<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>], [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>]))     <span class="co">#zip() needs dict()</span></span>
-<span id="cb47-10"><a href="list-dict-p03.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(qq)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-11"><a href="list-dict-p03.html#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-12"><a href="list-dict-p03.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Python Dictionary equality comparison is order insensitive (unlike R List)</span></span>
-<span id="cb47-13"><a href="list-dict-p03.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">## len(qq)=3, qq = {'a': 11, 'b': 22, 'c': 33}</span></span>
-<span id="cb47-14"><a href="list-dict-p03.html#cb47-14" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> {<span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"a"</span>: <span class="dv">11</span>}</span>
-<span id="cb47-15"><a href="list-dict-p03.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(pp <span class="op">==</span> ss)                                  <span class="co">#Ignore Key Position</span></span>
-<span id="cb47-16"><a href="list-dict-p03.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="kw">not</span>(<span class="bu">list</span>(ss.items()) <span class="op">==</span> <span class="bu">list</span>(pp.items()))) <span class="co">#Consider Key Position</span></span>
-<span id="cb47-17"><a href="list-dict-p03.html#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-18"><a href="list-dict-p03.html#cb47-18" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> {<span class="st">"c"</span>: <span class="dv">33</span>, <span class="st">"b"</span>: <span class="dv">999</span>}</span>
-<span id="cb47-19"><a href="list-dict-p03.html#cb47-19" aria-hidden="true" tabindex="-1"></a>pp.update(tt)                           <span class="co">#Merge in-place, Last seen overwrite</span></span>
-<span id="cb47-20"><a href="list-dict-p03.html#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-21"><a href="list-dict-p03.html#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=3, pp = {'a': 11, 'b': 999, 'c': 33}</span></span>
-<span id="cb47-22"><a href="list-dict-p03.html#cb47-22" aria-hidden="true" tabindex="-1"></a>pp.update({<span class="st">"b"</span>: <span class="dv">22</span>}) </span>
-<span id="cb47-23"><a href="list-dict-p03.html#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> pp[<span class="st">"c"</span>]                   <span class="co">#Delete in-place, return None, Key not found Error</span></span>
-<span id="cb47-24"><a href="list-dict-p03.html#cb47-24" aria-hidden="true" tabindex="-1"></a>tt.pop(<span class="st">"b"</span>)                   <span class="co">#Pop in-place, return value, Key not found Error</span></span>
-<span id="cb47-25"><a href="list-dict-p03.html#cb47-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 999</span></span>
-<span id="cb47-26"><a href="list-dict-p03.html#cb47-26" aria-hidden="true" tabindex="-1"></a>tt.pop(<span class="st">"b"</span>, <span class="va">None</span>)             <span class="co">#Pop in-place, return value, No Key error</span></span>
-<span id="cb47-27"><a href="list-dict-p03.html#cb47-27" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">"b"</span>] <span class="op">=</span> <span class="dv">999</span>                           <span class="co">#Add element using subscript notation</span></span>
-<span id="cb47-28"><a href="list-dict-p03.html#cb47-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-29"><a href="list-dict-p03.html#cb47-29" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=2, pp = {'a': 11, 'b': 22}</span></span>
-<span id="cb47-30"><a href="list-dict-p03.html#cb47-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(tt)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>tt <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-31"><a href="list-dict-p03.html#cb47-31" aria-hidden="true" tabindex="-1"></a><span class="co">## len(tt)=2, tt = {'c': 33, 'b': 999}</span></span>
-<span id="cb47-32"><a href="list-dict-p03.html#cb47-32" aria-hidden="true" tabindex="-1"></a>uu <span class="op">=</span> {<span class="op">**</span>pp, <span class="op">**</span>tt, <span class="op">**</span>{<span class="st">"b"</span>: <span class="dv">22</span>}}          <span class="co">#Merge using **, Last seen overwrite</span></span>
-<span id="cb47-33"><a href="list-dict-p03.html#cb47-33" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> uu)</span>
-<span id="cb47-34"><a href="list-dict-p03.html#cb47-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-35"><a href="list-dict-p03.html#cb47-35" aria-hidden="true" tabindex="-1"></a>vv <span class="op">=</span> pp <span class="op">|</span> tt <span class="op">|</span> {<span class="st">"b"</span>: <span class="dv">22</span>}                <span class="co">#Merge using | , Last seen overwrite</span></span>
-<span id="cb47-36"><a href="list-dict-p03.html#cb47-36" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> vv)</span>
-<span id="cb47-37"><a href="list-dict-p03.html#cb47-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-38"><a href="list-dict-p03.html#cb47-38" aria-hidden="true" tabindex="-1"></a>ww <span class="op">=</span> copy.deepcopy(pp)</span>
-<span id="cb47-39"><a href="list-dict-p03.html#cb47-39" aria-hidden="true" tabindex="-1"></a>ww <span class="op">|=</span> tt                      <span class="co">#Update in-place using |= , Last seen overwrite</span></span>
-<span id="cb47-40"><a href="list-dict-p03.html#cb47-40" aria-hidden="true" tabindex="-1"></a>ww <span class="op">|=</span> {<span class="st">"b"</span>: <span class="dv">22</span>}</span>
-<span id="cb47-41"><a href="list-dict-p03.html#cb47-41" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> ww)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="list-dict-p03.html#cb56-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {}                                           <span class="co">#Empty Dictionary</span></span>
+<span id="cb56-2"><a href="list-dict-p03.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-3"><a href="list-dict-p03.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 0 | pp = {}</span></span>
+<span id="cb56-4"><a href="list-dict-p03.html#cb56-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}                           <span class="co">#Simple Dictionary</span></span>
+<span id="cb56-5"><a href="list-dict-p03.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-6"><a href="list-dict-p03.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=2, pp = {'a': 11, 'b': 22}</span></span>
+<span id="cb56-7"><a href="list-dict-p03.html#cb56-7" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> {<span class="bu">zip</span>([<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>], [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>])}         <span class="co">#zip() creates set with {}</span></span>
+<span id="cb56-8"><a href="list-dict-p03.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">type</span>(qq) <span class="kw">is</span> <span class="bu">set</span>)</span>
+<span id="cb56-9"><a href="list-dict-p03.html#cb56-9" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>([<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>], [<span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">33</span>]))     <span class="co">#zip() needs dict()</span></span>
+<span id="cb56-10"><a href="list-dict-p03.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(qq)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-11"><a href="list-dict-p03.html#cb56-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="list-dict-p03.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Python Dictionary equality comparison is order insensitive (unlike R List)</span></span>
+<span id="cb56-13"><a href="list-dict-p03.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">## len(qq)=3, qq = {'a': 11, 'b': 22, 'c': 33}</span></span>
+<span id="cb56-14"><a href="list-dict-p03.html#cb56-14" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> {<span class="st">"b"</span>: <span class="dv">22</span>, <span class="st">"a"</span>: <span class="dv">11</span>}</span>
+<span id="cb56-15"><a href="list-dict-p03.html#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(pp <span class="op">==</span> ss)                                  <span class="co">#Ignore Key Position</span></span>
+<span id="cb56-16"><a href="list-dict-p03.html#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="kw">not</span>(<span class="bu">list</span>(ss.items()) <span class="op">==</span> <span class="bu">list</span>(pp.items()))) <span class="co">#Consider Key Position</span></span>
+<span id="cb56-17"><a href="list-dict-p03.html#cb56-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-18"><a href="list-dict-p03.html#cb56-18" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> {<span class="st">"c"</span>: <span class="dv">33</span>, <span class="st">"b"</span>: <span class="dv">999</span>}</span>
+<span id="cb56-19"><a href="list-dict-p03.html#cb56-19" aria-hidden="true" tabindex="-1"></a>pp.update(tt)                           <span class="co">#Merge in-place, Last seen overwrite</span></span>
+<span id="cb56-20"><a href="list-dict-p03.html#cb56-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-21"><a href="list-dict-p03.html#cb56-21" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=3, pp = {'a': 11, 'b': 999, 'c': 33}</span></span>
+<span id="cb56-22"><a href="list-dict-p03.html#cb56-22" aria-hidden="true" tabindex="-1"></a>pp.update({<span class="st">"b"</span>: <span class="dv">22</span>}) </span>
+<span id="cb56-23"><a href="list-dict-p03.html#cb56-23" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> pp[<span class="st">"c"</span>]                   <span class="co">#Delete in-place, return None, Key not found Error</span></span>
+<span id="cb56-24"><a href="list-dict-p03.html#cb56-24" aria-hidden="true" tabindex="-1"></a>tt.pop(<span class="st">"b"</span>)                   <span class="co">#Pop in-place, return value, Key not found Error</span></span>
+<span id="cb56-25"><a href="list-dict-p03.html#cb56-25" aria-hidden="true" tabindex="-1"></a><span class="co">## 999</span></span>
+<span id="cb56-26"><a href="list-dict-p03.html#cb56-26" aria-hidden="true" tabindex="-1"></a>tt.pop(<span class="st">"b"</span>, <span class="va">None</span>)             <span class="co">#Pop in-place, return value, No Key error</span></span>
+<span id="cb56-27"><a href="list-dict-p03.html#cb56-27" aria-hidden="true" tabindex="-1"></a>tt[<span class="st">"b"</span>] <span class="op">=</span> <span class="dv">999</span>                           <span class="co">#Add element using subscript notation</span></span>
+<span id="cb56-28"><a href="list-dict-p03.html#cb56-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(pp)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-29"><a href="list-dict-p03.html#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="co">## len(pp)=2, pp = {'a': 11, 'b': 22}</span></span>
+<span id="cb56-30"><a href="list-dict-p03.html#cb56-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(tt)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>tt <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-31"><a href="list-dict-p03.html#cb56-31" aria-hidden="true" tabindex="-1"></a><span class="co">## len(tt)=2, tt = {'c': 33, 'b': 999}</span></span>
+<span id="cb56-32"><a href="list-dict-p03.html#cb56-32" aria-hidden="true" tabindex="-1"></a>uu <span class="op">=</span> {<span class="op">**</span>pp, <span class="op">**</span>tt, <span class="op">**</span>{<span class="st">"b"</span>: <span class="dv">22</span>}}          <span class="co">#Merge using **, Last seen overwrite</span></span>
+<span id="cb56-33"><a href="list-dict-p03.html#cb56-33" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> uu)</span>
+<span id="cb56-34"><a href="list-dict-p03.html#cb56-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-35"><a href="list-dict-p03.html#cb56-35" aria-hidden="true" tabindex="-1"></a>vv <span class="op">=</span> pp <span class="op">|</span> tt <span class="op">|</span> {<span class="st">"b"</span>: <span class="dv">22</span>}                <span class="co">#Merge using | , Last seen overwrite</span></span>
+<span id="cb56-36"><a href="list-dict-p03.html#cb56-36" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> vv)</span>
+<span id="cb56-37"><a href="list-dict-p03.html#cb56-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-38"><a href="list-dict-p03.html#cb56-38" aria-hidden="true" tabindex="-1"></a>ww <span class="op">=</span> copy.deepcopy(pp)</span>
+<span id="cb56-39"><a href="list-dict-p03.html#cb56-39" aria-hidden="true" tabindex="-1"></a>ww <span class="op">|=</span> tt                      <span class="co">#Update in-place using |= , Last seen overwrite</span></span>
+<span id="cb56-40"><a href="list-dict-p03.html#cb56-40" aria-hidden="true" tabindex="-1"></a>ww <span class="op">|=</span> {<span class="st">"b"</span>: <span class="dv">22</span>}</span>
+<span id="cb56-41"><a href="list-dict-p03.html#cb56-41" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq <span class="op">==</span> ww)</span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="nested" class="section level2" number="3.2">
+<div id="nested" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">3.2</span> Nested<a class="anchor" aria-label="anchor" href="#nested"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Nested<a class="anchor" aria-label="anchor" href="#nested"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">11L</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">22L</span><span class="op">)</span></span>
 <span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"c"</span> <span class="op">=</span> <span class="fl">33L</span>, <span class="st">"d"</span> <span class="op">=</span> <span class="fl">44L</span>, <span class="st">"e"</span> <span class="op">=</span> <span class="va">aa</span><span class="op">)</span>         <span class="co">#Nested List</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
@@ -221,22 +361,22 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="list-dict-p03.html#cb49-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}</span>
-<span id="cb49-2"><a href="list-dict-p03.html#cb49-2" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> {<span class="st">"c"</span>: <span class="dv">33</span>, <span class="st">"d"</span>: <span class="dv">44</span>, <span class="st">"e"</span>: pp}                  <span class="co">#Nested Dictionary</span></span>
-<span id="cb49-3"><a href="list-dict-p03.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(qq)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb49-4"><a href="list-dict-p03.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">## len(qq)=3, qq = {'c': 33, 'd': 44, 'e': {'a': 11, 'b': 22}}</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="list-dict-p03.html#cb58-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}</span>
+<span id="cb58-2"><a href="list-dict-p03.html#cb58-2" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> {<span class="st">"c"</span>: <span class="dv">33</span>, <span class="st">"d"</span>: <span class="dv">44</span>, <span class="st">"e"</span>: pp}                  <span class="co">#Nested Dictionary</span></span>
+<span id="cb58-3"><a href="list-dict-p03.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(qq)<span class="op">=</span><span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb58-4"><a href="list-dict-p03.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">## len(qq)=3, qq = {'c': 33, 'd': 44, 'e': {'a': 11, 'b': 22}}</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="with-multiple-datatypes" class="section level2" number="3.3">
+<div id="with-multiple-datatypes" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">3.3</span> With Multiple DataTypes<a class="anchor" aria-label="anchor" href="#with-multiple-datatypes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> With Multiple DataTypes<a class="anchor" aria-label="anchor" href="#with-multiple-datatypes"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aa_lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">11L</span>, <span class="fl">22L</span><span class="op">)</span>                <span class="co">#Unnamed List   | Tuple</span></span>
 <span><span class="va">bb_lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">11L</span>, b <span class="op">=</span> <span class="fl">22L</span><span class="op">)</span>        <span class="co">#Named List     | Dict</span></span>
 <span><span class="va">dd_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11L</span>, <span class="fl">22L</span><span class="op">)</span>                   <span class="co">#Unnamed Vector | List</span></span>
@@ -249,23 +389,23 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="list-dict-p03.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude Python sets because these are converted to R Environment</span></span>
-<span id="cb51-2"><a href="list-dict-p03.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tt_set = {11, 22}            #Set: Unordered, Mutable</span></span>
-<span id="cb51-3"><a href="list-dict-p03.html#cb51-3" aria-hidden="true" tabindex="-1"></a>pp_tup <span class="op">=</span> (<span class="dv">11</span>, <span class="dv">22</span>)             <span class="co">#Tuple: Ordered, Immutable | Unnamed List</span></span>
-<span id="cb51-4"><a href="list-dict-p03.html#cb51-4" aria-hidden="true" tabindex="-1"></a>qq_lst <span class="op">=</span> [<span class="dv">11</span>, <span class="dv">22</span>]             <span class="co">#List: Ordered, Mutable    | Unnamed Vector</span></span>
-<span id="cb51-5"><a href="list-dict-p03.html#cb51-5" aria-hidden="true" tabindex="-1"></a>ss_dic <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}   <span class="co">#Dict: Ordered, Mutable    | Named List</span></span>
-<span id="cb51-6"><a href="list-dict-p03.html#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="list-dict-p03.html#cb51-7" aria-hidden="true" tabindex="-1"></a>uu <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="st">"x"</span>, <span class="st">"c"</span>: <span class="va">False</span>, <span class="st">"d"</span>: <span class="va">None</span>, </span>
-<span id="cb51-8"><a href="list-dict-p03.html#cb51-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"e"</span>: pp_tup, <span class="st">"f"</span>: qq_lst, <span class="st">"g"</span>: ss_dic}</span>
-<span id="cb51-9"><a href="list-dict-p03.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([k <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">type</span>(uu[k]).<span class="va">__name__</span>) <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(v) </span>
-<span id="cb51-10"><a href="list-dict-p03.html#cb51-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k, v <span class="kw">in</span> uu.items()]))</span>
-<span id="cb51-11"><a href="list-dict-p03.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co">## a : int : 11</span></span>
-<span id="cb51-12"><a href="list-dict-p03.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co">## b : str : x</span></span>
-<span id="cb51-13"><a href="list-dict-p03.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co">## c : bool : False</span></span>
-<span id="cb51-14"><a href="list-dict-p03.html#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co">## d : NoneType : None</span></span>
-<span id="cb51-15"><a href="list-dict-p03.html#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co">## e : tuple : (11, 22)</span></span>
-<span id="cb51-16"><a href="list-dict-p03.html#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="co">## f : list : [11, 22]</span></span>
-<span id="cb51-17"><a href="list-dict-p03.html#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co">## g : dict : {'a': 11, 'b': 22}</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="list-dict-p03.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude Python sets because these are converted to R Environment</span></span>
+<span id="cb60-2"><a href="list-dict-p03.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tt_set = {11, 22}            #Set: Unordered, Mutable</span></span>
+<span id="cb60-3"><a href="list-dict-p03.html#cb60-3" aria-hidden="true" tabindex="-1"></a>pp_tup <span class="op">=</span> (<span class="dv">11</span>, <span class="dv">22</span>)             <span class="co">#Tuple: Ordered, Immutable | Unnamed List</span></span>
+<span id="cb60-4"><a href="list-dict-p03.html#cb60-4" aria-hidden="true" tabindex="-1"></a>qq_lst <span class="op">=</span> [<span class="dv">11</span>, <span class="dv">22</span>]             <span class="co">#List: Ordered, Mutable    | Unnamed Vector</span></span>
+<span id="cb60-5"><a href="list-dict-p03.html#cb60-5" aria-hidden="true" tabindex="-1"></a>ss_dic <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="dv">22</span>}   <span class="co">#Dict: Ordered, Mutable    | Named List</span></span>
+<span id="cb60-6"><a href="list-dict-p03.html#cb60-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-7"><a href="list-dict-p03.html#cb60-7" aria-hidden="true" tabindex="-1"></a>uu <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">11</span>, <span class="st">"b"</span>: <span class="st">"x"</span>, <span class="st">"c"</span>: <span class="va">False</span>, <span class="st">"d"</span>: <span class="va">None</span>, </span>
+<span id="cb60-8"><a href="list-dict-p03.html#cb60-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"e"</span>: pp_tup, <span class="st">"f"</span>: qq_lst, <span class="st">"g"</span>: ss_dic}</span>
+<span id="cb60-9"><a href="list-dict-p03.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([k <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">type</span>(uu[k]).<span class="va">__name__</span>) <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(v) </span>
+<span id="cb60-10"><a href="list-dict-p03.html#cb60-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k, v <span class="kw">in</span> uu.items()]))</span>
+<span id="cb60-11"><a href="list-dict-p03.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co">## a : int : 11</span></span>
+<span id="cb60-12"><a href="list-dict-p03.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co">## b : str : x</span></span>
+<span id="cb60-13"><a href="list-dict-p03.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co">## c : bool : False</span></span>
+<span id="cb60-14"><a href="list-dict-p03.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">## d : NoneType : None</span></span>
+<span id="cb60-15"><a href="list-dict-p03.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co">## e : tuple : (11, 22)</span></span>
+<span id="cb60-16"><a href="list-dict-p03.html#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="co">## f : list : [11, 22]</span></span>
+<span id="cb60-17"><a href="list-dict-p03.html#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="co">## g : dict : {'a': 11, 'b': 22}</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -279,9 +419,11 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#list-dict-p03"><span class="header-section-number">3</span> R List &amp; Python Dictionary</a></li>
-<li><a class="nav-link" href="#basic"><span class="header-section-number">3.1</span> Basic</a></li>
-<li><a class="nav-link" href="#nested"><span class="header-section-number">3.2</span> Nested</a></li>
-<li><a class="nav-link" href="#with-multiple-datatypes"><span class="header-section-number">3.3</span> With Multiple DataTypes</a></li>
+<li><a class="nav-link" href="#r-list"><span class="header-section-number">3.1</span> R List</a></li>
+<li><a class="nav-link" href="#python-dictionary"><span class="header-section-number">3.2</span> Python Dictionary</a></li>
+<li><a class="nav-link" href="#basic"><span class="header-section-number">3.3</span> Basic</a></li>
+<li><a class="nav-link" href="#nested"><span class="header-section-number">3.4</span> Nested</a></li>
+<li><a class="nav-link" href="#with-multiple-datatypes"><span class="header-section-number">3.5</span> With Multiple DataTypes</a></li>
 </ul>
 
       <div class="book-extra">
@@ -299,7 +441,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-03.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

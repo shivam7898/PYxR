@@ -1,5 +1,6 @@
 tab:P01T01
 guidelines
+references
 prerequisites
 environment
 introduction-p01
@@ -26,7 +27,6 @@ structures-p02
 r-atomic-vectors-or-data-types
 examination-of-r-data-types
 r-matrices-and-arrays
-r-lists
 r-dataframes
 r-factors
 membership-functions
@@ -39,6 +39,8 @@ dictionary
 numpy-array
 pandas-dataframe
 list-dict-p03
+r-list
+python-dictionary
 basic
 nested
 with-multiple-datatypes
