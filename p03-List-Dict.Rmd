@@ -18,6 +18,9 @@ source("_common.R")
   - `list` is a `vector` but not an 'atomic vector'
 
 ```{r 'R-List-1', decorate=TRUE}
+aa = list()                                       #Empty List
+print(aa)
+
 aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
 print(aa)                                         #Print
 
@@ -43,7 +46,7 @@ sapply(aa, typeof)                                #Type of components
 ```{r 'R-List-4'}
 aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
 
-bb <- aa[[1]]                                     #[[ ]] First Object
+bb <- aa[[1]]                                     #[[ ]] First Object: index 1
 print(bb)
 str(bb)
 
@@ -63,22 +66,78 @@ is.atomic(aa)
 
 ## Python Dictionary
 
-- Python `dict` (Dictionary) :
-  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
-
-> Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering). [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)  
-
-- `dict` is ordered
+- Python `dict` : [Python Dictionary](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates
+  - Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).
   - Essentially it means 'insertion ordered' which is different from ordered like `OrderedDict`
   - Equality comparisons with `OrderedDict` are order sensitive but this is not the case for `dict`
+
+
 - [Refer](https://docs.python.org/3.9/whatsnew/3.9.html#dictionary-merge-update-operators)
+
+```{python 'Y-Dict-1', decorate=TRUE}
+pp = {}                                           #Empty Dictionary
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+
+pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+print(f"{len(pp)=}, {pp = }")
+
+```
+
+```{python 'Y-Dict-2'}
+pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+len(pp)                                           #Count key: value pairs
+
+{k:len(v) for k, v in pp.items()}                 #Count length of each pair
+
+```
+
+```{python 'Y-Dict-3'}
+pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+
+list(pp.keys())                                   #List of keys
+
+list(pp.values())                                 #List of Values
+
+list(pp.items())                                  #List of items
+
+print("\n".join([k + " : " + str(type(pp[k]).__name__) 
+                for k, v in pp.items()]))         #Type of items
+
+```
+
+```{python 'Y-Dict-4'}
+pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+
+qq = list(pp.items())[0]                          #First Object: index 0
+print(f"{type(qq) = } | {len(qq) = } | {qq = }")  #Converted to Tuple
+
+qq = pp['x']                                    
+print(f"{type(qq) = } | {len(qq) = } | {qq = }")  #Keep original as list
+
+```
+
+```{python 'Y-Dict-5'}
+pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+
+pp.__class__ is dict                              #same as type() (Avoid)
+
+type(pp) is dict                                  #type() (Strict)
+
+isinstance(pp, dict)                              #isinstance() allows subtypes
+
+isinstance(False, int)                            #bool is a subtype of int
+type(False) is int                                #But type() is strict
+
+```
+
 
 ## Basic
 
-```{r 'R-List', decorate=TRUE}
-aa = list()                                       #Empty List
-str(aa)
-aa <- list("a" = 11L, "b" = 22L)                   #Normal List
+- Empty R `list` & Empty Python `dict`
+
+```{r 'R-List-6', decorate=TRUE}
+aa <- list("a" = 11L, "b" = 22L)                  #Simple List
 str(aa)
 
 bb <- setNames(as.list(c(11L, 22L, 33L)), nm = c("a", "b", "c")) #Named List
@@ -110,7 +169,7 @@ stopifnot(identical(bb, ff))
 ```{python 'Y-Dict', decorate=TRUE}
 pp = {}                                           #Empty Dictionary
 print(f"{type(pp) = } | {len(pp) = } | {pp = }")
-pp = {"a": 11, "b": 22}                           #Normal Dictionary
+pp = {"a": 11, "b": 22}                           #Simple Dictionary
 print(f"{len(pp)=}, {pp = }")
 
 qq = {zip(["a", "b", "c"], [11, 22, 33])}         #zip() creates set with {}

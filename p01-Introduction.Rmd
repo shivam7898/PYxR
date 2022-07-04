@@ -144,12 +144,8 @@ is.nan(NA)
 stopifnot(is.numeric(NaN))
 
 # Comparison with NaN: All operations are NA, use is.nan() (unlike IEEE, Python)
-stopifnot(all(identical(NaN == NaN, NA),
-              identical(NaN != NaN, NA),
-              identical(NaN <= NaN, NA),
-              identical(NaN >= NaN, NA),
-              identical(NaN <  NaN, NA),
-              identical(NaN >  NaN, NA)))
+stopifnot(all(sapply(list(NaN == NaN, NaN <= NaN, NaN >= NaN, 
+                          NaN != NaN, NaN <  NaN, NaN >  NaN), identical, NA)))
 
 # Coercion of NaN
 stopifnot(all(identical(as.integer(NaN), NA_integer_),
