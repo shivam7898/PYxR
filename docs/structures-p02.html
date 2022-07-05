@@ -419,12 +419,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fl">0</span>  <span class="op">==</span> <span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span> <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 1^y and y^0 are 1, ALWAYS in both R and Python</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">==</span> <span class="fl">0</span>   <span class="op">**</span> <span class="fl">0</span>, </span>
-<span>              <span class="fl">1</span> <span class="op">==</span> <span class="cn">NaN</span> <span class="op">**</span> <span class="fl">0</span>, </span>
-<span>              <span class="fl">1</span> <span class="op">==</span> <span class="cn">NA</span>  <span class="op">**</span> <span class="fl">0</span>,</span>
-<span>              <span class="fl">1</span> <span class="op">==</span> <span class="cn">Inf</span> <span class="op">**</span> <span class="fl">0</span>,</span>
-<span>              <span class="fl">1</span> <span class="op">==</span> <span class="fl">1</span>   <span class="op">**</span> <span class="cn">NA</span>,</span>
-<span>              <span class="fl">1</span> <span class="op">==</span> <span class="fl">1</span>   <span class="op">**</span> <span class="cn">NaN</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">0</span><span class="op">**</span><span class="fl">0</span>, <span class="cn">NaN</span><span class="op">**</span><span class="fl">0</span>, <span class="cn">NA</span><span class="op">**</span><span class="fl">0</span>, <span class="cn">Inf</span><span class="op">**</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">**</span><span class="cn">NA</span>, <span class="fl">1</span><span class="op">**</span><span class="cn">NaN</span><span class="op">)</span>, </span>
+<span>                     <span class="va">identical</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NaN</span> <span class="op">*</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="cn">NA</span> <span class="op">*</span> <span class="fl">0</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="cn">NA</span> <span class="op">*</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>        <span class="co">#NA</span></span>
@@ -443,12 +439,10 @@
 <span id="cb37-5"><a href="structures-p02.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">0</span>  <span class="op">==</span> (<span class="op">-</span><span class="dv">1</span>) <span class="op">//</span> (<span class="op">-</span><span class="dv">2</span>) )</span>
 <span id="cb37-6"><a href="structures-p02.html#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-7"><a href="structures-p02.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1^y and y^0 are 1, ALWAYS in both R and Python</span></span>
-<span id="cb37-8"><a href="structures-p02.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">1</span>  <span class="op">==</span> <span class="dv">0</span> <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
-<span id="cb37-9"><a href="structures-p02.html#cb37-9" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span> <span class="op">==</span> np.nan <span class="op">**</span> <span class="dv">0</span> <span class="kw">and</span> </span>
-<span id="cb37-10"><a href="structures-p02.html#cb37-10" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span>  <span class="op">==</span> <span class="dv">1</span> <span class="op">**</span> np.nan)</span>
-<span id="cb37-11"><a href="structures-p02.html#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-12"><a href="structures-p02.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(np.nan <span class="op">*</span> <span class="dv">0</span>))</span>
-<span id="cb37-13"><a href="structures-p02.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(math.inf <span class="op">*</span> <span class="dv">0</span>))</span></code></pre></div>
+<span id="cb37-8"><a href="structures-p02.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span><span class="op">**</span><span class="dv">0</span> <span class="op">==</span> np.nan<span class="op">**</span><span class="dv">0</span> <span class="op">==</span> <span class="dv">1</span><span class="op">**</span>np.nan)</span>
+<span id="cb37-9"><a href="structures-p02.html#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="structures-p02.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(np.nan <span class="op">*</span> <span class="dv">0</span>))</span>
+<span id="cb37-11"><a href="structures-p02.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.isnan(math.inf <span class="op">*</span> <span class="dv">0</span>))</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -511,12 +505,8 @@
 <h2>
 <span class="header-section-number">2.10</span> Python Collections<a class="anchor" aria-label="anchor" href="#python-collections"><i class="fas fa-link"></i></a>
 </h2>
-<div id="list-tuple-set-dictionary" class="section level3" number="2.10.1">
-<h3>
-<span class="header-section-number">2.10.1</span> List, Tuple, Set, Dictionary<a class="anchor" aria-label="anchor" href="#list-tuple-set-dictionary"><i class="fas fa-link"></i></a>
-</h3>
 <ul>
-<li>Python Collections:
+<li>Python Collections: List, Tuple, Set, Dictionary
 <ul>
 <li>
 <code>tuple</code>: Literal <code>()</code>, Ordered, Immutable, Allows Duplicates, <a href="https://docs.python.org/3/library/stdtypes.html#tuples">Refer</a>
@@ -569,53 +559,6 @@
 <br>
 </div>
 </div>
-<div id="dictionary" class="section level3" number="2.10.2">
-<h3>
-<span class="header-section-number">2.10.2</span> Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"><i class="fas fa-link"></i></a>
-</h3>
-<div class="decocode">
-<div style="background-color:inherit">
-<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="structures-p02.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten</span></span>
-<span id="cb42-2"><a href="structures-p02.html#cb42-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> {</span>
-<span id="cb42-3"><a href="structures-p02.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
-<span id="cb42-4"><a href="structures-p02.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"model"</span>: <span class="st">"Mustang"</span>,</span>
-<span id="cb42-5"><a href="structures-p02.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">1964</span>,</span>
-<span id="cb42-6"><a href="structures-p02.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span>: <span class="dv">2000</span>,</span>
-<span id="cb42-7"><a href="structures-p02.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"electric"</span>: <span class="va">False</span>,</span>
-<span id="cb42-8"><a href="structures-p02.html#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"colors"</span>: [<span class="st">"red"</span>, <span class="st">"white"</span>]</span>
-<span id="cb42-9"><a href="structures-p02.html#cb42-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb42-10"><a href="structures-p02.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="structures-p02.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(pp) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>pp <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb42-12"><a href="structures-p02.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">## type(pp) = &lt;class 'dict'&gt; | len(pp) = 5 | </span></span>
-<span id="cb42-13"><a href="structures-p02.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">## pp = {'brand': 'Ford', 'model': 'Mustang', 'year': 2000, 'electric': False, 'colors': ['red', 'white']}</span></span>
-<span id="cb42-14"><a href="structures-p02.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="st">"brand"</span>])                                <span class="co">#Access Specific Item</span></span>
-<span id="cb42-15"><a href="structures-p02.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Ford</span></span>
-<span id="cb42-16"><a href="structures-p02.html#cb42-16" aria-hidden="true" tabindex="-1"></a>pp.keys()                                         <span class="co">#ALL Keys</span></span>
-<span id="cb42-17"><a href="structures-p02.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_keys(['brand', 'model', 'year', 'electric', 'colors'])</span></span>
-<span id="cb42-18"><a href="structures-p02.html#cb42-18" aria-hidden="true" tabindex="-1"></a>pp.values()                                       <span class="co">#ALL Values </span></span>
-<span id="cb42-19"><a href="structures-p02.html#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_values(['Ford', 'Mustang', 2000, False, ['red', 'white']])</span></span>
-<span id="cb42-20"><a href="structures-p02.html#cb42-20" aria-hidden="true" tabindex="-1"></a>pp.items()                                        <span class="co">#ALL Items </span></span>
-<span id="cb42-21"><a href="structures-p02.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co">## dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 2000), ('electric', False), ('colors', ['red', 'white'])])</span></span>
-<span id="cb42-22"><a href="structures-p02.html#cb42-22" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="st">'brand'</span>                                      <span class="co">#Find x in Keys</span></span>
-<span id="cb42-23"><a href="structures-p02.html#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(qq <span class="kw">in</span> pp.keys()):</span>
-<span id="cb42-24"><a href="structures-p02.html#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Present in Keys."</span>)</span>
-<span id="cb42-25"><a href="structures-p02.html#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb42-26"><a href="structures-p02.html#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(qq <span class="op">+</span> <span class="st">" is Absent in Keys. Check Values."</span>)</span>
-<span id="cb42-27"><a href="structures-p02.html#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="co">## brand is Present in Keys.</span></span>
-<span id="cb42-28"><a href="structures-p02.html#cb42-28" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> <span class="bu">list</span>(pp)                                     <span class="co">#Dictionary To List (Keys)</span></span>
-<span id="cb42-29"><a href="structures-p02.html#cb42-29" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> <span class="bu">list</span>(pp.values())                            <span class="co">#Dictionary To List (Values)</span></span>
-<span id="cb42-30"><a href="structures-p02.html#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(qq) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>qq <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb42-31"><a href="structures-p02.html#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="co">## type(qq) = &lt;class 'list'&gt; | len(qq) = 5 | </span></span>
-<span id="cb42-32"><a href="structures-p02.html#cb42-32" aria-hidden="true" tabindex="-1"></a><span class="co">## qq = ['brand', 'model', 'year', 'electric', 'colors']</span></span>
-<span id="cb42-33"><a href="structures-p02.html#cb42-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">type</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">len</span>(ss) <span class="op">=</span> <span class="sc">}</span><span class="ss"> | </span><span class="ch">\n</span><span class="sc">{</span>ss <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)          <span class="co">#Print</span></span>
-<span id="cb42-34"><a href="structures-p02.html#cb42-34" aria-hidden="true" tabindex="-1"></a><span class="co">## type(ss) = &lt;class 'list'&gt; | len(ss) = 5 | </span></span>
-<span id="cb42-35"><a href="structures-p02.html#cb42-35" aria-hidden="true" tabindex="-1"></a><span class="co">## ss = ['Ford', 'Mustang', 2000, False, ['red', 'white']]</span></span></code></pre></div>
-</div>
-<br>
-</div>
-</div>
-</div>
 <div id="numpy-array" class="section level2" number="2.11">
 <h2>
 <span class="header-section-number">2.11</span> NumPy Array<a class="anchor" aria-label="anchor" href="#numpy-array"><i class="fas fa-link"></i></a>
@@ -623,16 +566,16 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="structures-p02.html#cb43-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb43-2"><a href="structures-p02.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pp))</span>
-<span id="cb43-3"><a href="structures-p02.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'numpy.ndarray'&gt;</span></span>
-<span id="cb43-4"><a href="structures-p02.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
-<span id="cb43-5"><a href="structures-p02.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">## [[ 0  1  2  3]</span></span>
-<span id="cb43-6"><a href="structures-p02.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 4  5  6  7]</span></span>
-<span id="cb43-7"><a href="structures-p02.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 8  9 10 11]]</span></span>
-<span id="cb43-8"><a href="structures-p02.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.array_equal(pp[<span class="dv">0</span>, :], pp[<span class="dv">0</span>, ]))         <span class="co">#Verify same shape &amp; values</span></span>
-<span id="cb43-9"><a href="structures-p02.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="dv">0</span>, ])                                    <span class="co">#Subset First Row</span></span>
-<span id="cb43-10"><a href="structures-p02.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">## [0 1 2 3]</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="structures-p02.html#cb42-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.arange(<span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb42-2"><a href="structures-p02.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pp))</span>
+<span id="cb42-3"><a href="structures-p02.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb42-4"><a href="structures-p02.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp)</span>
+<span id="cb42-5"><a href="structures-p02.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">## [[ 0  1  2  3]</span></span>
+<span id="cb42-6"><a href="structures-p02.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 4  5  6  7]</span></span>
+<span id="cb42-7"><a href="structures-p02.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 8  9 10 11]]</span></span>
+<span id="cb42-8"><a href="structures-p02.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(np.array_equal(pp[<span class="dv">0</span>, :], pp[<span class="dv">0</span>, ]))         <span class="co">#Verify same shape &amp; values</span></span>
+<span id="cb42-9"><a href="structures-p02.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pp[<span class="dv">0</span>, ])                                    <span class="co">#Subset First Row</span></span>
+<span id="cb42-10"><a href="structures-p02.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">## [0 1 2 3]</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -644,7 +587,7 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="structures-p02.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="structures-p02.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -667,12 +610,7 @@
 <li><a class="nav-link" href="#python-types"><span class="header-section-number">2.7</span> Python Types</a></li>
 <li><a class="nav-link" href="#similarity-r-python"><span class="header-section-number">2.8</span> Similarity (R &amp; Python)</a></li>
 <li><a class="nav-link" href="#differences-r-python"><span class="header-section-number">2.9</span> Differences (R &amp; Python)</a></li>
-<li>
-<a class="nav-link" href="#python-collections"><span class="header-section-number">2.10</span> Python Collections</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#list-tuple-set-dictionary"><span class="header-section-number">2.10.1</span> List, Tuple, Set, Dictionary</a></li>
-<li><a class="nav-link" href="#dictionary"><span class="header-section-number">2.10.2</span> Dictionary</a></li>
-</ul>
-</li>
+<li><a class="nav-link" href="#python-collections"><span class="header-section-number">2.10</span> Python Collections</a></li>
 <li><a class="nav-link" href="#numpy-array"><span class="header-section-number">2.11</span> NumPy Array</a></li>
 <li><a class="nav-link" href="#pandas-dataframe"><span class="header-section-number">2.12</span> Pandas DataFrame</a></li>
 </ul>
@@ -692,7 +630,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-04.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

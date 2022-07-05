@@ -34,13 +34,9 @@ python-types
 similarity-r-python
 differences-r-python
 python-collections
-list-tuple-set-dictionary
-dictionary
 numpy-array
 pandas-dataframe
 list-dict-p03
-r-list
-python-dictionary
-basic
+basics-1
 nested
 with-multiple-datatypes

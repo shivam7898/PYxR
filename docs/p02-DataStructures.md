@@ -287,12 +287,8 @@ stopifnot(-1 == 1 %/% (-2) )
 stopifnot(0  == (-1) %/% (-2) )
 
 # 1^y and y^0 are 1, ALWAYS in both R and Python
-stopifnot(all(1 == 0   ** 0, 
-              1 == NaN ** 0, 
-              1 == NA  ** 0,
-              1 == Inf ** 0,
-              1 == 1   ** NA,
-              1 == 1   ** NaN))
+stopifnot(all(sapply(list(0**0, NaN**0, NA**0, Inf**0, 1**NA, 1**NaN), 
+                     identical, 1)))
 
 stopifnot(is.nan(NaN * 0))
 stopifnot(is.na(NA * 0) & !is.nan(NA * 0))        #NA
@@ -312,9 +308,7 @@ assert(-1 == 1 // (-2) )
 assert(0  == (-1) // (-2) )
 
 # 1^y and y^0 are 1, ALWAYS in both R and Python
-assert(1  == 0 ** 0 and 
-       1 == np.nan ** 0 and 
-       1  == 1 ** np.nan)
+assert(1 == 0**0 == np.nan**0 == 1**np.nan)
 
 assert(np.isnan(np.nan * 0))
 assert(np.isnan(math.inf * 0))
@@ -376,9 +370,7 @@ list(range(10, 1, -2))
 
 ## Python Collections
 
-### List, Tuple, Set, Dictionary
-
-- Python Collections:
+- Python Collections: List, Tuple, Set, Dictionary
   - `tuple`: Literal `()`, Ordered, Immutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#tuples)
   - `list` : Literal `[]`, Ordered, Mutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#lists)
   - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
@@ -413,50 +405,6 @@ print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
 pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
 ## type(pp) = <class 'dict'>  | len(pp) = 3 | pp = {'a': 11, 'b': 22, 'c': 33}
-```
-
-</div><br></div>
-
-### Dictionary
-
-<div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
-
-```python
-# Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten
-pp = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964,
-  "year": 2000,
-  "electric": False,
-  "colors": ["red", "white"]
-}
-
-print(f"{type(pp) = } | {len(pp) = } | \n{pp = }")          #Print
-## type(pp) = <class 'dict'> | len(pp) = 5 | 
-## pp = {'brand': 'Ford', 'model': 'Mustang', 'year': 2000, 'electric': False, 'colors': ['red', 'white']}
-print(pp["brand"])                                #Access Specific Item
-## Ford
-pp.keys()                                         #ALL Keys
-## dict_keys(['brand', 'model', 'year', 'electric', 'colors'])
-pp.values()                                       #ALL Values 
-## dict_values(['Ford', 'Mustang', 2000, False, ['red', 'white']])
-pp.items()                                        #ALL Items 
-## dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 2000), ('electric', False), ('colors', ['red', 'white'])])
-qq = 'brand'                                      #Find x in Keys
-if(qq in pp.keys()):
-    print(qq + " is Present in Keys.")
-else:
-    print(qq + " is Absent in Keys. Check Values.")
-## brand is Present in Keys.
-qq = list(pp)                                     #Dictionary To List (Keys)
-ss = list(pp.values())                            #Dictionary To List (Values)
-print(f"{type(qq) = } | {len(qq) = } | \n{qq = }")          #Print
-## type(qq) = <class 'list'> | len(qq) = 5 | 
-## qq = ['brand', 'model', 'year', 'electric', 'colors']
-print(f"{type(ss) = } | {len(ss) = } | \n{ss = }")          #Print
-## type(ss) = <class 'list'> | len(ss) = 5 | 
-## ss = ['Ford', 'Mustang', 2000, False, ['red', 'white']]
 ```
 
 </div><br></div>
