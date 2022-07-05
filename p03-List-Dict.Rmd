@@ -297,7 +297,7 @@ print(f"{len(qq)=}, {qq = }")
 
 ```
 
-## With Multiple DataTypes
+## With Multiple Types
 
 ```{r 'R-List-Multi', decorate=TRUE}
 aa_lst <- list(11L, 22L)                #Unnamed List   | Tuple
@@ -340,3 +340,4 @@ print("\n".join([k + " : " + str(type(pp[k]).__name__) + " : " + str(v)
                 for k, v in pp.items()]))
 
 ```
+

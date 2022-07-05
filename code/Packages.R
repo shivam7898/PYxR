@@ -1,6 +1,7 @@
 if (!("conflicted" %in% (.packages()))) {
   pkg <- character(0)
   pkg <- c(pkg, "conflicted", "knitr", "reticulate", "fontawesome")
+  pkg <- c(pkg, "tibble")
   
   lapply(pkg, FUN = \(x) library(x, character.only = TRUE))
   

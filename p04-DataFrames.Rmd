@@ -1,0 +1,23 @@
+# Data Frame {#df-p04}
+
+```{r 'setup', include=FALSE}
+source("_common.R")
+```
+
+## Basics
+
+- R provides `data.frame` data structure. `tibble` & `data.table` are packages which extends its capabilities.
+- Python module `pandas` provide `DataFrame` with similar capabilities
+
+
+```{r 'R-1', decorate=TRUE}
+aa <- data.frame(x = 1:5, y = letters[1:5])
+class(aa)
+typeof(aa)
+```
+
+
+```{r 'R-2', decorate=TRUE}
+aa <- tibble(x = 1:5, y = letters[1:5])
+str(aa)
+```

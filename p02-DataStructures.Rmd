@@ -4,7 +4,7 @@
 source("_common.R")
 ```
 
-## R Atomic Vectors or Data Types
+## R Data Types
 
 - R has 6 basic data types (`logical`, `integer`, `double`, `character`, `complex`, and `raw`). These data types can be combined to form Data Structures (`vector`, `list`, `matrix`, `dataframe`, `factor`). 
   - Vectors are the simplest type of data structure in R. A `vector` is a sequence of data elements of the same basic type. 
@@ -34,7 +34,7 @@ str(c('a', 'b', NA, 'd', 'e'))
 str(c(TRUE, FALSE, NA, FALSE, TRUE))
 ```
 
-## Examination of R Data Types
+- Examination of R Data Types
 
 ```{r 'R-About', decorate=TRUE}
 # To know about an Object Named Vector (pi, letters are predefined)
@@ -50,7 +50,7 @@ names(attributes(aa))   # Attributes
 names(aa)               # Names
 ```
 
-## R Matrices and Arrays
+## R Matrices
 
 - `Matrices` and `arrays` are vectors with the attribute `dim` attached to them 
   - The data elements must be of the same basic type.
@@ -123,7 +123,7 @@ levels(aa)              # Vector of Levels
 names(attributes(aa))   # Attributes
 ```
 
-## Membership Functions
+## R Membership
 
 - `anyNA()` is `TRUE` if there is an `NA` present, `FALSE` otherwise
 - `is.atomic()` is `TRUE` for all atomic vectors, factors, matrices but is `FALSE` for lists and dataframes
@@ -190,8 +190,7 @@ names(which(sapply(gg, is.factor)))
 
 - Mapping Types: `dict`
 
-
-## Similarity (R & Python)
+## Similarities
 
 ```{r 'R-Outcome-Same', decorate=TRUE}
 # R results are same as Python
@@ -225,7 +224,7 @@ assert(np.isnan(math.inf * 0))
 
 ```
 
-## Differences (R & Python)
+## Differences
 
 ```{r 'R-Outcome-Different', decorate=TRUE}
 # R allows division by zero whereas Python throws ZeroDivisionError
@@ -305,9 +304,3 @@ print(pp[0, ])                                    #Subset First Row
 
 ```
 
-## Pandas DataFrame
-
-```{python 'Y-Pandas-DataFrame', decorate=TRUE}
-#
-
-```
