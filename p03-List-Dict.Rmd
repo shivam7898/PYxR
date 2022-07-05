@@ -4,7 +4,8 @@
 source("_common.R")
 ```
 
-## R List
+
+## Basics
 
 - R `list` : [CRAN Lists](https://cran.r-project.org/doc/manuals/R-intro.html#Lists)
   - An R `list` is an object consisting of an ordered collection of objects known as its 'components'. 
@@ -17,36 +18,122 @@ source("_common.R")
     - However, `[ ]` provides a sublist of the list consisting of the first entry only. If it is a named list, the `names` are transferred to the sublist.
   - `list` is a `vector` but not an 'atomic vector'
 
-```{r 'R-List-1', decorate=TRUE}
+- Python `dict` : [Python Dictionary](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates
+  - Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).
+  - Essentially it means 'insertion ordered' which is different from ordered like `OrderedDict`
+  - Equality comparisons with `OrderedDict` are order sensitive but this is not the case for `dict`
+
+
+- Create & Print 
+
+```{r 'R-List-Create', decorate=TRUE}
 aa = list()                                       #Empty List
 print(aa)
 
-aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
-print(aa)                                         #Print
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
+print(aa)
 
 str(aa)                                           #Structure
 ```
 
-```{r 'R-List-2'}
-aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+```{python 'Y-Dict-Create', decorate=TRUE}
+pp = {}                                           #Empty Dictionary
+print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+
+
+pp = {"x": [11, 12], "y": ("a", "b", "c")}        #Simple Dictionary
+print(f"{len(pp)=}, {pp = }")
+
+```
+
+- Order sensitive comparison is done in R for `list`. However, Python does not consider position during `dict` comparison
+
+```{r 'R-List-Compare', decorate=TRUE}
+# Create list by separately supplying component names
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c"))
+bb <- setNames(list(c(11L, 12L), c("a", "b", "c")), nm = c("x", "y"))
+stopifnot(identical(aa, bb))
+
+dd <- list(y = c("a", "b", "c"), x = c(11L, 12L))
+stopifnot(!identical(aa, dd))           #FALSE: R considers position
+#To ignore position (like Python)
+stopifnot(identical(aa[order(names(aa))], dd[order(names(dd))]))
+
+```
+
+```{python 'Y-Dict-Compare', decorate=TRUE}
+# Create dict by separately supplying component names
+pp = {"x": [11, 12], "y": ("a", "b", "c")}
+qq = dict(zip(["x", "y"], [[11, 12], ("a", "b", "c")]))
+
+ss = {"y": ("a", "b", "c"), "x": [11, 12]}
+assert(pp == qq == ss)                  #True: Python does not consider position
+assert(list(pp.items()) != list(ss.items()))      #To consider position (like R)
+
+```
+
+- Count Components
+
+```{r 'R-List-Count', decorate=TRUE}
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
 length(aa)                                        #Count components
 
 lengths(aa)                                       #Count elements of components
 ```
 
-```{r 'R-List-3'}
-aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+```{python 'Y-Dict-Count', decorate=TRUE}
+pp = {"x": [11, 12], "y": ("a", "b", "c")}        #Simple Dictionary
+len(pp)                                           #Count key: value pairs
+
+
+{k:len(v) for k, v in pp.items()}                 #Count length of each pair
+
+```
+
+- Names and Types
+
+```{r 'R-List-Types', decorate=TRUE}
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
 names(attributes(aa))                             #Attributes
 
-names(aa)                                         #Names of components
+bb <- names(aa)                                   #Names of components
+bb
+
+# Find Names
+stopifnot(all( 'x' %in% bb,  any('x' == bb),  is.element('x', set = bb), 
+              !'z' %in% bb, !any('z' == bb), !is.element('z', set = bb))) 
+
+# Note: %in% operator is NOT commutative i.e. a %in% b != b %in% a
+stopifnot(! identical(1 %in% c(1, 2), c(1, 2) %in% 1))
 
 sapply(aa, typeof)                                #Type of components
 ```
 
-```{r 'R-List-4'}
-aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
+```{python 'Y-Dict-Types', decorate=TRUE}
+pp = {"x": [11, 12], "y": ("a", "b", "c")}        #Simple Dictionary
+list(pp.keys())                                   #List of keys
+
+assert("x" in pp.keys() and "z" not in pp.keys()) #Find Keys
+
+list(pp.values())                                 #List of Values
+
+
+list(pp.items())                                  #List of items
+
+
+print("\n".join([k + " : " + str(type(pp[k]).__name__) 
+                for k, v in pp.items()]))         #Type of items
+
+```
+
+- Slice or Subset or Select: R index starts from 1 whereas Python index starts from 0
+
+```{r 'R-List-Select', decorate=TRUE}
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
 
 bb <- aa[[1]]                                     #[[ ]] First Object: index 1
+stopifnot(all(sapply(list(aa$x, aa[["x"]]), identical, bb)))
 print(bb)
 str(bb)
 
@@ -55,167 +142,143 @@ print(dd)
 str(dd)
 ```
 
-```{r 'R-List-5'}
-aa <- list(x = c(11, 12), y = c("a", "b", "c"))   #Simple List
-
-# 'list' is a 'vector' but not an 'atomic vector'
-is.list(aa)
-is.vector(aa)
-is.atomic(aa)
-```
-
-## Python Dictionary
-
-- Python `dict` : [Python Dictionary](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
-  - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates
-  - Dictionaries compare equal if and only if they have the same (key, value) pairs (regardless of ordering).
-  - Essentially it means 'insertion ordered' which is different from ordered like `OrderedDict`
-  - Equality comparisons with `OrderedDict` are order sensitive but this is not the case for `dict`
-
-
-- [Refer](https://docs.python.org/3.9/whatsnew/3.9.html#dictionary-merge-update-operators)
-
-```{python 'Y-Dict-1', decorate=TRUE}
-pp = {}                                           #Empty Dictionary
-print(f"{type(pp) = } | {len(pp) = } | {pp = }")
-
-pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
-print(f"{len(pp)=}, {pp = }")
-
-```
-
-```{python 'Y-Dict-2'}
-pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
-len(pp)                                           #Count key: value pairs
-
-{k:len(v) for k, v in pp.items()}                 #Count length of each pair
-
-```
-
-```{python 'Y-Dict-3'}
-pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
-
-list(pp.keys())                                   #List of keys
-
-list(pp.values())                                 #List of Values
-
-list(pp.items())                                  #List of items
-
-print("\n".join([k + " : " + str(type(pp[k]).__name__) 
-                for k, v in pp.items()]))         #Type of items
-
-```
-
-```{python 'Y-Dict-4'}
-pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+```{python 'Y-Dict-Select', decorate=TRUE}
+pp = {"x": [11, 12], "y": ("a", "b", "c")}        #Simple Dictionary
 
 qq = list(pp.items())[0]                          #First Object: index 0
 print(f"{type(qq) = } | {len(qq) = } | {qq = }")  #Converted to Tuple
+
 
 qq = pp['x']                                    
 print(f"{type(qq) = } | {len(qq) = } | {qq = }")  #Keep original as list
 
 ```
 
-```{python 'Y-Dict-5'}
-pp = {"x": [11.0, 12.0], "y": ("a", "b", "c")}    #Simple Dictionary
+- Type checking
 
-pp.__class__ is dict                              #same as type() (Avoid)
+```{r 'R-List-Class', decorate=TRUE}
+aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
+stopifnot(is.list(aa))
 
-type(pp) is dict                                  #type() (Strict)
+stopifnot(is.vector(aa))                          #TRUE: list is vector
 
-isinstance(pp, dict)                              #isinstance() allows subtypes
+stopifnot(!is.atomic(aa))                         #FALSE: list is not atomic
+```
 
-isinstance(False, int)                            #bool is a subtype of int
-type(False) is int                                #But type() is strict
+```{python 'Y-Dict-Class', decorate=TRUE}
+pp = {"x": [11, 12], "y": ("a", "b", "c")}        #Simple Dictionary
+
+assert(pp.__class__ is dict)                      #same as type() (Avoid)
+
+assert(type(pp) is dict)                          #type() (Strict)
+
+assert(isinstance(pp, dict))                      #isinstance() allows subtypes
+
+assert(isinstance(False, int))                    #True: bool is subtype of int
+assert(type(False) is not int)
 
 ```
 
+- Merge or Combine in R allows duplicate components but Python overwrites them (Last seen wins) 
 
-## Basic
+```{r 'R-List-Merge', decorate=TRUE}
+aa <- list("a" = 11L, "b" = 22L)
+bb <- list("c" = 33L, "b" = 222L)
 
-- Empty R `list` & Empty Python `dict`
+dd <- c(aa, bb)                         #R keeps duplicates (Avoid)
+str(dd)
 
-```{r 'R-List-6', decorate=TRUE}
-aa <- list("a" = 11L, "b" = 22L)                  #Simple List
+ee <- modifyList(aa, val = bb)          #To overwrite duplicates (like Python)
+str(ee)
+
+#Overwrite duplicates: This may result in position change of key
+str(c(aa, bb)[!duplicated(c(names(aa), names(bb)), fromLast = TRUE)])
+
+```
+
+```{python 'Y-Dict-Merge', decorate=TRUE}
+pp = {"a": 11, "b": 22}
+qq = {"c": 33, "b": 222}
+
+ss = copy.deepcopy(pp)
+ss.update(qq)                           #Update in-place
+
+tt = {**pp, **qq}                       #Merge using **
+
+uu = pp | tt                            #Merge using |
+
+vv = copy.deepcopy(pp)
+vv |= qq                                #Update in-place using |=
+assert(ss == tt == uu == vv)
+
+print(f"{len(ss)=}, {ss = }")
+
+```
+
+- Add or Update Components
+
+```{r 'R-List-Update', decorate=TRUE}
+aa <- list("a" = 11L, "b" = 22L)
+
+aa$b <- 222L
+aa$b
+
+aa[["b"]] <- 22L
+
+aa$c <- 33L
 str(aa)
+```
 
-bb <- setNames(as.list(c(11L, 22L, 33L)), nm = c("a", "b", "c")) #Named List
+```{python 'Y-Dict-Update', decorate=TRUE}
+pp = {"a": 11, "b": 22}
+
+pp["b"] = 200                                     #subscript notation
+pp["c"] = 33
+assert(pp['b'] == 200)
+
+pp.update({"b": 300})                             #Slow
+assert(pp['b'] == 300)
+
+pp.update([("b", 22)])                            #Slow
+assert(pp['b'] == 22)
+
+print(f"{len(pp)=}, {pp = }")
+
+```
+
+- Delete components
+
+```{r 'R-List-Delete', decorate=TRUE}
+aa <- list("a" = 11L, "b" = 22L, "c" = 33L)
+
+bb <- within(aa, rm("b", "c"))                    #Error if key not found
+
+bb[c("b", "c", "xyz")] <- NULL                    #No error if key not found
+
+dd <- bb[setdiff(names(aa), c("b", "c", "xyz"))]  #No error if key not found
+stopifnot(identical(bb, dd))
 str(bb)
-
-# R List equality comparison is order sensitive (unlike Python Dictionary)
-dd <- list("b" = 22L, "a" = 11L)
-stopifnot(!identical(aa, dd))                     #Order Sensitive
-stopifnot(identical(aa[order(names(aa))], dd[order(names(dd))])) #Sort, Compare
-
-ee <- list("c" = 33L, "b" = 999L)
-xx <- c(aa, ee)                         #Merge, keep duplicates (Avoid)
-str(xx)
-xx <- modifyList(aa, val = ee)          #Merge, overwrite duplicates
-str(xx)
-xx <- within(xx, rm("b"))               #Delete, Key not found Error
-xx[c("b")] <- NULL                      #Delete, No Key error
-xx <- xx[setdiff(names(xx), "bb")]      #Delete, No Key error
-str(xx)
-
-# Merge, overwrite duplicates: This may result in position change of key
-str(c(aa, ee)[!duplicated(c(names(aa), names(ee)), fromLast = TRUE)])
-
-ff <- modifyList(aa, val = ee)          #Merge, overwrite duplicates
-ff$b <- 22L
-stopifnot(identical(bb, ff))
 ```
 
-```{python 'Y-Dict', decorate=TRUE}
-pp = {}                                           #Empty Dictionary
-print(f"{type(pp) = } | {len(pp) = } | {pp = }")
-pp = {"a": 11, "b": 22}                           #Simple Dictionary
-print(f"{len(pp)=}, {pp = }")
+```{python 'Y-Dict-Delete', decorate=TRUE}
+pp = {"a": 11, "b": 22, "c": 33}
+qq = copy.deepcopy(pp)
+ss = copy.deepcopy(pp)
+tt = copy.deepcopy(pp)
 
-qq = {zip(["a", "b", "c"], [11, 22, 33])}         #zip() creates set with {}
-assert(type(qq) is set)
-qq = dict(zip(["a", "b", "c"], [11, 22, 33]))     #zip() needs dict()
+uu = {k: v for k, v in pp.items() if k not in ("b", "c", "xyz")} #Slow
+
+for k in ("b", "c"): del qq[k]          #Return None, Error if key not found
+
+for k in ("b", "c"): ss.pop(k)          #Return Value, Error if key not found
+for k in ("xyz"): ss.pop(k, None)       #Using None, No error if key not found
+
+[tt.pop(k) for k in ("b", "c")]
+[tt.pop(k, None) for k in ("xyz")]
+
+
+assert(qq == ss == tt == uu)
 print(f"{len(qq)=}, {qq = }")
-
-# Python Dictionary equality comparison is order insensitive (unlike R List)
-ss = {"b": 22, "a": 11}
-assert(pp == ss)                                  #Ignore Key Position
-assert(not(list(ss.items()) == list(pp.items()))) #Consider Key Position
-
-tt = {"c": 33, "b": 999}
-pp.update(tt)                           #Merge in-place, Last seen overwrite
-print(f"{len(pp)=}, {pp = }")
-pp.update({"b": 22}) 
-del pp["c"]                   #Delete in-place, return None, Key not found Error
-tt.pop("b")                   #Pop in-place, return value, Key not found Error
-tt.pop("b", None)             #Pop in-place, return value, No Key error
-tt["b"] = 999                           #Add element using subscript notation
-print(f"{len(pp)=}, {pp = }")
-print(f"{len(tt)=}, {tt = }")
-
-uu = {**pp, **tt, **{"b": 22}}          #Merge using **, Last seen overwrite
-assert(qq == uu)
-
-vv = pp | tt | {"b": 22}                #Merge using | , Last seen overwrite
-assert(qq == vv)
-
-ww = copy.deepcopy(pp)
-ww |= tt                      #Update in-place using |= , Last seen overwrite
-ww |= {"b": 22}
-assert(qq == ww)
-
-```
-
-```{r 'R-Compare-List-Dict', decorate=TRUE, include=FALSE}
-bb_y <- py$qq                           #Convert Python dictionary to R List
-str(bb_y)
-stopifnot(identical(bb, bb_y))          #These are Identical
-```
-
-```{python 'Y-Compare-List-Dict', decorate=TRUE, include=FALSE}
-qq_r = r.bb                             #Convert R List to Python dictionary
-print(f"{len(qq_r)=}, {qq_r = }")
-assert(qq == qq_r)                      #These are Identical
 
 ```
 
@@ -223,28 +286,14 @@ assert(qq == qq_r)                      #These are Identical
 
 ```{r 'R-List-Nest', decorate=TRUE}
 aa <- list("a" = 11L, "b" = 22L)
-bb <- list("c" = 33L, "d" = 44L, "e" = aa)         #Nested List
+bb <- list("c" = 33L, "d" = 44L, "e" = aa)        #Nested List
 str(bb)
-
 ```
 
 ```{python 'Y-Dict-Nest', decorate=TRUE}
 pp = {"a": 11, "b": 22}
 qq = {"c": 33, "d": 44, "e": pp}                  #Nested Dictionary
 print(f"{len(qq)=}, {qq = }")
-
-```
-
-```{r 'R-Compare-List-Dict-Nest', decorate=TRUE, include=FALSE}
-bb_y <- py$qq                           #Convert Python dictionary to R List
-str(bb_y)
-stopifnot(identical(bb, bb_y))          #These are Identical
-```
-
-```{python 'Y-Compare-List-Dict-Nest', decorate=TRUE, include=FALSE}
-qq_r = r.bb                             #Convert R List to Python dictionary
-print(f"{len(qq_r)=}, {qq_r = }")
-assert(qq == qq_r)                      #These are Identical
 
 ```
 
@@ -257,35 +306,37 @@ dd_vec <- c(11L, 22L)                   #Unnamed Vector | List
 
 ee <- list(a = 11L, b = "x", c = FALSE, d = NULL, 
            e = aa_lst, f = dd_vec, g = bb_lst)
+lst_r <- ee                             #R list to transform into Python dict
+#str(ee)
 ```
 
 ```{python 'Y-Dict-Multi', decorate=TRUE}
 # Exclude Python sets because these are converted to R Environment
-#tt_set = {11, 22}            #Set: Unordered, Mutable
 pp_tup = (11, 22)             #Tuple: Ordered, Immutable | Unnamed List
 qq_lst = [11, 22]             #List: Ordered, Mutable    | Unnamed Vector
 ss_dic = {"a": 11, "b": 22}   #Dict: Ordered, Mutable    | Named List
 
-uu = {"a": 11, "b": "x", "c": False, "d": None, 
+tt = {"a": 11, "b": "x", "c": False, "d": None, 
       "e": pp_tup, "f": qq_lst, "g": ss_dic}
-print("\n".join([k + " : " + str(type(uu[k]).__name__) + " : " + str(v) 
-                for k, v in uu.items()]))
+dic_y = copy.deepcopy(tt)     #Python dict to transform into R list
+
+#print("\n".join([k + " : " + str(type(tt[k]).__name__) + " : " + str(v) 
+#                for k, v in tt.items()]))
 
 ```
 
-```{r 'R-Compare-List-Dict-Multi', decorate=TRUE, include=FALSE}
-ee_y <- py$uu                           #Convert Python dictionary to R List
-str(ee_y)
-stopifnot(identical(ee, ee_y))          #These are Identical
+```{r 'R--List-Transform', decorate=TRUE}
+aa <- py$dic_y                          #Convert Python dict to R List
+stopifnot(identical(lst_r, aa))         #TRUE
+str(aa)
 ```
 
-```{python 'Y-Compare-List-Dict-Multi', decorate=TRUE, include=FALSE}
-uu_r = r.ee                             #Convert R List to Python dictionary
-uu_r["e"] = tuple(uu_r["e"])            #List to Tuple
-print("\n".join([k + " : " + str(type(uu_r[k]).__name__) + " : " + str(v) 
-                for k, v in uu_r.items()]))
-assert(uu == uu_r)                      #These are Identical
+```{python 'Y-Dict-Transform', decorate=TRUE}
+pp = r.lst_r                            #Convert R List to Python dict
+pp["e"] = tuple(pp["e"])                #List to Tuple
+assert(dic_y == pp)                     #True
+
+print("\n".join([k + " : " + str(type(pp[k]).__name__) + " : " + str(v) 
+                for k, v in pp.items()]))
 
 ```
-
-

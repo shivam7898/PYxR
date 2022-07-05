@@ -201,12 +201,8 @@ stopifnot(-1 == 1 %/% (-2) )
 stopifnot(0  == (-1) %/% (-2) )
 
 # 1^y and y^0 are 1, ALWAYS in both R and Python
-stopifnot(all(1 == 0   ** 0, 
-              1 == NaN ** 0, 
-              1 == NA  ** 0,
-              1 == Inf ** 0,
-              1 == 1   ** NA,
-              1 == 1   ** NaN))
+stopifnot(all(sapply(list(0**0, NaN**0, NA**0, Inf**0, 1**NA, 1**NaN), 
+                     identical, 1)))
 
 stopifnot(is.nan(NaN * 0))
 stopifnot(is.na(NA * 0) & !is.nan(NA * 0))        #NA
@@ -222,9 +218,7 @@ assert(-1 == 1 // (-2) )
 assert(0  == (-1) // (-2) )
 
 # 1^y and y^0 are 1, ALWAYS in both R and Python
-assert(1  == 0 ** 0 and 
-       1 == np.nan ** 0 and 
-       1  == 1 ** np.nan)
+assert(1 == 0**0 == np.nan**0 == 1**np.nan)
 
 assert(np.isnan(np.nan * 0))
 assert(np.isnan(math.inf * 0))
@@ -265,9 +259,7 @@ list(range(10, 1, -2))
 
 ## Python Collections
 
-### List, Tuple, Set, Dictionary
-
-- Python Collections:
+- Python Collections: List, Tuple, Set, Dictionary
   - `tuple`: Literal `()`, Ordered, Immutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#tuples)
   - `list` : Literal `[]`, Ordered, Mutable, Allows Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#lists)
   - `dict` : Literal `{}`, Ordered, Mutable, No Duplicates, [Refer](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
@@ -299,38 +291,6 @@ print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
 
 pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
 print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
-
-```
-
-### Dictionary
-
-```{python 'Y-Dictionary', decorate=TRUE}
-# Create a Dictionary i.e. Key: Value Pairs, Duplicate overwritten
-pp = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964,
-  "year": 2000,
-  "electric": False,
-  "colors": ["red", "white"]
-}
-
-print(f"{type(pp) = } | {len(pp) = } | \n{pp = }")          #Print
-print(pp["brand"])                                #Access Specific Item
-pp.keys()                                         #ALL Keys
-pp.values()                                       #ALL Values 
-pp.items()                                        #ALL Items 
-
-qq = 'brand'                                      #Find x in Keys
-if(qq in pp.keys()):
-    print(qq + " is Present in Keys.")
-else:
-    print(qq + " is Absent in Keys. Check Values.")
-
-qq = list(pp)                                     #Dictionary To List (Keys)
-ss = list(pp.values())                            #Dictionary To List (Values)
-print(f"{type(qq) = } | {len(qq) = } | \n{qq = }")          #Print
-print(f"{type(ss) = } | {len(ss) = } | \n{ss = }")          #Print
 
 ```
 
