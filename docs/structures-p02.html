@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Data Structures | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<meta name="description" content="2.1 R Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix, dataframe,...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Data Structures | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/structures-p02.html">
-<meta property="og:description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<meta property="og:description" content="2.1 R Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix, dataframe,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Data Structures | PYxR">
-<meta name="twitter:description" content="2.1 R Atomic Vectors or Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix,...">
+<meta name="twitter:description" content="2.1 R Data Types R has 6 basic data types (logical, integer, double, character, complex, and raw). These data types can be combined to form Data Structures (vector, list, matrix, dataframe,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -49,6 +49,7 @@
 <li><a class="" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="active" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
 <li><a class="" href="list-dict-p03.html"><span class="header-section-number">3</span> R List &amp; Python Dictionary</a></li>
+<li><a class="" href="df-p04.html"><span class="header-section-number">4</span> DataFrames</a></li>
 </ul>
 
         <div class="book-extra">
@@ -60,9 +61,9 @@
 <h1>
 <span class="header-section-number">2</span> Data Structures<a class="anchor" aria-label="anchor" href="#structures-p02"><i class="fas fa-link"></i></a>
 </h1>
-<div id="r-atomic-vectors-or-data-types" class="section level2" number="2.1">
+<div id="r-data-types" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">2.1</span> R Atomic Vectors or Data Types<a class="anchor" aria-label="anchor" href="#r-atomic-vectors-or-data-types"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> R Data Types<a class="anchor" aria-label="anchor" href="#r-data-types"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>R has 6 basic data types (<code>logical</code>, <code>integer</code>, <code>double</code>, <code>character</code>, <code>complex</code>, and <code>raw</code>). These data types can be combined to form Data Structures (<code>vector</code>, <code>list</code>, <code>matrix</code>, <code>dataframe</code>, <code>factor</code>).
@@ -107,11 +108,9 @@
 </div>
 <br>
 </div>
-</div>
-<div id="examination-of-r-data-types" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Examination of R Data Types<a class="anchor" aria-label="anchor" href="#examination-of-r-data-types"><i class="fas fa-link"></i></a>
-</h2>
+<ul>
+<li>Examination of R Data Types</li>
+</ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
@@ -140,9 +139,9 @@
 <br>
 </div>
 </div>
-<div id="r-matrices-and-arrays" class="section level2" number="2.3">
+<div id="r-matrices" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.3</span> R Matrices and Arrays<a class="anchor" aria-label="anchor" href="#r-matrices-and-arrays"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> R Matrices<a class="anchor" aria-label="anchor" href="#r-matrices"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -199,9 +198,9 @@
 <br>
 </div>
 </div>
-<div id="r-dataframes" class="section level2" number="2.4">
+<div id="r-dataframes" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.4</span> R DataFrames<a class="anchor" aria-label="anchor" href="#r-dataframes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> R DataFrames<a class="anchor" aria-label="anchor" href="#r-dataframes"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Data frame is a list of <code>vectors</code>, <code>factors</code>, and/or <code>matrices</code> all having the same length (number of rows in the case of matrices).
@@ -247,9 +246,9 @@
 <br>
 </div>
 </div>
-<div id="r-factors" class="section level2" number="2.5">
+<div id="r-factors" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.5</span> R Factors<a class="anchor" aria-label="anchor" href="#r-factors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> R Factors<a class="anchor" aria-label="anchor" href="#r-factors"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -291,9 +290,9 @@
 <br>
 </div>
 </div>
-<div id="membership-functions" class="section level2" number="2.6">
+<div id="r-membership" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.6</span> Membership Functions<a class="anchor" aria-label="anchor" href="#membership-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> R Membership<a class="anchor" aria-label="anchor" href="#r-membership"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -346,9 +345,9 @@
 <br>
 </div>
 </div>
-<div id="python-types" class="section level2" number="2.7">
+<div id="python-types" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.7</span> Python Types<a class="anchor" aria-label="anchor" href="#python-types"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Python Types<a class="anchor" aria-label="anchor" href="#python-types"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p><a href="https://docs.python.org/3/library/stdtypes.html#">(doc) Built-in Types</a></p></li>
@@ -404,9 +403,9 @@
 <li><p>Mapping Types: <code>dict</code></p></li>
 </ul>
 </div>
-<div id="similarity-r-python" class="section level2" number="2.8">
+<div id="similarities" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.8</span> Similarity (R &amp; Python)<a class="anchor" aria-label="anchor" href="#similarity-r-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Similarities<a class="anchor" aria-label="anchor" href="#similarities"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
@@ -447,9 +446,9 @@
 <br>
 </div>
 </div>
-<div id="differences-r-python" class="section level2" number="2.9">
+<div id="differences" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.9</span> Differences (R &amp; Python)<a class="anchor" aria-label="anchor" href="#differences-r-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Differences<a class="anchor" aria-label="anchor" href="#differences"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
@@ -501,9 +500,9 @@
 <br>
 </div>
 </div>
-<div id="python-collections" class="section level2" number="2.10">
+<div id="python-collections" class="section level2" number="2.9">
 <h2>
-<span class="header-section-number">2.10</span> Python Collections<a class="anchor" aria-label="anchor" href="#python-collections"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9</span> Python Collections<a class="anchor" aria-label="anchor" href="#python-collections"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Python Collections: List, Tuple, Set, Dictionary
@@ -559,9 +558,9 @@
 <br>
 </div>
 </div>
-<div id="numpy-array" class="section level2" number="2.11">
+<div id="numpy-array" class="section level2" number="2.10">
 <h2>
-<span class="header-section-number">2.11</span> NumPy Array<a class="anchor" aria-label="anchor" href="#numpy-array"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.10</span> NumPy Array<a class="anchor" aria-label="anchor" href="#numpy-array"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
@@ -579,18 +578,6 @@
 </div>
 <br>
 </div>
-</div>
-<div id="pandas-dataframe" class="section level2" number="2.12">
-<h2>
-<span class="header-section-number">2.12</span> Pandas DataFrame<a class="anchor" aria-label="anchor" href="#pandas-dataframe"><i class="fas fa-link"></i></a>
-</h2>
-<div class="decocode">
-<div style="background-color:inherit">
-<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="structures-p02.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
-</div>
-<br>
-</div>
 
 </div>
 </div>
@@ -601,18 +588,16 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#structures-p02"><span class="header-section-number">2</span> Data Structures</a></li>
-<li><a class="nav-link" href="#r-atomic-vectors-or-data-types"><span class="header-section-number">2.1</span> R Atomic Vectors or Data Types</a></li>
-<li><a class="nav-link" href="#examination-of-r-data-types"><span class="header-section-number">2.2</span> Examination of R Data Types</a></li>
-<li><a class="nav-link" href="#r-matrices-and-arrays"><span class="header-section-number">2.3</span> R Matrices and Arrays</a></li>
-<li><a class="nav-link" href="#r-dataframes"><span class="header-section-number">2.4</span> R DataFrames</a></li>
-<li><a class="nav-link" href="#r-factors"><span class="header-section-number">2.5</span> R Factors</a></li>
-<li><a class="nav-link" href="#membership-functions"><span class="header-section-number">2.6</span> Membership Functions</a></li>
-<li><a class="nav-link" href="#python-types"><span class="header-section-number">2.7</span> Python Types</a></li>
-<li><a class="nav-link" href="#similarity-r-python"><span class="header-section-number">2.8</span> Similarity (R &amp; Python)</a></li>
-<li><a class="nav-link" href="#differences-r-python"><span class="header-section-number">2.9</span> Differences (R &amp; Python)</a></li>
-<li><a class="nav-link" href="#python-collections"><span class="header-section-number">2.10</span> Python Collections</a></li>
-<li><a class="nav-link" href="#numpy-array"><span class="header-section-number">2.11</span> NumPy Array</a></li>
-<li><a class="nav-link" href="#pandas-dataframe"><span class="header-section-number">2.12</span> Pandas DataFrame</a></li>
+<li><a class="nav-link" href="#r-data-types"><span class="header-section-number">2.1</span> R Data Types</a></li>
+<li><a class="nav-link" href="#r-matrices"><span class="header-section-number">2.2</span> R Matrices</a></li>
+<li><a class="nav-link" href="#r-dataframes"><span class="header-section-number">2.3</span> R DataFrames</a></li>
+<li><a class="nav-link" href="#r-factors"><span class="header-section-number">2.4</span> R Factors</a></li>
+<li><a class="nav-link" href="#r-membership"><span class="header-section-number">2.5</span> R Membership</a></li>
+<li><a class="nav-link" href="#python-types"><span class="header-section-number">2.6</span> Python Types</a></li>
+<li><a class="nav-link" href="#similarities"><span class="header-section-number">2.7</span> Similarities</a></li>
+<li><a class="nav-link" href="#differences"><span class="header-section-number">2.8</span> Differences</a></li>
+<li><a class="nav-link" href="#python-collections"><span class="header-section-number">2.9</span> Python Collections</a></li>
+<li><a class="nav-link" href="#numpy-array"><span class="header-section-number">2.10</span> NumPy Array</a></li>
 </ul>
 
       <div class="book-extra">
