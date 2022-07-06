@@ -4,20 +4,82 @@
 source("_common.R")
 ```
 
+R provides `data.frame` for tabular data structure. `tibble` & `data.table` are packages which extends its capabilities. Python module `pandas` provide `DataFrame` with similar capabilities. 
+
 ## Basics
 
-- R provides `data.frame` data structure. `tibble` & `data.table` are packages which extends its capabilities.
-- Python module `pandas` provide `DataFrame` with similar capabilities
+- R
+  - R `data.frame` is a `list` of variables of the same number of rows. It is a `matrix` like structure whose columns may be of differing types.
 
+- Create R `data.frame`, `tibble`, & Python Pandas `DataFrame`
 
-```{r 'R-1', decorate=TRUE}
-aa <- data.frame(x = 1:5, y = letters[1:5])
-class(aa)
-typeof(aa)
+```{r 'R-DF-Create', decorate=TRUE}
+nn <- 4L                                          #Number of Rows
+
+# R Data Frame
+df_r <- data.frame(
+  INT = 1:nn, NUM = seq(1, nn, 1), CHR = letters[1:nn], LGL = (1:nn %% 2) == 0, 
+  FCT = factor(rep(c("No", "Yes"), length.out = nn)))
+# Tibble
+tbl <- tibble(
+  INT = 1:nn, NUM = seq(1, nn, 1), CHR = letters[1:nn], LGL = (1:nn %% 2) == 0, 
+  FCT = factor(rep(c("No", "Yes"), length.out = nn)))
+
+stopifnot(all(identical(df_r, as.data.frame(tbl)), 
+              identical(tbl, as_tibble(df_r))))
+```
+
+```{python 'Y-DF-Create', decorate=TRUE}
+pp = 4                                            #Number of Rows
+
+qq = {'INT': [i+1 for i in range(pp)], 
+      'NUM': (float(i+1) for i in range(pp)),
+      'CHR': [chr(i) for i in range(ord('a'), ord('a') +pp)],
+      'LGL': [i % 2 == 1 for i in range(pp)],
+      'FCT': pd.Categorical(['No', 'Yes'] * 2)}
+
+df_y = pd.DataFrame(data = qq)                    #DataFrame
+
+```
+
+```{r 'R-Compare', decorate=TRUE}
+aa <- py$df_y |> `attr<-`("pandas.index", NULL)
+aa$INT <- as.integer(aa$INT)
+#str(df_r)
+#str(aa)
+stopifnot(identical(df_r, aa))
+```
+
+- Print, Head & Tail Subset
+
+```{r 'R-DF-Head', decorate=TRUE}
+if(FALSE) print(df_r)                   #Data Frame prints ALL Rows (Avoid)
+if(FALSE) print(tbl, n = 2)             #Tibble can take number of rows to print 
+
+head(df_r, 2)                                     #Subset of Data Frame by Head
+
+tail(tbl, 2)                                      #Subset of Tibble by Tail
+```
+
+```{python 'Y-DF-Head', decorate=TRUE}
+df_y.head(2)
+
+df_y.tail(2)
+
 ```
 
 
-```{r 'R-2', decorate=TRUE}
-aa <- tibble(x = 1:5, y = letters[1:5])
-str(aa)
+- About: Class, Type, Dimensions, Structure, Summary
+
+```{r 'R-DF-About', decorate=TRUE}
+dim(df_r)                                         #Dimensions [Row, Column]
+
+names(df_r)                                       #Names
+
+str(df_r)                                         #Structure
+
+summary(df_r)                                     #Summary
 ```
+
+
+
