@@ -450,9 +450,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x204406f9170"
+## [1] "0x16ea96d90d0"
 obj_addr(bb)
-## [1] "0x204406f9170"
+## [1] "0x16ea96d90d0"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -467,10 +467,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x204406f8fb0"
+## [1] "0x16ea96d8f10"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x204406f9170"
+## [1] "0x16ea96d90d0"
 ```
 
 </div><br></div>
@@ -484,9 +484,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 2217126396432
+## 1574642778640
 id(qq)
-## 2217126396432
+## 1574642778640
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -502,9 +502,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 2217126396272
+## 1574642778480
 id(pp)
-## 2217126396432
+## 1574642778640
 ```
 
 </div><br></div>
@@ -519,7 +519,7 @@ assert(id(pp) == id(qq))      #verify both are pointing to same address
 id(pp)                        #Actual address
 
 # Unlike the string.upper() below, list.append() need not to be assigned 
-## 2217619703168
+## 1575136150848
 qq.append(44)
 print(pp)                     #Original 'pp' is also pointing to modified list
 ## [11, 22, 33, 44]
@@ -527,7 +527,7 @@ assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 id(pp)                        #Object address has not changed from earlier
 
 # Python Dictionaries (mutable) are also modified in place
-## 2217619703168
+## 1575136150848
 pp = {"a": 11, "b": 22, "c": 33}
 qq = pp
 qq["d"] = 44                  #Modify 'qq' by adding another key
@@ -542,21 +542,21 @@ assert(id(pp) == id(qq))
 id(pp)
 
 # Unlike the list.append() above, string.upper() needs to be assigned 
-## 2217127681712
+## 1574644063920
 qq.upper()
 ## 'ABC'
 assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 id(qq)
-## 2217127681712
+## 1574644063920
 print(qq)                     #'qq' is still pointing to the same object
 ## abc
 qq = qq.upper()               #binding the new object created to 'qq'
 id(qq)                        #'qq' now points to a different object
-## 2217639046832
+## 1575136257264
 print(qq)
 ## ABC
 id(pp)                        #Original 'pp' still points to the same address 
-## 2217127681712
+## 1574644063920
 print(pp)                     #with same value
 
 # Mutability (shallow copy) can impact other objects unexpectedly
