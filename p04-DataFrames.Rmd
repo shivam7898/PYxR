@@ -228,7 +228,7 @@ stopifnot(has_rownames(aa))
 row.names(aa)
 ```
 
-```{python 'R-DF-RowNames', decorate=TRUE}
+```{python 'Y-DF-RowNames', decorate=TRUE}
 pp = pd.DataFrame(data = {'x': [1, 2]})
 list(pp.index)
 
