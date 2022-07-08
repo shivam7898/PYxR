@@ -127,7 +127,7 @@ print("\n".join([k + " : " + str(type(pp[k]).__name__)
 
 ```
 
-- Slice or Subset or Select: R index starts from 1 whereas Python index starts from 0
+- Slice or Subset or Select: Indexing starts from 1 in R and from 0 in Python.
 
 ```{r 'R-List-Select', decorate=TRUE}
 aa <- list(x = c(11L, 12L), y = c("a", "b", "c")) #Simple List
@@ -325,7 +325,7 @@ dic_y = copy.deepcopy(tt)     #Python dict to transform into R list
 
 ```
 
-```{r 'R--List-Transform', decorate=TRUE}
+```{r 'R-List-Transform', decorate=TRUE}
 aa <- py$dic_y                          #Convert Python dict to R List
 stopifnot(identical(lst_r, aa))         #TRUE
 str(aa)

@@ -3,7 +3,7 @@
 ```{r 'setup', include=FALSE}
 ################################################################################
 source("_common.R")
-if(TRUE) c("lobstr") |> 
+if(FALSE) c("lobstr") |> 
   lapply(library, character.only=TRUE)
 ```
 
@@ -17,7 +17,7 @@ if(TRUE) c("lobstr") |>
 
 > In R & Python, Everything that exists is an `object`.  
 
-- Indexing starts at 1 in R. Whereas, it starts at 0 in Python
+- Indexing starts from 1 in R and from 0 in Python. 
 - Periods `.` (dots)
   - In Python, dot `.` is a member access operator use to access methods of the object(class instance). Thus, it can be used to pipe or chain together multiple operations. 
   - In Python, dot cannot be part of object name. Whereas, R does not treat dot as special.

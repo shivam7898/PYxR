@@ -6,24 +6,28 @@ source("_common.R")
 
 R provides `data.frame` for tabular data structure. `tibble` & `data.table` are packages which extends its capabilities. Python module `pandas` provide `DataFrame` with similar capabilities. 
 
+> Indexing starts from 1 in R and from 0 in Python.  
+
 ## Basics
 
-- R
-  - R `data.frame` is a `list` of variables of the same number of rows. It is a `matrix` like structure whose columns may be of differing types.
+- R `data.frame` is a `list` of variables of the same number of rows. It is a `matrix` like structure whose columns may be of differing types.
+- Python Pandas `DataFrame` is a 2-dimensional data structure that can store data of different types in columns. 
 
-- Create R `data.frame`, `tibble`, & Python Pandas `DataFrame`
+
+- Create R `data.frame()`, `tibble()` and Python `pd.DataFrame()`
 
 ```{r 'R-DF-Create', decorate=TRUE}
 nn <- 4L                                          #Number of Rows
 
-# R Data Frame
+# R Data Frame: integer, double, character, logical, factor
 df_r <- data.frame(
   INT = 1:nn, NUM = seq(1, nn, 1), CHR = letters[1:nn], LGL = (1:nn %% 2) == 0, 
-  FCT = factor(rep(c("No", "Yes"), length.out = nn)))
+  FCT = factor(rep(c('No', 'Yes'), length.out = nn)))
+
 # Tibble
 tbl <- tibble(
   INT = 1:nn, NUM = seq(1, nn, 1), CHR = letters[1:nn], LGL = (1:nn %% 2) == 0, 
-  FCT = factor(rep(c("No", "Yes"), length.out = nn)))
+  FCT = factor(rep(c('No', 'Yes'), length.out = nn)))
 
 stopifnot(all(identical(df_r, as.data.frame(tbl)), 
               identical(tbl, as_tibble(df_r))))
@@ -38,48 +42,268 @@ qq = {'INT': [i+1 for i in range(pp)],
       'LGL': [i % 2 == 1 for i in range(pp)],
       'FCT': pd.Categorical(['No', 'Yes'] * 2)}
 
-df_y = pd.DataFrame(data = qq)                    #DataFrame
+df_y = pd.DataFrame(data = qq)                    #DataFrame from dict
 
 ```
 
 ```{r 'R-Compare', decorate=TRUE}
-aa <- py$df_y |> `attr<-`("pandas.index", NULL)
+aa <- py$df_y |> `attr<-`('pandas.index', NULL)
 aa$INT <- as.integer(aa$INT)
-#str(df_r)
-#str(aa)
 stopifnot(identical(df_r, aa))
 ```
 
-- Print, Head & Tail Subset
+- R: `print()`, `head()`, `tail()`, `slice()`
+- Python: `print()`, `pd.head()`, `pd.tail()`, `pd.iloc()`
 
 ```{r 'R-DF-Head', decorate=TRUE}
+aa <- df_r
 if(FALSE) print(df_r)                   #Data Frame prints ALL Rows (Avoid)
-if(FALSE) print(tbl, n = 2)             #Tibble can take number of rows to print 
+if(FALSE) print(tbl, n = 2)             #Tibble can take number of rows to print
 
-head(df_r, 2)                                     #Subset of Data Frame by Head
+stopifnot(identical(slice(aa, 1:2), head(aa, 2)))
+head(aa, 2)                                       #Subset by Head
 
-tail(tbl, 2)                                      #Subset of Tibble by Tail
+
+tail(aa, 2)                                       #Subset by Tail
 ```
 
 ```{python 'Y-DF-Head', decorate=TRUE}
-df_y.head(2)
+pp = df_y.copy()
 
-df_y.tail(2)
+assert(pp.head(2).equals(pp.iloc[:2]))
+pp.head(2)
+
+
+pp.tail(2)
 
 ```
 
-
-- About: Class, Type, Dimensions, Structure, Summary
+- R: `class()`, `type()`, `dim()`, `names()`, `str()`, `summary()`
+- Python: `typeof()`, `pd.shape`, `pd.columns.values`, `pd.describe()`, `pp.dtypes`, `pd.info()`
 
 ```{r 'R-DF-About', decorate=TRUE}
-dim(df_r)                                         #Dimensions [Row, Column]
+aa <- df_r
 
-names(df_r)                                       #Names
+class(aa)                                         #Class
 
-str(df_r)                                         #Structure
+typeof(aa)                                        #Type
 
-summary(df_r)                                     #Summary
+dim(aa)                                           #Dimensions [Row, Column]
+
+names(aa)                                         #Names
+
+str(aa)                                           #Structure
+
+summary(aa)                                       #Summary
 ```
 
+```{python 'Y-DF-About', decorate=TRUE}
+pp = df_y.copy()
 
+print(type(pp))                                   #Explicitly Print type()
+
+
+pp.shape                                          #Dimensions [Row, Column]
+
+
+list(pp.columns)                                  #Names
+
+
+list(pp.describe().index)                         #(Default) Summary of Num only
+[x for x in pp.describe(include = 'all').index if x not in pp.describe().index]
+
+pp.describe(include = 'all').loc[['count', 'max', 'unique']]
+
+
+pp.dtypes                                         #data type of each column
+
+
+pp.info(memory_usage = False)                     #Structure
+
+#Prevent the collapse of middle columns into (...)
+if(False):
+    with pd.option_context('display.max_columns', 40):
+        print(pp.describe(include = 'all'))
+
+```
+
+- R: `dplyr::select()`, `data.frame()`, `with()`, `[]`, `subset()` (Avoid)
+- Python: `pd.[]`, `pd.drop()`
+
+```{r 'R-DF-Select', decorate=TRUE}
+aa <- df_r
+names(aa)
+
+# dplyr::select() by including or excluding names
+bb <- select(aa, 2:3)
+dd <- select(aa, NUM, CHR)
+ee <- select(aa, -c(INT, LGL, FCT))
+
+ff <- data.frame('NUM' = aa$NUM, 'CHR' = aa$CHR)
+# with() can be used to create an environment using data
+gg <- with(aa, data.frame(NUM, CHR))
+# [] is used for subsetting but note that 1-column subset is vector by default
+hh <- aa[ , c('NUM', 'CHR'), drop = FALSE]
+ii <- subset(aa, select = c(NUM, CHR), drop = FALSE)      #Avoid
+
+stopifnot(all(sapply(list(dd, ee, ff, gg, hh, ii), identical, bb)))
+str(bb)
+```
+
+```{python 'Y-DF-Select', decorate=TRUE}
+pp = df_y.copy()
+list(pp.columns)
+
+qq = pp[['NUM', 'CHR']].copy()                              #Use List of Names
+ss = pp.drop(columns = ['INT', 'LGL', 'FCT']).copy()        #Drop Columns
+tt = pp.drop(['INT', 'LGL', 'FCT'], axis = 1).copy()        #0 Rows, 1 Columns
+
+assert(qq.equals(ss) and qq.equals(tt))
+qq
+
+```
+
+- R: `names()`, `dplyr::rename()`
+- Python: `pd.rename()`, `pd.columns.values`
+
+```{r 'R-DF-Rename', decorate=TRUE}
+aa <- df_r
+names(aa)
+
+names(aa)[c(1, 3)] <- c('A', 'C')                 #By Position
+names(aa)[names(aa) == 'NUM'] <- 'B'              #By Name
+
+aa <- rename(aa, D = LGL, E = 5)                  #New = Old (Reverse of Python)
+names(aa)
+```
+
+```{python 'Y-DF-Rename', decorate=TRUE}
+pp = df_y.copy()
+list(pp.columns)
+
+pp.rename(columns = {'INT': 'A', pp.columns[1]: 'B'}, inplace = True) #Old: New
+pp.rename(columns = dict(zip(pp.columns[[3]], ['D'])),inplace = True) #New, Old
+pp.columns.values[[2, 4]] = ['C', 'E']
+
+list(pp.columns)
+
+```
+
+- R: `order()`, `dplyr::arrange()`
+
+```{r 'R-DF-Order', decorate=TRUE}
+aa <- df_r
+
+# order() ALWAYS reorders the rownames
+aa[order(aa$CHR, decreasing = TRUE), ]
+
+
+# arrange() reorders character rownames but reinitialises them from 1 if integer
+arrange(aa, desc(CHR))
+```
+
+```{python 'Y-DF-Order', decorate=TRUE}
+pp = df_y.copy()
+list(pp.index)
+
+
+pp.sort_values('CHR', ascending = False, inplace = True)
+list(pp.index)
+
+```
+
+## RowNames - Index
+
+- R `rownames` are called `index` in Python
+- R `data.frame` has `rownames` but `tibble` heavily discourage their usage. 
+- Duplicated row indices are allowed in Python but not in R
+
+```{r 'R-DF-RowNames', decorate=TRUE}
+aa <- data.frame(x = 1:2)
+row.names(aa)
+
+row.names(aa) <- letters[1:2]                               #rownames
+
+stopifnot(has_rownames(aa))
+row.names(aa)
+```
+
+```{python 'R-DF-RowNames', decorate=TRUE}
+pp = pd.DataFrame(data = {'x': [1, 2]})
+list(pp.index)
+
+
+pp.set_index([pd.Index(['a', 'a'])], inplace = True)        #Duplicate index
+pp.set_index([pd.Index(['a', 'b'])], inplace = True)
+list(pp.index) 
+
+```
+
+## Copy
+
+```{r 'R-DF-Copy', decorate=TRUE}
+bb <- aa <- data.frame(x = 11:13)                 #R Copy-on-Modify
+stopifnot(identical(obj_addr(aa), obj_addr(bb)))
+obj_addr(aa)
+
+aa[2, 'x'] <- NA
+
+obj_addr(aa)                  #Points to an address different from earlier
+aa$x                          #Modified
+
+obj_addr(bb)                  #No change in address
+bb$x
+```
+
+```{python 'Y-DF-Copy', decorate=TRUE}
+pp = pd.DataFrame({'x': [1, 2, 3]})
+qq = pp.copy()                          #Deepcopy by default
+ss = copy.deepcopy(pp)                  #Deepcopy
+
+assert(id(pp) != id(qq) != id(ss))      #Deepcopy has different address
+id(pp)
+
+
+pp.at[1, 'x'] = None
+
+assert(qq.equals(ss) and not qq.equals(pp))
+
+id(pp)                                  #Points to the same address as before
+
+pp
+
+```
+
+## Modify [] - .at, .loc
+
+- R `[]` vs. Python `pd.at[]`, `pd.loc[]`, `pd.iat[]`, `pd.iloc[]`
+
+```{r 'R-DF-Modify', decorate=TRUE}
+aa <- df_r
+
+aa[1, 2] <- NA
+aa[2, 'CHR'] <- NA
+
+aa
+```
+
+```{python 'Y-DF-Modify', decorate=TRUE}
+pp = df_y.copy()
+
+# .at can only access a single value at a time. Fast
+# It tries to maintain the datatype (fails sometimes)
+# If column number is used by mistake, it creates a New Column (Avoid)
+pp.at[0, 'NUM'] = None
+
+# .loc can select multiple rows and/or columns. Slow
+# It does not maintain the datatype and modifies the type silently
+pp.loc[1, 'CHR'] = None
+
+# .iat & .iloc are indices variants of the above
+pp.iat[3, 1] = 10.0
+pp.iloc[2, 0] = 30
+
+pp
+
+```
 
