@@ -12,7 +12,7 @@
 
 > In R & Python, Everything that exists is an `object`.  
 
-- Indexing starts at 1 in R. Whereas, it starts at 0 in Python
+- Indexing starts from 1 in R and from 0 in Python. 
 - Periods `.` (dots)
   - In Python, dot `.` is a member access operator use to access methods of the object(class instance). Thus, it can be used to pipe or chain together multiple operations. 
   - In Python, dot cannot be part of object name. Whereas, R does not treat dot as special.
@@ -450,9 +450,9 @@ aa <- 10
 bb <- aa
 # Note that both names are pointing to same memory address
 obj_addr(aa)
-## [1] "0x16ea96d90d0"
+## [1] "0x1f47a143c80"
 obj_addr(bb)
-## [1] "0x16ea96d90d0"
+## [1] "0x1f47a143c80"
 stopifnot(identical(obj_addr(aa), obj_addr(bb)))
 
 # Print the copy
@@ -467,10 +467,10 @@ print(aa)
 ## [1] 10
 # Now the modified name points to a different memory address than earlier
 obj_addr(bb)
-## [1] "0x16ea96d8f10"
+## [1] "0x1f47a143af8"
 # Original is still pointing to the same address containing original object
 obj_addr(aa)
-## [1] "0x16ea96d90d0"
+## [1] "0x1f47a143c80"
 ```
 
 </div><br></div>
@@ -484,9 +484,9 @@ pp = 10
 qq = pp
 # Note that both names are pointing to same memory address
 id(pp)
-## 1574642778640
+## 2149608260112
 id(qq)
-## 1574642778640
+## 2149608260112
 assert(id(pp) == id(qq))
 
 # Print the copy
@@ -502,9 +502,9 @@ print(pp)
 ## 10
 id(qq)
 # Original is still pointing to the same address containing original variable
-## 1574642778480
+## 2149608259952
 id(pp)
-## 1574642778640
+## 2149608260112
 ```
 
 </div><br></div>
@@ -519,7 +519,7 @@ assert(id(pp) == id(qq))      #verify both are pointing to same address
 id(pp)                        #Actual address
 
 # Unlike the string.upper() below, list.append() need not to be assigned 
-## 1575136150848
+## 2149618894208
 qq.append(44)
 print(pp)                     #Original 'pp' is also pointing to modified list
 ## [11, 22, 33, 44]
@@ -527,7 +527,7 @@ assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 id(pp)                        #Object address has not changed from earlier
 
 # Python Dictionaries (mutable) are also modified in place
-## 1575136150848
+## 2149618894208
 pp = {"a": 11, "b": 22, "c": 33}
 qq = pp
 qq["d"] = 44                  #Modify 'qq' by adding another key
@@ -542,21 +542,21 @@ assert(id(pp) == id(qq))
 id(pp)
 
 # Unlike the list.append() above, string.upper() needs to be assigned 
-## 1574644063920
+## 2149609545392
 qq.upper()
 ## 'ABC'
 assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
 id(qq)
-## 1574644063920
+## 2149609545392
 print(qq)                     #'qq' is still pointing to the same object
 ## abc
 qq = qq.upper()               #binding the new object created to 'qq'
 id(qq)                        #'qq' now points to a different object
-## 1575136257264
+## 2147725699888
 print(qq)
 ## ABC
 id(pp)                        #Original 'pp' still points to the same address 
-## 1574644063920
+## 2149609545392
 print(pp)                     #with same value
 
 # Mutability (shallow copy) can impact other objects unexpectedly

@@ -40,3 +40,6 @@ nested
 with-multiple-types
 df-p04
 basics-2
+rownames---index
+copy
+modify---.at-.loc

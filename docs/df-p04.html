@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Data Frame | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities.  4.1 Basics R R...">
+<meta name="description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities. Indexing starts...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Data Frame | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/df-p04.html">
-<meta property="og:description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities.  4.1 Basics R R...">
+<meta property="og:description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities. Indexing starts...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 4 Data Frame | PYxR">
-<meta name="twitter:description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities.  4.1 Basics R R...">
+<meta name="twitter:description" content="R provides data.frame for tabular data structure. tibble &amp; data.table are packages which extends its capabilities. Python module pandas provide DataFrame with similar capabilities. Indexing starts...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,18 +62,17 @@
 <span class="header-section-number">4</span> Data Frame<a class="anchor" aria-label="anchor" href="#df-p04"><i class="fas fa-link"></i></a>
 </h1>
 <p>R provides <code>data.frame</code> for tabular data structure. <code>tibble</code> &amp; <code>data.table</code> are packages which extends its capabilities. Python module <code>pandas</code> provide <code>DataFrame</code> with similar capabilities.</p>
+<blockquote>
+<p>Indexing starts from 1 in R and from 0 in Python.</p>
+</blockquote>
 <div id="basics-2" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> Basics<a class="anchor" aria-label="anchor" href="#basics-2"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>R
-<ul>
-<li>R <code>data.frame</code> is a <code>list</code> of variables of the same number of rows. It is a <code>matrix</code> like structure whose columns may be of differing types.</li>
-</ul>
-</li>
-<li>Create R <code>data.frame</code>, <code>tibble</code>, &amp; Python Pandas <code>DataFrame</code>
-</li>
+<li><p>R <code>data.frame</code> is a <code>list</code> of variables of the same number of rows. It is a <code>matrix</code> like structure whose columns may be of differing types.</p></li>
+<li><p>Python Pandas <code>DataFrame</code> is a 2-dimensional data structure that can store data of different types in columns.</p></li>
+<li><p>Create R <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>, <code>tibble()</code> and Python <code>pd.DataFrame()</code></p></li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
@@ -81,14 +80,15 @@
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nn</span> <span class="op">&lt;-</span> <span class="fl">4L</span>                                          <span class="co">#Number of Rows</span></span>
 <span></span>
-<span><span class="co"># R Data Frame</span></span>
+<span><span class="co"># R Data Frame: integer, double, character, logical, factor</span></span>
 <span><span class="va">df_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  INT <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nn</span>, NUM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">nn</span>, <span class="fl">1</span><span class="op">)</span>, CHR <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span><span class="op">]</span>, LGL <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span>, </span>
-<span>  FCT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="va">nn</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  FCT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'No'</span>, <span class="st">'Yes'</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="va">nn</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># Tibble</span></span>
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  INT <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nn</span>, NUM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">nn</span>, <span class="fl">1</span><span class="op">)</span>, CHR <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span><span class="op">]</span>, LGL <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span>, </span>
-<span>  FCT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="va">nn</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  FCT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'No'</span>, <span class="st">'Yes'</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="va">nn</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>              <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="fu">as_tibble</span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -106,7 +106,7 @@
 <span id="cb68-6"><a href="df-p04.html#cb68-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">'LGL'</span>: [i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(pp)],</span>
 <span id="cb68-7"><a href="df-p04.html#cb68-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">'FCT'</span>: pd.Categorical([<span class="st">'No'</span>, <span class="st">'Yes'</span>] <span class="op">*</span> <span class="dv">2</span>)}</span>
 <span id="cb68-8"><a href="df-p04.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="df-p04.html#cb68-9" aria-hidden="true" tabindex="-1"></a>df_y <span class="op">=</span> pd.DataFrame(data <span class="op">=</span> qq)                    <span class="co">#DataFrame</span></span></code></pre></div>
+<span id="cb68-9"><a href="df-p04.html#cb68-9" aria-hidden="true" tabindex="-1"></a>df_y <span class="op">=</span> pd.DataFrame(data <span class="op">=</span> qq)                    <span class="co">#DataFrame from dict</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -114,66 +114,83 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">py</span><span class="op">$</span><span class="va">df_y</span> <span class="op">|&gt;</span> <span class="fu">`attr&lt;-`</span><span class="op">(</span><span class="st">"pandas.index"</span>, <span class="cn">NULL</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">py</span><span class="op">$</span><span class="va">df_y</span> <span class="op">|&gt;</span> <span class="fu">`attr&lt;-`</span><span class="op">(</span><span class="st">'pandas.index'</span>, <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="va">aa</span><span class="op">$</span><span class="va">INT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">aa</span><span class="op">$</span><span class="va">INT</span><span class="op">)</span></span>
-<span><span class="co">#str(df_r)</span></span>
-<span><span class="co">#str(aa)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="va">aa</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <br>
 </div>
 <ul>
-<li>Print, Head &amp; Tail Subset</li>
+<li>R: <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code>, <code>slice()</code>
+</li>
+<li>Python: <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code>pd.head()</code>, <code>pd.tail()</code>, <code>pd.iloc()</code>
+</li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                   <span class="co">#Data Frame prints ALL Rows (Avoid)</span></span>
-<span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tbl</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>             <span class="co">#Tibble can take number of rows to print </span></span>
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                   <span class="co">#Data Frame prints ALL Rows (Avoid)</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tbl</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>             <span class="co">#Tibble can take number of rows to print</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="fl">2</span><span class="op">)</span>                                     <span class="co">#Subset of Data Frame by Head</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu">slice</span><span class="op">(</span><span class="va">aa</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aa</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aa</span>, <span class="fl">2</span><span class="op">)</span>                                       <span class="co">#Subset by Head</span></span>
 <span><span class="co">##   INT NUM CHR   LGL FCT</span></span>
 <span><span class="co">## 1   1   1   a FALSE  No</span></span>
 <span><span class="co">## 2   2   2   b  TRUE Yes</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="fl">2</span><span class="op">)</span>                                      <span class="co">#Subset of Tibble by Tail</span></span>
-<span><span class="co">## # A tibble: 2 × 5</span></span>
-<span><span class="co">##     INT   NUM CHR   LGL   FCT  </span></span>
-<span><span class="co">##   &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt; &lt;fct&gt;</span></span>
-<span><span class="co">## 1     3     3 c     FALSE No   </span></span>
-<span><span class="co">## 2     4     4 d     TRUE  Yes</span></span></code></pre></div>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">aa</span>, <span class="fl">2</span><span class="op">)</span>                                       <span class="co">#Subset by Tail</span></span>
+<span><span class="co">##   INT NUM CHR   LGL FCT</span></span>
+<span><span class="co">## 3   3   3   c FALSE  No</span></span>
+<span><span class="co">## 4   4   4   d  TRUE Yes</span></span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="df-p04.html#cb71-1" aria-hidden="true" tabindex="-1"></a>df_y.head(<span class="dv">2</span>)</span>
-<span id="cb71-2"><a href="df-p04.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co">##    INT  NUM CHR    LGL  FCT</span></span>
-<span id="cb71-3"><a href="df-p04.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">## 0    1  1.0   a  False   No</span></span>
-<span id="cb71-4"><a href="df-p04.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 1    2  2.0   b   True  Yes</span></span>
-<span id="cb71-5"><a href="df-p04.html#cb71-5" aria-hidden="true" tabindex="-1"></a>df_y.tail(<span class="dv">2</span>)</span>
+<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="df-p04.html#cb71-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb71-2"><a href="df-p04.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="df-p04.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(pp.head(<span class="dv">2</span>).equals(pp.iloc[:<span class="dv">2</span>]))</span>
+<span id="cb71-4"><a href="df-p04.html#cb71-4" aria-hidden="true" tabindex="-1"></a>pp.head(<span class="dv">2</span>)</span>
+<span id="cb71-5"><a href="df-p04.html#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-6"><a href="df-p04.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">##    INT  NUM CHR    LGL  FCT</span></span>
-<span id="cb71-7"><a href="df-p04.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 2    3  3.0   c  False   No</span></span>
-<span id="cb71-8"><a href="df-p04.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 3    4  4.0   d   True  Yes</span></span></code></pre></div>
+<span id="cb71-7"><a href="df-p04.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 0    1  1.0   a  False   No</span></span>
+<span id="cb71-8"><a href="df-p04.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 1    2  2.0   b   True  Yes</span></span>
+<span id="cb71-9"><a href="df-p04.html#cb71-9" aria-hidden="true" tabindex="-1"></a>pp.tail(<span class="dv">2</span>)</span>
+<span id="cb71-10"><a href="df-p04.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co">##    INT  NUM CHR    LGL  FCT</span></span>
+<span id="cb71-11"><a href="df-p04.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 2    3  3.0   c  False   No</span></span>
+<span id="cb71-12"><a href="df-p04.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co">## 3    4  4.0   d   True  Yes</span></span></code></pre></div>
 </div>
 <br>
 </div>
 <ul>
-<li>About: Class, Type, Dimensions, Structure, Summary</li>
+<li>R: <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>, <code>type()</code>, <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code>, <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>
+</li>
+<li>Python: <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>, <code>pd.shape</code>, <code>pd.columns.values</code>, <code>pd.describe()</code>, <code>pp.dtypes</code>, <code>pd.info()</code>
+</li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                                         <span class="co">#Dimensions [Row, Column]</span></span>
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                         <span class="co">#Class</span></span>
+<span><span class="co">## [1] "data.frame"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                        <span class="co">#Type</span></span>
+<span><span class="co">## [1] "list"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                           <span class="co">#Dimensions [Row, Column]</span></span>
 <span><span class="co">## [1] 4 5</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                                       <span class="co">#Names</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                         <span class="co">#Names</span></span>
 <span><span class="co">## [1] "INT" "NUM" "CHR" "LGL" "FCT"</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                                         <span class="co">#Structure</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                           <span class="co">#Structure</span></span>
 <span><span class="co">## 'data.frame':    4 obs. of  5 variables:</span></span>
 <span><span class="co">##  $ INT: int  1 2 3 4</span></span>
 <span><span class="co">##  $ NUM: num  1 2 3 4</span></span>
@@ -181,7 +198,7 @@
 <span><span class="co">##  $ LGL: logi  FALSE TRUE FALSE TRUE</span></span>
 <span><span class="co">##  $ FCT: Factor w/ 2 levels "No","Yes": 1 2 1 2</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span>                                     <span class="co">#Summary</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                                       <span class="co">#Summary</span></span>
 <span><span class="co">##       INT            NUM           CHR               LGL           FCT   </span></span>
 <span><span class="co">##  Min.   :1.00   Min.   :1.00   Length:4           Mode :logical   No :2  </span></span>
 <span><span class="co">##  1st Qu.:1.75   1st Qu.:1.75   Class :character   FALSE:2         Yes:2  </span></span>
@@ -189,6 +206,338 @@
 <span><span class="co">##  Mean   :2.50   Mean   :2.50                                             </span></span>
 <span><span class="co">##  3rd Qu.:3.25   3rd Qu.:3.25                                             </span></span>
 <span><span class="co">##  Max.   :4.00   Max.   :4.00</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="df-p04.html#cb73-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb73-2"><a href="df-p04.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="df-p04.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pp))                                   <span class="co">#Explicitly Print type()</span></span>
+<span id="cb73-4"><a href="df-p04.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="df-p04.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'pandas.core.frame.DataFrame'&gt;</span></span>
+<span id="cb73-6"><a href="df-p04.html#cb73-6" aria-hidden="true" tabindex="-1"></a>pp.shape                                          <span class="co">#Dimensions [Row, Column]</span></span>
+<span id="cb73-7"><a href="df-p04.html#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="df-p04.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co">## (4, 5)</span></span>
+<span id="cb73-9"><a href="df-p04.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.columns)                                  <span class="co">#Names</span></span>
+<span id="cb73-10"><a href="df-p04.html#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="df-p04.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co">## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']</span></span>
+<span id="cb73-12"><a href="df-p04.html#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.describe().index)                         <span class="co">#(Default) Summary of Num only</span></span>
+<span id="cb73-13"><a href="df-p04.html#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co">## ['count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max']</span></span>
+<span id="cb73-14"><a href="df-p04.html#cb73-14" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> pp.describe(include <span class="op">=</span> <span class="st">'all'</span>).index <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> pp.describe().index]</span>
+<span id="cb73-15"><a href="df-p04.html#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="co">## ['unique', 'top', 'freq']</span></span>
+<span id="cb73-16"><a href="df-p04.html#cb73-16" aria-hidden="true" tabindex="-1"></a>pp.describe(include <span class="op">=</span> <span class="st">'all'</span>).loc[[<span class="st">'count'</span>, <span class="st">'max'</span>, <span class="st">'unique'</span>]]</span>
+<span id="cb73-17"><a href="df-p04.html#cb73-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-18"><a href="df-p04.html#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co">##         INT  NUM  CHR  LGL  FCT</span></span>
+<span id="cb73-19"><a href="df-p04.html#cb73-19" aria-hidden="true" tabindex="-1"></a><span class="co">## count   4.0  4.0    4    4    4</span></span>
+<span id="cb73-20"><a href="df-p04.html#cb73-20" aria-hidden="true" tabindex="-1"></a><span class="co">## max     4.0  4.0  NaN  NaN  NaN</span></span>
+<span id="cb73-21"><a href="df-p04.html#cb73-21" aria-hidden="true" tabindex="-1"></a><span class="co">## unique  NaN  NaN    4    2    2</span></span>
+<span id="cb73-22"><a href="df-p04.html#cb73-22" aria-hidden="true" tabindex="-1"></a>pp.dtypes                                         <span class="co">#data type of each column</span></span>
+<span id="cb73-23"><a href="df-p04.html#cb73-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-24"><a href="df-p04.html#cb73-24" aria-hidden="true" tabindex="-1"></a><span class="co">## INT       int64</span></span>
+<span id="cb73-25"><a href="df-p04.html#cb73-25" aria-hidden="true" tabindex="-1"></a><span class="co">## NUM     float64</span></span>
+<span id="cb73-26"><a href="df-p04.html#cb73-26" aria-hidden="true" tabindex="-1"></a><span class="co">## CHR      object</span></span>
+<span id="cb73-27"><a href="df-p04.html#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="co">## LGL        bool</span></span>
+<span id="cb73-28"><a href="df-p04.html#cb73-28" aria-hidden="true" tabindex="-1"></a><span class="co">## FCT    category</span></span>
+<span id="cb73-29"><a href="df-p04.html#cb73-29" aria-hidden="true" tabindex="-1"></a><span class="co">## dtype: object</span></span>
+<span id="cb73-30"><a href="df-p04.html#cb73-30" aria-hidden="true" tabindex="-1"></a>pp.info(memory_usage <span class="op">=</span> <span class="va">False</span>)                     <span class="co">#Structure</span></span>
+<span id="cb73-31"><a href="df-p04.html#cb73-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-32"><a href="df-p04.html#cb73-32" aria-hidden="true" tabindex="-1"></a><span class="co">#Prevent the collapse of middle columns into (...)</span></span>
+<span id="cb73-33"><a href="df-p04.html#cb73-33" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'pandas.core.frame.DataFrame'&gt;</span></span>
+<span id="cb73-34"><a href="df-p04.html#cb73-34" aria-hidden="true" tabindex="-1"></a><span class="co">## RangeIndex: 4 entries, 0 to 3</span></span>
+<span id="cb73-35"><a href="df-p04.html#cb73-35" aria-hidden="true" tabindex="-1"></a><span class="co">## Data columns (total 5 columns):</span></span>
+<span id="cb73-36"><a href="df-p04.html#cb73-36" aria-hidden="true" tabindex="-1"></a><span class="co">##  #   Column  Non-Null Count  Dtype   </span></span>
+<span id="cb73-37"><a href="df-p04.html#cb73-37" aria-hidden="true" tabindex="-1"></a><span class="co">## ---  ------  --------------  -----   </span></span>
+<span id="cb73-38"><a href="df-p04.html#cb73-38" aria-hidden="true" tabindex="-1"></a><span class="co">##  0   INT     4 non-null      int64   </span></span>
+<span id="cb73-39"><a href="df-p04.html#cb73-39" aria-hidden="true" tabindex="-1"></a><span class="co">##  1   NUM     4 non-null      float64 </span></span>
+<span id="cb73-40"><a href="df-p04.html#cb73-40" aria-hidden="true" tabindex="-1"></a><span class="co">##  2   CHR     4 non-null      object  </span></span>
+<span id="cb73-41"><a href="df-p04.html#cb73-41" aria-hidden="true" tabindex="-1"></a><span class="co">##  3   LGL     4 non-null      bool    </span></span>
+<span id="cb73-42"><a href="df-p04.html#cb73-42" aria-hidden="true" tabindex="-1"></a><span class="co">##  4   FCT     4 non-null      category</span></span>
+<span id="cb73-43"><a href="df-p04.html#cb73-43" aria-hidden="true" tabindex="-1"></a><span class="co">## dtypes: bool(1), category(1), float64(1), int64(1), object(1)</span></span>
+<span id="cb73-44"><a href="df-p04.html#cb73-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb73-45"><a href="df-p04.html#cb73-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> pd.option_context(<span class="st">'display.max_columns'</span>, <span class="dv">40</span>):</span>
+<span id="cb73-46"><a href="df-p04.html#cb73-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(pp.describe(include <span class="op">=</span> <span class="st">'all'</span>))</span></code></pre></div>
+</div>
+<br>
+</div>
+<ul>
+<li>R: <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code>, <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, <code>[]</code>, <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code> (Avoid)</li>
+<li>Python: <code>pd.[]</code>, <code>pd.drop()</code>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "INT" "NUM" "CHR" "LGL" "FCT"</span></span>
+<span></span>
+<span><span class="co"># dplyr::select() by including or excluding names</span></span>
+<span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">aa</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">aa</span>, <span class="va">NUM</span>, <span class="va">CHR</span><span class="op">)</span></span>
+<span><span class="va">ee</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">aa</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">INT</span>, <span class="va">LGL</span>, <span class="va">FCT</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">'NUM'</span> <span class="op">=</span> <span class="va">aa</span><span class="op">$</span><span class="va">NUM</span>, <span class="st">'CHR'</span> <span class="op">=</span> <span class="va">aa</span><span class="op">$</span><span class="va">CHR</span><span class="op">)</span></span>
+<span><span class="co"># with() can be used to create an environment using data</span></span>
+<span><span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">aa</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">NUM</span>, <span class="va">CHR</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># [] is used for subsetting but note that 1-column subset is vector by default</span></span>
+<span><span class="va">hh</span> <span class="op">&lt;-</span> <span class="va">aa</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'NUM'</span>, <span class="st">'CHR'</span><span class="op">)</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
+<span><span class="va">ii</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">aa</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">NUM</span>, <span class="va">CHR</span><span class="op">)</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>      <span class="co">#Avoid</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">dd</span>, <span class="va">ee</span>, <span class="va">ff</span>, <span class="va">gg</span>, <span class="va">hh</span>, <span class="va">ii</span><span class="op">)</span>, <span class="va">identical</span>, <span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">## 'data.frame':    4 obs. of  2 variables:</span></span>
+<span><span class="co">##  $ NUM: num  1 2 3 4</span></span>
+<span><span class="co">##  $ CHR: chr  "a" "b" "c" "d"</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="df-p04.html#cb75-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb75-2"><a href="df-p04.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.columns)</span>
+<span id="cb75-3"><a href="df-p04.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co">## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']</span></span>
+<span id="cb75-4"><a href="df-p04.html#cb75-4" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp[[<span class="st">'NUM'</span>, <span class="st">'CHR'</span>]].copy()                              <span class="co">#Use List of Names</span></span>
+<span id="cb75-5"><a href="df-p04.html#cb75-5" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> pp.drop(columns <span class="op">=</span> [<span class="st">'INT'</span>, <span class="st">'LGL'</span>, <span class="st">'FCT'</span>]).copy()        <span class="co">#Drop Columns</span></span>
+<span id="cb75-6"><a href="df-p04.html#cb75-6" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> pp.drop([<span class="st">'INT'</span>, <span class="st">'LGL'</span>, <span class="st">'FCT'</span>], axis <span class="op">=</span> <span class="dv">1</span>).copy()        <span class="co">#0 Rows, 1 Columns</span></span>
+<span id="cb75-7"><a href="df-p04.html#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-8"><a href="df-p04.html#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq.equals(ss) <span class="kw">and</span> qq.equals(tt))</span>
+<span id="cb75-9"><a href="df-p04.html#cb75-9" aria-hidden="true" tabindex="-1"></a>qq</span>
+<span id="cb75-10"><a href="df-p04.html#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="co">##    NUM CHR</span></span>
+<span id="cb75-11"><a href="df-p04.html#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="co">## 0  1.0   a</span></span>
+<span id="cb75-12"><a href="df-p04.html#cb75-12" aria-hidden="true" tabindex="-1"></a><span class="co">## 1  2.0   b</span></span>
+<span id="cb75-13"><a href="df-p04.html#cb75-13" aria-hidden="true" tabindex="-1"></a><span class="co">## 2  3.0   c</span></span>
+<span id="cb75-14"><a href="df-p04.html#cb75-14" aria-hidden="true" tabindex="-1"></a><span class="co">## 3  4.0   d</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<ul>
+<li>R: <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/rename.html">dplyr::rename()</a></code>
+</li>
+<li>Python: <code>pd.rename()</code>, <code>pd.columns.values</code>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "INT" "NUM" "CHR" "LGL" "FCT"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'A'</span>, <span class="st">'C'</span><span class="op">)</span>                 <span class="co">#By Position</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span> <span class="op">==</span> <span class="st">'NUM'</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">'B'</span>              <span class="co">#By Name</span></span>
+<span></span>
+<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu">rename</span><span class="op">(</span><span class="va">aa</span>, D <span class="op">=</span> <span class="va">LGL</span>, E <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>                  <span class="co">#New = Old (Reverse of Python)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "A" "B" "C" "D" "E"</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="df-p04.html#cb77-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb77-2"><a href="df-p04.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.columns)</span>
+<span id="cb77-3"><a href="df-p04.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co">## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']</span></span>
+<span id="cb77-4"><a href="df-p04.html#cb77-4" aria-hidden="true" tabindex="-1"></a>pp.rename(columns <span class="op">=</span> {<span class="st">'INT'</span>: <span class="st">'A'</span>, pp.columns[<span class="dv">1</span>]: <span class="st">'B'</span>}, inplace <span class="op">=</span> <span class="va">True</span>) <span class="co">#Old: New</span></span>
+<span id="cb77-5"><a href="df-p04.html#cb77-5" aria-hidden="true" tabindex="-1"></a>pp.rename(columns <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(pp.columns[[<span class="dv">3</span>]], [<span class="st">'D'</span>])),inplace <span class="op">=</span> <span class="va">True</span>) <span class="co">#New, Old</span></span>
+<span id="cb77-6"><a href="df-p04.html#cb77-6" aria-hidden="true" tabindex="-1"></a>pp.columns.values[[<span class="dv">2</span>, <span class="dv">4</span>]] <span class="op">=</span> [<span class="st">'C'</span>, <span class="st">'E'</span>]</span>
+<span id="cb77-7"><a href="df-p04.html#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="df-p04.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.columns)</span>
+<span id="cb77-9"><a href="df-p04.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co">## ['A', 'B', 'C', 'D', 'E']</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<ul>
+<li>R: <code><a href="https://rdrr.io/r/base/order.html">order()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">dplyr::arrange()</a></code>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span></span>
+<span><span class="co"># order() ALWAYS reorders the rownames</span></span>
+<span><span class="va">aa</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">aa</span><span class="op">$</span><span class="va">CHR</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="op">]</span></span>
+<span><span class="co">##   INT NUM CHR   LGL FCT</span></span>
+<span><span class="co">## 4   4   4   d  TRUE Yes</span></span>
+<span><span class="co">## 3   3   3   c FALSE  No</span></span>
+<span><span class="co">## 2   2   2   b  TRUE Yes</span></span>
+<span><span class="co">## 1   1   1   a FALSE  No</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># arrange() reorders character rownames but reinitialises them from 1 if integer</span></span>
+<span><span class="fu">arrange</span><span class="op">(</span><span class="va">aa</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">CHR</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">##   INT NUM CHR   LGL FCT</span></span>
+<span><span class="co">## 1   4   4   d  TRUE Yes</span></span>
+<span><span class="co">## 2   3   3   c FALSE  No</span></span>
+<span><span class="co">## 3   2   2   b  TRUE Yes</span></span>
+<span><span class="co">## 4   1   1   a FALSE  No</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="df-p04.html#cb79-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb79-2"><a href="df-p04.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.index)</span>
+<span id="cb79-3"><a href="df-p04.html#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="df-p04.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co">## [0, 1, 2, 3]</span></span>
+<span id="cb79-5"><a href="df-p04.html#cb79-5" aria-hidden="true" tabindex="-1"></a>pp.sort_values(<span class="st">'CHR'</span>, ascending <span class="op">=</span> <span class="va">False</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb79-6"><a href="df-p04.html#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.index)</span>
+<span id="cb79-7"><a href="df-p04.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="co">## [3, 2, 1, 0]</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="rownames---index" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> RowNames - Index<a class="anchor" aria-label="anchor" href="#rownames---index"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R <code>rownames</code> are called <code>index</code> in Python</li>
+<li>R <code>data.frame</code> has <code>rownames</code> but <code>tibble</code> heavily discourage their usage.</li>
+<li>Duplicated row indices are allowed in Python but not in R</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "1" "2"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>                               <span class="co">#rownames</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu">has_rownames</span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "a" "b"</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="df-p04.html#cb81-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pd.DataFrame(data <span class="op">=</span> {<span class="st">'x'</span>: [<span class="dv">1</span>, <span class="dv">2</span>]})</span>
+<span id="cb81-2"><a href="df-p04.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.index)</span>
+<span id="cb81-3"><a href="df-p04.html#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="df-p04.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co">## [0, 1]</span></span>
+<span id="cb81-5"><a href="df-p04.html#cb81-5" aria-hidden="true" tabindex="-1"></a>pp.set_index([pd.Index([<span class="st">'a'</span>, <span class="st">'a'</span>])], inplace <span class="op">=</span> <span class="va">True</span>)        <span class="co">#Duplicate index</span></span>
+<span id="cb81-6"><a href="df-p04.html#cb81-6" aria-hidden="true" tabindex="-1"></a>pp.set_index([pd.Index([<span class="st">'a'</span>, <span class="st">'b'</span>])], inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb81-7"><a href="df-p04.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.index) </span>
+<span id="cb81-8"><a href="df-p04.html#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="co">## ['a', 'b']</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="copy" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Copy<a class="anchor" aria-label="anchor" href="#copy"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">13</span><span class="op">)</span>                 <span class="co">#R Copy-on-Modify</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>, <span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "0x248e2e0fc08"</span></span>
+<span></span>
+<span><span class="va">aa</span><span class="op">[</span><span class="fl">2</span>, <span class="st">'x'</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span>                  <span class="co">#Points to an address different from earlier</span></span>
+<span><span class="co">## [1] "0x248db955b90"</span></span>
+<span><span class="va">aa</span><span class="op">$</span><span class="va">x</span>                          <span class="co">#Modified</span></span>
+<span><span class="co">## [1] 11 NA 13</span></span>
+<span></span>
+<span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_addr.html">obj_addr</a></span><span class="op">(</span><span class="va">bb</span><span class="op">)</span>                  <span class="co">#No change in address</span></span>
+<span><span class="co">## [1] "0x248e2e0fc08"</span></span>
+<span><span class="va">bb</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="co">## [1] 11 12 13</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="df-p04.html#cb83-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]})</span>
+<span id="cb83-2"><a href="df-p04.html#cb83-2" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp.copy()                          <span class="co">#Deepcopy by default</span></span>
+<span id="cb83-3"><a href="df-p04.html#cb83-3" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> copy.deepcopy(pp)                  <span class="co">#Deepcopy</span></span>
+<span id="cb83-4"><a href="df-p04.html#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="df-p04.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(<span class="bu">id</span>(pp) <span class="op">!=</span> <span class="bu">id</span>(qq) <span class="op">!=</span> <span class="bu">id</span>(ss))      <span class="co">#Deepcopy has different address</span></span>
+<span id="cb83-6"><a href="df-p04.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)</span>
+<span id="cb83-7"><a href="df-p04.html#cb83-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-8"><a href="df-p04.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 2512424882896</span></span>
+<span id="cb83-9"><a href="df-p04.html#cb83-9" aria-hidden="true" tabindex="-1"></a>pp.at[<span class="dv">1</span>, <span class="st">'x'</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb83-10"><a href="df-p04.html#cb83-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-11"><a href="df-p04.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(qq.equals(ss) <span class="kw">and</span> <span class="kw">not</span> qq.equals(pp))</span>
+<span id="cb83-12"><a href="df-p04.html#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-13"><a href="df-p04.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(pp)                                  <span class="co">#Points to the same address as before</span></span>
+<span id="cb83-14"><a href="df-p04.html#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="co">## 2512424882896</span></span>
+<span id="cb83-15"><a href="df-p04.html#cb83-15" aria-hidden="true" tabindex="-1"></a>pp</span>
+<span id="cb83-16"><a href="df-p04.html#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="co">##      x</span></span>
+<span id="cb83-17"><a href="df-p04.html#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="co">## 0  1.0</span></span>
+<span id="cb83-18"><a href="df-p04.html#cb83-18" aria-hidden="true" tabindex="-1"></a><span class="co">## 1  NaN</span></span>
+<span id="cb83-19"><a href="df-p04.html#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="co">## 2  3.0</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="modify---.at-.loc" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Modify [] - .at, .loc<a class="anchor" aria-label="anchor" href="#modify---.at-.loc"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R <code>[]</code> vs. Python <code>pd.at[]</code>, <code>pd.loc[]</code>, <code>pd.iat[]</code>, <code>pd.iloc[]</code>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span></span>
+<span><span class="va">aa</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="va">aa</span><span class="op">[</span><span class="fl">2</span>, <span class="st">'CHR'</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span></span>
+<span><span class="va">aa</span></span>
+<span><span class="co">##   INT NUM  CHR   LGL FCT</span></span>
+<span><span class="co">## 1   1  NA    a FALSE  No</span></span>
+<span><span class="co">## 2   2   2 &lt;NA&gt;  TRUE Yes</span></span>
+<span><span class="co">## 3   3   3    c FALSE  No</span></span>
+<span><span class="co">## 4   4   4    d  TRUE Yes</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="df-p04.html#cb85-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> df_y.copy()</span>
+<span id="cb85-2"><a href="df-p04.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="df-p04.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="co"># .at can only access a single value at a time. Fast</span></span>
+<span id="cb85-4"><a href="df-p04.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It tries to maintain the datatype (fails sometimes)</span></span>
+<span id="cb85-5"><a href="df-p04.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co"># If column number is used by mistake, it creates a New Column (Avoid)</span></span>
+<span id="cb85-6"><a href="df-p04.html#cb85-6" aria-hidden="true" tabindex="-1"></a>pp.at[<span class="dv">0</span>, <span class="st">'NUM'</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb85-7"><a href="df-p04.html#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-8"><a href="df-p04.html#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co"># .loc can select multiple rows and/or columns. Slow</span></span>
+<span id="cb85-9"><a href="df-p04.html#cb85-9" aria-hidden="true" tabindex="-1"></a><span class="co"># It does not maintain the datatype and modifies the type silently</span></span>
+<span id="cb85-10"><a href="df-p04.html#cb85-10" aria-hidden="true" tabindex="-1"></a>pp.loc[<span class="dv">1</span>, <span class="st">'CHR'</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb85-11"><a href="df-p04.html#cb85-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-12"><a href="df-p04.html#cb85-12" aria-hidden="true" tabindex="-1"></a><span class="co"># .iat &amp; .iloc are indices variants of the above</span></span>
+<span id="cb85-13"><a href="df-p04.html#cb85-13" aria-hidden="true" tabindex="-1"></a>pp.iat[<span class="dv">3</span>, <span class="dv">1</span>] <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb85-14"><a href="df-p04.html#cb85-14" aria-hidden="true" tabindex="-1"></a>pp.iloc[<span class="dv">2</span>, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb85-15"><a href="df-p04.html#cb85-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-16"><a href="df-p04.html#cb85-16" aria-hidden="true" tabindex="-1"></a>pp</span>
+<span id="cb85-17"><a href="df-p04.html#cb85-17" aria-hidden="true" tabindex="-1"></a><span class="co">##    INT   NUM   CHR    LGL  FCT</span></span>
+<span id="cb85-18"><a href="df-p04.html#cb85-18" aria-hidden="true" tabindex="-1"></a><span class="co">## 0    1   NaN     a  False   No</span></span>
+<span id="cb85-19"><a href="df-p04.html#cb85-19" aria-hidden="true" tabindex="-1"></a><span class="co">## 1    2   2.0  None   True  Yes</span></span>
+<span id="cb85-20"><a href="df-p04.html#cb85-20" aria-hidden="true" tabindex="-1"></a><span class="co">## 2   30   3.0     c  False   No</span></span>
+<span id="cb85-21"><a href="df-p04.html#cb85-21" aria-hidden="true" tabindex="-1"></a><span class="co">## 3    4  10.0     d   True  Yes</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -203,6 +552,9 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#df-p04"><span class="header-section-number">4</span> Data Frame</a></li>
 <li><a class="nav-link" href="#basics-2"><span class="header-section-number">4.1</span> Basics</a></li>
+<li><a class="nav-link" href="#rownames---index"><span class="header-section-number">4.2</span> RowNames - Index</a></li>
+<li><a class="nav-link" href="#copy"><span class="header-section-number">4.3</span> Copy</a></li>
+<li><a class="nav-link" href="#modify---.at-.loc"><span class="header-section-number">4.4</span> Modify [] - .at, .loc</a></li>
 </ul>
 
       <div class="book-extra">
@@ -220,7 +572,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-06.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
