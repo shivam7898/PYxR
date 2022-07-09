@@ -114,7 +114,7 @@ py_config()
 ## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]
 ## Architecture:   64bit
 ## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy
-## numpy_version:  1.23.0
+## numpy_version:  1.23.1
 ## 
 ## NOTE: Python version was forced by use_python function
 ```

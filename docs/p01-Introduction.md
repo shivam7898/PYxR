@@ -409,7 +409,7 @@ else:
   - In R, while the ` = ` can be used for assignment, its usage for assignment is highly discouraged because it may behave differently under certain subtle conditions which are difficult to debug
   - Convention is to use ` = `  only during function calls for arguments association (syntactic token)
 
-## Copy Objects or Variables {#object-p01}
+## Copy Objects or Variables {#copy-p01}
 
 > In R, Everything that exists is an `object`.  
 > In R, Everything that happens is a function call.
@@ -423,14 +423,14 @@ else:
 > In Python, Everything is an object.
 
 - It means that 'everything' is an instance of a `class` and (almost) everything has `attributes`
-  - 'Everything' here excludes 'reserved' keywords which can be found by `help("keywords")`
+  - 'Everything' here excludes 'reserved' keywords which can be found at [keyword](https://docs.python.org/3/library/keyword.html)
 
-- R uses 'copy-on-modify' semantics [Advanced R, Hadley](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html")
-  - On assignment, two names (e.g. aa, bb) might be pointing to the same object address. However, as soon as the object is modified, using one of the name (bb), R creates another copy of the original and points the modified name (bb) to that new address. Unmodified name (aa) keeps pointing to the original address containing the original object. Effectively, this is a deepcopy operation.
+- R uses [Copy-on-Modify](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html") semantics
+  - Effectively it means that the copies are not linked in R. Whereas in Python, sometimes create 'shallow copies' which are linked together i.e. change in one reflects in the other.
 
 - Python mutable and immutable objects
-  - `list`, `set`, `dict`, `numpy arrays`, `pandas dataframes` are **mutable**, so these are modified in place i.e. an append on this will result in modification of the value. Thus, all names pointing to this address will show the new value. `id()` of names would remain the same.
-  - `numbers`, `strings`, `bool`, `Tuples`, `Frozen Sets` are **immutable**, so a new object will be created for modifications to apply. Thus, the name (which was used for modification) will now point to a different address containing the new value. `id()` of this name will be different. Other names which were pointing to the original address would keep pointing to the same value, address.
+  - `list`, `set`, `dict`, `numpy arrays`, `pandas dataframes` are `mutable`. So, these are modified in-place i.e. append on this will result in modification of the value. Thus, all names pointing to this address will show the new value. `id()` of names would remain the same.
+  - `numbers`, `strings`, `bool`, `Tuples`, `Frozen Sets` are `immutable`, so a new object will be created for modifications to apply. Thus, the name (which was used for modification) will now point to a different address containing the new value. `id()` of this name will be different. Other names which were pointing to the original address would keep pointing to the same value, address.
   - Many `numpy` operations modify the array in place.
   - Further, a `tuple` containing a `list` by itself is immutable, however, it contains items which are mutable
   - Further:
@@ -438,39 +438,32 @@ else:
     - Some manipulations of mutable types create new objects
     - Thus, appending something to the end of a `list` is an in-place mutation (the existing list is changed). But slicing `:` or doubling `*` a list creates new lists.
   - Further, 'pass by object-reference' may result in impact of modification on different object names which were not passed to the function but which were shallow copy of the name that was passed to it.
-  - Verify in case of doubt
-  
+
+- If 'fred' & 'george' are two identical items
+  - Before any modification both will bind to the same address in R. In Python, both will bind to same address (assigned) or may not bind to same address (shallow /deepcopy of mutable)
+  - If 'fred' is modified, in R, 'fred' will bind to a different address. Whereas in Python, 'fred' may bind to the same address (if mutable) or may bind to a different address (immutable)
+  - 'george' is not affected in R but in Python, it will be affected (assigned), may be affected (shallow), or may not be affected (deepcopy)
+
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
-if(FALSE) library("lobstr")
-# Create an object containing a value and bind that object to name 'aa'
-aa <- 10 
-# Copy an object i.e. Create another binding to an already existing value
-bb <- aa
-# Note that both names are pointing to same memory address
-obj_addr(aa)
-## [1] "0x1f47a143c80"
-obj_addr(bb)
-## [1] "0x1f47a143c80"
-stopifnot(identical(obj_addr(aa), obj_addr(bb)))
+# R Copy-on-Modify
+# Create objects containing value and bind these objects to names
+george <- fred <- TRUE
 
-# Print the copy
-print(bb)
-## [1] 10
-# Modify the copy
-bb <- 5
-# Print the copy and the original (original is unmodified)
-print(bb)
-## [1] 5
-print(aa)
-## [1] 10
-# Now the modified name points to a different memory address than earlier
-obj_addr(bb)
-## [1] "0x1f47a143af8"
-# Original is still pointing to the same address containing original object
-obj_addr(aa)
-## [1] "0x1f47a143c80"
+# Before modification both bind to the same memory address (unlike Python)
+stopifnot(identical(lobstr::obj_addr(fred), obj_addr(george)))
+
+aa <- obj_addr(fred)                    #Address before modification
+
+fred <- FALSE                           #Modify
+fred
+## [1] FALSE
+
+stopifnot(obj_addr(fred) != aa)         #Different address (unlike Python)
+
+# No change in unmodified object (george) address or value (same as Python)
+stopifnot(obj_addr(george) == aa)
 ```
 
 </div><br></div>
@@ -478,33 +471,30 @@ obj_addr(aa)
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
 
 ```python
-# Create a variable containing a value and bind that variable to name 'pp'
-pp = 10 
-# Copy a variable i.e. Create another binding to an already existing value
-qq = pp
-# Note that both names are pointing to same memory address
-id(pp)
-## 2149608260112
-id(qq)
-## 2149608260112
-assert(id(pp) == id(qq))
+# Mutable
+pp = [1, 2]                                       #List
+pp = {1, 2}                                       #Set
+pp = {'a': 1, 'b': 2}                             #Dict
+pp = np.array([1, 2])                             #NumPy Array
+pp = pd.DataFrame({'x': [1, 2]})                  #Pandas DataFrame
 
-# Print the copy
-print(qq)
-# Modify the copy
-## 10
-qq = 5
-# Print the copy and the original (original is unmodified)
-print(qq)
-## 5
-print(pp)
-# Now the modified name points to a different memory address than earlier
-## 10
-id(qq)
-# Original is still pointing to the same address containing original variable
-## 2149608259952
-id(pp)
-## 2149608260112
+qq_deep = copy.deepcopy(pp)                       #Deepcopy
+ss_copy = copy.copy(pp)                           #Copy
+tt_equl = pp                                      #Assignment
+
+if(pp is not qq_deep and pp is not ss_copy and pp is tt_equl): 
+    print("Deepcopy & Copy are different from Original but Assigned is same.")
+
+## Deepcopy & Copy are different from Original but Assigned is same.
+if(isinstance(pp, list)): pp.append(10)
+if(isinstance(pp, set)): pp.add(10)
+if(isinstance(pp, dict)): pp.update({'z': 10})
+if(isinstance(pp, np.ndarray)): pp += 10 #Update, in-place append is difficult
+if(isinstance(pp, pd.DataFrame)): pp.iat[1, 0] = 10
+
+if(pp is tt_equl): 
+    print("Original & Assigned are same even after modification.")
+## Original & Assigned are same even after modification.
 ```
 
 </div><br></div>
@@ -512,73 +502,65 @@ id(pp)
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
 
 ```python
-# Python Lists (mutable) are modified in place i.e. shallow copy is used
-pp = [11, 22, 33]             #variable named 'pp' pointing to a list
-qq = pp                       #variable named 'qq' pointing to the same list
-assert(id(pp) == id(qq))      #verify both are pointing to same address
-id(pp)                        #Actual address
+# Immutable
+pp = (1, 2)                                       #Tuple
+pp = "OldText"                                    #String
+pp = 257                                          #Number: >256
+pp = True                                         #Bool
 
-# Unlike the string.upper() below, list.append() need not to be assigned 
-## 2149618894208
-qq.append(44)
-print(pp)                     #Original 'pp' is also pointing to modified list
-## [11, 22, 33, 44]
-assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
-id(pp)                        #Object address has not changed from earlier
+qq_deep = copy.deepcopy(pp)                       #Deepcopy
+ss_copy = copy.copy(pp)                           #Copy
+tt_equl = pp                                      #Assignment
 
-# Python Dictionaries (mutable) are also modified in place
-## 2149618894208
-pp = {"a": 11, "b": 22, "c": 33}
-qq = pp
-qq["d"] = 44                  #Modify 'qq' by adding another key
-assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
-print(pp)                     #Original 'pp' is also pointing to modified dict
+uu = id(pp)                                       #Address before modification
 
-# However, Python strings are immutable (like R)
-## {'a': 11, 'b': 22, 'c': 33, 'd': 44}
-pp = 'abc'
-qq = pp
-assert(id(pp) == id(qq))
-id(pp)
+if(pp is qq_deep and pp is ss_copy and pp is tt_equl): 
+    print("Deepcopy, Copy, & Assigned all are same as Original Immutable.")
 
-# Unlike the list.append() above, string.upper() needs to be assigned 
-## 2149609545392
-qq.upper()
-## 'ABC'
-assert(id(pp) == id(qq))      #both 'pp' & 'qq' still point to same address
-id(qq)
-## 2149609545392
-print(qq)                     #'qq' is still pointing to the same object
-## abc
-qq = qq.upper()               #binding the new object created to 'qq'
-id(qq)                        #'qq' now points to a different object
-## 2147725699888
-print(qq)
-## ABC
-id(pp)                        #Original 'pp' still points to the same address 
-## 2149609545392
-print(pp)                     #with same value
+## Deepcopy, Copy, & Assigned all are same as Original Immutable.
+if(isinstance(pp, tuple)): pp += (10, )
+if(isinstance(pp, str)): pp += "Appended"
+if(type(pp) is int): pp += 1
+if(type(pp) is bool): pp = False
 
-# Mutability (shallow copy) can impact other objects unexpectedly
-## abc
-pp = [11, 22, 33]
-qq = pp
-
-# Define Function
-def append_44(lst):
-    lst.append(44)
-    return lst
-
-# Call function using 'pass by object-reference' for 'pp'
-append_44(pp)
-
-#However, 'qq' keeps pointing to original address (which now have new values)
-## [11, 22, 33, 44]
-print(qq)
-## [11, 22, 33, 44]
+if(id(pp) != uu and qq_deep is ss_copy and qq_deep is tt_equl): 
+    print("Address for Original has been changed but not for others.")
+## Address for Original has been changed but not for others.
 ```
 
 </div><br></div>
+
+<div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
+
+```python
+pp = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]            #Nested List
+
+qq_deep = copy.deepcopy(pp)                       #Deepcopy
+ss_copy = copy.copy(pp)                           #Copy
+tt_equl = pp                                      #Assignment
+
+pp.append([4, 4, 4])                              #Append
+pp[1][1] = 100                                    #Update
+
+# is(): True for Assigned, False for Shallow & DeepCopy
+# Element addresses: Match for Shallow but Different for DeepCopy
+# Append reflects in Assigned but not in Shallow & DeepCopy
+# Update reflects in Assigned & Shallow but not in DeepCopy
+assert(pp is not qq_deep and pp is not ss_copy and pp is tt_equl and
+    len(pp) != len(qq_deep) and len(pp) != len(ss_copy) and
+    [id(i) for i in pp[:3]] == [id(i) for i in ss_copy[:3]] and 
+    [id(i) for i in pp[:3]] != [id(i) for i in qq_deep[:3]])
+
+print(tt_equl)                                    #Assigned: Appended & Updated
+## [[1, 1, 1], [2, 100, 2], [3, 3, 3], [4, 4, 4]]
+print(ss_copy)                                    #Shallow : Only Updated
+## [[1, 1, 1], [2, 100, 2], [3, 3, 3]]
+print(qq_deep)                                    #Deepcopy: No Change
+## [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+```
+
+</div><br></div>
+
 
 ## Reticulate Type conversion
 
@@ -807,7 +789,7 @@ if(FALSE) {
 
 ```r
 ls()
-## [1] "aa" "bb" "r"
+## [1] "aa"     "fred"   "george" "q_"     "q_link" "q_url"  "r"
 ```
 
 </div><br></div>

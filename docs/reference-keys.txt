@@ -14,7 +14,7 @@ boolean
 logical-operators
 null---none
 assignment-operator
-object-p01
+copy-p01
 reticulate-type-conversion
 setup-python-with-reticulate-in-r
 working-directory
@@ -42,4 +42,5 @@ df-p04
 basics-2
 rownames---index
 copy
-modify---.at-.loc
+modify
+verify-1
