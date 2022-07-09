@@ -7,6 +7,9 @@ reticulate::use_python("C:\\Softwares\\Python\\Python310\\python.exe", required 
 # Import (Basic) Modules in Python 
 reticulate::source_python("./code/Modules.py", convert = FALSE)
 
+# Load Helper Functions in R 
+sys.source("./code/Functions.R", envir = knitr::knit_global())
+
 # R options set globally
 options(width = 80)
 
