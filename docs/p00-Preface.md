@@ -98,9 +98,9 @@ allmodules = [v.__name__ for k, v in globals().items()
     if type(v) is types.ModuleType and not k.startswith('__')]
 
 len(allmodules)                                   # Count the Loaded Modules
-## 8
+## 9
 ", ".join(allmodules)                             # List Modules
-## 'sys, os, pip, copy, types, math, pandas, numpy'
+## 'sys, os, pip, copy, types, math, pandas, numpy, pyarrow'
 ```
 
 </div><br></div>

@@ -6,7 +6,7 @@
 
 > Indexing starts from 1 in R and from 0 in Python.  
 
-R provides `data.frame()` for tabular data structure. `{tibble}` & `{data.table}` are packages which extends its capabilities. Python module [pandas](https://pandas.pydata.org/docs/user_guide/index.html) provide similar capabilities
+R provides `data.frame()` for tabular data structure. `{tibble}` & `{data.table}` are packages which extends its capabilities. Python module [pandas](https://pypi.org/project/pandas) provide similar capabilities
 
 R `data.frame()` is a `list()` of variables of the same number of rows. It is a `matrix()` like structure whose columns may be of differing types. Similarly, Python Pandas [DataFrame()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) is a 2-dimensional data structure that can store data of different types in columns. 
 
