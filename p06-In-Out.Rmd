@@ -23,13 +23,13 @@ df_y.info(memory_usage = False)
 
 ```
 
-```{r 'R-Compare', decorate=TRUE, include=FALSE}
+```{r 'R-Compare', decorate=TRUE, include=TRUE}
 aa <- py$df_y |> `attr<-`('pandas.index', NULL) 
 aa$INT <- as.integer(aa$INT)
 stopifnot(identical(df_r, aa))          #Converted object is similar
 ```
 
-```{python 'Y-Compare', decorate=TRUE, include=FALSE}
+```{python 'Y-Compare', decorate=TRUE, include=TRUE}
 pp = r.df_r
 pp = pp.astype({'INT': np.dtype('int64')})
 assert(df_y.equals(pp))                 #Converted object is similar
@@ -38,41 +38,77 @@ assert(df_y.equals(pp))                 #Converted object is similar
 
 ## CSV
 
-- R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `write_csv()` & `read_csv()` methods
-- Python pandas has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
+- R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `readr::write_csv()` & `readr::read_csv()` methods
+- Python `r q_link("{pandas}")` has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
 
 ```{r 'R-CSV', decorate=TRUE}
-loc <- "data/R_01_Readr.csv"                      #PATH
-readr::write_csv(df_r, file = loc)                #To CSV
+loc <- "data/R_01_readr.csv"                                #PATH
+readr::write_csv(df_r, file = loc)                          #To CSV
 
-aa <- readr::read_csv(loc, show_col_types = FALSE, col_types = "idcl")
-attr(aa, "spec") <- NULL                          #Drop Attribute
-attr(aa, "problems") <- NULL
+aa <- readr::read_csv(loc, show_col_types = FALSE, 
+              col_types = list(INT = readr::col_integer(), NUM = col_double(), 
+                               CHR = col_character(), LGL = col_logical()))
+attr(aa, "spec") <- NULL                                    #Drop Attribute
+if(nrow(readr::problems(aa)) == 0L) attr(aa, "problems") <- NULL
 stopifnot(identical(df_r, as.data.frame(aa)))
 ```
 
 ```{python 'Y-CSV', decorate=TRUE}
-loc = "data/Y_01_Pandas.csv"                      #PATH
-df_y.to_csv(loc, index = False)                   #To CSV
+loc = "data/Y_01_pandas.csv"                                #PATH
+df_y.to_csv(loc, index = False)                             #To CSV
 
-pp = pd.read_csv(loc)
+pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
+                               'CHR': object, 'LGL': bool})
 assert(df_y.equals(pp))
 
 ```
 
-```{r 'R-CSV-Compare', decorate=TRUE, include=FALSE}
-loc <- "data/Y_01_Pandas.csv"                     #PATH of Python File in R
-aa <- readr::read_csv(loc, show_col_types = FALSE, col_types = "idcl")
-attr(aa, "spec") <- NULL                          #Drop Attribute
-attr(aa, "problems") <- NULL
+```{r 'R-CSV-Compare', decorate=TRUE, include=TRUE}
+loc <- "data/Y_01_pandas.csv"                     #PATH of Python File in R
+aa <- read_csv(loc, show_col_types = FALSE, 
+               col_types = list(INT = col_integer(), NUM = col_double(), 
+                                CHR = col_character(), LGL = col_logical()))
+attr(aa, "spec") <- NULL                                    #Drop Attribute
+if(nrow(problems(aa)) == 0L) attr(aa, "problems") <- NULL
 stopifnot(identical(df_r, as.data.frame(aa)))
 ```
 
-```{python 'Y-CSV-Compare', decorate=TRUE, include=FALSE}
-loc = "data/Y_01_Pandas.csv"                      #PATH of R File in Python
-pp = pd.read_csv(loc)
+```{python 'Y-CSV-Compare', decorate=TRUE, include=TRUE}
+loc = "data/R_01_readr.csv"                       #PATH of R File in Python
+pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
+                               'CHR': object, 'LGL': bool})
 assert(df_y.equals(pp))
 
 ```
 
+## R RDS
+
+- R `saveRDS()` & `readRDS()` are available in R. However `{readr}` package provides faster (default uncompressed) `readr::write_rds()` & `readr::read_rds()` methods
+- Python needs `r q_link("{rpy2}")` module which is unavailable in Windows
+
+```{r 'R-RDS', decorate=TRUE}
+loc <- "data/R_01_readr.rds"                                #PATH
+readr::write_rds(df_r, file = loc)                          #To RDS
+
+aa <- readr::read_rds(loc)
+stopifnot(identical(df_r, aa))
+```
+
+## Python Arrow Feather
+
+- Python `r q_link("{pyarrow}")` has `r q_link("pyarrow.feather.write_feather()")` & `r q_link("pyarrow.feather.read_feather()")`
+- R has `{arrow}` package. However due to its conflict within `{reticulate}` environment, it is not being used for now.
+
+```{python 'Y-Feather', decorate=TRUE}
+loc = "data/Y_01_pyarrow.feather"                           #PATH
+pyarrow.feather.write_feather(df_y, loc)                    #To Feather
+
+pp = pyarrow.feather.read_feather(loc)
+assert(df_y.equals(pp))
+```
+
+
+```{r 'R-Verify', decorate=TRUE, include=FALSE}
+TRUE
+```
 
