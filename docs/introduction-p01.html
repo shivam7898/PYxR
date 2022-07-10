@@ -50,6 +50,7 @@
 <li><a class="" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
 <li><a class="" href="list-dict-p03.html"><span class="header-section-number">3</span> R List &amp; Python Dictionary</a></li>
 <li><a class="" href="df-p04.html"><span class="header-section-number">4</span> Data Frame</a></li>
+<li><a class="" href="mat-p05.html"><span class="header-section-number">5</span> Matrix &amp; NumPy Array</a></li>
 </ul>
 
         <div class="book-extra">
@@ -124,7 +125,7 @@
 <span class="header-section-number">1.3</span> Mathematical Operators<a class="anchor" aria-label="anchor" href="#mathematical-operators"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>R and Python both have following operators:
+<li>R <code><a href="https://rdrr.io/r/base/Arithmetic.html">base::Arithmetic</a></code>) and Python <a href="https://docs.python.org/3/library/operator.html">operator</a> both have following operators:
 <ul>
 <li>Addition <code>+</code>, Subtraction <code>-</code>, Multiplication <code>*</code>, Division <code>/</code>
 </li>
@@ -186,7 +187,7 @@
 <span class="header-section-number">1.4</span> Help<a class="anchor" aria-label="anchor" href="#help"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Both R and Python have <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> to get details about the topic
+<li>R <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> and Python <a href="https://docs.python.org/3/library/functions.html#help">help()</a> can be used to get details about the topic
 <ul>
 <li>R also has a shorthand to get help by prefixing <code>?</code> before the topic</li>
 </ul>
@@ -218,7 +219,7 @@
 <span class="header-section-number">1.5</span> Print<a class="anchor" aria-label="anchor" href="#print"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Printing is largely handled by <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> in both R and Python
+<li>Printing is largely handled by <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> in R and <a href="https://docs.python.org/3/library/functions.html#print">print()</a> in Python
 <ul>
 <li>Explicit and Implicit both types of printing is available</li>
 </ul>
@@ -365,7 +366,7 @@
 <span class="header-section-number">1.7</span> Boolean<a class="anchor" aria-label="anchor" href="#boolean"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>R (TRUE, FALSE) vs. Python (True, False) - Case is different</li>
+<li>R (<code>TRUE</code>, <code>FALSE</code>) vs. Python (<code>True</code>, <code>False</code>) - Case is different</li>
 <li>Python:
 <ul>
 <li>All values are considered “truthy” except for the following, which are “falsy”
@@ -1025,7 +1026,7 @@ In R, Everything that happens is a function call.</p>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Attach multiple R Packages</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"reticulate"</span>, <span class="st">"knitr"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">library</span>, character.only<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"reticulate"</span>, <span class="st">"knitr"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">library</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># List all attached Packages</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/zpackages.html">.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>

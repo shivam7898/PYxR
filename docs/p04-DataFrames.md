@@ -471,6 +471,4 @@ pp
 
 </div><br></div>
 
-## Verify
-
 
