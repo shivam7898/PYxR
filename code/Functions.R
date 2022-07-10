@@ -36,18 +36,20 @@ if(!exists("q_")) {
         
 		if(is_module) {
 		    # Modules: q_link("{lib.copy}"), q_link("{pandas}")
+			is_found <- TRUE
+			modules  <- c("pandas", "pyarrow", "rpy2")
 			if(z[1] == "lib") {
-			    is_found <- TRUE
 			    txt <- z[2]
 			    url <- paste0("https://docs.python.org/3/library/", txt, ".html")
                 shw <- ifelse(!is.na(usr_txt), usr_txt, txt)
 				#cat("txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")
-			} else if(z[1] %in% c("pandas", "pd")) {
-			    is_found <- TRUE
-			    txt <- "pandas"
-				url <- "https://pandas.pydata.org/docs/user_guide/index.html"
+			} else if(z[1] %in% modules) {
+			    txt <- z[1]
+				url <- paste0("https://pypi.org/project/", txt)
                 shw <- ifelse(!is.na(usr_txt), usr_txt, txt)
-			} 
+			} else {
+			    is_found <- FALSE
+			}
 		} else {
 			if(z[1]  == "lib") {
 			    # Methods: q_link("lib.functions.print()")
@@ -70,6 +72,14 @@ if(!exists("q_")) {
 					shw <- ifelse(!is.na(usr_txt), usr_txt, 
 					              ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)]))
 			    } 
+			} else if(z[1] == "pyarrow") {
+			    # Methods: q_link("pyarrow.feather.write_feather()")
+			    is_found <- TRUE
+			    txt <- paste0(z[-1], collapse = ".")
+				# feather.write_feather.html
+				url <- paste0("https://arrow.apache.org/docs/python/generated/pyarrow.", txt, ".html")
+				shw <- ifelse(!is.na(usr_txt), usr_txt, 
+				              ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)])) 
 			} else {
 			    #
 			}
