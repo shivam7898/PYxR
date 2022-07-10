@@ -6,6 +6,73 @@ source("_common.R")
 
 ## Test Data
 
+```{r 'R-DF', decorate=TRUE}
+nn <- 4L
+df_r <- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1), 
+                   CHR = letters[1:nn], LGL = {1:nn %% 2} == 0)
+str(df_r)
+```
 
+```{python 'Y-DF', decorate=TRUE}
+nn = 4
+df_y = pd.DataFrame({'INT': [i+1 for i in range(nn)], 
+      'NUM': np.arange(0.0, nn),
+      'CHR': [chr(i) for i in range(ord('a'), ord('a') +nn)],
+      'LGL': [i % 2 == 1 for i in range(nn)]})
+df_y.info(memory_usage = False)
+
+```
+
+```{r 'R-Compare', decorate=TRUE, include=FALSE}
+aa <- py$df_y |> `attr<-`('pandas.index', NULL) 
+aa$INT <- as.integer(aa$INT)
+stopifnot(identical(df_r, aa))          #Converted object is similar
+```
+
+```{python 'Y-Compare', decorate=TRUE, include=FALSE}
+pp = r.df_r
+pp = pp.astype({'INT': np.dtype('int64')})
+assert(df_y.equals(pp))                 #Converted object is similar
+
+```
+
+## CSV
+
+- R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `write_csv()` & `read_csv()` methods
+- Python pandas has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
+
+```{r 'R-CSV', decorate=TRUE}
+loc <- "data/R_01_Readr.csv"                      #PATH
+readr::write_csv(df_r, file = loc)                #To CSV
+
+aa <- readr::read_csv(loc, show_col_types = FALSE, col_types = "idcl")
+attr(aa, "spec") <- NULL                          #Drop Attribute
+attr(aa, "problems") <- NULL
+stopifnot(identical(df_r, as.data.frame(aa)))
+```
+
+```{python 'Y-CSV', decorate=TRUE}
+loc = "data/Y_01_Pandas.csv"                      #PATH
+df_y.to_csv(loc, index = False)                   #To CSV
+
+pp = pd.read_csv(loc)
+assert(df_y.equals(pp))
+
+```
+
+```{r 'R-CSV-Compare', decorate=TRUE, include=FALSE}
+loc <- "data/Y_01_Pandas.csv"                     #PATH of Python File in R
+aa <- readr::read_csv(loc, show_col_types = FALSE, col_types = "idcl")
+attr(aa, "spec") <- NULL                          #Drop Attribute
+attr(aa, "problems") <- NULL
+stopifnot(identical(df_r, as.data.frame(aa)))
+```
+
+```{python 'Y-CSV-Compare', decorate=TRUE, include=FALSE}
+loc = "data/Y_01_Pandas.csv"                      #PATH of R File in Python
+pp = pd.read_csv(loc)
+assert(df_y.equals(pp))
+
+```
 
 
