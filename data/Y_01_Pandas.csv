@@ -1,0 +1,5 @@
+INT,NUM,CHR,LGL
+1,0.0,a,False
+2,1.0,b,True
+3,2.0,c,False
+4,3.0,d,True

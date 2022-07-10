@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Import - Export | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="6.1 Test Data">
+<meta name="description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Import - Export | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/in-out-p06.html">
-<meta property="og:description" content="6.1 Test Data">
+<meta property="og:description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Import - Export | PYxR">
-<meta name="twitter:description" content="6.1 Test Data">
+<meta name="twitter:description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -67,6 +67,79 @@
 <h2>
 <span class="header-section-number">6.1</span> Test Data<a class="anchor" aria-label="anchor" href="#test-data"><i class="fas fa-link"></i></a>
 </h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nn</span> <span class="op">&lt;-</span> <span class="fl">4L</span></span>
+<span><span class="va">df_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>INT <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">nn</span>, NUM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fl">1</span>, <span class="va">nn</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, </span>
+<span>                   CHR <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span><span class="op">]</span>, LGL <span class="op">=</span> <span class="op">{</span><span class="fl">1</span><span class="op">:</span><span class="va">nn</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span><span class="op">}</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_r</span><span class="op">)</span></span>
+<span><span class="co">## 'data.frame':    4 obs. of  4 variables:</span></span>
+<span><span class="co">##  $ INT: int  1 2 3 4</span></span>
+<span><span class="co">##  $ NUM: num  0 1 2 3</span></span>
+<span><span class="co">##  $ CHR: chr  "a" "b" "c" "d"</span></span>
+<span><span class="co">##  $ LGL: logi  FALSE TRUE FALSE TRUE</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="in-out-p06.html#cb90-1" aria-hidden="true" tabindex="-1"></a>nn <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb90-2"><a href="in-out-p06.html#cb90-2" aria-hidden="true" tabindex="-1"></a>df_y <span class="op">=</span> pd.DataFrame({<span class="st">'INT'</span>: [i<span class="op">+</span><span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nn)], </span>
+<span id="cb90-3"><a href="in-out-p06.html#cb90-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">'NUM'</span>: np.arange(<span class="fl">0.0</span>, nn),</span>
+<span id="cb90-4"><a href="in-out-p06.html#cb90-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">'CHR'</span>: [<span class="bu">chr</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">ord</span>(<span class="st">'a'</span>), <span class="bu">ord</span>(<span class="st">'a'</span>) <span class="op">+</span>nn)],</span>
+<span id="cb90-5"><a href="in-out-p06.html#cb90-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">'LGL'</span>: [i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nn)]})</span>
+<span id="cb90-6"><a href="in-out-p06.html#cb90-6" aria-hidden="true" tabindex="-1"></a>df_y.info(memory_usage <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb90-7"><a href="in-out-p06.html#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="co">## &lt;class 'pandas.core.frame.DataFrame'&gt;</span></span>
+<span id="cb90-8"><a href="in-out-p06.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="co">## RangeIndex: 4 entries, 0 to 3</span></span>
+<span id="cb90-9"><a href="in-out-p06.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Data columns (total 4 columns):</span></span>
+<span id="cb90-10"><a href="in-out-p06.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="co">##  #   Column  Non-Null Count  Dtype  </span></span>
+<span id="cb90-11"><a href="in-out-p06.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="co">## ---  ------  --------------  -----  </span></span>
+<span id="cb90-12"><a href="in-out-p06.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="co">##  0   INT     4 non-null      int64  </span></span>
+<span id="cb90-13"><a href="in-out-p06.html#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="co">##  1   NUM     4 non-null      float64</span></span>
+<span id="cb90-14"><a href="in-out-p06.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="co">##  2   CHR     4 non-null      object </span></span>
+<span id="cb90-15"><a href="in-out-p06.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="co">##  3   LGL     4 non-null      bool   </span></span>
+<span id="cb90-16"><a href="in-out-p06.html#cb90-16" aria-hidden="true" tabindex="-1"></a><span class="co">## dtypes: bool(1), float64(1), int64(1), object(1)</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="csv" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> CSV<a class="anchor" aria-label="anchor" href="#csv"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> &amp; <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> are available in R. However <a href="https://readr.tidyverse.org">readr</a> package provides faster <code>write_csv()</code> &amp; <code>read_csv()</code> methods</li>
+<li>Python pandas has <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">to_csv()</a> &amp; <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv()</a>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="st">"data/R_01_Readr.csv"</span>                      <span class="co">#PATH</span></span>
+<span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">df_r</span>, file <span class="op">=</span> <span class="va">loc</span><span class="op">)</span>                <span class="co">#To CSV</span></span>
+<span></span>
+<span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">loc</span>, show_col_types <span class="op">=</span> <span class="cn">FALSE</span>, col_types <span class="op">=</span> <span class="st">"idcl"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">aa</span>, <span class="st">"spec"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>                          <span class="co">#Drop Attribute</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">aa</span>, <span class="st">"problems"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="in-out-p06.html#cb92-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">"data/Y_01_Pandas.csv"</span>                      <span class="co">#PATH</span></span>
+<span id="cb92-2"><a href="in-out-p06.html#cb92-2" aria-hidden="true" tabindex="-1"></a>df_y.to_csv(loc, index <span class="op">=</span> <span class="va">False</span>)                   <span class="co">#To CSV</span></span>
+<span id="cb92-3"><a href="in-out-p06.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="in-out-p06.html#cb92-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pd.read_csv(loc)</span>
+<span id="cb92-5"><a href="in-out-p06.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
+</div>
+<br>
+</div>
 
 </div>
 </div>
@@ -78,6 +151,7 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#in-out-p06"><span class="header-section-number">6</span> Import - Export</a></li>
 <li><a class="nav-link" href="#test-data"><span class="header-section-number">6.1</span> Test Data</a></li>
+<li><a class="nav-link" href="#csv"><span class="header-section-number">6.2</span> CSV</a></li>
 </ul>
 
       <div class="book-extra">
