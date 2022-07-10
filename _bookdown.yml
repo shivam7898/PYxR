@@ -16,7 +16,9 @@ rmd_files:
     "p02-DataStructures.Rmd",
     "p03-List-Dict.Rmd",
     "p04-DataFrames.Rmd",
-    "p05-Matrix-Array.Rmd"
+    "p05-Matrix-Array.Rmd",
+    
+    "p06-In-Out.Rmd"
   ]
 
 # _bookdown.yml
