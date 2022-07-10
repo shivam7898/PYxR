@@ -48,3 +48,6 @@ basics-3
 in-out-p06
 test-data
 csv
+arrow-feather
+r-rds
+python-arrow-feather
