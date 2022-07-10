@@ -54,7 +54,7 @@ stopifnot(identical(df_r, aa))
 
 - Print DataFrame: 
   - R: `print()`, `head()`, `tail()`, `dplyr::slice()`
-  - Python: `r q_link("print()")`, `r q_link("pd.DataFrame.head()")`, `r q_link("pd.DataFrame.tail()")`, `r q_link("pd.DataFrame.iloc")`
+  - Python: `r q_link("lib.functions.print()")`, `r q_link("pd.DataFrame.head()")`, `r q_link("pd.DataFrame.tail()")`, `r q_link("pd.DataFrame.iloc")`
 
 ```{r 'R-DF-Head', decorate=TRUE}
 aa <- df_r
@@ -80,7 +80,7 @@ pp.tail(2)
 
 - About DataFrame:
   - R: `class()`, `typeof()`, `dim()`, `names()`, `str()`, `summary()`
-  - Python: `r q_link("type()")`, `r q_link("pd.DataFrame.shape")`, `r q_link("pd.DataFrame.columns")`, `r q_link("pd.DataFrame.describe()")`, `r q_link("pd.DataFrame.dtypes")`, `r q_link("pd.DataFrame.info()")`
+  - Python: `r q_link("lib.functions.type()")`, `r q_link("pd.DataFrame.shape")`, `r q_link("pd.DataFrame.columns")`, `r q_link("pd.DataFrame.describe()")`, `r q_link("pd.DataFrame.dtypes")`, `r q_link("pd.DataFrame.info()")`
 
 ```{r 'R-DF-About', decorate=TRUE}
 aa <- df_r
@@ -321,8 +321,6 @@ pp.iloc[2, 0] = 30
 pp
 
 ```
-
-## Verify
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE, eval=FALSE}
 # List of URL of this Page

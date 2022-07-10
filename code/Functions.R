@@ -1,4 +1,4 @@
-if(TRUE || !exists("q_")) {
+if(!exists("q_")) {
   q_ <- NULL
   
   # Matrix to log URL on each page
@@ -8,7 +8,7 @@ if(TRUE || !exists("q_")) {
   #q_url <- rbind(q_url, c("{pandas}", "[pandas]", 
   #               "https://pandas.pydata.org/docs/user_guide/index.html"))
   
-  q_link <- function(x) {
+  q_link <- function(x, usr_txt = NA) {
     # Convert String to the link of Python Module Help
 	url_row <- match(x, q_url[, "ORIGINAL"])
 	if(!is.na(url_row)) {
@@ -16,8 +16,8 @@ if(TRUE || !exists("q_")) {
 	} else {
 	    is_found <- FALSE
 	    # Set Flag for Modules & remove braces {}
-	    if (all(identical("{", substr(x, 1, 1)),
-                identical(substr(x, nchar(x), nchar(x)), "}"))) {
+	    if(all(identical("{", substr(x, 1, 1)),
+               identical(substr(x, nchar(x), nchar(x)), "}"))) {
 		    is_module <- TRUE
 		    y <- substr(x, 2, nchar(x) - 1)
 		} else {
@@ -32,7 +32,7 @@ if(TRUE || !exists("q_")) {
 	    y <- gsub(pattern = "()", replacement = "", y, fixed = TRUE)
 		# Split on dots
 		z <- strsplit(y, "[.]")[[1]]
-        #cat("x: ", x, "\n", "y: ", y, "\n", "z: ", z, "\n")
+        cat(" x: ", x, "\n", "y: ", y, "\n", "z: ", z, "\n")
         
 		if(is_module) {
 		    # Modules: q_link("{lib.copy}"), q_link("{pandas}")
@@ -40,37 +40,38 @@ if(TRUE || !exists("q_")) {
 			    is_found <- TRUE
 			    txt <- z[2]
 			    url <- paste0("https://docs.python.org/3/library/", txt, ".html")
-                shw <- txt
+                shw <- ifelse(!is.na(usr_txt), usr_txt, txt)
 				#cat("txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")
 			} else if(z[1] %in% c("pandas", "pd")) {
 			    is_found <- TRUE
 			    txt <- "pandas"
 				url <- "https://pandas.pydata.org/docs/user_guide/index.html"
-                shw <- txt
+                shw <- ifelse(!is.na(usr_txt), usr_txt, txt)
 			} 
 		} else {
-			if(length(z) == 1L) {
-			    # Builtins: q_link("print()")
-				is_found <- TRUE
-				txt <- z
-			    url <- paste0("https://docs.python.org/3/library/functions.html#", txt)
-				shw <- ifelse(is_method, paste0(txt, "()"), txt)
-			} else {
+			if(z[1]  == "lib") {
+			    # Methods: q_link("lib.functions.print()")
+			    is_found <- TRUE
+				txt <- paste0(z[2], ".html")
+				if(length(z) == 3L) txt <- paste0(txt, "#", z[3])
+				url <- paste0("https://docs.python.org/3/library/", txt)
+				shw <- ifelse(!is.na(usr_txt), usr_txt, 
+				              ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)]))
+
+			} else if(z[1] %in% c("pandas", "pd")) {
 			    # Methods: q_link("pd.DataFrame()"), q_link("pd.DataFrame.head()")
-			    if(z[1] %in% c("pandas", "pd")) {
-				    if(z[2] == "[]") {
-						is_found <- TRUE
-					    url <- "https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html"
-						shw <- txt <- "[]"
-					} else {
-					    is_found <- TRUE
-					    txt <- paste0(z[-1], collapse = ".")
-						url <- paste0("https://pandas.pydata.org/docs/reference/api/pandas.", txt, ".html")
-						shw <- ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)])
-					}
-			    } else {
-				    #
-				}
+			    is_found <- TRUE
+			    if(z[2] == "[]") {
+				    url <- "https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html"
+					shw <- txt <- "[]"
+				} else {
+				    txt <- paste0(z[-1], collapse = ".")
+					url <- paste0("https://pandas.pydata.org/docs/reference/api/pandas.", txt, ".html")
+					shw <- ifelse(!is.na(usr_txt), usr_txt, 
+					              ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)]))
+			    } 
+			} else {
+			    #
 			}
 		}
         #cat(" txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")

@@ -4,7 +4,7 @@
 ################################################################################
 source("_common.R")
 if(FALSE) c("lobstr") |> 
-  lapply(library, character.only=TRUE)
+  lapply(library, character.only = TRUE)
 ```
 
 ## Basics
@@ -46,7 +46,7 @@ if(FALSE) c("lobstr") |>
 
 ## Mathematical Operators
 
-- R and Python both have following operators:  
+- R `base::Arithmetic`) and Python `r q_link("lib.operator")` both have following operators:  
   - Addition `+`, Subtraction `-`, Multiplication `*`, Division `/`
   - Exponent is given by caret `^` or `**` in R and by `**` in Python
     - Python uses caret for bitwise `XOR`
@@ -77,7 +77,7 @@ if(FALSE) c("lobstr") |>
 
 ## Help
 
-- Both R and Python have `help()` to get details about the topic
+- R `help()` and Python `r q_link("lib.functions.help()")` can be used to get details about the topic
   - R also has a shorthand to get help by prefixing `?` before the topic
 
 ```{r 'R-Help', decorate=TRUE, eval=FALSE}
@@ -96,7 +96,7 @@ if(False):
 
 ## Print
 
-- Printing is largely handled by `print()` in both R and Python
+- Printing is largely handled by `print()` in R and `r q_link("lib.functions.print()")` in Python 
   - Explicit and Implicit both types of printing is available
 
 
@@ -184,7 +184,7 @@ math.nan != math.nan
 
 ## Boolean
 
-- R (TRUE, FALSE) vs. Python (True, False) - Case is different
+- R (`TRUE`, `FALSE`) vs. Python (`True`, `False`) - Case is different
 - Python:
   - All values are considered "truthy" except for the following, which are "falsy"
     - `None`, `False`, `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
@@ -589,7 +589,7 @@ if(FALSE) {
   library(knitr)
   
   # Attach multiple R Packages
-  c("reticulate", "knitr") |> lapply(library, character.only=TRUE)
+  c("reticulate", "knitr") |> lapply(library, character.only = TRUE)
   
   # List all attached Packages
   print(.packages())
