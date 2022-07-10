@@ -63,7 +63,7 @@ assert(df_y.equals(pp))
 
 ```
 
-```{r 'R-CSV-Compare', decorate=TRUE, include=TRUE}
+```{r 'R-CSV-Compare', decorate=TRUE, include=FALSE}
 loc <- "data/Y_01_pandas.csv"                     #PATH of Python File in R
 aa <- read_csv(loc, show_col_types = FALSE, 
                col_types = list(INT = col_integer(), NUM = col_double(), 
@@ -73,7 +73,7 @@ if(nrow(problems(aa)) == 0L) attr(aa, "problems") <- NULL
 stopifnot(identical(df_r, as.data.frame(aa)))
 ```
 
-```{python 'Y-CSV-Compare', decorate=TRUE, include=TRUE}
+```{python 'Y-CSV-Compare', decorate=TRUE, include=FALSE}
 loc = "data/R_01_readr.csv"                       #PATH of R File in Python
 pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
                                'CHR': object, 'LGL': bool})
