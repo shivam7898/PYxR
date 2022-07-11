@@ -23,13 +23,13 @@ df_y.info(memory_usage = False)
 
 ```
 
-```{r 'R-Compare', decorate=TRUE, include=TRUE}
+```{r 'R-Compare', decorate=TRUE, include=FALSE}
 aa <- py$df_y |> `attr<-`('pandas.index', NULL) 
 aa$INT <- as.integer(aa$INT)
 stopifnot(identical(df_r, aa))          #Converted object is similar
 ```
 
-```{python 'Y-Compare', decorate=TRUE, include=TRUE}
+```{python 'Y-Compare', decorate=TRUE, include=FALSE}
 pp = r.df_r
 pp = pp.astype({'INT': np.dtype('int64')})
 assert(df_y.equals(pp))                 #Converted object is similar
@@ -39,7 +39,7 @@ assert(df_y.equals(pp))                 #Converted object is similar
 ## CSV
 
 - R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `readr::write_csv()` & `readr::read_csv()` methods
-- Python `r q_link("{pandas}")` has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
+- Python `r q_link("{pandas}")` module has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
 
 ```{r 'R-CSV', decorate=TRUE}
 loc <- "data/R_01_readr.csv"                                #PATH
@@ -96,8 +96,8 @@ stopifnot(identical(df_r, aa))
 
 ## Python Arrow Feather
 
-- Python `r q_link("{pyarrow}")` has `r q_link("pyarrow.feather.write_feather()")` & `r q_link("pyarrow.feather.read_feather()")`
-- R has `{arrow}` package. However due to its conflict within `{reticulate}` environment, it is not being used for now.
+- Python `r q_link("{pyarrow}")` module has `r q_link("pyarrow.feather.write_feather()")` & `r q_link("pyarrow.feather.read_feather()")`
+- Within `{reticulate}` environment, due to the conflict between Python `r q_link("{pyarrow}")` module and R `{arrow}` package, the R package is not being used for now.
 
 ```{python 'Y-Feather', decorate=TRUE}
 loc = "data/Y_01_pyarrow.feather"                           #PATH
@@ -106,7 +106,6 @@ pyarrow.feather.write_feather(df_y, loc)                    #To Feather
 pp = pyarrow.feather.read_feather(loc)
 assert(df_y.equals(pp))
 ```
-
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE}
 TRUE

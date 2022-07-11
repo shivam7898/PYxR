@@ -1,0 +1,21 @@
+# SO 01-10 {#so-p10}
+
+```{r 'setup', include=FALSE}
+source("_common.R")
+```
+
+## 001-010
+
+001. How to make a reproducible example or Minimum Working Example (MWE)
+    - Below this must be 2
+001. This must be 2
+  - But is this ok
+001. Is it 3
+  - and test for `r q_so("q5963269")`
+
+```{r 'R-SO-001', decorate=TRUE}
+
+```
+
+
+

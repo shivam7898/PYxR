@@ -92,5 +92,13 @@ if(!exists("q_")) {
 	}
 	return(out)
   }
-
+  
+  q_so <- function(x) {
+    # q_so("q27044727") q_so("a5965451") q_so("a/5965451")
+    y <- tolower(substr(x, 1, 1))
+	z <- gsub('/', '', substr(x, 2, nchar(x))) 
+	txt <- ifelse(y == "q", "questions", "a")
+	out <- paste0("[SO](", "https://stackoverflow.com/", txt, "/", z, ")")
+	return(out)
+  }
 } else print("R Functions not loaded again.")
