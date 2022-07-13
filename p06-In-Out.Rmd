@@ -4,7 +4,7 @@
 source("_common.R")
 ```
 
-## Test Data
+## Test DataFrame
 
 ```{r 'R-DF', decorate=TRUE}
 nn <- 4L
@@ -30,6 +30,7 @@ stopifnot(identical(df_r, aa))          #Converted object is similar
 ```
 
 ```{python 'Y-Compare', decorate=TRUE, include=FALSE}
+if 'pp' in globals(): del pp
 pp = r.df_r
 pp = pp.astype({'INT': np.dtype('int64')})
 assert(df_y.equals(pp))                 #Converted object is similar
@@ -40,6 +41,7 @@ assert(df_y.equals(pp))                 #Converted object is similar
 
 - R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `readr::write_csv()` & `readr::read_csv()` methods
 - Python `r q_link("{pandas}")` module has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
+- Note: `JSON` would be a better choice than `CSV` if rows have different number of columns
 
 ```{r 'R-CSV', decorate=TRUE}
 loc <- "data/R_01_readr.csv"                                #PATH
@@ -57,6 +59,7 @@ stopifnot(identical(df_r, as.data.frame(aa)))
 loc = "data/Y_01_pandas.csv"                                #PATH
 df_y.to_csv(loc, index = False)                             #To CSV
 
+if 'pp' in globals(): del pp
 pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
                                'CHR': object, 'LGL': bool})
 assert(df_y.equals(pp))
@@ -75,6 +78,8 @@ stopifnot(identical(df_r, as.data.frame(aa)))
 
 ```{python 'Y-CSV-Compare', decorate=TRUE, include=FALSE}
 loc = "data/R_01_readr.csv"                       #PATH of R File in Python
+
+if 'pp' in globals(): del pp
 pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
                                'CHR': object, 'LGL': bool})
 assert(df_y.equals(pp))
@@ -83,7 +88,7 @@ assert(df_y.equals(pp))
 
 ## R RDS
 
-- R `saveRDS()` & `readRDS()` are available in R. However `{readr}` package provides faster (default uncompressed) `readr::write_rds()` & `readr::read_rds()` methods
+- R `saveRDS()` & `readRDS()` are available in R. However `{readr}` package provides faster  `readr::write_rds()` & `readr::read_rds()` methods
 - Python needs `r q_link("{rpy2}")` module which is unavailable in Windows
 
 ```{r 'R-RDS', decorate=TRUE}
@@ -97,17 +102,54 @@ stopifnot(identical(df_r, aa))
 ## Python Arrow Feather
 
 - Python `r q_link("{pyarrow}")` module has `r q_link("pyarrow.feather.write_feather()")` & `r q_link("pyarrow.feather.read_feather()")`
-- Within `{reticulate}` environment, due to the conflict between Python `r q_link("{pyarrow}")` module and R `{arrow}` package, the R package is not being used for now.
+- Pandas itself has moved away from `pickle` (& `msgpack`) to `pyarrow`
+- Note: Within `{reticulate}` environment, due to the conflict between Python `r q_link("{pyarrow}")` module and R `{arrow}` package, the R package is not being used for now.
 
 ```{python 'Y-Feather', decorate=TRUE}
 loc = "data/Y_01_pyarrow.feather"                           #PATH
 pyarrow.feather.write_feather(df_y, loc)                    #To Feather
 
+if 'pp' in globals(): del pp
 pp = pyarrow.feather.read_feather(loc)
 assert(df_y.equals(pp))
 ```
 
+## R Dump
+
+- R `dump()` creates `.R` file with the `structure()` of all the objects passed to it. This file can be sourced by `source()`. 
+- Unlike `saveRDS()` multiple objects can be saved. 
+- Caution: It also saves 'object names' thus it may overwrite already existing ones.
+
+```{r 'R-Dump', decorate=TRUE}
+aa <- df_r
+loc <- "data/R_01_dump.R"
+dump(c("aa"), file = loc)                                   #To R File
+rm(aa)
+source(loc)                                                 #Source
+stopifnot(all(exists("aa"), identical(df_r, aa)))
+```
+
+## Python Pickle & HDF5
+
+::: {.rmdcaution}
+
+Python `r q_link("{lib.pickle}")` module can be used to save python objects. However, it is unsecure and  arbitrary code execution is possible. [Pickle Flaws](https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html)
+Pandas uses pickle (via PyTables) for reading and writing `HDF5` files. So avoid this too. [Caution](https://pandas.pydata.org/docs/user_guide/io.html#io-hdf5)
+
+```{python 'Y-Pickle', decorate=TRUE, eval=FALSE}
+if(False):
+    # Avoid Pickle
+    loc = "data/Y_01_pickle.pkl"
+    df_y.to_pickle(loc)                                     #To Pickle
+    
+    if 'pp' in globals(): del pp
+    pp = pd.read_pickle(loc)
+    assert(df_y.equals(pp))
+
+```
+:::
+
+
 ```{r 'R-Verify', decorate=TRUE, include=FALSE}
 TRUE
 ```
-
