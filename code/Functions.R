@@ -32,7 +32,7 @@ if(!exists("q_")) {
 	    y <- gsub(pattern = "()", replacement = "", y, fixed = TRUE)
 		# Split on dots
 		z <- strsplit(y, "[.]")[[1]]
-        cat(" x: ", x, "\n", "y: ", y, "\n", "z: ", z, "\n")
+        #cat(" x: ", x, "\n", "y: ", y, "\n", "z: ", z, "\n")
         
 		if(is_module) {
 		    # Modules: q_link("{lib.copy}"), q_link("{pandas}")

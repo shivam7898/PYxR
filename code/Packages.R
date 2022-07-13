@@ -2,7 +2,7 @@ if (!("conflicted" %in% (.packages()))) {
   # CAUTION: Due to R "arrow" & Python "pyarrow" conflict do not load it in R
   pkg <- character(0)
   pkg <- c(pkg, "conflicted", "knitr", "reticulate", "fontawesome")
-  pkg <- c(pkg, "lobstr", "tibble", "dplyr", "here", "readr")
+  pkg <- c(pkg, "lobstr", "tibble", "dplyr", "readr")
   
   lapply(pkg, FUN = \(x) library(x, character.only = TRUE))
   

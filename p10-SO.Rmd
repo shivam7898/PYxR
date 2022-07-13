@@ -4,16 +4,47 @@
 source("_common.R")
 ```
 
+## Test Data
+
+```{r 'R-DF', decorate=TRUE}
+df_r <- readr::read_rds("data/R_01_readr.rds")
+str(df_r)
+```
+
+```{python 'Y-Feather', decorate=TRUE}
+df_y = pyarrow.feather.read_feather("data/Y_01_pyarrow.feather")
+df_y.info(memory_usage = False)
+
+```
+
 ## 001-010
 
-001. How to make a reproducible example or Minimum Working Example (MWE)
-    - Below this must be 2
-001. This must be 2
-  - But is this ok
-001. Is it 3
-  - and test for `r q_so("q5963269")`
+- 001 `r q_so("q5963269")`: How to make a reproducible example or Minimum Working Example (MWE)
+  - R: All Libraries by `library()`, Minimal or standard Dataset by `data()` & `dput()`, Minimal Running Code, `set.seed()` for reproducibility, `sessionInfo()` for Environment and OS Information, Revert all the changes made to environment, R Options etc.
+  - Python: Use `r q_link("pyarrow.feather.write_feather()")`
+    - `r q_link("lib.functions.repr()")` does not keep the `r q_link("pandas.DataFrame.dtypes")`. Similar problem may occur with `r q_link("pandas.DataFrame.to_dict()")` & `r q_link("pandas.DataFrame.to_csv()")`. 
+    - `r q_link("pandas.DataFrame.to_pickle()")` & `r q_link("pandas.DataFrame.to_hdf()")` are unsafe.
 
-```{r 'R-SO-001', decorate=TRUE}
+```{r 'R-data', decorate=TRUE}
+data(package = "dplyr")$results[ , "Item"]        #Load or List Datasets
+```
+
+```{r 'R-dput', decorate=TRUE}
+aa <- df_r
+dput(aa)                                          #Write an Object to Console
+```
+
+```{python 'Y-repr', decorate=TRUE}
+pp = {'x': (11, 22), 'y': [11, 22]}
+assert(eval(repr(pp)) == pp)                      #May lose dtypes
+
+```
+
+```{python 'Y-DF-Dict', decorate=TRUE}
+pp = df_y.copy()
+assert(pd.DataFrame(pp.to_dict()).equals(pp))
+
+pp.to_dict()                                      #May lose dtypes
 
 ```
 
