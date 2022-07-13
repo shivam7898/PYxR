@@ -52,6 +52,7 @@ r-rds
 python-arrow-feather
 r-dump
 python-pickle-hdf5
+clipboard
 so-p10
 test-data
 section
