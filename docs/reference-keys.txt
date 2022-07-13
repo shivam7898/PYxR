@@ -46,7 +46,12 @@ modify
 mat-p05
 basics-3
 in-out-p06
-test-data
+test-dataframe
 csv
 r-rds
 python-arrow-feather
+r-dump
+python-pickle-hdf5
+so-p10
+test-data
+section

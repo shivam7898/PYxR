@@ -789,7 +789,7 @@ if(FALSE) {
 
 ```r
 ls()
-## [1] "aa"     "fred"   "george" "q_"     "q_link" "q_url"  "r"
+## [1] "aa"     "fred"   "george" "q_"     "q_link" "q_so"   "q_url"  "r"
 ```
 
 </div><br></div>

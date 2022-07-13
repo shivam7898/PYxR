@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Import - Export | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
+<meta name="description" content="6.1 Test DataFrame   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ##...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Import - Export | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/in-out-p06.html">
-<meta property="og:description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
+<meta property="og:description" content="6.1 Test DataFrame   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ##...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Import - Export | PYxR">
-<meta name="twitter:description" content="6.1 Test Data   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ## $...">
+<meta name="twitter:description" content="6.1 Test DataFrame   R nn &lt;- 4L df_r &lt;- data.frame(INT = 1:nn, NUM = seq(1-1, nn-1, 1),           CHR = letters[1:nn], LGL = {1:nn %% 2} == 0) str(df_r) ## 'data.frame':  4 obs. of 4 variables: ##...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -52,6 +52,7 @@
 <li><a class="" href="df-p04.html"><span class="header-section-number">4</span> Data Frame</a></li>
 <li><a class="" href="mat-p05.html"><span class="header-section-number">5</span> Matrix &amp; NumPy Array</a></li>
 <li><a class="active" href="in-out-p06.html"><span class="header-section-number">6</span> Import - Export</a></li>
+<li><a class="" href="so-p10.html"><span class="header-section-number">7</span> SO 01-10</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,9 +64,9 @@
 <h1>
 <span class="header-section-number">6</span> Import - Export<a class="anchor" aria-label="anchor" href="#in-out-p06"><i class="fas fa-link"></i></a>
 </h1>
-<div id="test-data" class="section level2" number="6.1">
+<div id="test-dataframe" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">6.1</span> Test Data<a class="anchor" aria-label="anchor" href="#test-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Test DataFrame<a class="anchor" aria-label="anchor" href="#test-dataframe"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
@@ -105,25 +106,6 @@
 </div>
 <br>
 </div>
-<div class="decocode">
-<div style="background-color:inherit">
-<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">py</span><span class="op">$</span><span class="va">df_y</span> <span class="op">|&gt;</span> <span class="fu">`attr&lt;-`</span><span class="op">(</span><span class="st">'pandas.index'</span>, <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="va">aa</span><span class="op">$</span><span class="va">INT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">aa</span><span class="op">$</span><span class="va">INT</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="va">aa</span><span class="op">)</span><span class="op">)</span>          <span class="co">#Converted object is similar</span></span></code></pre></div>
-</div>
-<br>
-</div>
-<div class="decocode">
-<div style="background-color:inherit">
-<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="in-out-p06.html#cb92-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> r.df_r</span>
-<span id="cb92-2"><a href="in-out-p06.html#cb92-2" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pp.astype({<span class="st">'INT'</span>: np.dtype(<span class="st">'int64'</span>)})</span>
-<span id="cb92-3"><a href="in-out-p06.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))                 <span class="co">#Converted object is similar</span></span></code></pre></div>
-</div>
-<br>
-</div>
 </div>
 <div id="csv" class="section level2" number="6.2">
 <h2>
@@ -131,13 +113,14 @@
 </h2>
 <ul>
 <li>R <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> &amp; <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> are available in R. However <a href="https://readr.tidyverse.org">readr</a> package provides faster <code><a href="https://readr.tidyverse.org/reference/write_delim.html">readr::write_csv()</a></code> &amp; <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code> methods</li>
-<li>Python <a href="https://pypi.org/project/pandas">pandas</a> has <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">to_csv()</a> &amp; <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv()</a>
+<li>Python <a href="https://pypi.org/project/pandas">pandas</a> module has <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">to_csv()</a> &amp; <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv()</a>
 </li>
+<li>Note: <code>JSON</code> would be a better choice than <code>CSV</code> if rows have different number of columns</li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="st">"data/R_01_readr.csv"</span>                                <span class="co">#PATH</span></span>
 <span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">df_r</span>, file <span class="op">=</span> <span class="va">loc</span><span class="op">)</span>                          <span class="co">#To CSV</span></span>
 <span></span>
@@ -153,12 +136,13 @@
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="in-out-p06.html#cb94-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">"data/Y_01_pandas.csv"</span>                                <span class="co">#PATH</span></span>
-<span id="cb94-2"><a href="in-out-p06.html#cb94-2" aria-hidden="true" tabindex="-1"></a>df_y.to_csv(loc, index <span class="op">=</span> <span class="va">False</span>)                             <span class="co">#To CSV</span></span>
-<span id="cb94-3"><a href="in-out-p06.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="in-out-p06.html#cb94-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pd.read_csv(loc, dtype <span class="op">=</span> {<span class="st">'INT'</span>: np.int64, <span class="st">'NUM'</span>: <span class="bu">float</span>, </span>
-<span id="cb94-5"><a href="in-out-p06.html#cb94-5" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'CHR'</span>: <span class="bu">object</span>, <span class="st">'LGL'</span>: <span class="bu">bool</span>})</span>
-<span id="cb94-6"><a href="in-out-p06.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="in-out-p06.html#cb92-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">"data/Y_01_pandas.csv"</span>                                <span class="co">#PATH</span></span>
+<span id="cb92-2"><a href="in-out-p06.html#cb92-2" aria-hidden="true" tabindex="-1"></a>df_y.to_csv(loc, index <span class="op">=</span> <span class="va">False</span>)                             <span class="co">#To CSV</span></span>
+<span id="cb92-3"><a href="in-out-p06.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="in-out-p06.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>(): <span class="kw">del</span> pp</span>
+<span id="cb92-5"><a href="in-out-p06.html#cb92-5" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pd.read_csv(loc, dtype <span class="op">=</span> {<span class="st">'INT'</span>: np.int64, <span class="st">'NUM'</span>: <span class="bu">float</span>, </span>
+<span id="cb92-6"><a href="in-out-p06.html#cb92-6" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'CHR'</span>: <span class="bu">object</span>, <span class="st">'LGL'</span>: <span class="bu">bool</span>})</span>
+<span id="cb92-7"><a href="in-out-p06.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
 </div>
 <br>
 </div>
@@ -168,13 +152,13 @@
 <span class="header-section-number">6.3</span> R RDS<a class="anchor" aria-label="anchor" href="#r-rds"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>R <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> &amp; <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> are available in R. However <a href="https://readr.tidyverse.org">readr</a> package provides faster (default uncompressed) <code><a href="https://readr.tidyverse.org/reference/read_rds.html">readr::write_rds()</a></code> &amp; <code><a href="https://readr.tidyverse.org/reference/read_rds.html">readr::read_rds()</a></code> methods</li>
+<li>R <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> &amp; <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> are available in R. However <a href="https://readr.tidyverse.org">readr</a> package provides faster <code><a href="https://readr.tidyverse.org/reference/read_rds.html">readr::write_rds()</a></code> &amp; <code><a href="https://readr.tidyverse.org/reference/read_rds.html">readr::read_rds()</a></code> methods</li>
 <li>Python needs <a href="https://pypi.org/project/rpy2">rpy2</a> module which is unavailable in Windows</li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="st">"data/R_01_readr.rds"</span>                                <span class="co">#PATH</span></span>
 <span><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">df_r</span>, file <span class="op">=</span> <span class="va">loc</span><span class="op">)</span>                          <span class="co">#To RDS</span></span>
 <span></span>
@@ -189,35 +173,86 @@
 <span class="header-section-number">6.4</span> Python Arrow Feather<a class="anchor" aria-label="anchor" href="#python-arrow-feather"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>Python <a href="https://pypi.org/project/pyarrow">pyarrow</a> has <a href="https://arrow.apache.org/docs/python/generated/pyarrow.feather.write_feather.html">write_feather()</a> &amp; <a href="https://arrow.apache.org/docs/python/generated/pyarrow.feather.read_feather.html">read_feather()</a>
+<li>Python <a href="https://pypi.org/project/pyarrow">pyarrow</a> module has <a href="https://arrow.apache.org/docs/python/generated/pyarrow.feather.write_feather.html">write_feather()</a> &amp; <a href="https://arrow.apache.org/docs/python/generated/pyarrow.feather.read_feather.html">read_feather()</a>
 </li>
-<li>R has <a href="https://github.com/apache/arrow/">arrow</a> package. However due to its conflict within <a href="https://rstudio.github.io/reticulate/">reticulate</a> environment, it is not being used for now.</li>
+<li>Pandas itself has moved away from <code>pickle</code> (&amp; <code>msgpack</code>) to <code>pyarrow</code>
+</li>
+<li>Note: Within <a href="https://rstudio.github.io/reticulate/">reticulate</a> environment, due to the conflict between Python <a href="https://pypi.org/project/pyarrow">pyarrow</a> module and R <a href="https://github.com/apache/arrow/">arrow</a> package, the R package is not being used for now.</li>
 </ul>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="in-out-p06.html#cb96-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">"data/Y_01_pyarrow.feather"</span>                           <span class="co">#PATH</span></span>
-<span id="cb96-2"><a href="in-out-p06.html#cb96-2" aria-hidden="true" tabindex="-1"></a>pyarrow.feather.write_feather(df_y, loc)                    <span class="co">#To Feather</span></span>
-<span id="cb96-3"><a href="in-out-p06.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="in-out-p06.html#cb96-4" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pyarrow.feather.read_feather(loc)</span>
-<span id="cb96-5"><a href="in-out-p06.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="in-out-p06.html#cb94-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">"data/Y_01_pyarrow.feather"</span>                           <span class="co">#PATH</span></span>
+<span id="cb94-2"><a href="in-out-p06.html#cb94-2" aria-hidden="true" tabindex="-1"></a>pyarrow.feather.write_feather(df_y, loc)                    <span class="co">#To Feather</span></span>
+<span id="cb94-3"><a href="in-out-p06.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="in-out-p06.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>(): <span class="kw">del</span> pp</span>
+<span id="cb94-5"><a href="in-out-p06.html#cb94-5" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> pyarrow.feather.read_feather(loc)</span>
+<span id="cb94-6"><a href="in-out-p06.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
 </div>
 <br>
+</div>
+</div>
+<div id="r-dump" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> R Dump<a class="anchor" aria-label="anchor" href="#r-dump"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>R <code><a href="https://rdrr.io/r/base/dump.html">dump()</a></code> creates <code>.R</code> file with the <code><a href="https://rdrr.io/r/base/structure.html">structure()</a></code> of all the objects passed to it. This file can be sourced by <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>.</li>
+<li>Unlike <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> multiple objects can be saved.</li>
+<li>Caution: It also saves ‘object names’ thus it may overwrite already existing ones.</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">df_r</span></span>
+<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="st">"data/R_01_dump.R"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dump.html">dump</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span>, file <span class="op">=</span> <span class="va">loc</span><span class="op">)</span>                                   <span class="co">#To R File</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">aa</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="va">loc</span><span class="op">)</span>                                                 <span class="co">#Source</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"aa"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df_r</span>, <span class="va">aa</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="python-pickle-hdf5" class="section level2" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> Python Pickle &amp; HDF5<a class="anchor" aria-label="anchor" href="#python-pickle-hdf5"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdcaution">
+<p>Python <a href="https://docs.python.org/3/library/pickle.html">pickle</a> module can be used to save python objects. However, it is unsecure and arbitrary code execution is possible. <a href="https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html">Pickle Flaws</a>
+Pandas uses pickle (via PyTables) for reading and writing <code>HDF5</code> files. So avoid this too. <a href="https://pandas.pydata.org/docs/user_guide/io.html#io-hdf5">Caution</a></p>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="in-out-p06.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb96-2"><a href="in-out-p06.html#cb96-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Avoid Pickle</span></span>
+<span id="cb96-3"><a href="in-out-p06.html#cb96-3" aria-hidden="true" tabindex="-1"></a>    loc <span class="op">=</span> <span class="st">"data/Y_01_pickle.pkl"</span></span>
+<span id="cb96-4"><a href="in-out-p06.html#cb96-4" aria-hidden="true" tabindex="-1"></a>    df_y.to_pickle(loc)                                     <span class="co">#To Pickle</span></span>
+<span id="cb96-5"><a href="in-out-p06.html#cb96-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb96-6"><a href="in-out-p06.html#cb96-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'pp'</span> <span class="kw">in</span> <span class="bu">globals</span>(): <span class="kw">del</span> pp</span>
+<span id="cb96-7"><a href="in-out-p06.html#cb96-7" aria-hidden="true" tabindex="-1"></a>    pp <span class="op">=</span> pd.read_pickle(loc)</span>
+<span id="cb96-8"><a href="in-out-p06.html#cb96-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span>(df_y.equals(pp))</span></code></pre></div>
+</div>
+<br>
+</div>
 </div>
 
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="mat-p05.html"><span class="header-section-number">5</span> Matrix &amp; NumPy Array</a></div>
-<div class="empty"></div>
+<div class="next"><a href="so-p10.html"><span class="header-section-number">7</span> SO 01-10</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#in-out-p06"><span class="header-section-number">6</span> Import - Export</a></li>
-<li><a class="nav-link" href="#test-data"><span class="header-section-number">6.1</span> Test Data</a></li>
+<li><a class="nav-link" href="#test-dataframe"><span class="header-section-number">6.1</span> Test DataFrame</a></li>
 <li><a class="nav-link" href="#csv"><span class="header-section-number">6.2</span> CSV</a></li>
 <li><a class="nav-link" href="#r-rds"><span class="header-section-number">6.3</span> R RDS</a></li>
 <li><a class="nav-link" href="#python-arrow-feather"><span class="header-section-number">6.4</span> Python Arrow Feather</a></li>
+<li><a class="nav-link" href="#r-dump"><span class="header-section-number">6.5</span> R Dump</a></li>
+<li><a class="nav-link" href="#python-pickle-hdf5"><span class="header-section-number">6.6</span> Python Pickle &amp; HDF5</a></li>
 </ul>
 
       <div class="book-extra">
@@ -235,7 +270,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-10.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-07-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
