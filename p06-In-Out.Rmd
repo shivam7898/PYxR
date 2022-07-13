@@ -41,7 +41,7 @@ assert(df_y.equals(pp))                 #Converted object is similar
 
 - R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `readr::write_csv()` & `readr::read_csv()` methods
 - Python `r q_link("{pandas}")` module has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
-- Note: `JSON` would be a better choice than `CSV` if rows have different number of columns
+- Note: If rows have different number of columns `JSON` would be a better choice compared to `CSV` 
 
 ```{r 'R-CSV', decorate=TRUE}
 loc <- "data/R_01_readr.csv"                                #PATH
@@ -133,7 +133,7 @@ stopifnot(all(exists("aa"), identical(df_r, aa)))
 
 ::: {.rmdcaution}
 
-Python `r q_link("{lib.pickle}")` module can be used to save python objects. However, it is unsecure and  arbitrary code execution is possible. [Pickle Flaws](https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html)
+Python `r q_link("{lib.pickle}")` module can be used to save python objects. However, it is unsecure and  arbitrary code execution is possible [(Pickle Flaws)](https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html). 
 Pandas uses pickle (via PyTables) for reading and writing `HDF5` files. So avoid this too. [Caution](https://pandas.pydata.org/docs/user_guide/io.html#io-hdf5)
 
 ```{python 'Y-Pickle', decorate=TRUE, eval=FALSE}
@@ -148,6 +148,38 @@ if(False):
 
 ```
 :::
+
+## Clipboard
+
+- R `read.delim()` is available. However `{readr}` package provides easier `readr::read_delim()` using  `readr::clipboard()` method
+- Python `r q_link("{pandas}")` module has `r q_link("pandas.read_clipboard()")`
+
+```{r 'R-Clipboard', decorate=TRUE, comment=""}
+if(FALSE) print(df_r)         #Inconsistent separator
+cat(readr::format_csv(df_r))  #Output without '#' for easy copy to clipboard
+
+if(FALSE) {
+  aa <- readr::read_delim(clipboard())            #PATH: "data/R_01_readr.csv"
+  aa$INT <- as.integer(aa$INT)
+  attr(aa, "spec") <- NULL
+  if(nrow(readr::problems(aa)) == 0L) attr(aa, "problems") <- NULL
+  stopifnot(identical(df_r, as.data.frame(aa)))
+  dput(aa)
+}
+```
+
+```{python 'Y-Clipboard', decorate=TRUE, comment=""}
+print(df_y)                   #Output without '#' for easy copy to clipboard
+
+if(False):
+    if 'pp' in globals(): del pp
+    pp = pd.read_clipboard()                      #PATH: "data/Y_01_pandas.csv"
+    pp['NUM'] = pp['NUM'].astype('float64')
+    pp.info(memory_usage = False)
+    assert(df_y.equals(pp))
+    print(pp)
+
+```
 
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE}
