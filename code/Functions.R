@@ -135,13 +135,13 @@ if(TRUE || !exists("q_")) {
 
 ## ---- Q04-kbl ----
 
-  q_kbl <- function(x, caption = NULL, headers = names(x), debug = FALSE, maxrows = 20L) {
+  q_kbl <- function(x, cap = NULL, headers = names(x), debug = FALSE, maxrows = 20L) {
     # Print Kable Standard Formats: q_kbl(hh, cap_hh, headers = names_hh, debug = TRUE, maxrows = 10)
     # Kable Prints FULL DATASET. Avoid Printing more rows than maxrows
 	if(nrow(x) > maxrows) x <- head(x, maxrows)
 	# In debug mode (inside RStudio) print in white, otherwise black
     txt_colour <- ifelse(debug, "black", "white")
-    out <- kbl(x, caption = caption, col.names = headers, escape = FALSE, 
+    out <- kbl(x, caption = cap, col.names = headers, escape = FALSE, 
 	              align = "c", booktabs = TRUE) |> 
     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
                   html_font = "Consolas", font_size = 12, full_width = FALSE,

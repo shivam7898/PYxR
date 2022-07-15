@@ -323,12 +323,6 @@ pp
 
 ```
 
-```{r 'R-Verify', decorate=TRUE, include=FALSE, eval=FALSE}
-# List of URL of this Page
-q_url[ , "URL"]
-
-```
-
 ## Merge or Join
 
 - An `inner join` matches pairs of observations whenever their `keys` are equal. Thus, unmatched rows are not included in the result. 
@@ -338,43 +332,50 @@ q_url[ , "URL"]
   - A `right join` keeps all observations in y.
   - A `full join` keeps all observations in x and y.
 - See Table \@ref(tab:P04T01) for Joins of R & Python
+- Python: `r q_so("q53645882")`
 
 ```{r 'R-Join', decorate=TRUE}
-aa <- tibble(key = c(1, 2, 3), valA = c('a1', 'a2', 'a3'))
-bb <- tibble(key = c(1, 2, 4), valB = c('b1', 'b2', 'b4'))
+aa <- tibble(ID = c(1, 2, 3), A = c('a1', 'a2', 'a3'))
+bb <- tibble(ID = c(1, 2, 4), B = c('b1', 'b2', 'b4'))
 
 # Inner Join
-ab_join_inner <- dplyr::inner_join(x = aa, y = bb, by = 'key') 
-ab_merg_inner <- merge(x = aa, y = bb, by = 'key')
+ab_j_inner <- dplyr::inner_join(aa, bb, by = 'ID') 
+ab_m_inner <- merge(aa, bb, by = 'ID')
 
 # Left Outer Join
-ab_join_left <- dplyr::left_join(x = aa, y = bb, by = 'key')
-ab_merg_left <- merge(x = aa, y = bb, by = 'key', all.x = TRUE)
+ab_j_left <- dplyr::left_join(aa, bb, by = 'ID')
+ab_m_left <- merge(aa, bb, by = 'ID', all.x = TRUE)
 
 # Right Outer Join
-ab_join_right <- dplyr::right_join(x = aa, y = bb, by = 'key')
-ab_merg_right <- merge(x = aa, y = bb, by = 'key', all.y = TRUE)
+ab_j_right <- dplyr::right_join(aa, bb, by = 'ID')
+ab_m_right <- merge(aa, bb, by = 'ID', all.y = TRUE)
 
 # Full Outer Join
-ab_join_full <- dplyr::full_join(x = aa, y = bb, by = 'key')
-ab_merg_full <- merge(x = aa, y = bb, by = 'key', all = TRUE)
+ab_j_full <- dplyr::full_join(aa, bb, by = 'ID')
+ab_m_full <- merge(aa, bb, by = 'ID', all = TRUE)
+
+# Cross Join
+ab_j_cross <- full_join(aa, bb, by = character(), suffix = c("_x", "_y"))
+ab_m_cross <- merge(aa, bb, by=NULL, suffixes = c("_x", "_y")) |> arrange(ID_x)
 ```
 
 ```{r 'R-Join-Verify', decorate=TRUE, include=FALSE}
-stopifnot(all(identical(as.data.frame(ab_join_inner), ab_merg_inner), 
-              identical(as.data.frame(ab_join_left), ab_merg_left),
-              identical(as.data.frame(ab_join_right), ab_merg_right),
-              identical(as.data.frame(ab_join_full), ab_merg_full)))
+stopifnot(all(identical(as.data.frame(ab_j_inner), ab_m_inner), 
+              identical(as.data.frame(ab_j_left),  ab_m_left),
+              identical(as.data.frame(ab_j_right), ab_m_right),
+              identical(as.data.frame(ab_j_full),  ab_m_full), 
+              identical(as.data.frame(ab_j_cross), ab_m_cross)))
 ```
 
 ```{python 'Y-Join', decorate=TRUE}
-aa = pd.DataFrame({'key': (1, 2, 3), 'valA': ('a1', 'a2', 'a3')}) 
-bb = pd.DataFrame({'key': (1, 2, 4), 'valB': ('b1', 'b2', 'b4')}) 
+aa = pd.DataFrame({'ID': (1, 2, 3), 'A': ('a1', 'a2', 'a3')}) 
+bb = pd.DataFrame({'ID': (1, 2, 4), 'B': ('b1', 'b2', 'b4')}) 
 
-ab_inner = aa.merge(bb, on = 'key', how = 'inner')          #Inner Join
-ab_left = aa.merge(bb, on = 'key', how = 'left')            #Left Outer Join
-ab_right = aa.merge(bb, on = 'key', how = 'right')          #Right Outer Join
-ab_full = aa.merge(bb, on = 'key', how = 'outer')           #Full Outer Join
+ab_inner = aa.merge(bb, on = 'ID', how = 'inner')           #Inner Join
+ab_left  = aa.merge(bb, on = 'ID', how = 'left')            #Left Outer Join
+ab_right = aa.merge(bb, on = 'ID', how = 'right')           #Right Outer Join
+ab_full  = aa.merge(bb, on = 'ID', how = 'outer')           #Full Outer Join
+ab_cross = aa.merge(bb, how = 'cross')                      #Cross Join
 
 ```
 
@@ -387,18 +388,21 @@ ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |>
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
 ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
-stopifnot(all(identical(ab_join_inner, ab_inner), 
-              identical(ab_join_left, ab_left), 
-              identical(ab_join_right, ab_right), 
-              identical(ab_join_full, ab_full)))
+ab_cross <- py$ab_cross |> `attr<-`('pandas.index', NULL) |> 
+    mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
+stopifnot(all(identical(ab_j_inner, ab_inner), 
+              identical(ab_j_left,  ab_left), 
+              identical(ab_j_right, ab_right), 
+              identical(ab_j_full,  ab_full), 
+              identical(ab_j_cross, ab_cross)))
 ```
 
 ```{r 'R-Join-Display', echo=FALSE}
 # Print Multiple Kable Tables
-kables(list(q_kbl(ab_join_inner), q_kbl(ab_join_left), 
-            q_kbl(ab_join_right), q_kbl(ab_join_full)), 
-  caption = "Inner Join, Left Outer Join, Right Outer Join, Full Outer Join", 
-  label = "P04T01")
+kables(list(q_kbl(ab_j_inner), q_kbl(ab_j_left), 
+            q_kbl(ab_j_right), q_kbl(ab_j_full), q_kbl(ab_j_cross)), 
+  caption = paste0("Inner Join, Left Outer Join, Right Outer Join, ", 
+                   "Full Outer Join, Cross Join"), label = "P04T01")
 ```
 
 
@@ -434,3 +438,9 @@ pp
 
 ```
 
+
+```{r 'R-Verify', decorate=TRUE, include=FALSE, eval=FALSE}
+# List of URL of this Page
+q_url[ , "URL"]
+
+```
