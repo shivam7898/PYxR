@@ -1,5 +1,7 @@
 tab:P01T01
 tab:P04T01
+tab:P04T02
+tab:P04T03
 guidelines
 references
 prerequisites
@@ -44,7 +46,8 @@ basics-2
 rownames---index
 copy
 modify
-merge-or-join
+merge-join
+sets
 missing-values
 mat-p05
 basics-3
