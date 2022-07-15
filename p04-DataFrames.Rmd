@@ -2,6 +2,7 @@
 
 ```{r 'setup', include=FALSE}
 source("_common.R")
+knitr::read_chunk("code/Functions.R")
 ```
 
 ## Basics
@@ -327,3 +328,93 @@ pp
 q_url[ , "URL"]
 
 ```
+
+## Merge or Join
+
+- An `inner join` matches pairs of observations whenever their `keys` are equal. Thus, unmatched rows are not included in the result. 
+  - This means that generally inner joins are usually not appropriate for use in analysis because it is too easy to lose observations.
+- An `outer join` keeps observations that appear in at least one of the tables. 
+  - A `left join` keeps all observations in x.
+  - A `right join` keeps all observations in y.
+  - A `full join` keeps all observations in x and y.
+
+```{r 'R-Join', decorate=TRUE}
+aa <- tibble(key = c(1, 2, 3), valA = c('a1', 'a2', 'a3'))
+bb <- tibble(key = c(1, 2, 4), valB = c('b1', 'b2', 'b4'))
+# Inner Join
+ab_join_inner <- dplyr::inner_join(x = aa, y = bb, by = 'key') 
+ab_merg_inner <- merge(x = aa, y = bb, by = 'key')
+stopifnot(identical(as.data.frame(ab_join_inner), ab_merg_inner))
+# Left Outer Join
+ab_join_left <- dplyr::left_join(x = aa, y = bb, by = 'key')
+ab_merg_left <- merge(x = aa, y = bb, by = 'key', all.x = TRUE)
+stopifnot(identical(as.data.frame(ab_join_left), ab_merg_left))
+# Right Outer Join
+ab_join_right <- dplyr::right_join(x = aa, y = bb, by = 'key')
+ab_merg_right <- merge(x = aa, y = bb, by = 'key', all.y = TRUE)
+stopifnot(identical(as.data.frame(ab_join_right), ab_merg_right))
+# Full Outer Join
+ab_join_full <- dplyr::full_join(x = aa, y = bb, by = 'key')
+ab_merg_full <- merge(x = aa, y = bb, by = 'key', all = TRUE)
+stopifnot(identical(as.data.frame(ab_join_full), ab_merg_full))
+```
+
+```{python 'Y-Join', decorate=TRUE}
+aa = pd.DataFrame({'key': (1, 2, 3), 'valA': ('a1', 'a2', 'a3')}) 
+bb = pd.DataFrame({'key': (1, 2, 4), 'valB': ('b1', 'b2', 'b4')}) 
+
+ab_inner = aa.merge(bb, on = 'key', how = 'inner')          #Inner Join
+ab_left = aa.merge(bb, on = 'key', how = 'left')            #Left Outer Join
+ab_right = aa.merge(bb, on = 'key', how = 'right')          #Right Outer Join
+ab_full = aa.merge(bb, on = 'key', how = 'outer')           #Full Outer Join
+
+ab_left
+
+```
+
+```{r 'R-Join-Compare', decorate=TRUE}
+ab_inner <- py$ab_inner |> `attr<-`('pandas.index', NULL) |> as_tibble()
+ab_left <- py$ab_left |> `attr<-`('pandas.index', NULL) |> as_tibble()
+ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |> as_tibble()
+ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> as_tibble()
+identical(ab_join_inner, ab_inner)
+str(ab_join_left)
+str(ab_left)
+identical(ab_join_left, ab_left)
+identical(ab_join_right, ab_right)
+identical(ab_join_full, ab_full)
+
+```
+
+## Missing Values
+
+- R: `NA` represents the missing values. 
+  - `NULL` assignment to a `data.frame` element is problematic `r q_so("47402059")`, `r q_so("45023847")`. The column needs to be a `list` because `vector` cannot contain `NULL`. Further, `list()` has to be used instead of `c()` because `NULL` cannot be concatenated.
+- Python Pandas `r q_link("pd.DataFrame()")` treats `None` in `numeric` columns as `np.nan`. It keeps `None` or `np.nan` in `object` columns as it is, however, internally these all are treated as missing values
+- Note: `{reticulate}` currently converts `object` columns with `None` or `np.nan` to `list` containing `NULL` or `NaN`. It also converts `np.nan` in `numeric` column to `NaN`. All of these should be `NA`
+  
+```{r 'R-DF-NULL', decorate=TRUE}
+# NULL cannot be concatenated
+c(NULL, NULL)
+list(NULL, NULL)
+
+# Only list can contain NULL
+aa <- data.frame(x = 1:3, y = I(list(NULL, 'b', 'c')))
+aa$x <- list(4, NULL, 6)
+str(aa)
+
+bb <- aa |> mutate(across(where(is.list), q_NULL_to_NA))
+str(bb)
+```
+
+```{r 'R-Q03', eval=FALSE, ref.label=c('Q03-null-na')}
+#
+```
+
+```{python 'Y-DF-NULL', decorate=TRUE}
+pp = pd.DataFrame({'x': (None, 1, 2), 'y': ('a', None, np.nan)}) 
+pp.info()
+pp
+
+```
+
