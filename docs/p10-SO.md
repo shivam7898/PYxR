@@ -39,7 +39,7 @@ df_y.info(memory_usage = False)
 
 ## 001-010
 
-- 001 [SO](https://stackoverflow.com/questions/5963269): How to make a reproducible example or Minimum Working Example (MWE)
+- 001 [(SO)](https://stackoverflow.com/questions/5963269): How to make a reproducible example or Minimum Working Example (MWE)
   - R: All Libraries by `library()`, Minimal or standard Dataset by `data()` & `dput()`, Minimal Running Code, `set.seed()` for reproducibility, `sessionInfo()` for Environment and OS Information, Revert all the changes made to environment, R Options etc.
   - Python: Use [write_feather()](https://arrow.apache.org/docs/python/generated/pyarrow.feather.write_feather.html)
     - [repr()](https://docs.python.org/3/library/functions.html#repr) does not keep the [dtypes](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html). Similar problem may occur with [to_dict()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html) & [to_csv()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html). 

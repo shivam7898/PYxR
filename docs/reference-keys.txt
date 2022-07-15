@@ -43,6 +43,8 @@ basics-2
 rownames---index
 copy
 modify
+merge-or-join
+missing-values
 mat-p05
 basics-3
 in-out-p06
@@ -53,6 +55,7 @@ python-arrow-feather
 r-dump
 python-pickle-hdf5
 clipboard
+scripts-.r-.py
 so-p10
 test-data
 section

@@ -41,7 +41,7 @@
 
 ## Mathematical Operators
 
-- R `base::Arithmetic`) and Python [operator](https://docs.python.org/3/library/operator.html) both have following operators:  
+- R `base::Arithmetic`) and Python [operator](https://docs.python.org/3/library/operator.html#NA) both have following operators:  
   - Addition `+`, Subtraction `-`, Multiplication `*`, Division `/`
   - Exponent is given by caret `^` or `**` in R and by `**` in Python
     - Python uses caret for bitwise `XOR`
@@ -789,7 +789,8 @@ if(FALSE) {
 
 ```r
 ls()
-## [1] "aa"     "fred"   "george" "q_"     "q_link" "q_so"   "q_url"  "r"
+## [1] "aa"           "fred"         "george"       "q_"           "q_link"      
+## [6] "q_NULL_to_NA" "q_so"         "q_url"        "r"
 ```
 
 </div><br></div>
