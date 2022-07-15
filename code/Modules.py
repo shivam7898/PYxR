@@ -1,4 +1,4 @@
-if (True or 'pandas' not in sys.modules):
+if (False or 'pandas' not in sys.modules):
     # CAUTION: Avoid implicit import i.e. 'from x import y'
     import sys, os, pip, copy, types, math
     import pandas as pd, numpy as np
