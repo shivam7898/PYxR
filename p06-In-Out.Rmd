@@ -122,7 +122,7 @@ assert(df_y.equals(pp))
 
 ```{r 'R-Dump', decorate=TRUE}
 aa <- df_r
-loc <- "data/R_01_dump.R"
+loc <- "data/R_01_dump.r"
 dump(c("aa"), file = loc)                                   #To R File
 rm(aa)
 source(loc)                                                 #Source
@@ -180,6 +180,37 @@ if(False):
     print(pp)
 
 ```
+
+## Scripts .r & .py
+
+- R has `writeLines()`, `file.exists()`, `file.remove()` & other related functions for file operations and `source()` to execute `.r` scripts
+- Python has `r q_link("lib.functions.open()")`, `r q_link("ref.compound_stmts.the-with-statement", "with()")`, `r q_link("lib.os.path.exists()")`, `r q_link("lib.os.remove()")`
+
+- Note: Script execution is similar in R and Python i.e. On Error, next line is not executed. However, Chunk execution is different i.e. in the R chunk next line is not executed whereas in the Python chunk it will be executed even after Error is thrown. 
+  - Thus, in R chunk, `stopifnot(FALSE)` is enough to stop chunk execution 
+  - Whereas, in Python, `assert(False)`, `exit(1)`, `quit(1)`, `sys.exit(1)`, `raise SystemExit` do not prevent further execution 
+  - On the other hand `os._exit(1)` not only quits the Python but also the R session. So, this should be avoided.
+
+```{r 'R-Script', decorate=TRUE}
+if(FALSE){# Avoid writing executable scripts to directories
+  loc <- "data/R_02_script.r"
+  txt <- "stopifnot(TRUE) # Execution stops on ERROR\nprint('Hello')"
+  writeLines(txt, loc)                            #Create R Script
+  source(loc)                                     #Source R Script
+  if(file.exists(loc)) file.remove(loc)           #Delete with no recovery  
+}
+```
+
+```{python 'Y-Script', decorate=TRUE}
+if(False): # Avoid writing executable scripts to directories
+    loc = "data/Y_02_script.py"
+    with open(loc, 'w') as f:
+        f.write("assert(True) # Execution stops on ERROR\nprint('Hello')")
+    exec(open(loc).read())                        #Execute Python Script
+    if(os.path.exists(loc)): os.remove(loc)
+
+```
+
 
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE}
