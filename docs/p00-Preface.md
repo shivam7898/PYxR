@@ -68,24 +68,26 @@ sessionInfo()
 ## [1] stats     graphics  grDevices datasets  utils     methods   base     
 ## 
 ## other attached packages:
-## [1] tidyr_1.2.0       readr_2.1.2       dplyr_1.0.9       tibble_3.1.7     
-## [5] lobstr_1.1.2      fontawesome_0.2.2 reticulate_1.25   knitr_1.39       
-## [9] conflicted_1.1.0 
+##  [1] kableExtra_1.3.4  tidyr_1.2.0       readr_2.1.2       dplyr_1.0.9      
+##  [5] tibble_3.1.7      lobstr_1.1.2      fontawesome_0.2.2 reticulate_1.25  
+##  [9] knitr_1.39        conflicted_1.1.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.1.2 xfun_0.31        bslib_0.3.1      purrr_0.3.4     
-##  [5] lattice_0.20-45  vctrs_0.4.1      generics_0.1.3   htmltools_0.5.2 
-##  [9] yaml_2.3.5       utf8_1.2.2       rlang_1.0.3      pillar_1.7.0    
-## [13] jquerylib_0.1.4  glue_1.6.2       withr_2.5.0      DBI_1.1.3       
-## [17] lifecycle_1.0.1  stringr_1.4.0    memoise_2.0.1    evaluate_0.15   
-## [21] tzdb_0.3.0       fastmap_1.1.0    fansi_1.0.3      Rcpp_1.0.9      
-## [25] cachem_1.0.6     jsonlite_1.8.0   fs_1.5.2         hms_1.1.1       
-## [29] png_0.1-7        digest_0.6.29    stringi_1.7.8    bookdown_0.27   
-## [33] grid_4.2.1       rprojroot_2.0.3  here_1.0.1       cli_3.3.0       
-## [37] tools_4.2.1      magrittr_2.0.3   sass_0.4.1       crayon_1.5.1    
-## [41] pkgconfig_2.0.3  downlit_0.4.2    ellipsis_0.3.2   Matrix_1.4-1    
-## [45] xml2_1.3.3       assertthat_0.2.1 rmarkdown_2.14   rstudioapi_0.13 
-## [49] R6_2.5.1         compiler_4.2.1
+##  [1] bslib_0.3.1       tidyselect_1.1.2  xfun_0.31         purrr_0.3.4      
+##  [5] lattice_0.20-45   colorspace_2.0-3  vctrs_0.4.1       generics_0.1.3   
+##  [9] htmltools_0.5.2   viridisLite_0.4.0 yaml_2.3.5        utf8_1.2.2       
+## [13] rlang_1.0.3       jquerylib_0.1.4   pillar_1.7.0      withr_2.5.0      
+## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.1   stringr_1.4.0    
+## [21] munsell_0.5.0     rvest_1.0.2       memoise_2.0.1     evaluate_0.15    
+## [25] tzdb_0.3.0        fastmap_1.1.0     fansi_1.0.3       Rcpp_1.0.9       
+## [29] scales_1.2.0      cachem_1.0.6      webshot_0.5.3     jsonlite_1.8.0   
+## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.1         png_0.1-7        
+## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.27     rprojroot_2.0.3  
+## [41] grid_4.2.1        here_1.0.1        cli_3.3.0         tools_4.2.1      
+## [45] sass_0.4.1        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.1     
+## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3       
+## [53] assertthat_0.2.1  rmarkdown_2.14    svglite_2.1.0     httr_1.4.3       
+## [57] rstudioapi_0.13   R6_2.5.1          compiler_4.2.1
 ```
 
 </div><br></div>

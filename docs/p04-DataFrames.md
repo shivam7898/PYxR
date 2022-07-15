@@ -481,31 +481,34 @@ pp
   - A `left join` keeps all observations in x.
   - A `right join` keeps all observations in y.
   - A `full join` keeps all observations in x and y.
+- See Table \@ref(tab:P04T01) for Joins of R & Python
 
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
 aa <- tibble(key = c(1, 2, 3), valA = c('a1', 'a2', 'a3'))
 bb <- tibble(key = c(1, 2, 4), valB = c('b1', 'b2', 'b4'))
+
 # Inner Join
 ab_join_inner <- dplyr::inner_join(x = aa, y = bb, by = 'key') 
 ab_merg_inner <- merge(x = aa, y = bb, by = 'key')
-stopifnot(identical(as.data.frame(ab_join_inner), ab_merg_inner))
+
 # Left Outer Join
 ab_join_left <- dplyr::left_join(x = aa, y = bb, by = 'key')
 ab_merg_left <- merge(x = aa, y = bb, by = 'key', all.x = TRUE)
-stopifnot(identical(as.data.frame(ab_join_left), ab_merg_left))
+
 # Right Outer Join
 ab_join_right <- dplyr::right_join(x = aa, y = bb, by = 'key')
 ab_merg_right <- merge(x = aa, y = bb, by = 'key', all.y = TRUE)
-stopifnot(identical(as.data.frame(ab_join_right), ab_merg_right))
+
 # Full Outer Join
 ab_join_full <- dplyr::full_join(x = aa, y = bb, by = 'key')
 ab_merg_full <- merge(x = aa, y = bb, by = 'key', all = TRUE)
-stopifnot(identical(as.data.frame(ab_join_full), ab_merg_full))
 ```
 
 </div><br></div>
+
+
 
 <div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
 
@@ -517,47 +520,140 @@ ab_inner = aa.merge(bb, on = 'key', how = 'inner')          #Inner Join
 ab_left = aa.merge(bb, on = 'key', how = 'left')            #Left Outer Join
 ab_right = aa.merge(bb, on = 'key', how = 'right')          #Right Outer Join
 ab_full = aa.merge(bb, on = 'key', how = 'outer')           #Full Outer Join
-
-ab_left
-##    key valA valB
-## 0    1   a1   b1
-## 1    2   a2   b2
-## 2    3   a3  NaN
 ```
 
 </div><br></div>
 
-<div class=decocode><div style="background-color:inherit"><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
-```r
-ab_inner <- py$ab_inner |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_left <- py$ab_left |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> as_tibble()
-identical(ab_join_inner, ab_inner)
-## [1] TRUE
-str(ab_join_left)
-## tibble [3 × 3] (S3: tbl_df/tbl/data.frame)
-##  $ key : num [1:3] 1 2 3
-##  $ valA: chr [1:3] "a1" "a2" "a3"
-##  $ valB: chr [1:3] "b1" "b2" NA
-str(ab_left)
-## tibble [3 × 3] (S3: tbl_df/tbl/data.frame)
-##  $ key : num [1:3] 1 2 3
-##  $ valA: chr [1:3] "a1" "a2" "a3"
-##  $ valB:List of 3
-##   ..$ : chr "b1"
-##   ..$ : chr "b2"
-##   ..$ : num NaN
-identical(ab_join_left, ab_left)
-## [1] FALSE
-identical(ab_join_right, ab_right)
-## [1] FALSE
-identical(ab_join_full, ab_full)
-## [1] FALSE
-```
 
-</div><br></div>
+<table class="kable_wrapper">
+<caption>(\#tab:P04T01)Inner Join, Left Outer Join, Right Outer Join, Full Outer Join</caption>
+<tbody>
+  <tr>
+   <td> 
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 12px; font-family: Consolas; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> key </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valA </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 1 </td>
+   <td style="text-align:center;color: white !important;"> a1 </td>
+   <td style="text-align:center;color: white !important;"> b1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 2 </td>
+   <td style="text-align:center;color: white !important;"> a2 </td>
+   <td style="text-align:center;color: white !important;"> b2 </td>
+  </tr>
+</tbody>
+</table>
+
+ </td>
+   <td> 
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 12px; font-family: Consolas; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> key </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valA </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 1 </td>
+   <td style="text-align:center;color: white !important;"> a1 </td>
+   <td style="text-align:center;color: white !important;"> b1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 2 </td>
+   <td style="text-align:center;color: white !important;"> a2 </td>
+   <td style="text-align:center;color: white !important;"> b2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 3 </td>
+   <td style="text-align:center;color: white !important;"> a3 </td>
+   <td style="text-align:center;color: white !important;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+ </td>
+   <td> 
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 12px; font-family: Consolas; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> key </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valA </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 1 </td>
+   <td style="text-align:center;color: white !important;"> a1 </td>
+   <td style="text-align:center;color: white !important;"> b1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 2 </td>
+   <td style="text-align:center;color: white !important;"> a2 </td>
+   <td style="text-align:center;color: white !important;"> b2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 4 </td>
+   <td style="text-align:center;color: white !important;"> NA </td>
+   <td style="text-align:center;color: white !important;"> b4 </td>
+  </tr>
+</tbody>
+</table>
+
+ </td>
+   <td> 
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 12px; font-family: Consolas; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> key </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valA </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;font-weight: bold;color: white !important;background-color: #303030 !important;border-bottom: 1px solid; border-top: 1px solid"> valB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 1 </td>
+   <td style="text-align:center;color: white !important;"> a1 </td>
+   <td style="text-align:center;color: white !important;"> b1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 2 </td>
+   <td style="text-align:center;color: white !important;"> a2 </td>
+   <td style="text-align:center;color: white !important;"> b2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 3 </td>
+   <td style="text-align:center;color: white !important;"> a3 </td>
+   <td style="text-align:center;color: white !important;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;"> 4 </td>
+   <td style="text-align:center;color: white !important;"> NA </td>
+   <td style="text-align:center;color: white !important;"> b4 </td>
+  </tr>
+</tbody>
+</table>
+
+ </td>
+  </tr>
+</tbody>
+</table>
+
 
 ## Missing Values
 

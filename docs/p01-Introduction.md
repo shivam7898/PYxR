@@ -789,8 +789,8 @@ if(FALSE) {
 
 ```r
 ls()
-## [1] "aa"           "fred"         "george"       "q_"           "q_link"      
-## [6] "q_NULL_to_NA" "q_so"         "q_url"        "r"
+##  [1] "aa"           "fred"         "george"       "q_"           "q_kbl"       
+##  [6] "q_link"       "q_NULL_to_NA" "q_so"         "q_url"        "r"
 ```
 
 </div><br></div>
