@@ -323,18 +323,22 @@ pp
 
 ```
 
-## Merge or Join
+## Merge, Join
 
+- A `mutating join` allows you to combine variables from two tables. [(Advanced R - Hadley)](https://r4ds.had.co.nz/relational-data.html)
+  - These are `inner join`, `left outer join`, `right outer join`, `full outer join`, `cross join`
 - An `inner join` matches pairs of observations whenever their `keys` are equal. Thus, unmatched rows are not included in the result. 
   - This means that generally inner joins are usually not appropriate for use in analysis because it is too easy to lose observations.
 - An `outer join` keeps observations that appear in at least one of the tables. 
   - A `left join` keeps all observations in x.
   - A `right join` keeps all observations in y.
   - A `full join` keeps all observations in x and y.
+  - A `cross join` returns the Cartesian product of rows from both tables. 
 - See Table \@ref(tab:P04T01) for Joins of R & Python
-- Python: `r q_so("q53645882")`
+- R: `merge()`, `dplyr::inner_join()`, `dplyr::left_join()`, `dplyr::right_join()`, `dplyr::full_join()`
+- Python: `r q_link("pd.DataFrame.merge()")` `r q_so("q53645882")`
 
-```{r 'R-Join', decorate=TRUE}
+```{r 'R-Join-Mutating', decorate=TRUE}
 aa <- tibble(ID = c(1, 2, 3), A = c('a1', 'a2', 'a3'))
 bb <- tibble(ID = c(1, 2, 4), B = c('b1', 'b2', 'b4'))
 
@@ -367,28 +371,28 @@ stopifnot(all(identical(as.data.frame(ab_j_inner), ab_m_inner),
               identical(as.data.frame(ab_j_cross), ab_m_cross)))
 ```
 
-```{python 'Y-Join', decorate=TRUE}
-aa = pd.DataFrame({'ID': (1, 2, 3), 'A': ('a1', 'a2', 'a3')}) 
-bb = pd.DataFrame({'ID': (1, 2, 4), 'B': ('b1', 'b2', 'b4')}) 
+```{python 'Y-Join-Mutating', decorate=TRUE}
+pp = pd.DataFrame({'ID': (1, 2, 3), 'A': ('a1', 'a2', 'a3')}) 
+qq = pd.DataFrame({'ID': (1, 2, 4), 'B': ('b1', 'b2', 'b4')}) 
 
-ab_inner = aa.merge(bb, on = 'ID', how = 'inner')           #Inner Join
-ab_left  = aa.merge(bb, on = 'ID', how = 'left')            #Left Outer Join
-ab_right = aa.merge(bb, on = 'ID', how = 'right')           #Right Outer Join
-ab_full  = aa.merge(bb, on = 'ID', how = 'outer')           #Full Outer Join
-ab_cross = aa.merge(bb, how = 'cross')                      #Cross Join
+pq_inner = pp.merge(qq, on = 'ID', how = 'inner')           #Inner Join
+pq_left  = pp.merge(qq, on = 'ID', how = 'left')            #Left Outer Join
+pq_right = pp.merge(qq, on = 'ID', how = 'right')           #Right Outer Join
+pq_full  = pp.merge(qq, on = 'ID', how = 'outer')           #Full Outer Join
+pq_cross = pp.merge(qq, how = 'cross')                      #Cross Join
 
 ```
 
 ```{r 'R-Join-Y-Verify', decorate=TRUE, include=FALSE}
-ab_inner <- py$ab_inner |> `attr<-`('pandas.index', NULL) |> 
+ab_inner <- py$pq_inner |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
-ab_left <- py$ab_left |> `attr<-`('pandas.index', NULL) |> 
+ab_left <- py$pq_left |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
-ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |> 
+ab_right <- py$pq_right |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
-ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> 
+ab_full <- py$pq_full |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
-ab_cross <- py$ab_cross |> `attr<-`('pandas.index', NULL) |> 
+ab_cross <- py$pq_cross |> `attr<-`('pandas.index', NULL) |> 
     mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
 stopifnot(all(identical(ab_j_inner, ab_inner), 
               identical(ab_j_left,  ab_left), 
@@ -405,6 +409,41 @@ kables(list(q_kbl(ab_j_inner), q_kbl(ab_j_left),
                    "Full Outer Join, Cross Join"), label = "P04T01")
 ```
 
+- Filtering joins match observations in the same way as mutating joins, but affect the observations, not the variables.
+  - `semi_join(x, y)` keeps all observations in x that have a match in y.
+  - `anti_join(x, y)` drops all observations in x that have a match in y.
+
+
+```{r 'R-Join-Filtering', decorate=TRUE}
+ab_j_semi <- semi_join(aa, bb, by = 'ID')                   # Semi Join
+ab_j_anti <- anti_join(aa, bb, by = 'ID')                   # Anti Join
+```
+
+```{r 'R-Join-Display-2', echo=FALSE}
+kables(list(q_kbl(ab_j_semi), q_kbl(ab_j_anti)), 
+       caption = "Semi Join, Anti Join", label = "P04T02")
+```
+
+## Sets
+
+- These operations work with a complete row, comparing the values of every variable. 
+  - Thus, these expect both tables /df to have the same variables (columns), and treat the observations (rows) like sets.
+
+
+```{r 'R-DF-Sets', decorate=TRUE}
+aa <- tibble(A = c(1, 2), B = c(1, 1))
+bb <- tibble(A = c(1, 1), B = c(1, 2))
+
+ab_isect <- intersect(aa, bb)                               # Intersection
+ab_union <- union(aa, bb)                                   # Union
+ab_sdiff <- setdiff(aa, bb)                                 # x - y
+ba_sdiff <- setdiff(bb, aa)                                 # y - x
+```
+
+```{r 'R-Join-Display-3', echo=FALSE}
+kables(list(q_kbl(ab_isect), q_kbl(ab_union), q_kbl(ab_sdiff), q_kbl(ba_sdiff)), 
+       caption = "Intersect, Union, x-y, y-x", label = "P04T03")
+```
 
 ## Missing Values
 
