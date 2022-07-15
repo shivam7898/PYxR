@@ -1,6 +1,6 @@
 ## ---- Q00 ----
 
-if(!exists("q_")) {
+if(TRUE || !exists("q_")) {
   q_ <- NULL
 
   # Matrix to log URL on each page
@@ -131,6 +131,27 @@ if(!exists("q_")) {
 	x[sapply(x, \(y) is.null(y) || is.nan(y))] <- NA
     x <- unlist(x)
     return(x)
+  }
+
+## ---- Q04-kbl ----
+
+  q_kbl <- function(x, caption = NULL, headers = names(x), debug = FALSE, maxrows = 20L) {
+    # Print Kable Standard Formats: q_kbl(hh, cap_hh, headers = names_hh, debug = TRUE, maxrows = 10)
+    # Kable Prints FULL DATASET. Avoid Printing more rows than maxrows
+	if(nrow(x) > maxrows) x <- head(x, maxrows)
+	# In debug mode (inside RStudio) print in white, otherwise black
+    txt_colour <- ifelse(debug, "black", "white")
+    out <- kbl(x, caption = caption, col.names = headers, escape = FALSE, 
+	              align = "c", booktabs = TRUE) |> 
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                  html_font = "Consolas", font_size = 12, full_width = FALSE,
+                  #position = "float_left",
+                  fixed_thead = TRUE) |> 
+    # Header Row Dark & Bold: RGB (48, 48, 48) =HEX (#303030)
+	row_spec(0, color = "white", background = "#303030", bold = TRUE,
+	           extra_css = "border-bottom: 1px solid; border-top: 1px solid") |> 
+	row_spec(row = 1:nrow(x), color = txt_colour)
+  return(out)
   }
 
 ## ---- Q99-Z ----
