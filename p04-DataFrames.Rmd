@@ -337,26 +337,34 @@ q_url[ , "URL"]
   - A `left join` keeps all observations in x.
   - A `right join` keeps all observations in y.
   - A `full join` keeps all observations in x and y.
+- See Table \@ref(tab:P04T01) for Joins of R & Python
 
 ```{r 'R-Join', decorate=TRUE}
 aa <- tibble(key = c(1, 2, 3), valA = c('a1', 'a2', 'a3'))
 bb <- tibble(key = c(1, 2, 4), valB = c('b1', 'b2', 'b4'))
+
 # Inner Join
 ab_join_inner <- dplyr::inner_join(x = aa, y = bb, by = 'key') 
 ab_merg_inner <- merge(x = aa, y = bb, by = 'key')
-stopifnot(identical(as.data.frame(ab_join_inner), ab_merg_inner))
+
 # Left Outer Join
 ab_join_left <- dplyr::left_join(x = aa, y = bb, by = 'key')
 ab_merg_left <- merge(x = aa, y = bb, by = 'key', all.x = TRUE)
-stopifnot(identical(as.data.frame(ab_join_left), ab_merg_left))
+
 # Right Outer Join
 ab_join_right <- dplyr::right_join(x = aa, y = bb, by = 'key')
 ab_merg_right <- merge(x = aa, y = bb, by = 'key', all.y = TRUE)
-stopifnot(identical(as.data.frame(ab_join_right), ab_merg_right))
+
 # Full Outer Join
 ab_join_full <- dplyr::full_join(x = aa, y = bb, by = 'key')
 ab_merg_full <- merge(x = aa, y = bb, by = 'key', all = TRUE)
-stopifnot(identical(as.data.frame(ab_join_full), ab_merg_full))
+```
+
+```{r 'R-Join-Verify', decorate=TRUE, include=FALSE}
+stopifnot(all(identical(as.data.frame(ab_join_inner), ab_merg_inner), 
+              identical(as.data.frame(ab_join_left), ab_merg_left),
+              identical(as.data.frame(ab_join_right), ab_merg_right),
+              identical(as.data.frame(ab_join_full), ab_merg_full)))
 ```
 
 ```{python 'Y-Join', decorate=TRUE}
@@ -368,23 +376,31 @@ ab_left = aa.merge(bb, on = 'key', how = 'left')            #Left Outer Join
 ab_right = aa.merge(bb, on = 'key', how = 'right')          #Right Outer Join
 ab_full = aa.merge(bb, on = 'key', how = 'outer')           #Full Outer Join
 
-ab_left
-
 ```
 
-```{r 'R-Join-Compare', decorate=TRUE}
-ab_inner <- py$ab_inner |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_left <- py$ab_left |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |> as_tibble()
-ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> as_tibble()
-identical(ab_join_inner, ab_inner)
-str(ab_join_left)
-str(ab_left)
-identical(ab_join_left, ab_left)
-identical(ab_join_right, ab_right)
-identical(ab_join_full, ab_full)
-
+```{r 'R-Join-Y-Verify', decorate=TRUE, include=FALSE}
+ab_inner <- py$ab_inner |> `attr<-`('pandas.index', NULL) |> 
+    mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
+ab_left <- py$ab_left |> `attr<-`('pandas.index', NULL) |> 
+    mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
+ab_right <- py$ab_right |> `attr<-`('pandas.index', NULL) |> 
+    mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
+ab_full <- py$ab_full |> `attr<-`('pandas.index', NULL) |> 
+    mutate(across(where(is.list), q_NULL_to_NA)) |> as_tibble()
+stopifnot(all(identical(ab_join_inner, ab_inner), 
+              identical(ab_join_left, ab_left), 
+              identical(ab_join_right, ab_right), 
+              identical(ab_join_full, ab_full)))
 ```
+
+```{r 'R-Join-Display', echo=FALSE}
+# Print Multiple Kable Tables
+kables(list(q_kbl(ab_join_inner), q_kbl(ab_join_left), 
+            q_kbl(ab_join_right), q_kbl(ab_join_full)), 
+  caption = "Inner Join, Left Outer Join, Right Outer Join, Full Outer Join", 
+  label = "P04T01")
+```
+
 
 ## Missing Values
 
