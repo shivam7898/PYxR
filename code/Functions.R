@@ -1,12 +1,16 @@
+## ---- Q00 ----
+
 if(!exists("q_")) {
   q_ <- NULL
-  
+
   # Matrix to log URL on each page
   q_url <- matrix(nrow = 0, ncol = 4, byrow = TRUE, 
                   dimnames = list(NULL, c("ORIGINAL", "DISPLAY", "URL", "OUT")))
   # Test
   #q_url <- rbind(q_url, c("{pandas}", "[pandas]", 
   #               "https://pandas.pydata.org/docs/user_guide/index.html"))
+
+## ---- Q01-link ----
   
   q_link <- function(x, usr_txt = NA) {
     # Convert String to the link of Python Module Help
@@ -39,7 +43,7 @@ if(!exists("q_")) {
 			is_found <- TRUE
 			modules  <- c("pandas", "pyarrow", "rpy2")
 			if(z[1] == "lib") {
-			    txt <- z[2]
+				txt <- z[2]
 			    url <- paste0("https://docs.python.org/3/library/", txt, ".html")
                 shw <- ifelse(!is.na(usr_txt), usr_txt, txt)
 				#cat("txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")
@@ -51,12 +55,26 @@ if(!exists("q_")) {
 			    is_found <- FALSE
 			}
 		} else {
-			if(z[1]  == "lib") {
-			    # Methods: q_link("lib.functions.print()")
+			if(z[1] %in% c("lib", "ref")) {
+			    # q_link("lib.functions.print()") 
+				#   https://docs.python.org/3/library/functions.html#print
+				# q_link("ref.compound_stmts.the-with-statement", "with()")
+				#   https://docs.python.org/3/reference/compound_stmts.html#the-with-statement
+				# q_link("lib.os.path.exists()")
+				#   https://docs.python.org/3/library/os.path.html#os.path.exists
 			    is_found <- TRUE
-				txt <- paste0(z[2], ".html")
-				if(length(z) == 3L) txt <- paste0(txt, "#", z[3])
-				url <- paste0("https://docs.python.org/3/library/", txt)
+				txt <- ifelse(z[1] == "lib", "library", "reference")
+				url <- paste0("https://docs.python.org/3/", txt, "/")
+				#txt <- paste0(z[2], ".html")
+				txt <- ifelse(length(z) > 3, paste0(z[2:{length(z)-1}], collapse = "."), z[2]) 
+				txt <- paste0(txt, ".html")
+				if(z[2] == "os") {
+				    txt <- paste0(txt, "#", paste0(z[-1], collapse = "."))
+				} else {
+				    txt <- paste0(txt, "#", z[3])
+				}
+
+				url <- paste0(url, txt)
 				shw <- ifelse(!is.na(usr_txt), usr_txt, 
 				              ifelse(is_method, paste0(z[length(z)], "()"), z[length(z)]))
 
@@ -84,7 +102,7 @@ if(!exists("q_")) {
 			    #
 			}
 		}
-        #cat(" txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")
+        cat(" txt: ", txt, "\n", "shw: ", shw, "\n", "url: ", url, "\n")
 		out <- ifelse(is_found, paste0("[", shw, "](", url, ")"), NULL)
 		#print(out)
 		# Log in global object using double arrow
@@ -92,13 +110,29 @@ if(!exists("q_")) {
 	}
 	return(out)
   }
-  
+
+## ---- Q02-so ----
+
   q_so <- function(x) {
     # q_so("q27044727") q_so("a5965451") q_so("a/5965451")
     y <- tolower(substr(x, 1, 1))
 	z <- gsub('/', '', substr(x, 2, nchar(x))) 
 	txt <- ifelse(y == "q", "questions", "a")
-	out <- paste0("[SO](", "https://stackoverflow.com/", txt, "/", z, ")")
+	out <- paste0("[(SO)](", "https://stackoverflow.com/", txt, "/", z, ")")
 	return(out)
   }
+
+## ---- Q03-null-na ----
+
+  q_NULL_to_NA <- function(x) {
+    # Convert DataFrame list columns containing NULL or NaN to vector with NA
+	# Ex: mutate(aa, across(where(is.list), q_NULL_to_NA))
+	# Unlike is.na(), is.null() is not vectorised & is.nan() is not for list
+	x[sapply(x, \(y) is.null(y) || is.nan(y))] <- NA
+    x <- unlist(x)
+    return(x)
+  }
+
+## ---- Q99-Z ----
+
 } else print("R Functions not loaded again.")
