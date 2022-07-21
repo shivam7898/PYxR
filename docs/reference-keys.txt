@@ -60,6 +60,7 @@ r-dump
 python-pickle-hdf5
 clipboard
 scripts-.r-.py
+standard-datasets
 so-p10
 test-data
 section
