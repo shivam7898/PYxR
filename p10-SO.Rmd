@@ -25,9 +25,6 @@ df_y.info(memory_usage = False)
     - `r q_link("lib.functions.repr()")` does not keep the `r q_link("pandas.DataFrame.dtypes")`. Similar problem may occur with `r q_link("pandas.DataFrame.to_dict()")` & `r q_link("pandas.DataFrame.to_csv()")`. 
     - `r q_link("pandas.DataFrame.to_pickle()")` & `r q_link("pandas.DataFrame.to_hdf()")` are unsafe.
 
-```{r 'R-data', decorate=TRUE}
-data(package = "dplyr")$results[ , "Item"]        #Load or List Datasets
-```
 
 ```{r 'R-dput', decorate=TRUE}
 aa <- df_r
