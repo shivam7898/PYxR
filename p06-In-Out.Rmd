@@ -192,7 +192,7 @@ if(False):
   - On the other hand `os._exit(1)` not only quits the Python but also the R session. So, this should be avoided.
 
 ```{r 'R-Script', decorate=TRUE}
-if(TRUE){# Avoid writing executable scripts to directories
+if(FALSE){# Avoid writing executable scripts to directories
   loc <- 'data/R_02_script.r'
   txt <- "stopifnot(TRUE) # Execution stops on ERROR\nprint('Hello')"
   writeLines(txt, loc)                            #Create R Script
@@ -202,7 +202,7 @@ if(TRUE){# Avoid writing executable scripts to directories
 ```
 
 ```{python 'Y-Script', decorate=TRUE}
-if(True): # Avoid writing executable scripts to directories
+if(False): # Avoid writing executable scripts to directories
     loc = 'data/Y_02_script.py'
     with open(loc, 'w') as f:
         f.write("assert(True) # Execution stops on ERROR\nprint('Hello')")
