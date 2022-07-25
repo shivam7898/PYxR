@@ -216,21 +216,50 @@ if(False): # Avoid writing executable scripts to directories
 ```{r 'R-data', decorate=TRUE}
 data(package = "dplyr")$results[ , "Item"]        #Load or List Datasets
 
-dim(datasets::iris)
 dim(dplyr::storms)
+
+loc <- "data/R_02_iris.rds"                                 #PATH
+if(FALSE) {
+    aa <- datasets::iris |> rename_with(make.names) |> 
+      rename_with(~ tolower(gsub(".", "_", .x, fixed = TRUE)))
+    readr::write_rds(aa, file = loc)                        #Dataset: Iris
+} 
+
+aa <- readr::read_rds(loc) 
+str(aa)
 ```
 
 ```{python 'Y-Data', decorate=TRUE}
+loc = "data/Y_02_iris.feather"                              #PATH
 if(False):
     pp = sns.load_dataset('iris')                           #Needs Internet
-    pp = sm.datasets.get_rdataset('iris').data              #Needs Internet
-    pp.shape
-    
-    dir(sklearn.datasets)                                   #All DataSets
-    
-pp = sklearn.datasets.load_iris(as_frame = True).data       #Offline
-pp.shape
+    list(pp.columns) 
+    #['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
+    qq = sm.datasets.get_rdataset('iris').data              #Needs Internet
+    qq.columns = pp.columns
+    #dir(sklearn.datasets)                                  #All DataSets
+    ss = sklearn.datasets.load_iris(as_frame = True).data   #Offline, No Target
+    tt = sklearn.datasets.load_iris()                       #Offline, Bunch
+    uu = pd.DataFrame(data = np.c_[tt['data'], tt['target']],
+          columns = tt['feature_names'] + ['target']).astype({'target': int}) \
+          .assign(species = lambda x: x['target'].map(
+                            dict(enumerate(tt['target_names'])))) \
+          .drop('target', axis = 1)
+    uu.columns = pp.columns
+    assert(uu.equals(pp) and uu.equals(qq))
+    uu.info()
+    pyarrow.feather.write_feather(uu, loc)                  #Dataset: Iris
 
+if 'pp' in globals(): del pp
+pp = pyarrow.feather.read_feather(loc)
+pp.info()
+
+```
+
+```{r 'R-Iris-Compare', decorate=TRUE, include=FALSE}
+bb <- py$pp |> `attr<-`('pandas.index', NULL) |> 
+  mutate(across(species, factor, levels = levels(aa$species)))
+stopifnot(identical(aa, bb))
 ```
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}
@@ -244,6 +273,11 @@ len(allmodules)                                   # Count the Loaded Modules
 
 ```
 
-```{r 'R-Verify', decorate=TRUE, include=FALSE}
-TRUE
+```{r 'R-Verify', decorate=TRUE, include=TRUE}
+if(FALSE) TRUE
+if(FALSE) py_config()
 ```
+
+
+
+
