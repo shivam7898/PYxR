@@ -20,13 +20,9 @@ batting <- Lahman::Batting |>
 
 # Grouped Tibble
 players <- batting |> group_by(playerID)
+#
+players |> head()
 ```
-
-```{r 'R-Tbl-Structure', decorate=TRUE}
-str(batting)
-str(players)
-```
-
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}
 # Count & List the Imported Modules in Python 
