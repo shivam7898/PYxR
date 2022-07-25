@@ -69,7 +69,7 @@ sessionInfo()
 ## 
 ## other attached packages:
 ##  [1] kableExtra_1.3.4  tidyr_1.2.0       readr_2.1.2       dplyr_1.0.9      
-##  [5] tibble_3.1.7      lobstr_1.1.2      fontawesome_0.3.0 reticulate_1.25  
+##  [5] tibble_3.1.8      lobstr_1.1.2      fontawesome_0.3.0 reticulate_1.25  
 ##  [9] knitr_1.39        conflicted_1.1.0 
 ## 
 ## loaded via a namespace (and not attached):
@@ -82,8 +82,8 @@ sessionInfo()
 ## [25] tzdb_0.3.0        fastmap_1.1.0     fansi_1.0.3       Rcpp_1.0.9       
 ## [29] scales_1.2.0      cachem_1.0.6      webshot_0.5.3     jsonlite_1.8.0   
 ## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.1         png_0.1-7        
-## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.27     grid_4.2.1       
-## [41] rprojroot_2.0.3   here_1.0.1        cli_3.3.0         tools_4.2.1      
+## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.27     rprojroot_2.0.3  
+## [41] grid_4.2.1        here_1.0.1        cli_3.3.0         tools_4.2.1      
 ## [45] sass_0.4.2        magrittr_2.0.3    downlit_0.4.2     pkgconfig_2.0.3  
 ## [49] ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3        assertthat_0.2.1 
 ## [53] rmarkdown_2.14    svglite_2.1.0     httr_1.4.3        rstudioapi_0.13  

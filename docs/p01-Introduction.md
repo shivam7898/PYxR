@@ -660,6 +660,7 @@ if [[ "$bool_as_str" == "true" ]]; then pip --version; fi
 
 ## Python 3.10.5
 ## C:\Softwares\Python\Python310\python.exe
+## C:\Users\shiva\AppData\Local\r-miniconda\python.exe
 ## pip 22.2 from C:\Softwares\Python\Python310\lib\site-packages\pip (python 3.10)
 ```
 
