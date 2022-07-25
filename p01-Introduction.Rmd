@@ -2,8 +2,8 @@
 
 ```{r 'setup', include=FALSE}
 ################################################################################
-source("_common.R")
-if(FALSE) c("lobstr") |> 
+source('_common.R')
+if(FALSE) c('lobstr') |> 
   lapply(library, character.only = TRUE)
 ```
 
@@ -46,7 +46,7 @@ if(FALSE) c("lobstr") |>
 
 ## Mathematical Operators
 
-- R `base::Arithmetic`) and Python `r q_link("lib.operator")` both have following operators:  
+- R `base::Arithmetic`) and Python `r q_link('lib.operator')` both have following operators:  
   - Addition `+`, Subtraction `-`, Multiplication `*`, Division `/`
   - Exponent is given by caret `^` or `**` in R and by `**` in Python
     - Python uses caret for bitwise `XOR`
@@ -77,7 +77,7 @@ if(FALSE) c("lobstr") |>
 
 ## Help
 
-- R `help()` and Python `r q_link("lib.functions.help()")` can be used to get details about the topic
+- R `help()` and Python `r q_link('lib.functions.help()')` can be used to get details about the topic
   - R also has a shorthand to get help by prefixing `?` before the topic
 
 ```{r 'R-Help', decorate=TRUE, eval=FALSE}
@@ -96,7 +96,7 @@ if(False):
 
 ## Print
 
-- Printing is largely handled by `print()` in R and `r q_link("lib.functions.print()")` in Python 
+- Printing is largely handled by `print()` in R and `r q_link('lib.functions.print()')` in Python 
   - Explicit and Implicit both types of printing is available
 
 
@@ -119,7 +119,7 @@ if(False):
   - `NaN` coercion to `integer` gives `NA_integer_` 
   - `NaN` coercion to `logical` gives `NA`
   - `NaN` coercion to `numeric` gives `NaN` 
-  - `NaN` coercion to `character` gives `"NaN"`
+  - `NaN` coercion to `character` gives `'NaN'`
   
 - Reticulate: 
   - In python, missing values are also `NaN`
@@ -150,7 +150,7 @@ stopifnot(all(sapply(list(NaN == NaN, NaN <= NaN, NaN >= NaN,
 # Coercion of NaN
 stopifnot(all(identical(as.integer(NaN), NA_integer_),
               identical(as.logical(NaN), NA),
-              identical(as.character(NaN), "NaN"),
+              identical(as.character(NaN), 'NaN'),
               identical(as.numeric(NaN), NaN)))
 ```
 
@@ -163,7 +163,7 @@ except ZeroDivisionError as e:
 
 # There are Two NaN in modules NumPy and Math
 # Use module specific methods but not the 'is' keyword
-pp = float("NaN") # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
+pp = float('NaN') # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
 print(pp)
 type(pp)
 
@@ -186,14 +186,14 @@ math.nan != math.nan
 
 - R (`TRUE`, `FALSE`) vs. Python (`True`, `False`) - Case is different
 - Python:
-  - All values are considered "truthy" except for the following, which are "falsy"
+  - All values are considered 'truthy' except for the following, which are 'falsy'
     - `None`, `False`, `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
     - Empty: list `[]`, dictionary `{}`, tuple `()`, string `''`, range `range(0)` etc.
     - objects for which:
       - `obj.__bool__()` returns `False`
       - `obj.__len__()` returns `0`
-    - A "truthy" value will satisfy the check performed by `if` or `while` statements. 
-    - We use "truthy" and "falsy" to differentiate from the bool values `True` and `False`.
+    - A 'truthy' value will satisfy the check performed by `if` or `while` statements. 
+    - We use 'truthy' and 'falsy' to differentiate from the bool values `True` and `False`.
     - Python determines the truthiness by applying `bool()` to the type, which returns `True` or `False` which is used in an expression like `if` or `while`. 
       - Instances of a user-defined class are considered truthy by default.
 
@@ -270,7 +270,7 @@ True and 3
 
 ```{r 'R-NULL', decorate=TRUE}
 # Return of str() is NULL which is passed to print()
-print(str("This returns NULL in R"))
+print(str('This returns NULL in R'))
 
 # Assign NULL
 aa <- NULL
@@ -282,21 +282,21 @@ is.null(aa)
 is.na(aa)
 
 # A name pointing to NULL is different from a name which does not exist 'bb'
-exists("aa")
-exists("bb")
+exists('aa')
+exists('bb')
 tryCatch(expr = print(bb), error = \(e) print(e))
 
 # Usage inside if conditional: NULL throws Error, use is.null()
 if(is.null(aa)) {
-  print("Object is NULL") 
+  print('Object is NULL') 
 } else {
-  print("Object is Not NULL")
+  print('Object is Not NULL')
 }
 ```
 
 ```{python 'Y-None', decorate=TRUE}
 # Return of print() is None which is passed to print()
-print(print("This returns None in Python"))
+print(print('This returns None in Python'))
 
 # Assign None
 pp = None
@@ -316,9 +316,9 @@ except NameError as e:
 #
 # Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' 
 if(pp):
-    print("Variable is None")
+    print('Variable is None')
 else:
-    print("Variable is Not None")
+    print('Variable is Not None')
 
 #
 ```
@@ -337,16 +337,16 @@ else:
 
 - Refer [This (SO)](https://stackoverflow.com/questions/34376318)
   - 'Everything' here excludes 'reserved' keywords which can be found by `?reserved`
-  - "Everything that exists in R is an `object`" in the sense that it is a kind of data structure that can be manipulated.
+  - 'Everything that exists in R is an `object`' in the sense that it is a kind of data structure that can be manipulated.
     - Think of R objects as collections of data of all kinds. The data contained and the way the data is organized depend on the class from which the object was generated.
     - The key concept is that expressions for evaluation are themselves objects. Evaluation consists of taking the object representing an expression and returning the object that is the value of that expression.
 
 > In Python, Everything is an object.
 
 - It means that 'everything' is an instance of a `class` and (almost) everything has `attributes`
-  - 'Everything' here excludes 'reserved' keywords which can be found at `r q_link("{lib.keyword}")`
+  - 'Everything' here excludes 'reserved' keywords which can be found at `r q_link('{lib.keyword}')`
 
-- R uses [Copy-on-Modify](https://adv-r.hadley.nz/names-values.html "https://adv-r.hadley.nz/names-values.html") semantics
+- R uses [Copy-on-Modify](https://adv-r.hadley.nz/names-values.html 'https://adv-r.hadley.nz/names-values.html') semantics
   - Effectively it means that the copies are not linked in R. Whereas in Python, sometimes create 'shallow copies' which are linked together i.e. change in one reflects in the other.
 
 - Python mutable and immutable objects
@@ -397,7 +397,7 @@ ss_copy = copy.copy(pp)                           #Copy
 tt_equl = pp                                      #Assignment
 
 if(pp is not qq_deep and pp is not ss_copy and pp is tt_equl): 
-    print("Deepcopy & Copy are different from Original but Assigned is same.")
+    print('Deepcopy & Copy are different from Original but Assigned is same.')
 
 
 if(isinstance(pp, list)): pp.append(10)
@@ -407,14 +407,14 @@ if(isinstance(pp, np.ndarray)): pp += 10 #Update, in-place append is difficult
 if(isinstance(pp, pd.DataFrame)): pp.iat[1, 0] = 10
 
 if(pp is tt_equl): 
-    print("Original & Assigned are same even after modification.")
+    print('Original & Assigned are same even after modification.')
 
 ```
 
 ```{python 'Y-Copy-Immutable', decorate=TRUE}
 # Immutable
 pp = (1, 2)                                       #Tuple
-pp = "OldText"                                    #String
+pp = 'OldText'                                    #String
 pp = 257                                          #Number: >256
 pp = True                                         #Bool
 
@@ -425,16 +425,16 @@ tt_equl = pp                                      #Assignment
 uu = id(pp)                                       #Address before modification
 
 if(pp is qq_deep and pp is ss_copy and pp is tt_equl): 
-    print("Deepcopy, Copy, & Assigned all are same as Original Immutable.")
+    print('Deepcopy, Copy, & Assigned all are same as Original Immutable.')
 
 
 if(isinstance(pp, tuple)): pp += (10, )
-if(isinstance(pp, str)): pp += "Appended"
+if(isinstance(pp, str)): pp += 'Appended'
 if(type(pp) is int): pp += 1
 if(type(pp) is bool): pp = False
 
 if(id(pp) != uu and qq_deep is ss_copy and qq_deep is tt_equl): 
-    print("Address for Original has been changed but not for others.")
+    print('Address for Original has been changed but not for others.')
 
 ```
 
@@ -488,13 +488,13 @@ Table: (\#tab:P01T01) (P01T01) Reticulate Type conversion
 ```{r 'R-Load-Python', decorate=TRUE, eval=FALSE}
 if(FALSE) {
   # In R package::reticulate handles Python
-  library("reticulate")
+  library('reticulate')
   
   # Provide the path to the specific Python binary.
-  use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
+  use_python('C:\\Softwares\\Python\\Python310\\python.exe', required = TRUE)
   
   # PATH: C:\Softwares\Python\Python310\python.exe
-  Sys.which("python")
+  Sys.which('python')
 }
 ```
 
@@ -512,15 +512,15 @@ os.getcwd()         # Working Directory
 ## Verify R & Python Installation
 
 ```{r 'R-Version', decorate=TRUE}
-strsplit(R.version.string, " ")[[1]][3]           # R Version
+strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 # The loaded packages and namespaces are searched before the libraries
-packageVersion("knitr")                           # Package Version: knitr
+packageVersion('knitr')                           # Package Version: knitr
 ```
 
 - Python (in PowerShell Terminal)
   - If the cmd can locate python correctly but PowerShell cannot, then execute following  
-    - `$env:path="$env:Path;C:\Softwares\Python\Python310"`
+    - `$env:path='$env:Path;C:\Softwares\Python\Python310'`
   - If the python command leads to Microsoft Store
     - Windows | Start | Manage app execution aliases | Disable two for 'python.exe' and 'python3.exe'
     - It hides access to the actual exe PATH because it comes before the actual 
@@ -538,7 +538,7 @@ where.exe python
 
 # Get the pip Version
 bool_as_str=true;
-if [[ "$bool_as_str" == "true" ]]; then pip --version; fi
+if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
 
 ```
 
@@ -556,13 +556,13 @@ print(pd.__version__)                   # Module Version: pandas
 ```{r 'R-Package-Install', decorate=TRUE, eval=FALSE}
 if(FALSE) {
   # Install R Packages  
-  install.packages("knitr", dependencies = TRUE)
+  install.packages('knitr', dependencies = TRUE)
   
   # Find whether a package is installed or not (slow)
-  installed.packages() |> rownames() |> is.element(el = "knitr", set = _)
+  installed.packages() |> rownames() |> is.element(el = 'knitr', set = _)
   
   # Version of installed package (not loaded)
-  installed.packages()["knitr", "Version"]
+  installed.packages()['knitr', 'Version']
 }
 ```
 
@@ -577,7 +577,7 @@ if(FALSE) {
   - Upgrade `pip` itself : `python -m pip install --upgrade pip`
   - Upgrade other modules :
     - Get a List of Outdated Modules in Freeze Format, split to get only Module Names, upgrade
-    - `pip list --outdated --format=freeze | %{$_.split("==")[0]} #| %{pip install --upgrade $_}`
+    - `pip list --outdated --format=freeze | %{$_.split('==')[0]} #| %{pip install --upgrade $_}`
     - Note: Upgrade step of the pipe has been commented out to prevent accidents.
   - Find whether a module is installed or not : `pip list | grep pandas`
 
@@ -589,7 +589,7 @@ if(FALSE) {
   library(knitr)
   
   # Attach multiple R Packages
-  c("reticulate", "knitr") |> lapply(library, character.only = TRUE)
+  c('reticulate', 'knitr') |> lapply(library, character.only = TRUE)
   
   # List all attached Packages
   print(.packages())
@@ -614,7 +614,7 @@ if(False):
     
     len(allmodules)
     
-    ", ".join(allmodules)
+    ', '.join(allmodules)
 
 ```
 
@@ -631,7 +631,7 @@ if(FALSE) {
   sessionInfo()
   
   # Base Packages
-  aa <- c("stats","graphics","grDevices","datasets","utils","methods","base")
+  aa <- c('stats','graphics','grDevices','datasets','utils','methods','base')
   stopifnot(identical(setdiff(sessionInfo()$basePkgs, aa), character(0)))
   
   # other attached packages

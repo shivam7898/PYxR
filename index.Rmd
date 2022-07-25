@@ -1,7 +1,7 @@
 --- 
-title: "PYxR"
-author: "Shivam Upadhyay"
-date: "`r Sys.Date()`"
+title: 'PYxR'
+author: 'Shivam Upadhyay'
+date: '`r Sys.Date()`'
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

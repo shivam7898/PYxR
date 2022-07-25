@@ -1,21 +1,21 @@
 # Attach (Basic) Packages in R 
-sys.source("./code/Packages.R", envir = knitr::knit_global())
+sys.source('./code/Packages.R', envir = knitr::knit_global())
 
 # Provide the path to the specific Python binary
-reticulate::use_python("C:\\Softwares\\Python\\Python310\\python.exe", required = TRUE)
+reticulate::use_python('C:\\Softwares\\Python\\Python310\\python.exe', required = TRUE)
 
 # Import (Basic) Modules in Python 
-reticulate::source_python("./code/Modules.py", convert = FALSE)
+reticulate::source_python('./code/Modules.py', convert = FALSE)
 
 # Load Helper Functions in R 
-sys.source("./code/Functions.R", envir = knitr::knit_global())
+sys.source('./code/Functions.R', envir = knitr::knit_global())
 
 # R options set globally
 options(width = 80)
 
 # Chunk options set globally
 knitr::opts_chunk$set(
-  #comment = "#>",
+  #comment = '#>',
   collapse = TRUE,
   width = 80, 
   opts.label = 'twofig', 
@@ -41,37 +41,37 @@ if(FALSE){# Chunk Templates, use as: opts.label='twofig'
 }
 
 if(TRUE){# Chunk Decoration based on Language Engine: R & Python
-  # NOTE: Global Chunk Option setup leads to problem with chunks like "definition" etc.
+  # NOTE: Global Chunk Option setup leads to problem with chunks like 'definition' etc.
   knitr::knit_hooks$set(decorate = function(before, options) {
     if (before) {
       q_engine <- options$engine
-      #q_eng_v  <- c("R", "python")
+      #q_eng_v  <- c('R', 'python')
       #if (q_engine %in% q_eng_v) {
-        if (q_engine == "python") {
-            label <- "<b> Python</b>"
-            bc <- "inherit" #"#417FB1"
-            sz <- "100%"
-            tc <- "#FFD94C"
-            icon <- fa("python", fill = tc)
-        } else if (q_engine == "R") {
-            label <- "<b> R</b>"
-            bc <- "inherit" #"#4C78DB"
-            sz <- "100%"
-            #tc <- "#ffffff"
-            tc <- "#4C78DB"
-            icon <- fa("r-project", fill = tc)
-        } #else if (options$engine == "bash") {
-        #    label <- "<b>Shell</b>"
-        #    bc <- "#000000"
-        #    sz <- "100%"
-        #    tc <- "#ffffff"
-        #    icon <- "<i class=\"fas fa-terminal\"></i>"
+        if (q_engine == 'python') {
+            label <- '<b> Python</b>'
+            bc <- 'inherit' #'#417FB1'
+            sz <- '100%'
+            tc <- '#FFD94C'
+            icon <- fa('python', fill = tc)
+        } else if (q_engine == 'R') {
+            label <- '<b> R</b>'
+            bc <- 'inherit' #'#4C78DB'
+            sz <- '100%'
+            #tc <- '#ffffff'
+            tc <- '#4C78DB'
+            icon <- fa('r-project', fill = tc)
+        } #else if (options$engine == 'bash') {
+        #    label <- '<b>Shell</b>'
+        #    bc <- '#000000'
+        #    sz <- '100%'
+        #    tc <- '#ffffff'
+        #    icon <- '<i class=\'fas fa-terminal\'></i>'
         #}
-        paste0("<div class=decocode>", "<div style=\"background-color:", "inherit",
-               "\">", "<span style=\"font-size:", sz, ";color:", tc, "\">", icon, label, "</span>")
+        paste0('<div class=decocode>', '<div style=\'background-color:', 'inherit',
+               '\'>', '<span style=\'font-size:', sz, ';color:', tc, '\'>', icon, label, '</span>')
       #}
     } else {
-        "</div><br></div>"
+        '</div><br></div>'
     }
   })
 }

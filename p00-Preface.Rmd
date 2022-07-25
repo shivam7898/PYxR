@@ -1,7 +1,7 @@
 # Preface {#preface .unnumbered}
 
 ```{r 'setup', include=FALSE}
-source("_common.R")
+source('_common.R')
 ```
 
 ## Guidelines
@@ -31,7 +31,7 @@ source("_common.R")
 ## Prerequisites
 
 ```{r 'R-Version', decorate=TRUE}
-strsplit(R.version.string, " ")[[1]][3]           # R Version
+strsplit(R.version.string, ' ')[[1]][3]           # R Version
 ```
 
 ```{python 'Y-Version', decorate=TRUE}
@@ -53,7 +53,7 @@ allmodules = [v.__name__ for k, v in globals().items()
 
 len(allmodules)                                   # Count the Loaded Modules
 
-", ".join(allmodules)                             # List Modules
+', '.join(allmodules)                             # List Modules
 
 ```
 

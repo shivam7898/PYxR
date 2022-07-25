@@ -1,20 +1,20 @@
 # Data Frame {#df-p04}
 
 ```{r 'setup', include=FALSE}
-source("_common.R")
-knitr::read_chunk("code/Functions.R")
+source('_common.R')
+knitr::read_chunk('code/Functions.R')
 ```
 
 ## Basics
 
 > Indexing starts from 1 in R and from 0 in Python.  
 
-R provides `data.frame()` for tabular data structure. `{tibble}` & `{data.table}` are packages which extends its capabilities. Python module `r q_link("{pandas}")` provide similar capabilities
+R provides `data.frame()` for tabular data structure. `{tibble}` & `{data.table}` are packages which extends its capabilities. Python module `r q_link('{pandas}')` provide similar capabilities
 
-R `data.frame()` is a `list()` of variables of the same number of rows. It is a `matrix()` like structure whose columns may be of differing types. Similarly, Python Pandas `r q_link("pd.DataFrame()")` is a 2-dimensional data structure that can store data of different types in columns. 
+R `data.frame()` is a `list()` of variables of the same number of rows. It is a `matrix()` like structure whose columns may be of differing types. Similarly, Python Pandas `r q_link('pd.DataFrame()')` is a 2-dimensional data structure that can store data of different types in columns. 
 
 
-- Create R `data.frame()`, `tibble::tibble()` and Python `r q_link("pd.DataFrame()")`
+- Create R `data.frame()`, `tibble::tibble()` and Python `r q_link('pd.DataFrame()')`
 
 ```{r 'R-DF-Create', decorate=TRUE}
 nn <- 4L                                          #Number of Rows
@@ -55,7 +55,7 @@ stopifnot(identical(df_r, aa))
 
 - Print DataFrame: 
   - R: `print()`, `head()`, `tail()`, `dplyr::slice()`
-  - Python: `r q_link("lib.functions.print()")`, `r q_link("pd.DataFrame.head()")`, `r q_link("pd.DataFrame.tail()")`, `r q_link("pd.DataFrame.iloc")`
+  - Python: `r q_link('lib.functions.print()')`, `r q_link('pd.DataFrame.head()')`, `r q_link('pd.DataFrame.tail()')`, `r q_link('pd.DataFrame.iloc')`
 
 ```{r 'R-DF-Head', decorate=TRUE}
 aa <- df_r
@@ -81,7 +81,7 @@ pp.tail(2)
 
 - About DataFrame:
   - R: `class()`, `typeof()`, `dim()`, `names()`, `str()`, `summary()`
-  - Python: `r q_link("lib.functions.type()")`, `r q_link("pd.DataFrame.shape")`, `r q_link("pd.DataFrame.columns")`, `r q_link("pd.DataFrame.describe()")`, `r q_link("pd.DataFrame.dtypes")`, `r q_link("pd.DataFrame.info()")`
+  - Python: `r q_link('lib.functions.type()')`, `r q_link('pd.DataFrame.shape')`, `r q_link('pd.DataFrame.columns')`, `r q_link('pd.DataFrame.describe()')`, `r q_link('pd.DataFrame.dtypes')`, `r q_link('pd.DataFrame.info()')`
 
 ```{r 'R-DF-About', decorate=TRUE}
 aa <- df_r
@@ -138,7 +138,7 @@ if(False):
 
 - Select Columns:
   - R: `[]` (`base::Extract`), `dplyr::select()`, `data.frame()`, `with()`, `subset()` (Avoid)
-  - Python: `r q_link("pd.[]")`, `r q_link("pd.DataFrame.drop()")`, `r q_link("pd.DataFrame.filter()")`
+  - Python: `r q_link('pd.[]')`, `r q_link('pd.DataFrame.drop()')`, `r q_link('pd.DataFrame.filter()')`
 
 ```{r 'R-DF-Select', decorate=TRUE}
 aa <- df_r
@@ -175,7 +175,7 @@ qq
 
 - Rename:
   - R: `names()`, `dplyr::rename()`
-  - Python: `r q_link("pd.DataFrame.rename()")`, `r q_link("pd.DataFrame.columns")`
+  - Python: `r q_link('pd.DataFrame.rename()')`, `r q_link('pd.DataFrame.columns')`
 
 ```{r 'R-DF-Rename', decorate=TRUE}
 aa <- df_r
@@ -203,7 +203,7 @@ list(pp.columns)
 
 - Sort:
   - R: `order()`, `dplyr::arrange()`, `dplyr::desc()`
-  - Python: `r q_link("pd.DataFrame.index")`
+  - Python: `r q_link('pd.DataFrame.index')`
 
 ```{r 'R-DF-Order', decorate=TRUE}
 aa <- df_r
@@ -230,7 +230,7 @@ list(pp.index)
 
 ## RowNames - Index
 
-- R `row.names()` are called `r q_link("pd.Index")` in Python and can be set by `r q_link("pd.DataFrame.set_index()")`
+- R `row.names()` are called `r q_link('pd.Index')` in Python and can be set by `r q_link('pd.DataFrame.set_index()')`
 - R `data.frame()` has `row.names()` but `{tibble}` heavily discourage their usage
 - Duplicated row indices are allowed in Python but not in R
 
@@ -258,7 +258,7 @@ list(pp.index)
 ## Copy
 
 - For details [see here](#copy-p01)
-- Python: For `deepcopy` of `DataFrame` either use `r q_link("{lib.copy}")` or `r q_link("pd.DataFrame.copy()")`
+- Python: For `deepcopy` of `DataFrame` either use `r q_link('{lib.copy}')` or `r q_link('pd.DataFrame.copy()')`
 
 ```{r 'R-DF-Copy', decorate=TRUE}
 george <- fred <- data.frame(x = 11:13)                     #R Copy-on-Modify
@@ -302,9 +302,9 @@ assert(george.equals(percy) and not george.equals(fred))
 
 - R `[]` (`base::Extract`) 
 - Python:
-  - `r q_link("pd.DataFrame.at")` can only access a single value at a time (faster). It tries to maintain the datatype (fails sometimes). If column number is used by mistake, it creates a New Column (Avoid)
-  - `r q_link("pd.DataFrame.loc")` can select multiple rows and/or columns (slower). It does not maintain the datatype and modifies the type silently.
-  - `r q_link("pd.DataFrame.iat")`, `r q_link("pd.DataFrame.iloc")` are indices variants of the above
+  - `r q_link('pd.DataFrame.at')` can only access a single value at a time (faster). It tries to maintain the datatype (fails sometimes). If column number is used by mistake, it creates a New Column (Avoid)
+  - `r q_link('pd.DataFrame.loc')` can select multiple rows and/or columns (slower). It does not maintain the datatype and modifies the type silently.
+  - `r q_link('pd.DataFrame.iat')`, `r q_link('pd.DataFrame.iloc')` are indices variants of the above
 
 ```{r 'R-DF-Modify', decorate=TRUE}
 aa <- df_r
@@ -336,7 +336,7 @@ pp
   - A `cross join` returns the Cartesian product of rows from both tables. 
 - See Table \@ref(tab:P04T01) for Joins of R & Python
 - R: `merge()`, `dplyr::inner_join()`, `dplyr::left_join()`, `dplyr::right_join()`, `dplyr::full_join()`
-- Python: `r q_link("pd.DataFrame.merge()")` `r q_so("q53645882")`
+- Python: `r q_link('pd.DataFrame.merge()')` `r q_so('q53645882')`
 
 ```{r 'R-Join-Mutating', decorate=TRUE}
 aa <- tibble(ID = c(1, 2, 3), A = c('a1', 'a2', 'a3'))
@@ -359,8 +359,8 @@ ab_j_full <- dplyr::full_join(aa, bb, by = 'ID')
 ab_m_full <- merge(aa, bb, by = 'ID', all = TRUE)
 
 # Cross Join
-ab_j_cross <- full_join(aa, bb, by = character(), suffix = c("_x", "_y"))
-ab_m_cross <- merge(aa, bb, by=NULL, suffixes = c("_x", "_y")) |> arrange(ID_x)
+ab_j_cross <- full_join(aa, bb, by = character(), suffix = c('_x', '_y'))
+ab_m_cross <- merge(aa, bb, by=NULL, suffixes = c('_x', '_y')) |> arrange(ID_x)
 ```
 
 ```{r 'R-Join-Verify', decorate=TRUE, include=FALSE}
@@ -405,8 +405,8 @@ stopifnot(all(identical(ab_j_inner, ab_inner),
 # Print Multiple Kable Tables
 kables(list(q_kbl(ab_j_inner), q_kbl(ab_j_left), 
             q_kbl(ab_j_right), q_kbl(ab_j_full), q_kbl(ab_j_cross)), 
-  caption = paste0("Inner Join, Left Outer Join, Right Outer Join, ", 
-                   "Full Outer Join, Cross Join"), label = "P04T01")
+  caption = paste0('Inner Join, Left Outer Join, Right Outer Join, ', 
+                   'Full Outer Join, Cross Join'), label = 'P04T01')
 ```
 
 - Filtering joins match observations in the same way as mutating joins, but affect the observations, not the variables.
@@ -421,7 +421,7 @@ ab_j_anti <- anti_join(aa, bb, by = 'ID')                   # Anti Join
 
 ```{r 'R-Join-Display-2', echo=FALSE}
 kables(list(q_kbl(ab_j_semi), q_kbl(ab_j_anti)), 
-       caption = "Semi Join, Anti Join", label = "P04T02")
+       caption = 'Semi Join, Anti Join', label = 'P04T02')
 ```
 
 ## Sets
@@ -442,14 +442,14 @@ ba_sdiff <- setdiff(bb, aa)                                 # y - x
 
 ```{r 'R-Join-Display-3', echo=FALSE}
 kables(list(q_kbl(ab_isect), q_kbl(ab_union), q_kbl(ab_sdiff), q_kbl(ba_sdiff)), 
-       caption = "Intersect, Union, x-y, y-x", label = "P04T03")
+       caption = 'Intersect, Union, x-y, y-x', label = 'P04T03')
 ```
 
 ## Missing Values
 
 - R: `NA` represents the missing values. 
-  - `NULL` assignment to a `data.frame` element is problematic `r q_so("47402059")`, `r q_so("45023847")`. The column needs to be a `list` because `vector` cannot contain `NULL`. Further, `list()` has to be used instead of `c()` because `NULL` cannot be concatenated.
-- Python Pandas `r q_link("pd.DataFrame()")` treats `None` in `numeric` columns as `np.nan`. It keeps `None` or `np.nan` in `object` columns as it is, however, internally these all are treated as missing values
+  - `NULL` assignment to a `data.frame` element is problematic `r q_so('47402059')`, `r q_so('45023847')`. The column needs to be a `list` because `vector` cannot contain `NULL`. Further, `list()` has to be used instead of `c()` because `NULL` cannot be concatenated.
+- Python Pandas `r q_link('pd.DataFrame()')` treats `None` in `numeric` columns as `np.nan`. It keeps `None` or `np.nan` in `object` columns as it is, however, internally these all are treated as missing values
 - Note: `{reticulate}` currently converts `object` columns with `None` or `np.nan` to `list` containing `NULL` or `NaN`. It also converts `np.nan` in `numeric` column to `NaN`. All of these should be `NA`
   
 ```{r 'R-DF-NULL', decorate=TRUE}
@@ -480,6 +480,6 @@ pp
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE, eval=FALSE}
 # List of URL of this Page
-q_url[ , "URL"]
+q_url[ , 'URL']
 
 ```

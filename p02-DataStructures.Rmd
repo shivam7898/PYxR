@@ -1,7 +1,7 @@
 # Data Structures {#structures-p02}
 
 ```{r 'setup', include=FALSE}
-source("_common.R")
+source('_common.R')
 ```
 
 ## R Data Types
@@ -21,7 +21,7 @@ source("_common.R")
   - The output type is determined from the highest type of the components in the hierarchy `NULL` < `raw` < `logical` < `integer` < `double` < `complex` < `character` < `list` < `expression`.
   
 ```{r 'R-DataTypes', decorate=TRUE}
-# Integer: To declare as integer "L" (not "l") is added as Suffix
+# Integer: To declare as integer 'L' (not 'l') is added as Suffix
 str(c(1L, 2L, NA, 4L, 5L))
 
 # Double (& Default)
@@ -59,8 +59,8 @@ names(aa)               # Names
 
 ```{r 'R-Matrix', decorate=TRUE}
 # Create Matrix
-aa <- matrix(1:6, nrow=3, ncol=2, byrow=TRUE, dimnames=list(NULL, c("x", "y")))
-bb <- matrix(1:6, nrow=3, ncol=2, byrow=FALSE, dimnames=list(NULL, c("x", "y")))
+aa <- matrix(1:6, nrow=3, ncol=2, byrow=TRUE, dimnames=list(NULL, c('x', 'y')))
+bb <- matrix(1:6, nrow=3, ncol=2, byrow=FALSE, dimnames=list(NULL, c('x', 'y')))
 
 print(aa)
 print(bb)
@@ -107,9 +107,9 @@ is.atomic(aa)
 
 ```{r 'R-Factor', decorate=TRUE}
 # Create Factors Unordered
-aa <- factor(c("female", "male", "male", "female", "male"), ordered = FALSE)
+aa <- factor(c('female', 'male', 'male', 'female', 'male'), ordered = FALSE)
 # Create Factors Ordered
-bb <- factor(c("female", "male", "male", "female", "male"), ordered = TRUE)
+bb <- factor(c('female', 'male', 'male', 'female', 'male'), ordered = TRUE)
 
 print(aa)
 print(bb)
@@ -139,7 +139,7 @@ aa_num <- setNames(c(1, 2, NA, pi, 4), nm = letters[1:5])
 bb_mat <- matrix(1:6, nrow=3, ncol=2, byrow=TRUE)
 dd_dft <- data.frame(x = 4:6, y = letters[4:6])
 ee_lst <- list(x = 4:6, y = letters[4:8])
-ff_fct <- factor(c("female", "male", "male", "female", "male"), ordered = FALSE)
+ff_fct <- factor(c('female', 'male', 'male', 'female', 'male'), ordered = FALSE)
 
 # List of Objects
 gg <- list(Vector = aa_num, Matrix = bb_mat, DataFrame = dd_dft, 
@@ -241,7 +241,7 @@ seq.int(from = 0, length.out = 5)
 seq.int(to = 10, length.out = 5)
 seq.int(by = -2, length.out = 5)
 
-# Colon ":" acts as sequence in R, Python uses colon for dictionary key:value
+# Colon ':' acts as sequence in R, Python uses colon for dictionary key:value
 # Colon should be avoided in R if the range limits may change
 1:5
 1:0
@@ -271,25 +271,25 @@ list(range(10, 1, -2))
 
 ```{python 'Y-Lists', decorate=TRUE}
 pp = 11                                           # int
-print(f"{type(pp) = }   |     ...     | {pp = }")
+print(f'{type(pp) = }   |     ...     | {pp = }')
 
 pp = 11,                                          # Implicit Tuple
-print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 
 pp = (11, )                                       # Length 1 Tuple needs comma
-print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 
 pp = (11, 22, 33)                                 # Tuple
-print(f"{type(pp) = } | {len(pp) = } | {pp = }")
+print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 
 pp = [11, 22, 33]                                 # List
-print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+print(f'{type(pp) = }  | {len(pp) = } | {pp = }')
 
 pp = {11, 22, 33}                                 # Set (unordered)
-print(f"{type(pp) = }   | {len(pp) = } | {pp = }")
+print(f'{type(pp) = }   | {len(pp) = } | {pp = }')
 
-pp = {"a": 11, "b": 22, "c": 33}                  # Dictionary
-print(f"{type(pp) = }  | {len(pp) = } | {pp = }")
+pp = {'a': 11, 'b': 22, 'c': 33}                  # Dictionary
+print(f'{type(pp) = }  | {len(pp) = } | {pp = }')
 
 ```
 

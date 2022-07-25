@@ -1,7 +1,7 @@
 # Matrix & NumPy Array {#mat-p05}
 
 ```{r 'setup', include=FALSE}
-source("_common.R")
+source('_common.R')
 ```
 
 ## Basics

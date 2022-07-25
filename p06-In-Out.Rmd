@@ -1,7 +1,7 @@
 # Import - Export {#in-out-p06}
 
 ```{r 'setup', include=FALSE}
-source("_common.R")
+source('_common.R')
 ```
 
 ## Test DataFrame
@@ -40,23 +40,23 @@ assert(df_y.equals(pp))                 #Converted object is similar
 ## CSV
 
 - R `write.csv()` & `read.csv()` are available in R. However `{readr}` package provides faster  `readr::write_csv()` & `readr::read_csv()` methods
-- Python `r q_link("{pandas}")` module has `r q_link("pandas.DataFrame.to_csv()")` & `r q_link("pandas.read_csv()")`
+- Python `r q_link('{pandas}')` module has `r q_link('pandas.DataFrame.to_csv()')` & `r q_link('pandas.read_csv()')`
 - Note: If rows have different number of columns `JSON` would be a better choice compared to `CSV` 
 
 ```{r 'R-CSV', decorate=TRUE}
-loc <- "data/R_01_readr.csv"                                #PATH
+loc <- 'data/R_01_readr.csv'                                #PATH
 readr::write_csv(df_r, file = loc)                          #To CSV
 
 aa <- readr::read_csv(loc, show_col_types = FALSE, 
               col_types = list(INT = readr::col_integer(), NUM = col_double(), 
                                CHR = col_character(), LGL = col_logical()))
-attr(aa, "spec") <- NULL                                    #Drop Attribute
-if(nrow(readr::problems(aa)) == 0L) attr(aa, "problems") <- NULL
+attr(aa, 'spec') <- NULL                                    #Drop Attribute
+if(nrow(readr::problems(aa)) == 0L) attr(aa, 'problems') <- NULL
 stopifnot(identical(df_r, as.data.frame(aa)))
 ```
 
 ```{python 'Y-CSV', decorate=TRUE}
-loc = "data/Y_01_pandas.csv"                                #PATH
+loc = 'data/Y_01_pandas.csv'                                #PATH
 df_y.to_csv(loc, index = False)                             #To CSV
 
 if 'pp' in globals(): del pp
@@ -67,17 +67,17 @@ assert(df_y.equals(pp))
 ```
 
 ```{r 'R-CSV-Compare', decorate=TRUE, include=FALSE}
-loc <- "data/Y_01_pandas.csv"                     #PATH of Python File in R
+loc <- 'data/Y_01_pandas.csv'                     #PATH of Python File in R
 aa <- read_csv(loc, show_col_types = FALSE, 
                col_types = list(INT = col_integer(), NUM = col_double(), 
                                 CHR = col_character(), LGL = col_logical()))
-attr(aa, "spec") <- NULL                                    #Drop Attribute
-if(nrow(problems(aa)) == 0L) attr(aa, "problems") <- NULL
+attr(aa, 'spec') <- NULL                                    #Drop Attribute
+if(nrow(problems(aa)) == 0L) attr(aa, 'problems') <- NULL
 stopifnot(identical(df_r, as.data.frame(aa)))
 ```
 
 ```{python 'Y-CSV-Compare', decorate=TRUE, include=FALSE}
-loc = "data/R_01_readr.csv"                       #PATH of R File in Python
+loc = 'data/R_01_readr.csv'                       #PATH of R File in Python
 
 if 'pp' in globals(): del pp
 pp = pd.read_csv(loc, dtype = {'INT': np.int64, 'NUM': float, 
@@ -89,10 +89,10 @@ assert(df_y.equals(pp))
 ## R RDS
 
 - R `saveRDS()` & `readRDS()` are available in R. However `{readr}` package provides faster  `readr::write_rds()` & `readr::read_rds()` methods
-- Python needs `r q_link("{rpy2}")` module which is unavailable in Windows
+- Python needs `r q_link('{rpy2}')` module which is unavailable in Windows
 
 ```{r 'R-RDS', decorate=TRUE}
-loc <- "data/R_01_readr.rds"                                #PATH
+loc <- 'data/R_01_readr.rds'                                #PATH
 readr::write_rds(df_r, file = loc)                          #To RDS
 
 aa <- readr::read_rds(loc)
@@ -101,12 +101,12 @@ stopifnot(identical(df_r, aa))
 
 ## Python Arrow Feather
 
-- Python `r q_link("{pyarrow}")` module has `r q_link("pyarrow.feather.write_feather()")` & `r q_link("pyarrow.feather.read_feather()")`
+- Python `r q_link('{pyarrow}')` module has `r q_link('pyarrow.feather.write_feather()')` & `r q_link('pyarrow.feather.read_feather()')`
 - Pandas itself has moved away from `pickle` (& `msgpack`) to `pyarrow`
-- Note: Within `{reticulate}` environment, due to the conflict between Python `r q_link("{pyarrow}")` module and R `{arrow}` package, the R package is not being used for now.
+- Note: Within `{reticulate}` environment, due to the conflict between Python `r q_link('{pyarrow}')` module and R `{arrow}` package, the R package is not being used for now.
 
 ```{python 'Y-Feather', decorate=TRUE}
-loc = "data/Y_01_pyarrow.feather"                           #PATH
+loc = 'data/Y_01_pyarrow.feather'                           #PATH
 pyarrow.feather.write_feather(df_y, loc)                    #To Feather
 
 if 'pp' in globals(): del pp
@@ -122,24 +122,24 @@ assert(df_y.equals(pp))
 
 ```{r 'R-Dump', decorate=TRUE}
 aa <- df_r
-loc <- "data/R_01_dump.r"
-dump(c("aa"), file = loc)                                   #To R File
+loc <- 'data/R_01_dump.r'
+dump(c('aa'), file = loc)                                   #To R File
 rm(aa)
 source(loc)                                                 #Source
-stopifnot(all(exists("aa"), identical(df_r, aa)))
+stopifnot(all(exists('aa'), identical(df_r, aa)))
 ```
 
 ## Python Pickle & HDF5
 
 ::: {.rmdcaution}
 
-Python `r q_link("{lib.pickle}")` module can be used to save python objects. However, it is unsecure and  arbitrary code execution is possible [(Pickle Flaws)](https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html). 
+Python `r q_link('{lib.pickle}')` module can be used to save python objects. However, it is unsecure and  arbitrary code execution is possible [(Pickle Flaws)](https://nedbatchelder.com/blog/202006/pickles_nine_flaws.html). 
 Pandas uses pickle (via PyTables) for reading and writing `HDF5` files. So avoid this too. [Caution](https://pandas.pydata.org/docs/user_guide/io.html#io-hdf5)
 
 ```{python 'Y-Pickle', decorate=TRUE, eval=FALSE}
 if(False):
     # Avoid Pickle
-    loc = "data/Y_01_pickle.pkl"
+    loc = 'data/Y_01_pickle.pkl'
     df_y.to_pickle(loc)                                     #To Pickle
     
     if 'pp' in globals(): del pp
@@ -152,28 +152,28 @@ if(False):
 ## Clipboard
 
 - R `read.delim()` is available. However `{readr}` package provides easier `readr::read_delim()` using  `readr::clipboard()` method
-- Python `r q_link("{pandas}")` module has `r q_link("pandas.read_clipboard()")`
+- Python `r q_link('{pandas}')` module has `r q_link('pandas.read_clipboard()')`
 
-```{r 'R-Clipboard', decorate=TRUE, comment=""}
+```{r 'R-Clipboard', decorate=TRUE, comment=''}
 if(FALSE) print(df_r)         #Inconsistent separator
 cat(readr::format_csv(df_r))  #Output without '#' for easy copy to clipboard
 
 if(FALSE) {
-  aa <- readr::read_delim(clipboard())            #PATH: "data/R_01_readr.csv"
+  aa <- readr::read_delim(clipboard())            #PATH: 'data/R_01_readr.csv'
   aa$INT <- as.integer(aa$INT)
-  attr(aa, "spec") <- NULL
-  if(nrow(readr::problems(aa)) == 0L) attr(aa, "problems") <- NULL
+  attr(aa, 'spec') <- NULL
+  if(nrow(readr::problems(aa)) == 0L) attr(aa, 'problems') <- NULL
   stopifnot(identical(df_r, as.data.frame(aa)))
   dput(aa)
 }
 ```
 
-```{python 'Y-Clipboard', decorate=TRUE, comment=""}
+```{python 'Y-Clipboard', decorate=TRUE, comment=''}
 print(df_y)                   #Output without '#' for easy copy to clipboard
 
 if(False):
     if 'pp' in globals(): del pp
-    pp = pd.read_clipboard()                      #PATH: "data/Y_01_pandas.csv"
+    pp = pd.read_clipboard()                      #PATH: 'data/Y_01_pandas.csv'
     pp['NUM'] = pp['NUM'].astype('float64')
     pp.info(memory_usage = False)
     assert(df_y.equals(pp))
@@ -184,7 +184,7 @@ if(False):
 ## Scripts .r & .py
 
 - R has `writeLines()`, `file.exists()`, `file.remove()` & other related functions for file operations and `source()` to execute `.r` scripts
-- Python has `r q_link("lib.functions.open()")`, `r q_link("ref.compound_stmts.the-with-statement", "with()")`, `r q_link("lib.os.path.exists()")`, `r q_link("lib.os.remove()")`
+- Python has `r q_link('lib.functions.open()')`, `r q_link('ref.compound_stmts.the-with-statement', 'with()')`, `r q_link('lib.os.path.exists()')`, `r q_link('lib.os.remove()')`
 
 - Note: Script execution is similar in R and Python i.e. On Error, next line is not executed. However, Chunk execution is different i.e. in the R chunk next line is not executed whereas in the Python chunk it will be executed even after Error is thrown. 
   - Thus, in R chunk, `stopifnot(FALSE)` is enough to stop chunk execution 
@@ -192,8 +192,8 @@ if(False):
   - On the other hand `os._exit(1)` not only quits the Python but also the R session. So, this should be avoided.
 
 ```{r 'R-Script', decorate=TRUE}
-if(FALSE){# Avoid writing executable scripts to directories
-  loc <- "data/R_02_script.r"
+if(TRUE){# Avoid writing executable scripts to directories
+  loc <- 'data/R_02_script.r'
   txt <- "stopifnot(TRUE) # Execution stops on ERROR\nprint('Hello')"
   writeLines(txt, loc)                            #Create R Script
   source(loc)                                     #Source R Script
@@ -202,8 +202,8 @@ if(FALSE){# Avoid writing executable scripts to directories
 ```
 
 ```{python 'Y-Script', decorate=TRUE}
-if(False): # Avoid writing executable scripts to directories
-    loc = "data/Y_02_script.py"
+if(True): # Avoid writing executable scripts to directories
+    loc = 'data/Y_02_script.py'
     with open(loc, 'w') as f:
         f.write("assert(True) # Execution stops on ERROR\nprint('Hello')")
     exec(open(loc).read())                        #Execute Python Script
@@ -214,30 +214,31 @@ if(False): # Avoid writing executable scripts to directories
 ## Standard Datasets 
 
 ```{r 'R-data', decorate=TRUE}
-data(package = "dplyr")$results[ , "Item"]        #Load or List Datasets
+data(package = 'dplyr')$results[ , 'Item']        #Load or List Datasets
 
 dim(dplyr::storms)
 
-loc <- "data/R_02_iris.rds"                                 #PATH
-if(FALSE) {
+loc <- 'data/R_03_iris.rds'                                 #PATH
+if(!exists(loc)) {# Headers | Replace '.' by '_' | To lowercase 
     aa <- datasets::iris |> rename_with(make.names) |> 
-      rename_with(~ tolower(gsub(".", "_", .x, fixed = TRUE)))
+      rename_with(~ tolower(gsub('.', '_', .x, fixed = TRUE)))
     readr::write_rds(aa, file = loc)                        #Dataset: Iris
-} 
+} else {
+    aa <- readr::read_rds(loc) 
+}
 
-aa <- readr::read_rds(loc) 
-str(aa)
+str(aa, vec.len = 2)
 ```
 
 ```{python 'Y-Data', decorate=TRUE}
-loc = "data/Y_02_iris.feather"                              #PATH
-if(False):
+loc = 'data/Y_03_iris.feather'                              #PATH
+if(not os.path.exists(loc)):
     pp = sns.load_dataset('iris')                           #Needs Internet
     list(pp.columns) 
     #['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
     qq = sm.datasets.get_rdataset('iris').data              #Needs Internet
     qq.columns = pp.columns
-    #dir(sklearn.datasets)                                  #All DataSets
+    #dir(sklearn.datasets)                                  #All Datasets
     ss = sklearn.datasets.load_iris(as_frame = True).data   #Offline, No Target
     tt = sklearn.datasets.load_iris()                       #Offline, Bunch
     uu = pd.DataFrame(data = np.c_[tt['data'], tt['target']],
@@ -247,20 +248,21 @@ if(False):
           .drop('target', axis = 1)
     uu.columns = pp.columns
     assert(uu.equals(pp) and uu.equals(qq))
-    uu.info()
     pyarrow.feather.write_feather(uu, loc)                  #Dataset: Iris
+else:
+    uu = pyarrow.feather.read_feather(loc)
 
-if 'pp' in globals(): del pp
-pp = pyarrow.feather.read_feather(loc)
-pp.info()
+
+uu.info(memory_usage = False)
 
 ```
 
 ```{r 'R-Iris-Compare', decorate=TRUE, include=FALSE}
-bb <- py$pp |> `attr<-`('pandas.index', NULL) |> 
+bb <- py$uu |> `attr<-`('pandas.index', NULL) |> 
   mutate(across(species, factor, levels = levels(aa$species)))
 stopifnot(identical(aa, bb))
 ```
+
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}
 # Imported (Basic) Modules in Python 
@@ -269,7 +271,7 @@ allmodules = [v.__name__ for k, v in globals().items()
 
 len(allmodules)                                   # Count the Loaded Modules
 
-", ".join(allmodules)                             # List Modules
+', '.join(allmodules)                             # List Modules
 
 ```
 
