@@ -61,6 +61,7 @@ python-pickle-hdf5
 clipboard
 scripts-.r-.py
 standard-datasets
+window-p11
 so-q01
 test-data
 section
