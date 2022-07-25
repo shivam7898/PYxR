@@ -428,7 +428,11 @@ kables(list(q_kbl(ab_j_semi), q_kbl(ab_j_anti)),
 
 - These operations work with a complete row, comparing the values of every variable. 
   - Thus, these expect both tables /df to have the same variables (columns), and treat the observations (rows) like sets.
-
+  - Inner Join vs. Intersect
+    - The `INNER JOIN` will return duplicates, if `id` is duplicated in either table. `INTERSECT` removes duplicates. 
+    - The `INNER JOIN` will never return `NULL`, but `INTERSECT` will return `NULL`.
+  - Inner Join vs. semi-join
+    - With a `semi-join`, each record in the first set is returned only once, regardless of how many matches there are in the second set.  
 
 ```{r 'R-DF-Sets', decorate=TRUE}
 aa <- tibble(A = c(1, 2), B = c(1, 1))
@@ -444,6 +448,24 @@ ba_sdiff <- setdiff(bb, aa)                                 # y - x
 kables(list(q_kbl(ab_isect), q_kbl(ab_union), q_kbl(ab_sdiff), q_kbl(ba_sdiff)), 
        caption = 'Intersect, Union, x-y, y-x', label = 'P04T03')
 ```
+
+```{r 'R-DF-Set-Compare', decorate=TRUE}
+# Two 2 in First & Three 3 in Second
+aa <- tibble(ID = c(1, 2, 2, 3, 4), 
+             A = c('a1', 'a21', 'a22', 'a31', 'a4'))
+bb <- tibble(ID = c(1, 2, 3, 3, 3, 5), 
+             A = c('a1', 'a21', 'a31', 'a32', 'a33', 'a5'))
+#
+ii_inn <- inner_join(aa, bb, by = 'ID') 
+jj_its <- intersect(aa, bb)
+kk_sem <- semi_join(aa, bb, by = 'ID')
+#
+str(ii_inn, vec.len = nrow(ii_inn))     #Duplicate IDs of Both
+str(jj_its, vec.len = nrow(jj_its))     #No Duplicate IDs of Either
+str(kk_sem, vec.len = nrow(kk_sem))     #Duplicates of First found in Second
+setdiff(kk_sem, jj_its)                 #Extra in Semi Join over Intersection
+```
+
 
 ## Missing Values
 
