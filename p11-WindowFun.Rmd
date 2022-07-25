@@ -1,0 +1,25 @@
+# Window Functions {#window-p11}
+
+```{r 'setup', include=FALSE}
+source('_common.R')
+```
+
+
+
+
+```{python 'Y-Verify', decorate=TRUE, include=FALSE}
+# Imported (Basic) Modules in Python 
+allmodules = [v.__name__ for k, v in globals().items() 
+    if type(v) is types.ModuleType and not k.startswith('__')]
+
+len(allmodules)                                   # Count the Loaded Modules
+
+', '.join(allmodules)                             # List Modules
+
+```
+
+```{r 'R-Verify', decorate=TRUE, include=FALSE}
+if(FALSE) TRUE
+if(FALSE) py_config()
+```
+

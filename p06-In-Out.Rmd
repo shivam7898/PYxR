@@ -275,7 +275,7 @@ len(allmodules)                                   # Count the Loaded Modules
 
 ```
 
-```{r 'R-Verify', decorate=TRUE, include=TRUE}
+```{r 'R-Verify', decorate=TRUE, include=FALSE}
 if(FALSE) TRUE
 if(FALSE) py_config()
 ```

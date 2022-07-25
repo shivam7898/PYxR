@@ -17,8 +17,9 @@ rmd_files:
     "p03-List-Dict.Rmd",
     "p04-DataFrames.Rmd",
     "p05-Matrix-Array.Rmd",
-    
     "p06-In-Out.Rmd",
+    
+    "p11-WindowFun.Rmd",
     
     "q01-SO.Rmd"
   ]
