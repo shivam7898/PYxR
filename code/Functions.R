@@ -1,7 +1,7 @@
 ## ---- Q00 ----
 
 if(TRUE || !exists('q_')) {
-  q_ <- NULL
+  #q_ <- NULL
 
   # Matrix to log URL on each page
   q_url <- matrix(nrow = 0, ncol = 4, byrow = TRUE, 
@@ -152,6 +152,17 @@ if(TRUE || !exists('q_')) {
 	           extra_css = 'border-bottom: 1px solid; border-top: 1px solid') |> 
 	row_spec(row = 1:nrow(x), color = txt_colour)
   return(out)
+  }
+
+## ---- Q05-q ----
+
+  q_ <- function() {
+    # List Additional Objects
+	x <- ls(.GlobalEnv)
+	# Match object names starting with "q_" and drop them from the vector
+    x_drop <- grepl("^q_", x)
+    x <- x[!x_drop]
+	paste0(x, collapse = ", ")
   }
 
 ## ---- Q99-Z ----
