@@ -798,7 +798,11 @@ ab_j_anti <- anti_join(aa, bb, by = 'ID')                   # Anti Join
 
 - These operations work with a complete row, comparing the values of every variable. 
   - Thus, these expect both tables /df to have the same variables (columns), and treat the observations (rows) like sets.
-
+  - Inner Join vs. Intersect
+    - The `INNER JOIN` will return duplicates, if `id` is duplicated in either table. `INTERSECT` removes duplicates. 
+    - The `INNER JOIN` will never return `NULL`, but `INTERSECT` will return `NULL`.
+  - Inner Join vs. semi-join
+    - With a `semi-join`, each record in the first set is returned only once, regardless of how many matches there are in the second set.  
 
 <div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#4C78DB'><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
@@ -902,6 +906,42 @@ ba_sdiff <- setdiff(bb, aa)                                 # y - x
 </tbody>
 </table>
 
+<div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#4C78DB'><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
+
+```r
+# Two 2 in First & Three 3 in Second
+aa <- tibble(ID = c(1, 2, 2, 3, 4), 
+             A = c('a1', 'a21', 'a22', 'a31', 'a4'))
+bb <- tibble(ID = c(1, 2, 3, 3, 3, 5), 
+             A = c('a1', 'a21', 'a31', 'a32', 'a33', 'a5'))
+#
+ii_inn <- inner_join(aa, bb, by = 'ID') 
+jj_its <- intersect(aa, bb)
+kk_sem <- semi_join(aa, bb, by = 'ID')
+#
+str(ii_inn, vec.len = nrow(ii_inn))     #Duplicate IDs of Both
+## tibble [6 × 3] (S3: tbl_df/tbl/data.frame)
+##  $ ID : num [1:6] 1 2 2 3 3 3
+##  $ A.x: chr [1:6] "a1" "a21" "a22" "a31" "a31" "a31"
+##  $ A.y: chr [1:6] "a1" "a21" "a21" "a31" "a32" "a33"
+str(jj_its, vec.len = nrow(jj_its))     #No Duplicate IDs of Either
+## tibble [3 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ ID: num [1:3] 1 2 3
+##  $ A : chr [1:3] "a1" "a21" "a31"
+str(kk_sem, vec.len = nrow(kk_sem))     #Duplicates of First found in Second
+## tibble [4 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ ID: num [1:4] 1 2 2 3
+##  $ A : chr [1:4] "a1" "a21" "a22" "a31"
+setdiff(kk_sem, jj_its)                 #Extra in Semi Join over Intersection
+## # A tibble: 1 × 2
+##      ID A    
+##   <dbl> <chr>
+## 1     2 a22
+```
+
+</div><br></div>
+
+
 ## Missing Values
 
 - R: `NA` represents the missing values. 
@@ -980,6 +1020,7 @@ pp
 ```
 
 </div><br></div>
+
 
 
 

@@ -25,7 +25,6 @@ verify-r-python-installation
 install-update-of-r-packages-and-python-modules
 attach-an-r-package-load-a-python-module
 r-sessioninfo
-verify
 structures-p02
 r-data-types
 r-matrices
@@ -62,6 +61,8 @@ clipboard
 scripts-.r-.py
 standard-datasets
 window-p11
+basics-4
+data-lahman
 so-q01
 test-data
 section
