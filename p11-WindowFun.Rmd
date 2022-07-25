@@ -4,22 +4,41 @@
 source('_common.R')
 ```
 
+## Basics
 
+A window function is a variation on an aggregation function. Where an aggregation function, like `sum()` and `mean()`, takes n inputs and return a single value, a window function returns n values. The output of a window function depends on all its input values, so window functions do not include functions that work element-wise, like `round()`. Window functions include variations on aggregate functions, like `cumsum()` and `dplyr::cummean()`, functions for ranking and ordering, like `rank()`, and functions for taking offsets, like `dplyr::lead()` and `dplyr::lag()`. [(Refer)](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html)
+
+## Data: Lahman
+
+```{r 'R-Tbl', decorate=TRUE}
+# DF | Tibble | Subset | Sort | Semi Join |
+batting <- Lahman::Batting |> 
+    as_tibble() |> 
+    select(playerID, yearID, teamID, G, AB, R, H) |> 
+    arrange(playerID, yearID, teamID) |> 
+    semi_join(Lahman::AwardsPlayers, by = "playerID")
+
+# Grouped Tibble
+players <- batting |> group_by(playerID)
+```
+
+```{r 'R-Tbl-Structure', decorate=TRUE}
+str(batting)
+str(players)
+```
 
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}
-# Imported (Basic) Modules in Python 
-allmodules = [v.__name__ for k, v in globals().items() 
+# Count & List the Imported Modules in Python 
+q_mods = [v.__name__ for k, v in globals().items() 
     if type(v) is types.ModuleType and not k.startswith('__')]
-
-len(allmodules)                                   # Count the Loaded Modules
-
-', '.join(allmodules)                             # List Modules
+len(q_mods)
+', '.join(q_mods)
 
 ```
 
 ```{r 'R-Verify', decorate=TRUE, include=FALSE}
-if(FALSE) TRUE
-if(FALSE) py_config()
+if(FALSE) py_config()         #Python Configuration
+if(FALSE) q_url[ , 'URL']     #List of URL of this Page
+if(FALSE) q_()                #R Objects of this Page excluding 'q_*'
 ```
-

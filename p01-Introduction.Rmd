@@ -606,15 +606,13 @@ if(False):
     # Load multiple Python Modules
     import sys, pandas as pd, numpy as np
     
-    # List all imported Modules
+    # Count & List the Imported Modules in Python
     # Works except the implicit import: 'from x import y' (avoid this)
     # Use k to list alias or use v.__name__ to list actual module names
-    allmodules = [v.__name__ for k, v in globals().items() 
+    q_mods = [v.__name__ for k, v in globals().items() 
         if type(v) is types.ModuleType and not k.startswith('__')]
-    
-    len(allmodules)
-    
-    ', '.join(allmodules)
+    len(q_mods)
+    ', '.join(q_mods)
 
 ```
 
@@ -643,10 +641,18 @@ if(FALSE) {
 ```
 
 
+```{python 'Y-Verify', decorate=TRUE, include=FALSE}
+# Count & List the Imported Modules in Python 
+q_mods = [v.__name__ for k, v in globals().items() 
+    if type(v) is types.ModuleType and not k.startswith('__')]
+len(q_mods)
+', '.join(q_mods)
 
-
-## Verify
-
-```{r 'R-List-Objects', decorate=TRUE}
-ls()
 ```
+
+```{r 'R-Verify', decorate=TRUE, include=FALSE}
+if(FALSE) py_config()         #Python Configuration
+if(FALSE) q_url[ , 'URL']     #List of URL of this Page
+if(FALSE) q_()                #R Objects of this Page excluding 'q_*'
+```
+

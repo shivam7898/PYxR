@@ -499,9 +499,17 @@ pp
 
 ```
 
+```{python 'Y-Verify', decorate=TRUE, include=FALSE}
+# Count & List the Imported Modules in Python 
+q_mods = [v.__name__ for k, v in globals().items() 
+    if type(v) is types.ModuleType and not k.startswith('__')]
+len(q_mods)
+', '.join(q_mods)
 
-```{r 'R-Verify', decorate=TRUE, include=FALSE, eval=FALSE}
-# List of URL of this Page
-q_url[ , 'URL']
+```
 
+```{r 'R-Verify', decorate=TRUE, include=FALSE}
+if(FALSE) py_config()         #Python Configuration
+if(FALSE) q_url[ , 'URL']     #List of URL of this Page
+if(FALSE) q_()                #R Objects of this Page excluding 'q_*'
 ```

@@ -3,6 +3,7 @@ if (FALSE || !('conflicted' %in% (.packages()))) {
   pkg <- character(0)
   pkg <- c(pkg, 'conflicted', 'knitr', 'reticulate', 'fontawesome')
   pkg <- c(pkg, 'lobstr', 'tibble', 'dplyr', 'readr', 'tidyr', 'kableExtra')
+  pkg <- c(pkg, 'Lahman')
   
   lapply(pkg, FUN = \(x) library(x, character.only = TRUE))
   
