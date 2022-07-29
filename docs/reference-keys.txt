@@ -62,7 +62,9 @@ scripts-.r-.py
 standard-datasets
 window-p11
 basics-4
+ranks
 data-lahman
+test
 so-q01
 test-data
 section

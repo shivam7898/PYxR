@@ -84,10 +84,10 @@ sessionInfo()
 ## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.1         png_0.1-7        
 ## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.27     rprojroot_2.0.3  
 ## [41] grid_4.2.1        here_1.0.1        cli_3.3.0         tools_4.2.1      
-## [45] sass_0.4.2        magrittr_2.0.3    downlit_0.4.2     pkgconfig_2.0.3  
-## [49] ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3        assertthat_0.2.1 
-## [53] rmarkdown_2.14    svglite_2.1.0     httr_1.4.3        rstudioapi_0.13  
-## [57] R6_2.5.1          compiler_4.2.1
+## [45] sass_0.4.2        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.1     
+## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3       
+## [53] assertthat_0.2.1  rmarkdown_2.14    svglite_2.1.0     httr_1.4.3       
+## [57] rstudioapi_0.13   R6_2.5.1          compiler_4.2.1
 ```
 
 </div><br></div>
