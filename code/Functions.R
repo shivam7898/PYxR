@@ -12,7 +12,7 @@ if(TRUE || !exists('q_')) {
 
 ## ---- Q01-link ----
   
-  q_link <- function(x, usr_txt = NA) {
+  q_link <- function(x, usr_txt = NA, debug = FALSE) {
     # Convert String to the link of Python Module Help
 	url_row <- match(x, q_url[, 'ORIGINAL'])
 	if(!is.na(url_row)) {
@@ -102,7 +102,7 @@ if(TRUE || !exists('q_')) {
 			    #
 			}
 		}
-        cat(' txt: ', txt, '\n', 'shw: ', shw, '\n', 'url: ', url, '\n')
+        if(debug) cat(' txt: ', txt, '\n', 'shw: ', shw, '\n', 'url: ', url, '\n')
 		out <- ifelse(is_found, paste0('[', shw, '](', url, ')'), NULL)
 		#print(out)
 		# Log in global object using double arrow

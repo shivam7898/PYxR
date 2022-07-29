@@ -9,7 +9,7 @@ if (FALSE || !('conflicted' %in% (.packages()))) {
   
   # Set Precedence
   # dplyr::filter | stats::filter
-  #invisible(suppressMessages(conflict_prefer('filter', 'dplyr')))
+  invisible(suppressMessages(conflict_prefer('filter', 'dplyr')))
   
   rm(pkg)
 
