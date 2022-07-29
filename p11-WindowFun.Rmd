@@ -8,6 +8,60 @@ source('_common.R')
 
 A window function is a variation on an aggregation function. Where an aggregation function, like `sum()` and `mean()`, takes n inputs and return a single value, a window function returns n values. The output of a window function depends on all its input values, so window functions do not include functions that work element-wise, like `round()`. Window functions include variations on aggregate functions, like `cumsum()` and `dplyr::cummean()`, functions for ranking and ordering, like `rank()`, and functions for taking offsets, like `dplyr::lead()` and `dplyr::lag()`. [(Refer)](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html)
 
+## Ranks
+
+- Python Pandas `r q_link('pd.Series.rank()')` Function & R `{dplyr}` package 
+  - NOTE: `r q_link('pd.Series.rank()')` can return cumulative distribution equivalent to `dplyr::cume_dist()` but currently it cannot provide relative rank like `dplyr::percent_rank()`
+- `dplyr::row_number()` attributes a unique value to each row
+- `dplyr::min_rank()` attributes the same row number to the same value, leaving 'holes'
+- `dplyr::dense_rank()` attributes the same row number to the same value, leaving no 'holes'
+  - Ex: My salary might be the 2nd-highest (Dense Rank) the company pays. But, I might be the 4th-highest (Rank) paid employee if the same top salary is paid to 3 other people.
+- `dplyr::percent_rank()` Rescaling min_rank() to [0, 1]
+- `dplyr::cume_dist()` Proportion of all values less than or equal to the current rank.
+- `ntile()` a rough rank, which breaks the input vector into n buckets
+
+```{r 'R-Rank', decorate=TRUE}
+aa <- c(12, 15, 11, 13, NA, 12)
+bb_row <- dplyr::row_number(aa)
+bb_row_r <- rank(aa, ties.method = 'first', na.last = 'keep')
+bb_row
+
+dd_min <- dplyr::min_rank(aa)                     #Two 12, so skips once for 13
+dd_min_r <- rank(aa, ties.method = 'min', na.last = 'keep')
+dd_min
+
+dplyr::dense_rank(aa)                             #Consecutive Rank (Dense Rank)
+
+dplyr::percent_rank(aa)                           #Pandas do not have this
+
+dplyr::cume_dist(aa)                              #Matches Pandas Percent Rank
+
+dplyr::ntile(aa, n = 2)
+
+stopifnot(all(identical(bb_row, bb_row_r), identical(dd_min, dd_min_r)))
+```
+
+```{python 'Y-Rank', decorate=TRUE}
+pp = pd.Series([12, 15, 11, 13, None, 12])
+print(*pp)                  #Print Horizontal by using unpacking operator (*)
+
+print(*pp.rank(method = 'first'))                 #Row Number
+
+
+print(*pp.rank(method = 'min'))                   #Two 12, so skips once for 13
+
+
+print(*pp.rank(method = 'dense'))                 #Consecutive Rank (Dense Rank)
+
+
+qq = (pp.rank(method = 'min') - 1) / (pp.count() - 1)       #Percent Rank
+print(*qq)
+
+
+print(*pp.rank(method = 'max', pct = True))       #Cumulative Distance
+
+```
+
 ## Data: Lahman
 
 ```{r 'R-Tbl', decorate=TRUE}
@@ -20,8 +74,22 @@ batting <- Lahman::Batting |>
 
 # Grouped Tibble
 players <- batting |> group_by(playerID)
-#
+```
+
+```{r 'R-Tbl-Data', decorate=TRUE}
+# Grouped Players
 players |> head()
+```
+
+## Test
+
+```{r 'R-Filter', decorate=TRUE}
+# For each player, find the two years with most hits
+dplyr::filter(players, min_rank(desc(H)) <= 2 & H > 0)
+
+
+# Within each player, rank each year by the number of games played
+dplyr::mutate(players, G_rank = min_rank(G))
 ```
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}
