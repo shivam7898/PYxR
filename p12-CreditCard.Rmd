@@ -4,6 +4,43 @@
 source('_common.R')
 ```
 
+## Load: Credit Card Fraud
+
+- Source: [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+
+```{python 'Y-Load-CCR', decorate=TRUE}
+loc = 'data/Y_04_CCR'
+loc_csv = loc + '.csv'
+loc_bin = loc + '.feather'
+
+if(not os.path.exists(loc_bin)):
+    pp = pd.read_csv(loc_csv) 
+    pp.drop(columns = ['Time'], inplace = True)   #Drop Columns
+    qq = list(pp.columns)
+    qq.insert(0, qq.pop(qq.index('Amount')))      #Relocate list element
+    qq.insert(0, qq.pop(qq.index('Class')))
+    pp = pp.reindex(columns = qq)                 #Relocate Columns
+    pp['Class'] = pp.Class.astype('category')     #To Factor
+    pyarrow.feather.write_feather(pp, loc_bin)    #Data: Credit Card Fraud
+else:
+    pp = pyarrow.feather.read_feather(loc_bin)
+
+y_ccr = pp.copy()
+
+pp.shape
+
+
+list(pp.columns)
+
+
+pp['Class'].value_counts()                        #Count Categories
+
+
+if(False): pp.info(memory_usage = False)
+if(False): pp['Amount'].describe()
+
+```
+
 
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}

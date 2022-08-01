@@ -6,6 +6,8 @@ if (False or 'pandas' not in sys.modules):
     import seaborn as sns
     import sklearn
     import sklearn.datasets
+    import matplotlib as mpl
+    import matplotlib.pyplot as plt
     # CAUTION: Due to R "arrow" & Python "pyarrow" conflict do not load it in R
     import pyarrow
     import pyarrow.feather
