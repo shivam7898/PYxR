@@ -20,6 +20,7 @@ rmd_files:
     "p06-In-Out.Rmd",
     
     "p11-WindowFun.Rmd",
+    "p12-CreditCard.Rmd",
     
     "q01-SO.Rmd"
   ]
