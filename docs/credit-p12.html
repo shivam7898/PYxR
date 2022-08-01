@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 8 Credit Card Fraud | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
-<meta name="description" content="A book containting minimum working examples (MWE) to compare and contrast Python and R.">
+<meta name="description" content="8.1 Load: Credit Card Fraud Source: Kaggle   Python loc = 'data/Y_04_CCR' loc_csv = loc + '.csv' loc_bin = loc + '.feather' if(not os.path.exists(loc_bin)):   pp = pd.read_csv(loc_csv)  ...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Credit Card Fraud | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/credit-p12.html">
-<meta property="og:description" content="A book containting minimum working examples (MWE) to compare and contrast Python and R.">
+<meta property="og:description" content="8.1 Load: Credit Card Fraud Source: Kaggle   Python loc = 'data/Y_04_CCR' loc_csv = loc + '.csv' loc_bin = loc + '.feather' if(not os.path.exists(loc_bin)):   pp = pd.read_csv(loc_csv)  ...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 8 Credit Card Fraud | PYxR">
-<meta name="twitter:description" content="A book containting minimum working examples (MWE) to compare and contrast Python and R.">
+<meta name="twitter:description" content="8.1 Load: Credit Card Fraud Source: Kaggle   Python loc = 'data/Y_04_CCR' loc_csv = loc + '.csv' loc_bin = loc + '.feather' if(not os.path.exists(loc_bin)):   pp = pd.read_csv(loc_csv)  ...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -66,14 +66,63 @@
 <h1>
 <span class="header-section-number">8</span> Credit Card Fraud<a class="anchor" aria-label="anchor" href="#credit-p12"><i class="fas fa-link"></i></a>
 </h1>
+<div id="load-credit-card-fraud" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Load: Credit Card Fraud<a class="anchor" aria-label="anchor" href="#load-credit-card-fraud"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Source: <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud">Kaggle</a>
+</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb115-1"><a href="credit-p12.html#cb115-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">'data/Y_04_CCR'</span></span>
+<span id="cb115-2"><a href="credit-p12.html#cb115-2" aria-hidden="true" tabindex="-1"></a>loc_csv <span class="op">=</span> loc <span class="op">+</span> <span class="st">'.csv'</span></span>
+<span id="cb115-3"><a href="credit-p12.html#cb115-3" aria-hidden="true" tabindex="-1"></a>loc_bin <span class="op">=</span> loc <span class="op">+</span> <span class="st">'.feather'</span></span>
+<span id="cb115-4"><a href="credit-p12.html#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="credit-p12.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">not</span> os.path.exists(loc_bin)):</span>
+<span id="cb115-6"><a href="credit-p12.html#cb115-6" aria-hidden="true" tabindex="-1"></a>    pp <span class="op">=</span> pd.read_csv(loc_csv) </span>
+<span id="cb115-7"><a href="credit-p12.html#cb115-7" aria-hidden="true" tabindex="-1"></a>    pp.drop(columns <span class="op">=</span> [<span class="st">'Time'</span>], inplace <span class="op">=</span> <span class="va">True</span>)   <span class="co">#Drop Columns</span></span>
+<span id="cb115-8"><a href="credit-p12.html#cb115-8" aria-hidden="true" tabindex="-1"></a>    qq <span class="op">=</span> <span class="bu">list</span>(pp.columns)</span>
+<span id="cb115-9"><a href="credit-p12.html#cb115-9" aria-hidden="true" tabindex="-1"></a>    qq.insert(<span class="dv">0</span>, qq.pop(qq.index(<span class="st">'Amount'</span>)))      <span class="co">#Relocate list element</span></span>
+<span id="cb115-10"><a href="credit-p12.html#cb115-10" aria-hidden="true" tabindex="-1"></a>    qq.insert(<span class="dv">0</span>, qq.pop(qq.index(<span class="st">'Class'</span>)))</span>
+<span id="cb115-11"><a href="credit-p12.html#cb115-11" aria-hidden="true" tabindex="-1"></a>    pp <span class="op">=</span> pp.reindex(columns <span class="op">=</span> qq)                 <span class="co">#Relocate Columns</span></span>
+<span id="cb115-12"><a href="credit-p12.html#cb115-12" aria-hidden="true" tabindex="-1"></a>    pp[<span class="st">'Class'</span>] <span class="op">=</span> pp.Class.astype(<span class="st">'category'</span>)     <span class="co">#To Factor</span></span>
+<span id="cb115-13"><a href="credit-p12.html#cb115-13" aria-hidden="true" tabindex="-1"></a>    pyarrow.feather.write_feather(pp, loc_bin)    <span class="co">#Data: Credit Card Fraud</span></span>
+<span id="cb115-14"><a href="credit-p12.html#cb115-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb115-15"><a href="credit-p12.html#cb115-15" aria-hidden="true" tabindex="-1"></a>    pp <span class="op">=</span> pyarrow.feather.read_feather(loc_bin)</span>
+<span id="cb115-16"><a href="credit-p12.html#cb115-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-17"><a href="credit-p12.html#cb115-17" aria-hidden="true" tabindex="-1"></a>y_ccr <span class="op">=</span> pp.copy()</span>
+<span id="cb115-18"><a href="credit-p12.html#cb115-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-19"><a href="credit-p12.html#cb115-19" aria-hidden="true" tabindex="-1"></a>pp.shape</span>
+<span id="cb115-20"><a href="credit-p12.html#cb115-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-21"><a href="credit-p12.html#cb115-21" aria-hidden="true" tabindex="-1"></a><span class="co">## (284807, 30)</span></span>
+<span id="cb115-22"><a href="credit-p12.html#cb115-22" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(pp.columns)</span>
+<span id="cb115-23"><a href="credit-p12.html#cb115-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-24"><a href="credit-p12.html#cb115-24" aria-hidden="true" tabindex="-1"></a><span class="co">## ['Class', 'Amount', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28']</span></span>
+<span id="cb115-25"><a href="credit-p12.html#cb115-25" aria-hidden="true" tabindex="-1"></a>pp[<span class="st">'Class'</span>].value_counts()                        <span class="co">#Count Categories</span></span>
+<span id="cb115-26"><a href="credit-p12.html#cb115-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-27"><a href="credit-p12.html#cb115-27" aria-hidden="true" tabindex="-1"></a><span class="co">## 0    284315</span></span>
+<span id="cb115-28"><a href="credit-p12.html#cb115-28" aria-hidden="true" tabindex="-1"></a><span class="co">## 1       492</span></span>
+<span id="cb115-29"><a href="credit-p12.html#cb115-29" aria-hidden="true" tabindex="-1"></a><span class="co">## Name: Class, dtype: int64</span></span>
+<span id="cb115-30"><a href="credit-p12.html#cb115-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp.info(memory_usage <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb115-31"><a href="credit-p12.html#cb115-31" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp[<span class="st">'Amount'</span>].describe()</span></code></pre></div>
+</div>
+<br>
+</div>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="window-p11.html"><span class="header-section-number">7</span> Window Functions</a></div>
 <div class="next"><a href="so-q01.html"><span class="header-section-number">9</span> SO 01-10</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#credit-p12"><span class="header-section-number">8</span> Credit Card Fraud</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#credit-p12"><span class="header-section-number">8</span> Credit Card Fraud</a></li>
+<li><a class="nav-link" href="#load-credit-card-fraud"><span class="header-section-number">8.1</span> Load: Credit Card Fraud</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
