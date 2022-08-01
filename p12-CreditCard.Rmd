@@ -8,19 +8,26 @@ source('_common.R')
 
 - Source: [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
+
 ```{python 'Y-Load-CCR', decorate=TRUE}
 loc = 'data/Y_04_CCR'
 loc_csv = loc + '.csv'
 loc_bin = loc + '.feather'
 
 if(not os.path.exists(loc_bin)):
+    #Read | Relocate | Rename | Factor | Levels | ID | Save |
     pp = pd.read_csv(loc_csv) 
-    pp.drop(columns = ['Time'], inplace = True)   #Drop Columns
+    if(False): pp.drop(columns = ['Time'], inplace = True)   #Drop Columns
     qq = list(pp.columns)
     qq.insert(0, qq.pop(qq.index('Amount')))      #Relocate list element
     qq.insert(0, qq.pop(qq.index('Class')))
-    pp = pp.reindex(columns = qq)                 #Relocate Columns
-    pp['Class'] = pp.Class.astype('category')     #To Factor
+    pp = pp.reindex(columns = qq)
+    pp.columns.values[[np.arange(3, 3+9)]] = \
+      ['V0' + str(i) for i in np.arange(1, 1+9)]  #Rename V1 to V01
+    pp.rename(columns ={'Class': 'is_Found'}, inplace = True)
+    pp['is_Found'] = pp['is_Found'].astype('category')
+    pp['is_Found'] = pp['is_Found'].cat.rename_categories(['No', 'Yes'])
+    pp.insert(0, 'ID', range(1, 1+len(pp)))
     pyarrow.feather.write_feather(pp, loc_bin)    #Data: Credit Card Fraud
 else:
     pp = pyarrow.feather.read_feather(loc_bin)
@@ -29,18 +36,94 @@ y_ccr = pp.copy()
 
 pp.shape
 
+qq = list(pp.columns)                             #Column Names
+if(False): list(qq[0:5]) + list(qq[-3:len(qq)])
+print('\n'.join([', '.join(qq[i:i+8]) for i in range(0,len(qq),8)]))
 
-list(pp.columns)
 
-
-pp['Class'].value_counts()                        #Count Categories
+pp['is_Found'].value_counts()                     #Count Categories
 
 
 if(False): pp.info(memory_usage = False)
 if(False): pp['Amount'].describe()
+if(False): pp['Time'].max()                       #(2 Days) 2*24*60*60 - 8
 
 ```
 
+## Standardisation
+
+```{python 'Y-Standardise', decorate=TRUE}
+# Standardize Time & Amount
+pp = y_ccr.copy()
+
+qq = sklearn.preprocessing.RobustScaler().fit(pp[['Time', 'Amount']])
+pp[['Time', 'Amount']] = qq.transform(pp[['Time', 'Amount']])
+
+y_ccr = pp.copy()
+
+```
+
+## Train & Test
+
+```{python 'Y-SeparateXY', decorate=TRUE}
+# Separate response and features
+pp = y_ccr.copy()
+
+y_ccr_Y = pp[['ID', 'is_Found']]
+y_ccr_X = pp[pp.columns.difference(['is_Found'])]    #ALL Excluding 1
+qq = list(y_ccr_X.columns)
+if(False): print('\n'.join([', '.join(qq[i:i+8]) for i in range(0,len(qq),8)]))
+
+```
+
+```{python 'Y-Split', decorate=TRUE}
+# Split Train and Test with similar proportion of Response
+from sklearn.model_selection import train_test_split
+y_trn_X, y_tst_X, y_trn_Y, y_tst_Y = train_test_split(
+        y_ccr_X, y_ccr_Y, test_size = 0.2, random_state = 3)
+
+if(True): y_trn_X.shape, y_tst_X.shape, y_trn_Y.shape, y_tst_Y.shape
+
+
+pp = y_trn_Y['is_Found'].value_counts().to_frame()
+pp['prop'] = pp['is_Found'] / pp['is_Found'].sum()
+pp
+
+
+qq = y_tst_Y['is_Found'].value_counts().to_frame()
+qq['prop'] = qq['is_Found'] / qq['is_Found'].sum()
+qq
+
+```
+
+## Cross Validation
+
+```{python 'Y-CV', decorate=TRUE}
+# Cross Validation Framework 
+from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import GridSearchCV, cross_val_score, RandomizedSearchCV
+
+kf = StratifiedKFold(n_splits = 5, random_state = None, shuffle = False)
+
+```
+
+```{python 'Y-Imbalance', decorate=TRUE}
+# Imbalance
+from imblearn.pipeline import make_pipeline
+from imblearn.under_sampling import NearMiss
+from imblearn.over_sampling import SMOTE
+# Metrics
+from sklearn.metrics import roc_curve, roc_auc_score, accuracy_score, recall_score, precision_score, f1_score
+# Classifiers
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+
+```
+
+## Model
 
 
 ```{python 'Y-Verify', decorate=TRUE, include=FALSE}

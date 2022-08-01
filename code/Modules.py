@@ -8,6 +8,7 @@ if (False or 'pandas' not in sys.modules):
     import sklearn.datasets
     import matplotlib as mpl
     import matplotlib.pyplot as plt
+    import imblearn
     # CAUTION: Due to R "arrow" & Python "pyarrow" conflict do not load it in R
     import pyarrow
     import pyarrow.feather
