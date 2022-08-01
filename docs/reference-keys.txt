@@ -65,6 +65,7 @@ basics-4
 ranks
 data-lahman
 test
+credit-p12
 so-q01
 test-data
 section
