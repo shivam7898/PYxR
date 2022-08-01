@@ -67,6 +67,10 @@ data-lahman
 test
 credit-p12
 load-credit-card-fraud
+standardisation
+train-test
+cross-validation
+model
 so-q01
 test-data
 section
