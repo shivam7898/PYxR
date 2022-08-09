@@ -111,14 +111,16 @@
 <span id="cb115-32"><a href="credit-p12.html#cb115-32" aria-hidden="true" tabindex="-1"></a><span class="co">## V05, V06, V07, V08, V09, V10, V11, V12</span></span>
 <span id="cb115-33"><a href="credit-p12.html#cb115-33" aria-hidden="true" tabindex="-1"></a><span class="co">## V13, V14, V15, V16, V17, V18, V19, V20</span></span>
 <span id="cb115-34"><a href="credit-p12.html#cb115-34" aria-hidden="true" tabindex="-1"></a><span class="co">## V21, V22, V23, V24, V25, V26, V27, V28</span></span>
-<span id="cb115-35"><a href="credit-p12.html#cb115-35" aria-hidden="true" tabindex="-1"></a>pp[<span class="st">'is_Found'</span>].value_counts()                     <span class="co">#Count Categories</span></span>
-<span id="cb115-36"><a href="credit-p12.html#cb115-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-37"><a href="credit-p12.html#cb115-37" aria-hidden="true" tabindex="-1"></a><span class="co">## No     284315</span></span>
-<span id="cb115-38"><a href="credit-p12.html#cb115-38" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       492</span></span>
-<span id="cb115-39"><a href="credit-p12.html#cb115-39" aria-hidden="true" tabindex="-1"></a><span class="co">## Name: is_Found, dtype: int64</span></span>
-<span id="cb115-40"><a href="credit-p12.html#cb115-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp.info(memory_usage <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb115-41"><a href="credit-p12.html#cb115-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp[<span class="st">'Amount'</span>].describe()</span>
-<span id="cb115-42"><a href="credit-p12.html#cb115-42" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp[<span class="st">'Time'</span>].<span class="bu">max</span>()                       <span class="co">#(2 Days) 2*24*60*60 - 8</span></span></code></pre></div>
+<span id="cb115-35"><a href="credit-p12.html#cb115-35" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pp[<span class="st">'is_Found'</span>].value_counts().to_frame()</span>
+<span id="cb115-36"><a href="credit-p12.html#cb115-36" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">'PCT'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> qq[<span class="st">'is_Found'</span>] <span class="op">/</span> qq[<span class="st">'is_Found'</span>].<span class="bu">sum</span>()          <span class="co">#Count &amp; PCT</span></span>
+<span id="cb115-37"><a href="credit-p12.html#cb115-37" aria-hidden="true" tabindex="-1"></a>qq</span>
+<span id="cb115-38"><a href="credit-p12.html#cb115-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-39"><a href="credit-p12.html#cb115-39" aria-hidden="true" tabindex="-1"></a><span class="co">##      is_Found        PCT</span></span>
+<span id="cb115-40"><a href="credit-p12.html#cb115-40" aria-hidden="true" tabindex="-1"></a><span class="co">## No     284315  99.827251</span></span>
+<span id="cb115-41"><a href="credit-p12.html#cb115-41" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       492   0.172749</span></span>
+<span id="cb115-42"><a href="credit-p12.html#cb115-42" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp.info(memory_usage <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb115-43"><a href="credit-p12.html#cb115-43" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp[<span class="st">'Amount'</span>].describe()</span>
+<span id="cb115-44"><a href="credit-p12.html#cb115-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): pp[<span class="st">'Time'</span>].<span class="bu">max</span>()                       <span class="co">#(2 Days) 2*24*60*60 - 8</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -162,68 +164,357 @@
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="credit-p12.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split Train and Test with similar proportion of Response</span></span>
-<span id="cb118-2"><a href="credit-p12.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb118-3"><a href="credit-p12.html#cb118-3" aria-hidden="true" tabindex="-1"></a>y_trn_X, y_tst_X, y_trn_Y, y_tst_Y <span class="op">=</span> train_test_split(</span>
-<span id="cb118-4"><a href="credit-p12.html#cb118-4" aria-hidden="true" tabindex="-1"></a>        y_ccr_X, y_ccr_Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb118-2"><a href="credit-p12.html#cb118-2" aria-hidden="true" tabindex="-1"></a>y_trn_x_id, y_tst_x_id, y_trn_y_id, y_tst_y_id <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb118-3"><a href="credit-p12.html#cb118-3" aria-hidden="true" tabindex="-1"></a>    sklearn.model_selection.train_test_split(y_ccr_X, y_ccr_Y, </span>
+<span id="cb118-4"><a href="credit-p12.html#cb118-4" aria-hidden="true" tabindex="-1"></a>        test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">3</span>)</span>
 <span id="cb118-5"><a href="credit-p12.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="credit-p12.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">True</span>): y_trn_X.shape, y_tst_X.shape, y_trn_Y.shape, y_tst_Y.shape</span>
-<span id="cb118-7"><a href="credit-p12.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-8"><a href="credit-p12.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co">## ((227845, 31), (56962, 31), (227845, 2), (56962, 2))</span></span>
-<span id="cb118-9"><a href="credit-p12.html#cb118-9" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> y_trn_Y[<span class="st">'is_Found'</span>].value_counts().to_frame()</span>
-<span id="cb118-10"><a href="credit-p12.html#cb118-10" aria-hidden="true" tabindex="-1"></a>pp[<span class="st">'prop'</span>] <span class="op">=</span> pp[<span class="st">'is_Found'</span>] <span class="op">/</span> pp[<span class="st">'is_Found'</span>].<span class="bu">sum</span>()</span>
-<span id="cb118-11"><a href="credit-p12.html#cb118-11" aria-hidden="true" tabindex="-1"></a>pp</span>
-<span id="cb118-12"><a href="credit-p12.html#cb118-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-13"><a href="credit-p12.html#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="co">##      is_Found     prop</span></span>
-<span id="cb118-14"><a href="credit-p12.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co">## No     227453  0.99828</span></span>
-<span id="cb118-15"><a href="credit-p12.html#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       392  0.00172</span></span>
-<span id="cb118-16"><a href="credit-p12.html#cb118-16" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> y_tst_Y[<span class="st">'is_Found'</span>].value_counts().to_frame()</span>
-<span id="cb118-17"><a href="credit-p12.html#cb118-17" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">'prop'</span>] <span class="op">=</span> qq[<span class="st">'is_Found'</span>] <span class="op">/</span> qq[<span class="st">'is_Found'</span>].<span class="bu">sum</span>()</span>
-<span id="cb118-18"><a href="credit-p12.html#cb118-18" aria-hidden="true" tabindex="-1"></a>qq</span>
-<span id="cb118-19"><a href="credit-p12.html#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="co">##      is_Found      prop</span></span>
-<span id="cb118-20"><a href="credit-p12.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="co">## No      56862  0.998244</span></span>
-<span id="cb118-21"><a href="credit-p12.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       100  0.001756</span></span></code></pre></div>
+<span id="cb118-6"><a href="credit-p12.html#cb118-6" aria-hidden="true" tabindex="-1"></a>y_trn_y <span class="op">=</span> y_trn_y_id[<span class="st">'is_Found'</span>]</span>
+<span id="cb118-7"><a href="credit-p12.html#cb118-7" aria-hidden="true" tabindex="-1"></a>y_tst_y <span class="op">=</span> y_tst_y_id[<span class="st">'is_Found'</span>]</span>
+<span id="cb118-8"><a href="credit-p12.html#cb118-8" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>(y_trn_x_id.columns) <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> [<span class="st">'ID'</span>]]</span>
+<span id="cb118-9"><a href="credit-p12.html#cb118-9" aria-hidden="true" tabindex="-1"></a>y_trn_x <span class="op">=</span> y_trn_x_id[pp]</span>
+<span id="cb118-10"><a href="credit-p12.html#cb118-10" aria-hidden="true" tabindex="-1"></a>y_tst_x <span class="op">=</span> y_tst_x_id[pp]</span>
+<span id="cb118-11"><a href="credit-p12.html#cb118-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-12"><a href="credit-p12.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">True</span>): y_trn_x.shape, y_tst_x.shape, y_trn_y.shape, y_tst_y.shape</span>
+<span id="cb118-13"><a href="credit-p12.html#cb118-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-14"><a href="credit-p12.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co">## ((227845, 30), (56962, 30), (227845,), (56962,))</span></span>
+<span id="cb118-15"><a href="credit-p12.html#cb118-15" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> y_trn_y.value_counts().to_frame()</span>
+<span id="cb118-16"><a href="credit-p12.html#cb118-16" aria-hidden="true" tabindex="-1"></a>pp[<span class="st">'PCT'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> pp <span class="op">/</span> pp.<span class="bu">sum</span>()</span>
+<span id="cb118-17"><a href="credit-p12.html#cb118-17" aria-hidden="true" tabindex="-1"></a>pp</span>
+<span id="cb118-18"><a href="credit-p12.html#cb118-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-19"><a href="credit-p12.html#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="co">##      is_Found        PCT</span></span>
+<span id="cb118-20"><a href="credit-p12.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="co">## No     227453  99.827953</span></span>
+<span id="cb118-21"><a href="credit-p12.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       392   0.172047</span></span>
+<span id="cb118-22"><a href="credit-p12.html#cb118-22" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> y_tst_y.value_counts().to_frame()</span>
+<span id="cb118-23"><a href="credit-p12.html#cb118-23" aria-hidden="true" tabindex="-1"></a>qq[<span class="st">'PCT'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> qq <span class="op">/</span> qq.<span class="bu">sum</span>()</span>
+<span id="cb118-24"><a href="credit-p12.html#cb118-24" aria-hidden="true" tabindex="-1"></a>qq</span>
+<span id="cb118-25"><a href="credit-p12.html#cb118-25" aria-hidden="true" tabindex="-1"></a><span class="co">##      is_Found        PCT</span></span>
+<span id="cb118-26"><a href="credit-p12.html#cb118-26" aria-hidden="true" tabindex="-1"></a><span class="co">## No      56862  99.824444</span></span>
+<span id="cb118-27"><a href="credit-p12.html#cb118-27" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes       100   0.175556</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="cross-validation" class="section level2" number="8.4">
+<div id="random-forest" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">8.4</span> Cross Validation<a class="anchor" aria-label="anchor" href="#cross-validation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Random Forest<a class="anchor" aria-label="anchor" href="#random-forest"><i class="fas fa-link"></i></a>
 </h2>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="credit-p12.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross Validation Framework </span></span>
-<span id="cb119-2"><a href="credit-p12.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold</span>
-<span id="cb119-3"><a href="credit-p12.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV, cross_val_score, RandomizedSearchCV</span>
-<span id="cb119-4"><a href="credit-p12.html#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-5"><a href="credit-p12.html#cb119-5" aria-hidden="true" tabindex="-1"></a>kf <span class="op">=</span> StratifiedKFold(n_splits <span class="op">=</span> <span class="dv">5</span>, random_state <span class="op">=</span> <span class="va">None</span>, shuffle <span class="op">=</span> <span class="va">False</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="credit-p12.html#cb119-1" aria-hidden="true" tabindex="-1"></a>loc <span class="op">=</span> <span class="st">'data/Y_04_RFC.sav'</span></span>
+<span id="cb119-2"><a href="credit-p12.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">not</span> os.path.exists(loc)):</span>
+<span id="cb119-3"><a href="credit-p12.html#cb119-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit</span></span>
+<span id="cb119-4"><a href="credit-p12.html#cb119-4" aria-hidden="true" tabindex="-1"></a>    y_rfc <span class="op">=</span> sklearn.ensemble.RandomForestClassifier(n_estimators <span class="op">=</span> <span class="dv">100</span>, </span>
+<span id="cb119-5"><a href="credit-p12.html#cb119-5" aria-hidden="true" tabindex="-1"></a>              criterion <span class="op">=</span> <span class="st">'gini'</span>, random_state <span class="op">=</span> <span class="dv">3</span>, n_jobs <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, verbose <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb119-6"><a href="credit-p12.html#cb119-6" aria-hidden="true" tabindex="-1"></a>    y_rfc.fit(y_trn_x, y_trn_y) </span>
+<span id="cb119-7"><a href="credit-p12.html#cb119-7" aria-hidden="true" tabindex="-1"></a>    joblib.dump(y_rfc, loc)</span>
+<span id="cb119-8"><a href="credit-p12.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb119-9"><a href="credit-p12.html#cb119-9" aria-hidden="true" tabindex="-1"></a>    y_rfc <span class="op">=</span> joblib.load(loc)</span>
+<span id="cb119-10"><a href="credit-p12.html#cb119-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-11"><a href="credit-p12.html#cb119-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-12"><a href="credit-p12.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(y_rfc.classes_)                              <span class="co">#Classes Labels </span></span>
+<span id="cb119-13"><a href="credit-p12.html#cb119-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-14"><a href="credit-p12.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="co">## ['No', 'Yes']</span></span>
+<span id="cb119-15"><a href="credit-p12.html#cb119-15" aria-hidden="true" tabindex="-1"></a>y_rfc.n_features_in_                              <span class="co">#Count Features</span></span>
+<span id="cb119-16"><a href="credit-p12.html#cb119-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-17"><a href="credit-p12.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="co">## 30</span></span>
+<span id="cb119-18"><a href="credit-p12.html#cb119-18" aria-hidden="true" tabindex="-1"></a>y_rfc_xs <span class="op">=</span> <span class="bu">list</span>(y_rfc.feature_names_in_)          <span class="co">#Features</span></span>
+<span id="cb119-19"><a href="credit-p12.html#cb119-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">', '</span>.join(y_rfc_xs[i:i<span class="op">+</span><span class="dv">8</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(y_rfc_xs),<span class="dv">8</span>)]))</span>
+<span id="cb119-20"><a href="credit-p12.html#cb119-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Amount, Time, V01, V02, V03, V04, V05, V06</span></span>
+<span id="cb119-21"><a href="credit-p12.html#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="co">## V07, V08, V09, V10, V11, V12, V13, V14</span></span>
+<span id="cb119-22"><a href="credit-p12.html#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co">## V15, V16, V17, V18, V19, V20, V21, V22</span></span>
+<span id="cb119-23"><a href="credit-p12.html#cb119-23" aria-hidden="true" tabindex="-1"></a><span class="co">## V23, V24, V25, V26, V27, V28</span></span></code></pre></div>
 </div>
 <br>
 </div>
 <div class="decocode">
 <div style="background-color:inherit">
 <p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="credit-p12.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imbalance</span></span>
-<span id="cb120-2"><a href="credit-p12.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb120-3"><a href="credit-p12.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.under_sampling <span class="im">import</span> NearMiss</span>
-<span id="cb120-4"><a href="credit-p12.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.over_sampling <span class="im">import</span> SMOTE</span>
-<span id="cb120-5"><a href="credit-p12.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Metrics</span></span>
-<span id="cb120-6"><a href="credit-p12.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve, roc_auc_score, accuracy_score, recall_score, precision_score, f1_score</span>
-<span id="cb120-7"><a href="credit-p12.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Classifiers</span></span>
-<span id="cb120-8"><a href="credit-p12.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb120-9"><a href="credit-p12.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb120-10"><a href="credit-p12.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb120-11"><a href="credit-p12.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb120-12"><a href="credit-p12.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="credit-p12.html#cb120-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> [ <span class="bu">round</span>(i, <span class="dv">3</span>) <span class="cf">for</span> i <span class="kw">in</span> y_rfc.feature_importances_ ]</span>
+<span id="cb120-2"><a href="credit-p12.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co">#print('\n'.join([', '.join(map(str, pp[i:i+8])) for i in range(0,len(pp),8)]))</span></span>
+<span id="cb120-3"><a href="credit-p12.html#cb120-3" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(Features <span class="op">=</span> y_rfc_xs, Importance <span class="op">=</span> pp))</span>
+<span id="cb120-4"><a href="credit-p12.html#cb120-4" aria-hidden="true" tabindex="-1"></a>qq.sort_values(<span class="st">'Importance'</span>, ascending <span class="op">=</span> <span class="va">False</span>).head()</span>
+<span id="cb120-5"><a href="credit-p12.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="co">##    Features  Importance</span></span>
+<span id="cb120-6"><a href="credit-p12.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="co">## 18      V17       0.152</span></span>
+<span id="cb120-7"><a href="credit-p12.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 15      V14       0.150</span></span>
+<span id="cb120-8"><a href="credit-p12.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 13      V12       0.125</span></span>
+<span id="cb120-9"><a href="credit-p12.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="co">## 11      V10       0.094</span></span>
+<span id="cb120-10"><a href="credit-p12.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co">## 17      V16       0.071</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb121-1"><a href="credit-p12.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict</span></span>
+<span id="cb121-2"><a href="credit-p12.html#cb121-2" aria-hidden="true" tabindex="-1"></a>y_rfc_pred <span class="op">=</span> y_rfc.predict(y_tst_x)</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="credit-p12.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(y_rfc.score(y_trn_x, y_trn_y), <span class="dv">5</span>))    <span class="co">#Train</span></span>
+<span id="cb122-2"><a href="credit-p12.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co">## 1.0</span></span>
+<span id="cb122-3"><a href="credit-p12.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(y_rfc.score(y_tst_x, y_tst_y), <span class="dv">5</span>))    <span class="co">#Test</span></span>
+<span id="cb122-4"><a href="credit-p12.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-5"><a href="credit-p12.html#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="credit-p12.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Confusion Matrix</span></span>
+<span id="cb122-7"><a href="credit-p12.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 0.99942</span></span>
+<span id="cb122-8"><a href="credit-p12.html#cb122-8" aria-hidden="true" tabindex="-1"></a>pd.crosstab(y_tst_y, y_rfc_pred, </span>
+<span id="cb122-9"><a href="credit-p12.html#cb122-9" aria-hidden="true" tabindex="-1"></a>            rownames <span class="op">=</span> [<span class="st">'Actual'</span>], colnames <span class="op">=</span> [<span class="st">'Predicted'</span>], margins <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb122-10"><a href="credit-p12.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Predicted     No  Yes    All</span></span>
+<span id="cb122-11"><a href="credit-p12.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Actual                      </span></span>
+<span id="cb122-12"><a href="credit-p12.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="co">## No         56855    7  56862</span></span>
+<span id="cb122-13"><a href="credit-p12.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="co">## Yes           26   74    100</span></span>
+<span id="cb122-14"><a href="credit-p12.html#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="co">## All        56881   81  56962</span></span>
+<span id="cb122-15"><a href="credit-p12.html#cb122-15" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> sklearn.metrics.confusion_matrix(y_tst_y, y_rfc_pred, </span>
+<span id="cb122-16"><a href="credit-p12.html#cb122-16" aria-hidden="true" tabindex="-1"></a>                      labels <span class="op">=</span> <span class="bu">list</span>(y_rfc.classes_))</span>
+<span id="cb122-17"><a href="credit-p12.html#cb122-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-18"><a href="credit-p12.html#cb122-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>): <span class="bu">print</span>(pp)</span>
+<span id="cb122-19"><a href="credit-p12.html#cb122-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> np.printoptions(precision <span class="op">=</span> <span class="dv">5</span>, suppress <span class="op">=</span> <span class="va">True</span>):</span>
+<span id="cb122-20"><a href="credit-p12.html#cb122-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">100</span> <span class="op">*</span> pp<span class="op">/</span>np.<span class="bu">sum</span>(pp))                    <span class="co">#Percent</span></span>
+<span id="cb122-21"><a href="credit-p12.html#cb122-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-22"><a href="credit-p12.html#cb122-22" aria-hidden="true" tabindex="-1"></a><span class="co">## [[99.81216  0.01229]</span></span>
+<span id="cb122-23"><a href="credit-p12.html#cb122-23" aria-hidden="true" tabindex="-1"></a><span class="co">##  [ 0.04564  0.12991]]</span></span>
+<span id="cb122-24"><a href="credit-p12.html#cb122-24" aria-hidden="true" tabindex="-1"></a>tn, fp, fn, tp <span class="op">=</span> pp.ravel()</span>
+<span id="cb122-25"><a href="credit-p12.html#cb122-25" aria-hidden="true" tabindex="-1"></a>(tn, fp, fn, tp)</span>
+<span id="cb122-26"><a href="credit-p12.html#cb122-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-27"><a href="credit-p12.html#cb122-27" aria-hidden="true" tabindex="-1"></a><span class="co">## (56855, 7, 26, 74)</span></span>
+<span id="cb122-28"><a href="credit-p12.html#cb122-28" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> y_tst_y.values.astype(<span class="st">'object'</span>)</span>
+<span id="cb122-29"><a href="credit-p12.html#cb122-29" aria-hidden="true" tabindex="-1"></a>pp.size</span>
+<span id="cb122-30"><a href="credit-p12.html#cb122-30" aria-hidden="true" tabindex="-1"></a><span class="co">## 56962</span></span>
+<span id="cb122-31"><a href="credit-p12.html#cb122-31" aria-hidden="true" tabindex="-1"></a>y_unique, y_counts <span class="op">=</span> np.unique(pp, return_counts <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb122-32"><a href="credit-p12.html#cb122-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.asarray((y_unique, y_counts)).T)</span>
+<span id="cb122-33"><a href="credit-p12.html#cb122-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-34"><a href="credit-p12.html#cb122-34" aria-hidden="true" tabindex="-1"></a><span class="co">## [['No' 56862]</span></span>
+<span id="cb122-35"><a href="credit-p12.html#cb122-35" aria-hidden="true" tabindex="-1"></a><span class="co">##  ['Yes' 100]]</span></span>
+<span id="cb122-36"><a href="credit-p12.html#cb122-36" aria-hidden="true" tabindex="-1"></a>qq <span class="op">=</span> y_rfc_pred</span>
+<span id="cb122-37"><a href="credit-p12.html#cb122-37" aria-hidden="true" tabindex="-1"></a>qq.size</span>
+<span id="cb122-38"><a href="credit-p12.html#cb122-38" aria-hidden="true" tabindex="-1"></a><span class="co">## 56962</span></span>
+<span id="cb122-39"><a href="credit-p12.html#cb122-39" aria-hidden="true" tabindex="-1"></a>y_unique, y_counts <span class="op">=</span> np.unique(qq, return_counts <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb122-40"><a href="credit-p12.html#cb122-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.asarray((y_unique, y_counts)).T)</span>
+<span id="cb122-41"><a href="credit-p12.html#cb122-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-42"><a href="credit-p12.html#cb122-42" aria-hidden="true" tabindex="-1"></a><span class="co">## [['No' 56881]</span></span>
+<span id="cb122-43"><a href="credit-p12.html#cb122-43" aria-hidden="true" tabindex="-1"></a><span class="co">##  ['Yes' 81]]</span></span>
+<span id="cb122-44"><a href="credit-p12.html#cb122-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Accuracy (Avoid): '</span>, sklearn.metrics.accuracy_score(</span>
+<span id="cb122-45"><a href="credit-p12.html#cb122-45" aria-hidden="true" tabindex="-1"></a>       y_tst_y, y_rfc_pred)) </span>
+<span id="cb122-46"><a href="credit-p12.html#cb122-46" aria-hidden="true" tabindex="-1"></a><span class="co">## Accuracy (Avoid):  0.999420666409185</span></span>
+<span id="cb122-47"><a href="credit-p12.html#cb122-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Precision: '</span>, sklearn.metrics.precision_score(</span>
+<span id="cb122-48"><a href="credit-p12.html#cb122-48" aria-hidden="true" tabindex="-1"></a>       y_tst_y, y_rfc_pred, pos_label <span class="op">=</span> <span class="st">'Yes'</span>)) <span class="co">#tp/(tp+fp)</span></span>
+<span id="cb122-49"><a href="credit-p12.html#cb122-49" aria-hidden="true" tabindex="-1"></a><span class="co">## Precision:  0.9135802469135802</span></span>
+<span id="cb122-50"><a href="credit-p12.html#cb122-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Recall (Sensitivity) (More Important): '</span>, sklearn.metrics.recall_score(</span>
+<span id="cb122-51"><a href="credit-p12.html#cb122-51" aria-hidden="true" tabindex="-1"></a>       y_tst_y, y_rfc_pred, pos_label <span class="op">=</span> <span class="st">'Yes'</span>)) <span class="co">#tp/(tp+fn)</span></span>
+<span id="cb122-52"><a href="credit-p12.html#cb122-52" aria-hidden="true" tabindex="-1"></a><span class="co">## Recall (Sensitivity) (More Important):  0.74</span></span>
+<span id="cb122-53"><a href="credit-p12.html#cb122-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'F1 (Avoid): '</span>, sklearn.metrics.f1_score(</span>
+<span id="cb122-54"><a href="credit-p12.html#cb122-54" aria-hidden="true" tabindex="-1"></a>       y_tst_y, y_rfc_pred, pos_label <span class="op">=</span> <span class="st">'Yes'</span>)) <span class="co">#2*tp/(2*tp+fn+fp)</span></span>
+<span id="cb122-55"><a href="credit-p12.html#cb122-55" aria-hidden="true" tabindex="-1"></a><span class="co">## F1 (Avoid):  0.8176795580110497</span></span></code></pre></div>
 </div>
 <br>
 </div>
 </div>
-<div id="model" class="section level2" number="8.5">
+<div id="confusion-matrix" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">8.5</span> Model<a class="anchor" aria-label="anchor" href="#model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Confusion Matrix<a class="anchor" aria-label="anchor" href="#confusion-matrix"><i class="fas fa-link"></i></a>
 </h2>
+<ul>
+<li>Precision makes sure we do not spot good transactions as fraudulent in our problem.</li>
+<li>Recall assures we do not predict fraudulent transactions as all good.</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Confusion Matrix </span></span>
+<span><span class="co">#     Actual Positive       Negative</span></span>
+<span><span class="co">#  Predicted</span></span>
+<span><span class="co">#  Positive  TP             FP (I)          Precision = TP /(TP+FP)</span></span>
+<span><span class="co">#  Negative  FN (II)        TN              NPV = TN /(TN+FN)</span></span>
+<span><span class="co">#            Sensitivity    Specificity     Accuracy</span></span>
+<span><span class="co">#                  = TP /(TP+FN)  = TN /(TN+FP)   = (TP+TN) /N</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="credit-p12.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confusion Matrix </span></span>
+<span id="cb124-2"><a href="credit-p12.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Predicted Negative       Positive</span></span>
+<span id="cb124-3"><a href="credit-p12.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     Actual</span></span>
+<span id="cb124-4"><a href="credit-p12.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  Negative  TN             FP (I)          Specificity = TN /(TN+FP)</span></span>
+<span id="cb124-5"><a href="credit-p12.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  Positive  FN (II)        TP              Sensitivity = TP /(TP+FN)</span></span>
+<span id="cb124-6"><a href="credit-p12.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="co">#            NPV            Precision       Accuracy</span></span>
+<span id="cb124-7"><a href="credit-p12.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                  = TN /(TN+FN)  = TP /(TP+FP)   = (TP+TN) /N</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="undersampling" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Undersampling<a class="anchor" aria-label="anchor" href="#undersampling"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>To be done only on the Training Data, not on the Test Data</li>
+<li>Near Miss refers to a group of undersampling strategies that pick samples based on the distance between majority and minority class instances.</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="credit-p12.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#def q_get_best_model(estimator, params, kf = kf, label = 'Yes', </span></span>
+<span id="cb125-2"><a href="credit-p12.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co">#      train_X = y_trn_x, train_Y = y_trn_y, test_X = y_tst_x, test_Y = y_tst_y, </span></span>
+<span id="cb125-3"><a href="credit-p12.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co">#      is_grid_search = True, sampling = NearMiss(), scoring='f1', n_jobs = -1):</span></span>
+<span id="cb125-4"><a href="credit-p12.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    if sampling is None:</span></span>
+<span id="cb125-5"><a href="credit-p12.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co">#        # make the pipeline of only the estimator</span></span>
+<span id="cb125-6"><a href="credit-p12.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="co">#        pipeline = make_pipeline(estimator)</span></span>
+<span id="cb125-7"><a href="credit-p12.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co">#    else:</span></span>
+<span id="cb125-8"><a href="credit-p12.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co">#        # make the pipeline of over or undersampling and estimator</span></span>
+<span id="cb125-9"><a href="credit-p12.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="co">#        pipeline = make_pipeline(sampling, estimator)</span></span>
+<span id="cb125-10"><a href="credit-p12.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    # get the estimator name</span></span>
+<span id="cb125-11"><a href="credit-p12.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="co">#    estimator_name = estimator.__class__.__name__.lower()</span></span>
+<span id="cb125-12"><a href="credit-p12.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="co">#    # construct the parameters for grid/random search cv</span></span>
+<span id="cb125-13"><a href="credit-p12.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co">#    new_params = {f'{estimator_name}__{key}': params[key] for key in params}</span></span>
+<span id="cb125-14"><a href="credit-p12.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    if is_grid_search:</span></span>
+<span id="cb125-15"><a href="credit-p12.html#cb125-15" aria-hidden="true" tabindex="-1"></a><span class="co">#        # grid search instead of randomized search</span></span>
+<span id="cb125-16"><a href="credit-p12.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co">#        search = sklearn.model_selection.GridSearchCV(pipeline, </span></span>
+<span id="cb125-17"><a href="credit-p12.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="co">#            param_grid = new_params, cv = kf, </span></span>
+<span id="cb125-18"><a href="credit-p12.html#cb125-18" aria-hidden="true" tabindex="-1"></a><span class="co">#            return_train_score = True, n_jobs = n_jobs, verbose = 0)</span></span>
+<span id="cb125-19"><a href="credit-p12.html#cb125-19" aria-hidden="true" tabindex="-1"></a><span class="co">#    else:</span></span>
+<span id="cb125-20"><a href="credit-p12.html#cb125-20" aria-hidden="true" tabindex="-1"></a><span class="co">#        # randomized search</span></span>
+<span id="cb125-21"><a href="credit-p12.html#cb125-21" aria-hidden="true" tabindex="-1"></a><span class="co">#        search = sklearn.model_selection.RandomizedSearchCV(pipeline, </span></span>
+<span id="cb125-22"><a href="credit-p12.html#cb125-22" aria-hidden="true" tabindex="-1"></a><span class="co">#            param_distributions = new_params, cv = kf, scoring = scoring, </span></span>
+<span id="cb125-23"><a href="credit-p12.html#cb125-23" aria-hidden="true" tabindex="-1"></a><span class="co">#            return_train_score = True, n_jobs = n_jobs, verbose = 0)</span></span>
+<span id="cb125-24"><a href="credit-p12.html#cb125-24" aria-hidden="true" tabindex="-1"></a><span class="co">#    # fit the model</span></span>
+<span id="cb125-25"><a href="credit-p12.html#cb125-25" aria-hidden="true" tabindex="-1"></a><span class="co">#    search.fit(train_X, train_Y)</span></span>
+<span id="cb125-26"><a href="credit-p12.html#cb125-26" aria-hidden="true" tabindex="-1"></a><span class="co">#    cv_score = cross_val_score(search, train_X, train_Y, </span></span>
+<span id="cb125-27"><a href="credit-p12.html#cb125-27" aria-hidden="true" tabindex="-1"></a><span class="co">#                               scoring = scoring, cv = kf)</span></span>
+<span id="cb125-28"><a href="credit-p12.html#cb125-28" aria-hidden="true" tabindex="-1"></a><span class="co">#    # make predictions on the test data</span></span>
+<span id="cb125-29"><a href="credit-p12.html#cb125-29" aria-hidden="true" tabindex="-1"></a><span class="co">#    y_pred = search.best_estimator_.named_steps[estimator_name].predict(test_X)</span></span>
+<span id="cb125-30"><a href="credit-p12.html#cb125-30" aria-hidden="true" tabindex="-1"></a><span class="co">#    # calculate the metrics: recall, accuracy, F1 score, etc.</span></span>
+<span id="cb125-31"><a href="credit-p12.html#cb125-31" aria-hidden="true" tabindex="-1"></a><span class="co">#    recall = sklearn.metrics.recall_score(test_Y, y_pred, pos_label = label)</span></span>
+<span id="cb125-32"><a href="credit-p12.html#cb125-32" aria-hidden="true" tabindex="-1"></a><span class="co">#    precision = sklearn.metrics.precision_score(test_Y, y_pred, pos_label = label)</span></span>
+<span id="cb125-33"><a href="credit-p12.html#cb125-33" aria-hidden="true" tabindex="-1"></a><span class="co">#    </span></span>
+<span id="cb125-34"><a href="credit-p12.html#cb125-34" aria-hidden="true" tabindex="-1"></a><span class="co">#    print('Hi') #xxxx</span></span>
+<span id="cb125-35"><a href="credit-p12.html#cb125-35" aria-hidden="true" tabindex="-1"></a><span class="co">#    </span></span>
+<span id="cb125-36"><a href="credit-p12.html#cb125-36" aria-hidden="true" tabindex="-1"></a><span class="co">#    accuracy = sklearn.metrics.accuracy_score(test_Y, y_pred)</span></span>
+<span id="cb125-37"><a href="credit-p12.html#cb125-37" aria-hidden="true" tabindex="-1"></a><span class="co">#    f1 = sklearn.metrics.f1_score(test_Y, y_pred, pos_label = label)</span></span>
+<span id="cb125-38"><a href="credit-p12.html#cb125-38" aria-hidden="true" tabindex="-1"></a><span class="co">#    y_proba = search.best_estimator_.named_steps[estimator_name].predict_proba(test_X)[::, 1]</span></span>
+<span id="cb125-39"><a href="credit-p12.html#cb125-39" aria-hidden="true" tabindex="-1"></a><span class="co">#    fpr, tpr, _ = roc_curve(test_Y, y_proba)</span></span>
+<span id="cb125-40"><a href="credit-p12.html#cb125-40" aria-hidden="true" tabindex="-1"></a><span class="co">#    auc = roc_auc_score(test_Y, y_proba)</span></span>
+<span id="cb125-41"><a href="credit-p12.html#cb125-41" aria-hidden="true" tabindex="-1"></a><span class="co">#    # return the best estimator along with the metrics</span></span>
+<span id="cb125-42"><a href="credit-p12.html#cb125-42" aria-hidden="true" tabindex="-1"></a><span class="co">#    return({</span></span>
+<span id="cb125-43"><a href="credit-p12.html#cb125-43" aria-hidden="true" tabindex="-1"></a><span class="co">#        'best_estimator': search.best_estimator_,</span></span>
+<span id="cb125-44"><a href="credit-p12.html#cb125-44" aria-hidden="true" tabindex="-1"></a><span class="co">#        'estimator_name': estimator_name,</span></span>
+<span id="cb125-45"><a href="credit-p12.html#cb125-45" aria-hidden="true" tabindex="-1"></a><span class="co">#        'cv_score': cv_score,</span></span>
+<span id="cb125-46"><a href="credit-p12.html#cb125-46" aria-hidden="true" tabindex="-1"></a><span class="co">#        'recall': recall,</span></span>
+<span id="cb125-47"><a href="credit-p12.html#cb125-47" aria-hidden="true" tabindex="-1"></a><span class="co">#        'precision': precision,</span></span>
+<span id="cb125-48"><a href="credit-p12.html#cb125-48" aria-hidden="true" tabindex="-1"></a><span class="co">#        'accuracy': accuracy,</span></span>
+<span id="cb125-49"><a href="credit-p12.html#cb125-49" aria-hidden="true" tabindex="-1"></a><span class="co">#        'f1_score': f1,</span></span>
+<span id="cb125-50"><a href="credit-p12.html#cb125-50" aria-hidden="true" tabindex="-1"></a><span class="co">#        'fpr': fpr,</span></span>
+<span id="cb125-51"><a href="credit-p12.html#cb125-51" aria-hidden="true" tabindex="-1"></a><span class="co">#        'tpr': tpr,</span></span>
+<span id="cb125-52"><a href="credit-p12.html#cb125-52" aria-hidden="true" tabindex="-1"></a><span class="co">#        'auc': auc,</span></span>
+<span id="cb125-53"><a href="credit-p12.html#cb125-53" aria-hidden="true" tabindex="-1"></a><span class="co">#    })</span></span>
+<span id="cb125-54"><a href="credit-p12.html#cb125-54" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="model" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Model<a class="anchor" aria-label="anchor" href="#model"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="credit-p12.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb126-2"><a href="credit-p12.html#cb126-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cross Validation Framework </span></span>
+<span id="cb126-3"><a href="credit-p12.html#cb126-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold</span>
+<span id="cb126-4"><a href="credit-p12.html#cb126-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV, cross_val_score, RandomizedSearchCV</span>
+<span id="cb126-5"><a href="credit-p12.html#cb126-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#kf = StratifiedKFold(n_splits = 5, random_state = None, shuffle = False)</span></span>
+<span id="cb126-6"><a href="credit-p12.html#cb126-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imbalance</span></span>
+<span id="cb126-7"><a href="credit-p12.html#cb126-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> imblearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb126-8"><a href="credit-p12.html#cb126-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> imblearn.under_sampling <span class="im">import</span> NearMiss</span>
+<span id="cb126-9"><a href="credit-p12.html#cb126-9" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> imblearn.over_sampling <span class="im">import</span> SMOTE</span>
+<span id="cb126-10"><a href="credit-p12.html#cb126-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Metrics</span></span>
+<span id="cb126-11"><a href="credit-p12.html#cb126-11" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve, roc_auc_score</span>
+<span id="cb126-12"><a href="credit-p12.html#cb126-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Classifiers</span></span>
+<span id="cb126-13"><a href="credit-p12.html#cb126-13" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb126-14"><a href="credit-p12.html#cb126-14" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb126-15"><a href="credit-p12.html#cb126-15" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb126-16"><a href="credit-p12.html#cb126-16" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="tuning" class="section level2" number="8.8">
+<h2>
+<span class="header-section-number">8.8</span> Tuning<a class="anchor" aria-label="anchor" href="#tuning"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="credit-p12.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of trees in random forest</span></span>
+<span id="cb127-2"><a href="credit-p12.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co">#n_estimators = np.linspace(100, 3000, int((3000-100)/200) + 1, dtype=int)</span></span>
+<span id="cb127-3"><a href="credit-p12.html#cb127-3" aria-hidden="true" tabindex="-1"></a>n_estimators <span class="op">=</span> np.array([<span class="dv">100</span>])</span>
+<span id="cb127-4"><a href="credit-p12.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of features to consider at every split</span></span>
+<span id="cb127-5"><a href="credit-p12.html#cb127-5" aria-hidden="true" tabindex="-1"></a>max_features <span class="op">=</span> [<span class="st">'sqrt'</span>] <span class="co">#['auto', 'sqrt']</span></span>
+<span id="cb127-6"><a href="credit-p12.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum number of levels in tree</span></span>
+<span id="cb127-7"><a href="credit-p12.html#cb127-7" aria-hidden="true" tabindex="-1"></a>max_depth <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb127-8"><a href="credit-p12.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum number of samples required to split a node</span></span>
+<span id="cb127-9"><a href="credit-p12.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co"># min_samples_split = [int(x) for x in np.linspace(start = 2, stop = 10, num = 9)]</span></span>
+<span id="cb127-10"><a href="credit-p12.html#cb127-10" aria-hidden="true" tabindex="-1"></a>min_samples_split <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb127-11"><a href="credit-p12.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum number of samples required at each leaf node</span></span>
+<span id="cb127-12"><a href="credit-p12.html#cb127-12" aria-hidden="true" tabindex="-1"></a>min_samples_leaf <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb127-13"><a href="credit-p12.html#cb127-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Method of selecting samples for training each tree</span></span>
+<span id="cb127-14"><a href="credit-p12.html#cb127-14" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="op">=</span> [<span class="va">True</span>] <span class="co">#[True, False]</span></span>
+<span id="cb127-15"><a href="credit-p12.html#cb127-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Criterion</span></span>
+<span id="cb127-16"><a href="credit-p12.html#cb127-16" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> [<span class="st">'gini'</span>] <span class="co">#['gini', 'entropy']</span></span>
+<span id="cb127-17"><a href="credit-p12.html#cb127-17" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {<span class="st">'n_estimators'</span>: n_estimators,</span>
+<span id="cb127-18"><a href="credit-p12.html#cb127-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                'max_features': max_features,</span></span>
+<span id="cb127-19"><a href="credit-p12.html#cb127-19" aria-hidden="true" tabindex="-1"></a>               <span class="st">'max_depth'</span>: max_depth,</span>
+<span id="cb127-20"><a href="credit-p12.html#cb127-20" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_split'</span>: min_samples_split,</span>
+<span id="cb127-21"><a href="credit-p12.html#cb127-21" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
+<span id="cb127-22"><a href="credit-p12.html#cb127-22" aria-hidden="true" tabindex="-1"></a>               <span class="st">'bootstrap'</span>: bootstrap,</span>
+<span id="cb127-23"><a href="credit-p12.html#cb127-23" aria-hidden="true" tabindex="-1"></a>               <span class="st">'criterion'</span>: criterion}</span></code></pre></div>
+</div>
+<br>
+</div>
+</div>
+<div id="small-test-case" class="section level2" number="8.9">
+<h2>
+<span class="header-section-number">8.9</span> Small Test Case<a class="anchor" aria-label="anchor" href="#small-test-case"><i class="fas fa-link"></i></a>
+</h2>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="credit-p12.html#cb128-1" aria-hidden="true" tabindex="-1"></a>y_rfc_base <span class="op">=</span> sklearn.ensemble.RandomForestClassifier() </span>
+<span id="cb128-2"><a href="credit-p12.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="va">False</span>):</span>
+<span id="cb128-3"><a href="credit-p12.html#cb128-3" aria-hidden="true" tabindex="-1"></a>    y_rfc_cv_pre <span class="op">=</span> sklearn.model_selection.RandomizedSearchCV(</span>
+<span id="cb128-4"><a href="credit-p12.html#cb128-4" aria-hidden="true" tabindex="-1"></a>                estimator <span class="op">=</span> y_rfc_base, param_distributions <span class="op">=</span> random_grid,</span>
+<span id="cb128-5"><a href="credit-p12.html#cb128-5" aria-hidden="true" tabindex="-1"></a>                n_iter <span class="op">=</span> <span class="dv">3</span>, cv <span class="op">=</span> <span class="dv">2</span>, verbose <span class="op">=</span> <span class="dv">0</span>, random_state <span class="op">=</span> <span class="dv">3</span>, n_jobs <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb128-6"><a href="credit-p12.html#cb128-6" aria-hidden="true" tabindex="-1"></a>    y_rfc_cv_pre.fit(y_trn_x, y_trn_y) </span>
+<span id="cb128-7"><a href="credit-p12.html#cb128-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y_rfc_cv_pre.best_params_)</span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span> <span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_config.html">py_config</a></span><span class="op">(</span><span class="op">)</span>         <span class="co">#Python Configuration</span></span>
+<span><span class="co">## python:         C:/Softwares/Python/Python310/python.exe</span></span>
+<span><span class="co">## libpython:      C:/Softwares/Python/Python310/python310.dll</span></span>
+<span><span class="co">## pythonhome:     C:/Softwares/Python/Python310</span></span>
+<span><span class="co">## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span>
+<span><span class="co">## Architecture:   64bit</span></span>
+<span><span class="co">## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy</span></span>
+<span><span class="co">## numpy_version:  1.23.1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## NOTE: Python version was forced by use_python function</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="va">q_url</span><span class="op">[</span> , <span class="st">'URL'</span><span class="op">]</span>     <span class="co">#List of URL of this Page</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">q_</span><span class="op">(</span><span class="op">)</span>                <span class="co">#R Objects of this Page excluding 'q_*'</span></span></code></pre></div>
+</div>
+<br>
+</div>
 
 </div>
 </div>
@@ -237,8 +528,12 @@
 <li><a class="nav-link" href="#load-credit-card-fraud"><span class="header-section-number">8.1</span> Load: Credit Card Fraud</a></li>
 <li><a class="nav-link" href="#standardisation"><span class="header-section-number">8.2</span> Standardisation</a></li>
 <li><a class="nav-link" href="#train-test"><span class="header-section-number">8.3</span> Train &amp; Test</a></li>
-<li><a class="nav-link" href="#cross-validation"><span class="header-section-number">8.4</span> Cross Validation</a></li>
-<li><a class="nav-link" href="#model"><span class="header-section-number">8.5</span> Model</a></li>
+<li><a class="nav-link" href="#random-forest"><span class="header-section-number">8.4</span> Random Forest</a></li>
+<li><a class="nav-link" href="#confusion-matrix"><span class="header-section-number">8.5</span> Confusion Matrix</a></li>
+<li><a class="nav-link" href="#undersampling"><span class="header-section-number">8.6</span> Undersampling</a></li>
+<li><a class="nav-link" href="#model"><span class="header-section-number">8.7</span> Model</a></li>
+<li><a class="nav-link" href="#tuning"><span class="header-section-number">8.8</span> Tuning</a></li>
+<li><a class="nav-link" href="#small-test-case"><span class="header-section-number">8.9</span> Small Test Case</a></li>
 </ul>
 
       <div class="book-extra">
@@ -256,7 +551,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-08-02.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-08-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -69,8 +69,12 @@ credit-p12
 load-credit-card-fraud
 standardisation
 train-test
-cross-validation
+random-forest
+confusion-matrix
+undersampling
 model
+tuning
+small-test-case
 so-q01
 test-data
 section

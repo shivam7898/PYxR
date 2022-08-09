@@ -667,7 +667,7 @@ if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
 ```python
 # Sys Executable Path
 os.path.dirname(sys.executable)
-## 'C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64'
+## 'C:/Softwares/Python/Python310'
 print(sys.version.split()[0])           # Python Version
 ## 3.10.5
 print(pd.__version__)                   # Module Version: pandas
