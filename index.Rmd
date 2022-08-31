@@ -16,6 +16,10 @@ csl: chicago-fullnote-bibliography.csl
 
 This is a book to compare and contrast Python and R using minimum working examples (MWE). 
 
+## Schedule {.unnumbered}
+
+There will be sporadic updated between August-September, 2022. From October-2022 onwards, I am hoping to update it regularly on weekends. 
+
 ## License {.unnumbered}
 
 The code samples in this book are licensed under [Creative Commons CC0 1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/), i.e. public domain.
