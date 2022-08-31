@@ -18,7 +18,7 @@ This is a book to compare and contrast Python and R using minimum working exampl
 
 ## Schedule {.unnumbered}
 
-There will be sporadic updated between August-September, 2022. From October-2022 onwards, I am hoping to update it regularly on weekends. 
+There will be sporadic updates in Sep-22. From Oct-22 onward, I am hoping to update it regularly on weekends. 
 
 ## License {.unnumbered}
 
