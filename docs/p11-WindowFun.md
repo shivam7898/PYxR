@@ -133,7 +133,6 @@ dplyr::filter(players, min_rank(desc(H)) <= 2 & H > 0)
 ##  9 abreujo02   2017 CHA      156   621    95   189
 ## 10 acunaro01   2018 ATL      111   433    78   127
 ## # … with 2,907 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 
 
 # Within each player, rank each year by the number of games played
@@ -153,7 +152,6 @@ dplyr::mutate(players, G_rank = min_rank(G))
 ##  9 aaronha01   1962 ML1      156   592   127   191     20
 ## 10 aaronha01   1963 ML1      161   631   121   201     23
 ## # … with 20,696 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 </div><br></div>

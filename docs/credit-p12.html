@@ -7,7 +7,7 @@
 <title>Chapter 8 Credit Card Fraud | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
 <meta name="description" content="8.1 Load: Credit Card Fraud Source: Kaggle   Python loc = 'data/Y_04_CCR' loc_csv = loc + '.csv' loc_bin = loc + '.feather' if(not os.path.exists(loc_bin)):   #Read | Relocate | Rename | Factor |...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Credit Card Fraud | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/credit-p12.html">
@@ -211,19 +211,24 @@
 <span id="cb119-8"><a href="credit-p12.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb119-9"><a href="credit-p12.html#cb119-9" aria-hidden="true" tabindex="-1"></a>    y_rfc <span class="op">=</span> joblib.load(loc)</span>
 <span id="cb119-10"><a href="credit-p12.html#cb119-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-11"><a href="credit-p12.html#cb119-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-12"><a href="credit-p12.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(y_rfc.classes_)                              <span class="co">#Classes Labels </span></span>
-<span id="cb119-13"><a href="credit-p12.html#cb119-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-14"><a href="credit-p12.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="co">## ['No', 'Yes']</span></span>
-<span id="cb119-15"><a href="credit-p12.html#cb119-15" aria-hidden="true" tabindex="-1"></a>y_rfc.n_features_in_                              <span class="co">#Count Features</span></span>
-<span id="cb119-16"><a href="credit-p12.html#cb119-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-17"><a href="credit-p12.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="co">## 30</span></span>
-<span id="cb119-18"><a href="credit-p12.html#cb119-18" aria-hidden="true" tabindex="-1"></a>y_rfc_xs <span class="op">=</span> <span class="bu">list</span>(y_rfc.feature_names_in_)          <span class="co">#Features</span></span>
-<span id="cb119-19"><a href="credit-p12.html#cb119-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">', '</span>.join(y_rfc_xs[i:i<span class="op">+</span><span class="dv">8</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(y_rfc_xs),<span class="dv">8</span>)]))</span>
-<span id="cb119-20"><a href="credit-p12.html#cb119-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Amount, Time, V01, V02, V03, V04, V05, V06</span></span>
-<span id="cb119-21"><a href="credit-p12.html#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="co">## V07, V08, V09, V10, V11, V12, V13, V14</span></span>
-<span id="cb119-22"><a href="credit-p12.html#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co">## V15, V16, V17, V18, V19, V20, V21, V22</span></span>
-<span id="cb119-23"><a href="credit-p12.html#cb119-23" aria-hidden="true" tabindex="-1"></a><span class="co">## V23, V24, V25, V26, V27, V28</span></span></code></pre></div>
+<span id="cb119-11"><a href="credit-p12.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co">## C:\SOFTWA~1\Python\PYTHON~1\lib\site-packages\sklearn\base.py:329: UserWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.1.1 when using version 1.1.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:</span></span>
+<span id="cb119-12"><a href="credit-p12.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="co">## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations</span></span>
+<span id="cb119-13"><a href="credit-p12.html#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="co">##   warnings.warn(</span></span>
+<span id="cb119-14"><a href="credit-p12.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="co">## C:\SOFTWA~1\Python\PYTHON~1\lib\site-packages\sklearn\base.py:329: UserWarning: Trying to unpickle estimator RandomForestClassifier from version 1.1.1 when using version 1.1.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:</span></span>
+<span id="cb119-15"><a href="credit-p12.html#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="co">## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations</span></span>
+<span id="cb119-16"><a href="credit-p12.html#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="co">##   warnings.warn(</span></span>
+<span id="cb119-17"><a href="credit-p12.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(y_rfc.classes_)                              <span class="co">#Classes Labels </span></span>
+<span id="cb119-18"><a href="credit-p12.html#cb119-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-19"><a href="credit-p12.html#cb119-19" aria-hidden="true" tabindex="-1"></a><span class="co">## ['No', 'Yes']</span></span>
+<span id="cb119-20"><a href="credit-p12.html#cb119-20" aria-hidden="true" tabindex="-1"></a>y_rfc.n_features_in_                              <span class="co">#Count Features</span></span>
+<span id="cb119-21"><a href="credit-p12.html#cb119-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-22"><a href="credit-p12.html#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co">## 30</span></span>
+<span id="cb119-23"><a href="credit-p12.html#cb119-23" aria-hidden="true" tabindex="-1"></a>y_rfc_xs <span class="op">=</span> <span class="bu">list</span>(y_rfc.feature_names_in_)          <span class="co">#Features</span></span>
+<span id="cb119-24"><a href="credit-p12.html#cb119-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">', '</span>.join(y_rfc_xs[i:i<span class="op">+</span><span class="dv">8</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(y_rfc_xs),<span class="dv">8</span>)]))</span>
+<span id="cb119-25"><a href="credit-p12.html#cb119-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Amount, Time, V01, V02, V03, V04, V05, V06</span></span>
+<span id="cb119-26"><a href="credit-p12.html#cb119-26" aria-hidden="true" tabindex="-1"></a><span class="co">## V07, V08, V09, V10, V11, V12, V13, V14</span></span>
+<span id="cb119-27"><a href="credit-p12.html#cb119-27" aria-hidden="true" tabindex="-1"></a><span class="co">## V15, V16, V17, V18, V19, V20, V21, V22</span></span>
+<span id="cb119-28"><a href="credit-p12.html#cb119-28" aria-hidden="true" tabindex="-1"></a><span class="co">## V23, V24, V25, V26, V27, V28</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -504,10 +509,10 @@
 <span><span class="co">## python:         C:/Softwares/Python/Python310/python.exe</span></span>
 <span><span class="co">## libpython:      C:/Softwares/Python/Python310/python310.dll</span></span>
 <span><span class="co">## pythonhome:     C:/Softwares/Python/Python310</span></span>
-<span><span class="co">## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]</span></span>
+<span><span class="co">## version:        3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]</span></span>
 <span><span class="co">## Architecture:   64bit</span></span>
 <span><span class="co">## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy</span></span>
-<span><span class="co">## numpy_version:  1.23.1</span></span>
+<span><span class="co">## numpy_version:  1.23.2</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## NOTE: Python version was forced by use_python function</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="va">q_url</span><span class="op">[</span> , <span class="st">'URL'</span><span class="op">]</span>     <span class="co">#List of URL of this Page</span></span>
@@ -551,7 +556,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-08-09.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2022-09-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -564,7 +569,7 @@
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

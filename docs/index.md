@@ -1,7 +1,7 @@
 --- 
 title: 'PYxR'
 author: 'Shivam Upadhyay'
-date: '2022-08-09'
+date: '2022-09-01'
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,6 +15,10 @@ csl: chicago-fullnote-bibliography.csl
 # Welcome {.unnumbered}
 
 This is a book to compare and contrast Python and R using minimum working examples (MWE). 
+
+## Schedule {.unnumbered}
+
+There will be sporadic updated between August-September, 2022. From October-2022 onwards, I am hoping to update it regularly on weekends. 
 
 ## License {.unnumbered}
 

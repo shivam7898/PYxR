@@ -41,7 +41,7 @@ strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 ```python
 print(sys.version.split()[0])                     # Python Version
-## 3.10.5
+## 3.10.6
 ```
 
 </div><br></div>
@@ -70,24 +70,24 @@ sessionInfo()
 ## other attached packages:
 ##  [1] Lahman_10.0-1     kableExtra_1.3.4  tidyr_1.2.0       readr_2.1.2      
 ##  [5] dplyr_1.0.9       tibble_3.1.8      lobstr_1.1.2      fontawesome_0.3.0
-##  [9] reticulate_1.25   knitr_1.39        conflicted_1.1.0 
+##  [9] reticulate_1.25   knitr_1.40        conflicted_1.1.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] bslib_0.4.0       tidyselect_1.1.2  xfun_0.31         purrr_0.3.4      
+##  [1] bslib_0.4.0       tidyselect_1.1.2  xfun_0.32         purrr_0.3.4      
 ##  [5] lattice_0.20-45   colorspace_2.0-3  vctrs_0.4.1       generics_0.1.3   
-##  [9] htmltools_0.5.3   viridisLite_0.4.0 yaml_2.3.5        utf8_1.2.2       
-## [13] rlang_1.0.4       jquerylib_0.1.4   pillar_1.8.0      withr_2.5.0      
-## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.1   stringr_1.4.0    
-## [21] munsell_0.5.0     rvest_1.0.2       memoise_2.0.1     evaluate_0.15    
+##  [9] htmltools_0.5.3   viridisLite_0.4.1 yaml_2.3.5        utf8_1.2.2       
+## [13] rlang_1.0.4       jquerylib_0.1.4   pillar_1.8.1      withr_2.5.0      
+## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.1   stringr_1.4.1    
+## [21] munsell_0.5.0     rvest_1.0.3       memoise_2.0.1     evaluate_0.16    
 ## [25] tzdb_0.3.0        fastmap_1.1.0     fansi_1.0.3       Rcpp_1.0.9       
-## [29] scales_1.2.0      cachem_1.0.6      webshot_0.5.3     jsonlite_1.8.0   
-## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.1         png_0.1-7        
-## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.27     rprojroot_2.0.3  
+## [29] scales_1.2.1      cachem_1.0.6      webshot_0.5.3     jsonlite_1.8.0   
+## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.2         png_0.1-7        
+## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.28     rprojroot_2.0.3  
 ## [41] grid_4.2.1        here_1.0.1        cli_3.3.0         tools_4.2.1      
 ## [45] sass_0.4.2        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.1     
 ## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3       
-## [53] assertthat_0.2.1  rmarkdown_2.14    svglite_2.1.0     httr_1.4.3       
-## [57] rstudioapi_0.13   R6_2.5.1          compiler_4.2.1
+## [53] assertthat_0.2.1  rmarkdown_2.16    svglite_2.1.0     httr_1.4.4       
+## [57] rstudioapi_0.14   R6_2.5.1          compiler_4.2.1
 ```
 
 </div><br></div>
@@ -115,10 +115,10 @@ py_config()
 ## python:         C:/Softwares/Python/Python310/python.exe
 ## libpython:      C:/Softwares/Python/Python310/python310.dll
 ## pythonhome:     C:/Softwares/Python/Python310
-## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]
+## version:        3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]
 ## Architecture:   64bit
 ## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy
-## numpy_version:  1.23.1
+## numpy_version:  1.23.2
 ## 
 ## NOTE: Python version was forced by use_python function
 ```

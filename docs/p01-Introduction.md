@@ -630,7 +630,7 @@ strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 # The loaded packages and namespaces are searched before the libraries
 packageVersion('knitr')                           # Package Version: knitr
-## [1] '1.39'
+## [1] '1.40'
 ```
 
 </div><br></div>
@@ -658,7 +658,7 @@ where.exe python
 bool_as_str=true;
 if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
 
-## Python 3.10.5
+## Python 3.10.6
 ## C:\Softwares\Python\Python310\python.exe
 ## C:\Users\shiva\AppData\Local\r-miniconda\python.exe
 ```
@@ -669,7 +669,7 @@ if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
 os.path.dirname(sys.executable)
 ## 'C:/Softwares/Python/Python310'
 print(sys.version.split()[0])           # Python Version
-## 3.10.5
+## 3.10.6
 print(pd.__version__)                   # Module Version: pandas
 ## 1.4.3
 ```

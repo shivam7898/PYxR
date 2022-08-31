@@ -139,7 +139,12 @@ if(not os.path.exists(loc)):
 else:
     y_rfc = joblib.load(loc)
 
-
+## C:\SOFTWA~1\Python\PYTHON~1\lib\site-packages\sklearn\base.py:329: UserWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.1.1 when using version 1.1.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+##   warnings.warn(
+## C:\SOFTWA~1\Python\PYTHON~1\lib\site-packages\sklearn\base.py:329: UserWarning: Trying to unpickle estimator RandomForestClassifier from version 1.1.1 when using version 1.1.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+##   warnings.warn(
 list(y_rfc.classes_)                              #Classes Labels 
 
 ## ['No', 'Yes']
@@ -429,10 +434,10 @@ if(TRUE) py_config()         #Python Configuration
 ## python:         C:/Softwares/Python/Python310/python.exe
 ## libpython:      C:/Softwares/Python/Python310/python310.dll
 ## pythonhome:     C:/Softwares/Python/Python310
-## version:        3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]
+## version:        3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]
 ## Architecture:   64bit
 ## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy
-## numpy_version:  1.23.1
+## numpy_version:  1.23.2
 ## 
 ## NOTE: Python version was forced by use_python function
 if(FALSE) q_url[ , 'URL']     #List of URL of this Page
