@@ -32,16 +32,16 @@
 
 ```r
 strsplit(R.version.string, ' ')[[1]][3]           # R Version
-## [1] "4.2.1"
+## [1] "4.2.2"
 ```
 
 </div><br></div>
 
-<div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#FFD94C'><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
+<div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#FFD94C'><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
 
 ```python
 print(sys.version.split()[0])                     # Python Version
-## 3.10.6
+## 3.11.1
 ```
 
 </div><br></div>
@@ -53,7 +53,7 @@ print(sys.version.split()[0])                     # Python Version
 ```r
 # Attached (Basic) Packages in R 
 sessionInfo()
-## R version 4.2.1 (2022-06-23 ucrt)
+## R version 4.2.2 (2022-10-31 ucrt)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 10 x64 (build 19044)
 ## 
@@ -65,34 +65,34 @@ sessionInfo()
 ## [5] LC_TIME=English_India.utf8    
 ## 
 ## attached base packages:
-## [1] stats     graphics  grDevices datasets  utils     methods   base     
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] Lahman_10.0-1     kableExtra_1.3.4  tidyr_1.2.0       readr_2.1.2      
-##  [5] dplyr_1.0.9       tibble_3.1.8      lobstr_1.1.2      fontawesome_0.3.0
-##  [9] reticulate_1.25   knitr_1.40        conflicted_1.1.0 
+##  [1] Lahman_10.0-1     kableExtra_1.3.4  tidyr_1.2.1       readr_2.1.3      
+##  [5] dplyr_1.0.10      tibble_3.1.8      lobstr_1.1.2      fontawesome_0.4.0
+##  [9] reticulate_1.27   knitr_1.41        conflicted_1.1.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] bslib_0.4.0       tidyselect_1.1.2  xfun_0.32         purrr_0.3.4      
-##  [5] lattice_0.20-45   colorspace_2.0-3  vctrs_0.4.1       generics_0.1.3   
-##  [9] htmltools_0.5.3   viridisLite_0.4.1 yaml_2.3.5        utf8_1.2.2       
-## [13] rlang_1.0.4       jquerylib_0.1.4   pillar_1.8.1      withr_2.5.0      
-## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.1   stringr_1.4.1    
-## [21] munsell_0.5.0     rvest_1.0.3       memoise_2.0.1     evaluate_0.16    
+##  [1] bslib_0.4.2       tidyselect_1.2.0  xfun_0.36         purrr_1.0.1      
+##  [5] lattice_0.20-45   colorspace_2.0-3  vctrs_0.5.1       generics_0.1.3   
+##  [9] htmltools_0.5.4   viridisLite_0.4.1 yaml_2.3.6        utf8_1.2.2       
+## [13] rlang_1.0.6       jquerylib_0.1.4   pillar_1.8.1      withr_2.5.0      
+## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.3   stringr_1.5.0    
+## [21] munsell_0.5.0     rvest_1.0.3       memoise_2.0.1     evaluate_0.19    
 ## [25] tzdb_0.3.0        fastmap_1.1.0     fansi_1.0.3       Rcpp_1.0.9       
-## [29] scales_1.2.1      cachem_1.0.6      webshot_0.5.3     jsonlite_1.8.0   
-## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.2         png_0.1-7        
-## [37] digest_0.6.29     stringi_1.7.8     bookdown_0.28     rprojroot_2.0.3  
-## [41] grid_4.2.1        here_1.0.1        cli_3.3.0         tools_4.2.1      
-## [45] sass_0.4.2        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.1     
-## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.4-1      xml2_1.3.3       
-## [53] assertthat_0.2.1  rmarkdown_2.16    svglite_2.1.0     httr_1.4.4       
-## [57] rstudioapi_0.14   R6_2.5.1          compiler_4.2.1
+## [29] scales_1.2.1      cachem_1.0.6      webshot_0.5.4     jsonlite_1.8.4   
+## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.2         png_0.1-8        
+## [37] digest_0.6.31     stringi_1.7.12    bookdown_0.31     rprojroot_2.0.3  
+## [41] grid_4.2.2        here_1.0.1        cli_3.6.0         tools_4.2.2      
+## [45] sass_0.4.4        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.2     
+## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.5-3      xml2_1.3.3       
+## [53] assertthat_0.2.1  rmarkdown_2.19    svglite_2.1.1     httr_1.4.4       
+## [57] rstudioapi_0.14   R6_2.5.1          compiler_4.2.2
 ```
 
 </div><br></div>
 
-<div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#FFD94C'><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
+<div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#FFD94C'><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg><b> Python</b></span>
 
 ```python
 # Count & List the Imported (Basic) Modules in Python 
@@ -112,13 +112,13 @@ len(pp)                                           # Count the Loaded Modules
 ```r
 # Python Configuration with R Package 'Reticulate'
 py_config()
-## python:         C:/Softwares/Python/Python310/python.exe
-## libpython:      C:/Softwares/Python/Python310/python310.dll
-## pythonhome:     C:/Softwares/Python/Python310
-## version:        3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]
+## python:         C:/Softwares/Python/Python311/python.exe
+## libpython:      C:/Softwares/Python/Python311/python311.dll
+## pythonhome:     C:/Softwares/Python/Python311
+## version:        3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]
 ## Architecture:   64bit
-## numpy:          C:/Softwares/Python/Python310/Lib/site-packages/numpy
-## numpy_version:  1.23.2
+## numpy:          C:/Softwares/Python/Python311/Lib/site-packages/numpy
+## numpy_version:  1.24.1
 ## 
 ## NOTE: Python version was forced by use_python function
 ```
