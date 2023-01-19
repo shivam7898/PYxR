@@ -1,6 +1,7 @@
+import sys
 if (False or 'pandas' not in sys.modules):
-    # CAUTION: Avoid implicit import i.e. 'from x import y'
-    import sys, os, multiprocessing
+    #CAUTION: Avoid implicit import i.e. 'from x import y'
+    import os, multiprocessing
     q_EXE_PATH = os.path.join(sys.exec_prefix, 'pythonw.exe')
     sys.executable = q_EXE_PATH
     sys._base_executable = q_EXE_PATH
@@ -14,11 +15,11 @@ if (False or 'pandas' not in sys.modules):
     import matplotlib as mpl
     import matplotlib.pyplot as plt
     import imblearn
-    # CAUTION: Due to R "arrow" & Python "pyarrow" conflict do not load it in R
+    #CAUTION: Due to R "arrow" & Python "pyarrow" conflict do not load it in R
     import pyarrow
     import pyarrow.feather
     import joblib
-    # No Scientific Notation in NumPy
+    #No Scientific Notation in NumPy
     np.set_printoptions(formatter={'float_kind':'{:f}'.format})
 else:
     print("Python Modules not loaded again.")
