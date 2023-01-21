@@ -78,15 +78,15 @@ sessionInfo()
 ##  [9] htmltools_0.5.4   viridisLite_0.4.1 yaml_2.3.6        utf8_1.2.2       
 ## [13] rlang_1.0.6       jquerylib_0.1.4   pillar_1.8.1      withr_2.5.0      
 ## [17] glue_1.6.2        DBI_1.1.3         lifecycle_1.0.3   stringr_1.5.0    
-## [21] munsell_0.5.0     rvest_1.0.3       memoise_2.0.1     evaluate_0.19    
+## [21] munsell_0.5.0     rvest_1.0.3       memoise_2.0.1     evaluate_0.20    
 ## [25] tzdb_0.3.0        fastmap_1.1.0     fansi_1.0.3       Rcpp_1.0.9       
 ## [29] scales_1.2.1      cachem_1.0.6      webshot_0.5.4     jsonlite_1.8.4   
 ## [33] fs_1.5.2          systemfonts_1.0.4 hms_1.1.2         png_0.1-8        
-## [37] digest_0.6.31     stringi_1.7.12    bookdown_0.31     rprojroot_2.0.3  
+## [37] digest_0.6.31     stringi_1.7.12    bookdown_0.32     rprojroot_2.0.3  
 ## [41] grid_4.2.2        here_1.0.1        cli_3.6.0         tools_4.2.2      
 ## [45] sass_0.4.4        magrittr_2.0.3    downlit_0.4.2     crayon_1.5.2     
 ## [49] pkgconfig_2.0.3   ellipsis_0.3.2    Matrix_1.5-3      xml2_1.3.3       
-## [53] assertthat_0.2.1  rmarkdown_2.19    svglite_2.1.1     httr_1.4.4       
+## [53] assertthat_0.2.1  rmarkdown_2.20    svglite_2.1.1     httr_1.4.4       
 ## [57] rstudioapi_0.14   R6_2.5.1          compiler_4.2.2
 ```
 
