@@ -630,7 +630,7 @@ strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 # The loaded packages and namespaces are searched before the libraries
 packageVersion('knitr')                           # Package Version: knitr
-## [1] '1.41'
+## [1] '1.42'
 ```
 
 </div><br></div>
