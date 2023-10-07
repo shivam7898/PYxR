@@ -40,11 +40,11 @@ qq = list(pp.columns)                             #Column Names
 if(False): list(qq[0:5]) + list(qq[-3:len(qq)])
 print('\n'.join([', '.join(qq[i:i+8]) for i in range(0,len(qq),8)]))
 
-
-qq = pp['is_Found'].value_counts().to_frame()
+qq = pp['is_Found'].value_counts()
+qq = qq.to_frame(qq.index.name)
+qq.index.name = None
 qq['PCT'] = 100 * qq['is_Found'] / qq['is_Found'].sum()          #Count & PCT
-qq
-
+print(qq)
 
 if(False): pp.info(memory_usage = False)
 if(False): pp['Amount'].describe()
