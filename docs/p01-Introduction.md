@@ -75,6 +75,7 @@
 # Exponent
 5 ** 3
 ## 125
+
 5 % 3     # Modulus (Remainder)
 ## 2
 5 // 3    # Integer Division (Quotient)
@@ -186,28 +187,29 @@ try:
     print(0/0)
 except ZeroDivisionError as e:
     print(e) #e.args type(e)
+## division by zero
 
 # There are Two NaN in modules NumPy and Math
 # Use module specific methods but not the 'is' keyword
-## division by zero
 pp = float('NaN') # Not case sensitive i.e. NaN, NAN, nan etc. all are valid
 print(pp)
 ## nan
 type(pp)
 ## <class 'float'>
+
 assert(math.isnan(math.nan) and math.isnan(np.nan) and math.isnan(pp))
 assert(np.isnan(np.nan) and np.isnan(math.nan) and np.isnan(pp))
 
 # 'is' returns True if and only if the two references are to the same object
 np.nan is math.nan            # False
+## False
 
 # Comparison with NaN: == is False, != is True (as per IEEE but unlike R)
-## False
 np.nan == np.nan
 ## False
 math.nan == math.nan
- 
 ## False
+ 
 np.nan != np.nan
 ## True
 math.nan != math.nan
@@ -294,15 +296,15 @@ FALSE | NaN
 True or np.nan
 ## True
 False and np.nan
+## False
 
 # Here the Second expression is also evaluated because first is not sufficient
-## False
 True and np.nan 
 ## nan
 False or np.nan
+## nan
 
 # Logical evaluation returns the value of final expression evaluated (unlike R)
-## nan
 3 or np.nan
 ## 3
 True and 3
@@ -348,7 +350,7 @@ exists('aa')
 exists('bb')
 ## [1] FALSE
 tryCatch(expr = print(bb), error = \(e) print(e))
-## <simpleError in print(bb): object 'bb' not found>
+## <simpleError in eval(expr, envir, enclos): object 'bb' not found>
 
 # Usage inside if conditional: NULL throws Error, use is.null()
 if(is.null(aa)) {
@@ -366,19 +368,19 @@ if(is.null(aa)) {
 ```python
 # Return of print() is None which is passed to print()
 print(print('This returns None in Python'))
-
-# Assign None
 ## This returns None in Python
 ## None
+
+# Assign None
 pp = None
 # Type
 type(pp)
-# Check
 ## <class 'NoneType'>
+# Check
 pp is None
+## True
 
 # A name pointing to None is different from a name which does not exist 'qq'
-## True
 'pp' in globals()
 ## True
 'qq' in globals()
@@ -387,17 +389,17 @@ try:
     print(qq)
 except NameError as e:
     print(e) #e.args type(e)
+## name 'qq' is not defined
 
 #
 # Usage inside if conditional: None is falsy (taken as FALSE), use 'is None' 
-## name 'qq' is not defined
 if(pp):
     print('Variable is None')
 else:
     print('Variable is Not None')
+## Variable is Not None
 
 #
-## Variable is Not None
 ```
 
 </div><br></div>
@@ -484,8 +486,9 @@ tt_equl = pp                                      #Assignment
 
 if(pp is not qq_deep and pp is not ss_copy and pp is tt_equl): 
     print('Deepcopy & Copy are different from Original but Assigned is same.')
-
 ## Deepcopy & Copy are different from Original but Assigned is same.
+
+
 if(isinstance(pp, list)): pp.append(10)
 if(isinstance(pp, set)): pp.add(10)
 if(isinstance(pp, dict)): pp.update({'z': 10})
@@ -516,8 +519,9 @@ uu = id(pp)                                       #Address before modification
 
 if(pp is qq_deep and pp is ss_copy and pp is tt_equl): 
     print('Deepcopy, Copy, & Assigned all are same as Original Immutable.')
-
 ## Deepcopy, Copy, & Assigned all are same as Original Immutable.
+
+
 if(isinstance(pp, tuple)): pp += (10, )
 if(isinstance(pp, str)): pp += 'Appended'
 if(type(pp) is int): pp += 1
@@ -591,9 +595,9 @@ if(FALSE) {
   library('reticulate')
   
   # Provide the path to the specific Python binary.
-  use_python('C:\\Softwares\\Python\\Python310\\python.exe', required = TRUE)
+  use_python('C:\\Softwares\\Python\\Python3116\\python.exe', required = TRUE)
   
-  # PATH: C:\Softwares\Python\Python310\python.exe
+  # PATH: C:\Softwares\Python\Python3116\python.exe
   Sys.which('python')
 }
 ```
@@ -626,11 +630,11 @@ os.getcwd()         # Working Directory
 
 ```r
 strsplit(R.version.string, ' ')[[1]][3]           # R Version
-## [1] "4.2.2"
+## [1] "4.3.1"
 
 # The loaded packages and namespaces are searched before the libraries
 packageVersion('knitr')                           # Package Version: knitr
-## [1] '1.42'
+## [1] '1.44'
 ```
 
 </div><br></div>
@@ -647,30 +651,26 @@ packageVersion('knitr')                           # Package Version: knitr
     - Knit: `C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64`
 
 
-```bash
-# Check, in BASH, if the python has been installed 
-python --version
 
-# PATH
-where.exe python
+```r
+#Get Installed Python and PIP Version in Windows PATH
+invisible(system('python --version'))
+invisible(system('pip --version'))
 
-# Get the pip Version
-bool_as_str=true;
-if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
-
-## Python 3.11.1
-## C:\Softwares\Python\Python311\python.exe
+#Get Location of the Python
+invisible(system('where.exe python'))
 ```
 
 
 ```python
 # Sys Executable Path
 os.path.dirname(sys.executable)
-## 'C:/Softwares/Python/Python311'
+## 'C:/Softwares/Python/Python3116'
+
 print(sys.version.split()[0])           # Python Version
-## 3.11.1
+## 3.11.6
 print(pd.__version__)                   # Module Version: pandas
-## 1.5.3
+## 2.1.1
 ```
 
 ## Install & Update of R Packages and Python Modules

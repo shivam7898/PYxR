@@ -386,21 +386,27 @@ list(range(10, 1, -2))
 pp = 11                                           # int
 print(f'{type(pp) = }   |     ...     | {pp = }')
 ## type(pp) = <class 'int'>   |     ...     | pp = 11
+
 pp = 11,                                          # Implicit Tuple
 print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'tuple'> | len(pp) = 1 | pp = (11,)
+
 pp = (11, )                                       # Length 1 Tuple needs comma
 print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'tuple'> | len(pp) = 1 | pp = (11,)
+
 pp = (11, 22, 33)                                 # Tuple
 print(f'{type(pp) = } | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'tuple'> | len(pp) = 3 | pp = (11, 22, 33)
+
 pp = [11, 22, 33]                                 # List
 print(f'{type(pp) = }  | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'list'>  | len(pp) = 3 | pp = [11, 22, 33]
+
 pp = {11, 22, 33}                                 # Set (unordered)
 print(f'{type(pp) = }   | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'set'>   | len(pp) = 3 | pp = {33, 11, 22}
+
 pp = {'a': 11, 'b': 22, 'c': 33}                  # Dictionary
 print(f'{type(pp) = }  | {len(pp) = } | {pp = }')
 ## type(pp) = <class 'dict'>  | len(pp) = 3 | pp = {'a': 11, 'b': 22, 'c': 33}

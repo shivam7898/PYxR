@@ -55,19 +55,24 @@ stopifnot(all(identical(bb_row, bb_row_r), identical(dd_min, dd_min_r)))
 pp = pd.Series([12, 15, 11, 13, None, 12])
 print(*pp)                  #Print Horizontal by using unpacking operator (*)
 ## 12.0 15.0 11.0 13.0 nan 12.0
+
 print(*pp.rank(method = 'first'))                 #Row Number
-
 ## 2.0 5.0 1.0 4.0 nan 3.0
+
+
 print(*pp.rank(method = 'min'))                   #Two 12, so skips once for 13
-
 ## 2.0 5.0 1.0 4.0 nan 2.0
-print(*pp.rank(method = 'dense'))                 #Consecutive Rank (Dense Rank)
 
+
+print(*pp.rank(method = 'dense'))                 #Consecutive Rank (Dense Rank)
 ## 2.0 4.0 1.0 3.0 nan 2.0
+
+
 qq = (pp.rank(method = 'min') - 1) / (pp.count() - 1)       #Percent Rank
 print(*qq)
-
 ## 0.25 1.0 0.0 0.75 nan 0.25
+
+
 print(*pp.rank(method = 'max', pct = True))       #Cumulative Distance
 ## 0.6 1.0 0.2 0.8 nan 0.6
 ```
@@ -118,7 +123,7 @@ players |> head()
 ```r
 # For each player, find the two years with most hits
 dplyr::filter(players, min_rank(desc(H)) <= 2 & H > 0)
-## # A tibble: 2,917 × 7
+## # A tibble: 2,920 × 7
 ## # Groups:   playerID [1,385]
 ##    playerID  yearID teamID     G    AB     R     H
 ##    <chr>      <int> <fct>  <int> <int> <int> <int>
@@ -131,13 +136,13 @@ dplyr::filter(players, min_rank(desc(H)) <= 2 & H > 0)
 ##  7 abreubo01   2000 PHI      154   576   103   182
 ##  8 abreujo02   2016 CHA      159   624    67   183
 ##  9 abreujo02   2017 CHA      156   621    95   189
-## 10 acunaro01   2018 ATL      111   433    78   127
-## # … with 2,907 more rows
+## 10 abreujo02   2022 CHA      157   601    85   183
+## # ℹ 2,910 more rows
 
 
 # Within each player, rank each year by the number of games played
 dplyr::mutate(players, G_rank = min_rank(G))
-## # A tibble: 20,706 × 8
+## # A tibble: 20,874 × 8
 ## # Groups:   playerID [1,436]
 ##    playerID  yearID teamID     G    AB     R     H G_rank
 ##    <chr>      <int> <fct>  <int> <int> <int> <int>  <int>
@@ -151,7 +156,7 @@ dplyr::mutate(players, G_rank = min_rank(G))
 ##  8 aaronha01   1961 ML1      155   603   115   197     18
 ##  9 aaronha01   1962 ML1      156   592   127   191     20
 ## 10 aaronha01   1963 ML1      161   631   121   201     23
-## # … with 20,696 more rows
+## # ℹ 20,864 more rows
 ```
 
 </div><br></div>

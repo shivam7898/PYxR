@@ -84,10 +84,11 @@ pp = df_y.copy()
 
 assert(pp.head(2).equals(pp.iloc[:2]))
 pp.head(2)
-
 ##    INT  NUM CHR    LGL  FCT
 ## 0    1  1.0   a  False   No
 ## 1    2  2.0   b   True  Yes
+
+
 pp.tail(2)
 ##    INT  NUM CHR    LGL  FCT
 ## 2    3  3.0   c  False   No
@@ -125,11 +126,13 @@ names(aa)                                         #Column Headers
 pp = df_y.copy()
 
 print(type(pp))                                   #Explicitly Print type()
-
 ## <class 'pandas.core.frame.DataFrame'>
-pp.shape                                          #Dimensions [Row, Column]
 
+
+pp.shape                                          #Dimensions [Row, Column]
 ## (4, 5)
+
+
 list(pp.columns)                                  #Column Headers
 ## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']
 ```
@@ -168,20 +171,23 @@ list(pp.describe().index)                         #(Default) Summary of Num only
 ## ['count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max']
 [x for x in pp.describe(include = 'all').index if x not in pp.describe().index]
 ## ['unique', 'top', 'freq']
-pp.describe(include = 'all').loc[['count', 'max', 'unique']]
 
+pp.describe(include = 'all').loc[['count', 'max', 'unique']]
 ##         INT  NUM  CHR  LGL  FCT
 ## count   4.0  4.0    4    4    4
 ## max     4.0  4.0  NaN  NaN  NaN
 ## unique  NaN  NaN    4    2    2
-pp.dtypes                                         #data type of each column
 
+
+pp.dtypes                                         #data type of each column
 ## INT       int64
 ## NUM     float64
 ## CHR      object
 ## LGL        bool
 ## FCT    category
 ## dtype: object
+
+
 pp.info(memory_usage = False)                     #Structure
 ## <class 'pandas.core.frame.DataFrame'>
 ## RangeIndex: 4 entries, 0 to 3
@@ -247,6 +253,7 @@ str(bb)
 pp = df_y.copy()
 list(pp.columns)
 ## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']
+
 qq = pp[['NUM', 'CHR']].copy()                              #Use List of Names
 ss = pp.drop(columns = ['INT', 'LGL', 'FCT']).copy()        #Drop Columns
 tt = pp.drop(['INT', 'LGL', 'FCT'], axis = 1).copy()        #0 Rows, 1 Columns
@@ -289,8 +296,9 @@ names(aa)
 ```python
 pp = df_y.copy()
 list(pp.columns)
-
 ## ['INT', 'NUM', 'CHR', 'LGL', 'FCT']
+
+
 pp.rename(columns = {'INT': 'A', pp.columns[1]: 'B'}, inplace = True) #Old: New
 pp.rename(columns = dict(zip(pp.columns[[3]], ['D'])),inplace = True) #Old, New
 pp.columns.values[[2, 4]] = ['C', 'E']
@@ -332,8 +340,9 @@ dd
 ```python
 pp = df_y.copy()
 list(pp.index)
-
 ## [0, 1, 2, 3]
+
+
 pp.sort_values('CHR', ascending = False, inplace = True)
 list(pp.index)
 ## [3, 2, 1, 0]
@@ -368,8 +377,9 @@ row.names(aa)
 ```python
 pp = pd.DataFrame(data = {'x': [1, 2]})
 list(pp.index)
-
 ## [0, 1]
+
+
 pp.set_index([pd.Index(['a', 'a'])], inplace = True)        #Duplicate index
 pp.set_index([pd.Index(['a', 'b'])], inplace = True)
 list(pp.index) 
@@ -419,8 +429,9 @@ pp = id(fred)                           #Address before modification
 
 fred.at[1, 'x'] = None                  #Modify
 list(fred['x'])
-
 ## [1.0, nan, 3.0]
+
+
 assert(id(fred) == pp)                  #No change in address (unlike R)
 
 # No change in non-modified objects (george, percy) address or value (same as R)
@@ -732,6 +743,8 @@ pq_cross = pp.merge(qq, how = 'cross')                      #Cross Join
 </tbody>
 </table>
 
+
+
 - Filtering joins match observations in the same way as mutating joins, but affect the observations, not the variables.
   - `semi_join(x, y)` keeps all observations in x that have a match in y.
   - `anti_join(x, y)` drops all observations in x that have a match in y.
@@ -793,6 +806,8 @@ ab_j_anti <- anti_join(aa, bb, by = 'ID')                   # Anti Join
   </tr>
 </tbody>
 </table>
+
+
 
 ## Sets
 
@@ -906,6 +921,8 @@ ba_sdiff <- setdiff(bb, aa)                                 # y - x
 </tbody>
 </table>
 
+
+
 <div class=decocode><div style='background-color:inherit'><span style='font-size:100%;color:#4C78DB'><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg><b> R</b></span>
 
 ```r
@@ -1011,7 +1028,7 @@ pp.info()
 ##  0   x       2 non-null      float64
 ##  1   y       1 non-null      object 
 ## dtypes: float64(1), object(1)
-## memory usage: 176.0+ bytes
+## memory usage: 180.0+ bytes
 pp
 ##      x     y
 ## 0  NaN     a

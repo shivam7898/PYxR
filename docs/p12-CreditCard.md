@@ -36,21 +36,24 @@ y_ccr = pp.copy()
 
 pp.shape
 ## (284807, 32)
+
 qq = list(pp.columns)                             #Column Names
 if(False): list(qq[0:5]) + list(qq[-3:len(qq)])
 print('\n'.join([', '.join(qq[i:i+8]) for i in range(0,len(qq),8)]))
-
 ## ID, is_Found, Amount, Time, V01, V02, V03, V04
 ## V05, V06, V07, V08, V09, V10, V11, V12
 ## V13, V14, V15, V16, V17, V18, V19, V20
 ## V21, V22, V23, V24, V25, V26, V27, V28
-qq = pp['is_Found'].value_counts().to_frame()
-qq['PCT'] = 100 * qq['is_Found'] / qq['is_Found'].sum()          #Count & PCT
-qq
 
+qq = pp['is_Found'].value_counts()
+qq = qq.to_frame(qq.index.name)
+qq.index.name = None
+qq['PCT'] = 100 * qq['is_Found'] / qq['is_Found'].sum()          #Count & PCT
+print(qq)
 ##      is_Found        PCT
 ## No     284315  99.827251
 ## Yes       492   0.172749
+
 if(False): pp.info(memory_usage = False)
 if(False): pp['Amount'].describe()
 if(False): pp['Time'].max()                       #(2 Days) 2*24*60*60 - 8
@@ -105,21 +108,25 @@ y_trn_x = y_trn_x_id[pp]
 y_tst_x = y_tst_x_id[pp]
 
 if(True): y_trn_x.shape, y_tst_x.shape, y_trn_y.shape, y_tst_y.shape
-
 ## ((227845, 30), (56962, 30), (227845,), (56962,))
+
+
 pp = y_trn_y.value_counts().to_frame()
 pp['PCT'] = 100 * pp / pp.sum()
 pp
+##            count        PCT
+## is_Found                   
+## No        227453  99.827953
+## Yes          392   0.172047
 
-##      is_Found        PCT
-## No     227453  99.827953
-## Yes       392   0.172047
+
 qq = y_tst_y.value_counts().to_frame()
 qq['PCT'] = 100 * qq / qq.sum()
 qq
-##      is_Found        PCT
-## No      56862  99.824444
-## Yes       100   0.175556
+##           count        PCT
+## is_Found                  
+## No        56862  99.824444
+## Yes         100   0.175556
 ```
 
 </div><br></div>
@@ -139,18 +146,15 @@ if(not os.path.exists(loc)):
 else:
     y_rfc = joblib.load(loc)
 
-## C:\SOFTWA~1\Python\PYTHON~2\Lib\site-packages\sklearn\base.py:288: UserWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.1.1 when using version 1.2.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
-## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
-##   warnings.warn(
-## C:\SOFTWA~1\Python\PYTHON~2\Lib\site-packages\sklearn\base.py:288: UserWarning: Trying to unpickle estimator RandomForestClassifier from version 1.1.1 when using version 1.2.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
-## https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
-##   warnings.warn(
+
 list(y_rfc.classes_)                              #Classes Labels 
-
 ## ['No', 'Yes']
-y_rfc.n_features_in_                              #Count Features
 
+
+y_rfc.n_features_in_                              #Count Features
 ## 30
+
+
 y_rfc_xs = list(y_rfc.feature_names_in_)          #Features
 print('\n'.join([', '.join(y_rfc_xs[i:i+8]) for i in range(0,len(y_rfc_xs),8)]))
 ## Amount, Time, V01, V02, V03, V04, V05, V06
@@ -193,10 +197,10 @@ y_rfc_pred = y_rfc.predict(y_tst_x)
 print(round(y_rfc.score(y_trn_x, y_trn_y), 5))    #Train
 ## 1.0
 print(round(y_rfc.score(y_tst_x, y_tst_y), 5))    #Test
+## 0.99942
 
 
 # Confusion Matrix
-## 0.99942
 pd.crosstab(y_tst_y, y_rfc_pred, 
             rownames = ['Actual'], colnames = ['Predicted'], margins = True)
 ## Predicted     No  Yes    All
@@ -204,35 +208,40 @@ pd.crosstab(y_tst_y, y_rfc_pred,
 ## No         56855    7  56862
 ## Yes           26   74    100
 ## All        56881   81  56962
+
 pp = sklearn.metrics.confusion_matrix(y_tst_y, y_rfc_pred, 
                       labels = list(y_rfc.classes_))
 
 if(False): print(pp)
 with np.printoptions(precision = 5, suppress = True):
     print(100 * pp/np.sum(pp))                    #Percent
-
 ## [[99.81216  0.01229]
 ##  [ 0.04564  0.12991]]
+
+
 tn, fp, fn, tp = pp.ravel()
 (tn, fp, fn, tp)
-
 ## (56855, 7, 26, 74)
+
+
 pp = y_tst_y.values.astype('object')
 pp.size
 ## 56962
 y_unique, y_counts = np.unique(pp, return_counts = True)
 print(np.asarray((y_unique, y_counts)).T)
-
 ## [['No' 56862]
 ##  ['Yes' 100]]
+
+
 qq = y_rfc_pred
 qq.size
 ## 56962
 y_unique, y_counts = np.unique(qq, return_counts = True)
 print(np.asarray((y_unique, y_counts)).T)
-
 ## [['No' 56881]
 ##  ['Yes' 81]]
+
+
 print('Accuracy (Avoid): ', sklearn.metrics.accuracy_score(
        y_tst_y, y_rfc_pred)) 
 ## Accuracy (Avoid):  0.999420666409185
@@ -431,15 +440,15 @@ if(False):
 
 ```r
 if(TRUE) py_config()         #Python Configuration
-## python:         C:/Softwares/Python/Python311/python.exe
-## libpython:      C:/Softwares/Python/Python311/python311.dll
-## pythonhome:     C:/Softwares/Python/Python311
-## version:        3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]
+## python:         C:/Softwares/Python/Python3116/python.exe
+## libpython:      C:/Softwares/Python/Python3116/python311.dll
+## pythonhome:     C:/Softwares/Python/Python3116
+## version:        3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]
 ## Architecture:   64bit
-## numpy:          C:/Softwares/Python/Python311/Lib/site-packages/numpy
-## numpy_version:  1.24.1
+## numpy:          C:/Softwares/Python/Python3116/Lib/site-packages/numpy
+## numpy_version:  1.26.0
 ## 
-## NOTE: Python version was forced by use_python function
+## NOTE: Python version was forced by use_python() function
 if(FALSE) q_url[ , 'URL']     #List of URL of this Page
 if(FALSE) q_()                #R Objects of this Page excluding 'q_*'
 ```

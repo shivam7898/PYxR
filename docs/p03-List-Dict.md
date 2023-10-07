@@ -53,8 +53,9 @@ str(aa)                                           #Structure
 ```python
 pp = {}                                           #Empty Dictionary
 print(f'{type(pp) = } | {len(pp) = } | {pp = }')
-
 ## type(pp) = <class 'dict'> | len(pp) = 0 | pp = {}
+
+
 pp = {'x': [11, 12], 'y': ('a', 'b', 'c')}        #Simple Dictionary
 print(f'{len(pp)=}, {pp = }')
 ## len(pp)=2, pp = {'x': [11, 12], 'y': ('a', 'b', 'c')}
@@ -115,8 +116,9 @@ lengths(aa)                                       #Count elements of components
 ```python
 pp = {'x': [11, 12], 'y': ('a', 'b', 'c')}        #Simple Dictionary
 len(pp)                                           #Count key: value pairs
-
 ## 2
+
+
 {k:len(v) for k, v in pp.items()}                 #Count length of each pair
 ## {'x': 2, 'y': 3}
 ```
@@ -156,14 +158,17 @@ sapply(aa, typeof)                                #Type of components
 pp = {'x': [11, 12], 'y': ('a', 'b', 'c')}        #Simple Dictionary
 list(pp.keys())                                   #List of keys
 ## ['x', 'y']
+
 assert('x' in pp.keys() and 'z' not in pp.keys()) #Find Keys
 
 list(pp.values())                                 #List of Values
-
 ## [[11, 12], ('a', 'b', 'c')]
-list(pp.items())                                  #List of items
 
+
+list(pp.items())                                  #List of items
 ## [('x', [11, 12]), ('y', ('a', 'b', 'c'))]
+
+
 print('\n'.join([k + ' : ' + str(type(pp[k]).__name__) 
                 for k, v in pp.items()]))         #Type of items
 ## x : list
@@ -204,8 +209,9 @@ pp = {'x': [11, 12], 'y': ('a', 'b', 'c')}        #Simple Dictionary
 
 qq = list(pp.items())[0]                          #First Object: index 0
 print(f'{type(qq) = } | {len(qq) = } | {qq = }')  #Converted to Tuple
-
 ## type(qq) = <class 'tuple'> | len(qq) = 2 | qq = ('x', [11, 12])
+
+
 qq = pp['x']                                    
 print(f'{type(qq) = } | {len(qq) = } | {qq = }')  #Keep original as list
 ## type(qq) = <class 'list'> | len(qq) = 2 | qq = [11, 12]
@@ -385,8 +391,9 @@ for k in ('xyz'): ss.pop(k, None)       #Using None, No error if key not found
 [tt.pop(k) for k in ('b', 'c')]
 ## [22, 33]
 [tt.pop(k, None) for k in ('xyz')]
-
 ## [None, None, None]
+
+
 assert(qq == ss == tt == uu)
 print(f'{len(qq)=}, {qq = }')
 ## len(qq)=1, qq = {'a': 11}

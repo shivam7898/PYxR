@@ -32,7 +32,7 @@
 
 ```r
 strsplit(R.version.string, ' ')[[1]][3]           # R Version
-## [1] "4.2.2"
+## [1] "4.3.1"
 ```
 
 </div><br></div>
@@ -41,7 +41,7 @@ strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 ```python
 print(sys.version.split()[0])                     # Python Version
-## 3.11.1
+## 3.11.6
 ```
 
 </div><br></div>
@@ -53,41 +53,44 @@ print(sys.version.split()[0])                     # Python Version
 ```r
 # Attached (Basic) Packages in R 
 sessionInfo()
-## R version 4.2.2 (2022-10-31 ucrt)
+## R version 4.3.1 (2023-06-16 ucrt)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19044)
+## Running under: Windows 10 x64 (build 19045)
 ## 
 ## Matrix products: default
+## 
 ## 
 ## locale:
 ## [1] LC_COLLATE=English_India.utf8  LC_CTYPE=English_India.utf8   
 ## [3] LC_MONETARY=English_India.utf8 LC_NUMERIC=C                  
 ## [5] LC_TIME=English_India.utf8    
 ## 
+## time zone: Asia/Calcutta
+## tzcode source: internal
+## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] Lahman_10.0-1     kableExtra_1.3.4  tidyr_1.3.0       readr_2.1.3      
-##  [5] dplyr_1.1.0       tibble_3.1.8      lobstr_1.1.2      fontawesome_0.5.0
-##  [9] reticulate_1.28   knitr_1.42        conflicted_1.1.0 
+##  [1] Lahman_11.0-0     kableExtra_1.3.4  tidyr_1.3.0       readr_2.1.4      
+##  [5] dplyr_1.1.3       tibble_3.2.1      lobstr_1.1.2      fontawesome_0.5.2
+##  [9] reticulate_1.32.0 knitr_1.44        conflicted_1.2.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] bslib_0.4.2       tidyselect_1.2.0  xfun_0.36         purrr_1.0.1      
-##  [5] lattice_0.20-45   colorspace_2.1-0  vctrs_0.5.2       generics_0.1.3   
-##  [9] htmltools_0.5.4   viridisLite_0.4.1 yaml_2.3.7        utf8_1.2.2       
-## [13] rlang_1.0.6       jquerylib_0.1.4   pillar_1.8.1      withr_2.5.0      
-## [17] glue_1.6.2        lifecycle_1.0.3   stringr_1.5.0     munsell_0.5.0    
-## [21] rvest_1.0.3       memoise_2.0.1     evaluate_0.20     tzdb_0.3.0       
-## [25] fastmap_1.1.0     fansi_1.0.4       Rcpp_1.0.10       scales_1.2.1     
-## [29] cachem_1.0.6      webshot_0.5.4     jsonlite_1.8.4    fs_1.6.0         
-## [33] systemfonts_1.0.4 hms_1.1.2         png_0.1-8         digest_0.6.31    
-## [37] stringi_1.7.12    bookdown_0.32     grid_4.2.2        rprojroot_2.0.3  
-## [41] here_1.0.1        cli_3.6.0         tools_4.2.2       sass_0.4.5       
-## [45] magrittr_2.0.3    downlit_0.4.2     crayon_1.5.2      pkgconfig_2.0.3  
-## [49] ellipsis_0.3.2    Matrix_1.5-3      xml2_1.3.3        rmarkdown_2.20   
-## [53] svglite_2.1.1     httr_1.4.4        rstudioapi_0.14   R6_2.5.1         
-## [57] compiler_4.2.2
+##  [1] sass_0.4.7        utf8_1.2.3        generics_0.1.3    xml2_1.3.5       
+##  [5] stringi_1.7.12    lattice_0.21-9    hms_1.1.3         digest_0.6.33    
+##  [9] magrittr_2.0.3    evaluate_0.22     grid_4.3.1        bookdown_0.35    
+## [13] fastmap_1.1.1     jsonlite_1.8.7    Matrix_1.6-1.1    httr_1.4.7       
+## [17] rvest_1.0.3       purrr_1.0.2       fansi_1.0.4       viridisLite_0.4.2
+## [21] scales_1.2.1      jquerylib_0.1.4   cli_3.6.1         rlang_1.1.1      
+## [25] munsell_0.5.0     withr_2.5.1       yaml_2.3.7        cachem_1.0.8     
+## [29] tools_4.3.1       tzdb_0.4.0        memoise_2.0.1     colorspace_2.1-0 
+## [33] webshot_0.5.5     vctrs_0.6.3       R6_2.5.1          png_0.1-8        
+## [37] lifecycle_1.0.3   stringr_1.5.0     fs_1.6.3          pkgconfig_2.0.3  
+## [41] bslib_0.5.1       pillar_1.9.0      glue_1.6.2        Rcpp_1.0.11      
+## [45] systemfonts_1.0.4 xfun_0.40         tidyselect_1.2.0  rstudioapi_0.15.0
+## [49] htmltools_0.5.6   rmarkdown_2.25    svglite_2.1.1     compiler_4.3.1   
+## [53] downlit_0.4.3
 ```
 
 </div><br></div>
@@ -101,6 +104,7 @@ pp = [v.__name__ for k, v in globals().items()
 
 len(pp)                                           # Count the Loaded Modules
 ## 18
+
 ', '.join(pp)                                     # List Modules
 ## 'sys, os, multiprocessing, pip, copy, types, math, time, pandas, numpy, statsmodels.api, seaborn, sklearn, matplotlib, matplotlib.pyplot, imblearn, pyarrow, joblib'
 ```
@@ -112,15 +116,15 @@ len(pp)                                           # Count the Loaded Modules
 ```r
 # Python Configuration with R Package 'Reticulate'
 py_config()
-## python:         C:/Softwares/Python/Python311/python.exe
-## libpython:      C:/Softwares/Python/Python311/python311.dll
-## pythonhome:     C:/Softwares/Python/Python311
-## version:        3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]
+## python:         C:/Softwares/Python/Python3116/python.exe
+## libpython:      C:/Softwares/Python/Python3116/python311.dll
+## pythonhome:     C:/Softwares/Python/Python3116
+## version:        3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]
 ## Architecture:   64bit
-## numpy:          C:/Softwares/Python/Python311/Lib/site-packages/numpy
-## numpy_version:  1.24.1
+## numpy:          C:/Softwares/Python/Python3116/Lib/site-packages/numpy
+## numpy_version:  1.26.0
 ## 
-## NOTE: Python version was forced by use_python function
+## NOTE: Python version was forced by use_python() function
 ```
 
 </div><br></div>

@@ -203,6 +203,7 @@ print(df_y)                   #Output without '#' for easy copy to clipboard
 1    2  1.0   b   True
 2    3  2.0   c  False
 3    4  3.0   d   True
+
 if(False):
     if 'pp' in globals(): del pp
     pp = pd.read_clipboard()                      #PATH: 'data/Y_01_pandas.csv'
