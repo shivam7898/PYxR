@@ -491,9 +491,9 @@ if(FALSE) {
   library('reticulate')
   
   # Provide the path to the specific Python binary.
-  use_python('C:\\Softwares\\Python\\Python310\\python.exe', required = TRUE)
+  use_python('C:\\Softwares\\Python\\Python3116\\python.exe', required = TRUE)
   
-  # PATH: C:\Softwares\Python\Python310\python.exe
+  # PATH: C:\Softwares\Python\Python3116\python.exe
   Sys.which('python')
 }
 ```
@@ -529,16 +529,14 @@ packageVersion('knitr')                           # Package Version: knitr
     - Local RMarkdown: `C:\\Program Files\\RStudio\\bin`
     - Knit: `C:\\PROGRA~1\\R\\R-42~1.1\\bin\\x64`
 
-```{bash 'Z-Python-Version'}
-# Check, in BASH, if the python has been installed 
-python --version
 
-# PATH
-where.exe python
+```{r 'Z-Python-Version'}
+#Get Installed Python and PIP Version in Windows PATH
+invisible(system('python --version'))
+invisible(system('pip --version'))
 
-# Get the pip Version
-bool_as_str=true;
-if [[ '$bool_as_str' == 'true' ]]; then pip --version; fi
+#Get Location of the Python
+invisible(system('where.exe python'))
 
 ```
 
