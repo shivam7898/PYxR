@@ -440,13 +440,13 @@ if(False):
 
 ```r
 if(TRUE) py_config()         #Python Configuration
-## python:         C:/Softwares/Python/Python3116/python.exe
-## libpython:      C:/Softwares/Python/Python3116/python311.dll
-## pythonhome:     C:/Softwares/Python/Python3116
-## version:        3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]
+## python:         C:/Softwares/Python/Python312/python.exe
+## libpython:      C:/Softwares/Python/Python312/python312.dll
+## pythonhome:     C:/Softwares/Python/Python312
+## version:        3.12.1 (tags/v3.12.1:2305ca5, Dec  7 2023, 22:03:25) [MSC v.1937 64 bit (AMD64)]
 ## Architecture:   64bit
-## numpy:          C:/Softwares/Python/Python3116/Lib/site-packages/numpy
-## numpy_version:  1.26.0
+## numpy:          C:/Softwares/Python/Python312/Lib/site-packages/numpy
+## numpy_version:  1.26.3
 ## 
 ## NOTE: Python version was forced by use_python() function
 if(FALSE) q_url[ , 'URL']     #List of URL of this Page

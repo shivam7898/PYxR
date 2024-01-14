@@ -32,7 +32,7 @@
 
 ```r
 strsplit(R.version.string, ' ')[[1]][3]           # R Version
-## [1] "4.3.1"
+## [1] "4.3.2"
 ```
 
 </div><br></div>
@@ -41,7 +41,7 @@ strsplit(R.version.string, ' ')[[1]][3]           # R Version
 
 ```python
 print(sys.version.split()[0])                     # Python Version
-## 3.11.6
+## 3.12.1
 ```
 
 </div><br></div>
@@ -53,7 +53,7 @@ print(sys.version.split()[0])                     # Python Version
 ```r
 # Attached (Basic) Packages in R 
 sessionInfo()
-## R version 4.3.1 (2023-06-16 ucrt)
+## R version 4.3.2 (2023-10-31 ucrt)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 10 x64 (build 19045)
 ## 
@@ -72,24 +72,24 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] Lahman_11.0-0     kableExtra_1.3.4  tidyr_1.3.0       readr_2.1.4      
-##  [5] dplyr_1.1.3       tibble_3.2.1      lobstr_1.1.2      fontawesome_0.5.2
-##  [9] reticulate_1.32.0 knitr_1.44        conflicted_1.2.0 
+##  [1] Lahman_11.0-0     kableExtra_1.3.4  tidyr_1.3.0       readr_2.1.5      
+##  [5] dplyr_1.1.4       tibble_3.2.1      lobstr_1.1.2      fontawesome_0.5.2
+##  [9] reticulate_1.34.0 knitr_1.45        conflicted_1.2.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] sass_0.4.7        utf8_1.2.3        generics_0.1.3    xml2_1.3.5       
-##  [5] stringi_1.7.12    lattice_0.21-9    hms_1.1.3         digest_0.6.33    
-##  [9] magrittr_2.0.3    evaluate_0.22     grid_4.3.1        bookdown_0.35    
-## [13] fastmap_1.1.1     jsonlite_1.8.7    Matrix_1.6-1.1    httr_1.4.7       
-## [17] rvest_1.0.3       purrr_1.0.2       fansi_1.0.4       viridisLite_0.4.2
-## [21] scales_1.2.1      jquerylib_0.1.4   cli_3.6.1         rlang_1.1.1      
-## [25] munsell_0.5.0     withr_2.5.1       yaml_2.3.7        cachem_1.0.8     
-## [29] tools_4.3.1       tzdb_0.4.0        memoise_2.0.1     colorspace_2.1-0 
-## [33] webshot_0.5.5     vctrs_0.6.3       R6_2.5.1          png_0.1-8        
-## [37] lifecycle_1.0.3   stringr_1.5.0     fs_1.6.3          pkgconfig_2.0.3  
-## [41] bslib_0.5.1       pillar_1.9.0      glue_1.6.2        Rcpp_1.0.11      
-## [45] systemfonts_1.0.4 xfun_0.40         tidyselect_1.2.0  rstudioapi_0.15.0
-## [49] htmltools_0.5.6   rmarkdown_2.25    svglite_2.1.1     compiler_4.3.1   
+##  [1] sass_0.4.8        utf8_1.2.4        generics_0.1.3    xml2_1.3.6       
+##  [5] stringi_1.8.3     lattice_0.22-5    hms_1.1.3         digest_0.6.33    
+##  [9] magrittr_2.0.3    evaluate_0.23     grid_4.3.2        bookdown_0.37    
+## [13] fastmap_1.1.1     jsonlite_1.8.8    Matrix_1.6-4      httr_1.4.7       
+## [17] rvest_1.0.3       purrr_1.0.2       fansi_1.0.6       viridisLite_0.4.2
+## [21] scales_1.3.0      jquerylib_0.1.4   cli_3.6.2         rlang_1.1.3      
+## [25] munsell_0.5.0     withr_2.5.2       yaml_2.3.8        cachem_1.0.8     
+## [29] tools_4.3.2       tzdb_0.4.0        memoise_2.0.1     colorspace_2.1-0 
+## [33] webshot_0.5.5     vctrs_0.6.5       R6_2.5.1          png_0.1-8        
+## [37] lifecycle_1.0.4   stringr_1.5.1     fs_1.6.3          pkgconfig_2.0.3  
+## [41] bslib_0.6.1       pillar_1.9.0      glue_1.7.0        Rcpp_1.0.12      
+## [45] systemfonts_1.0.5 xfun_0.41         tidyselect_1.2.0  rstudioapi_0.15.0
+## [49] htmltools_0.5.7   rmarkdown_2.25    svglite_2.1.3     compiler_4.3.2   
 ## [53] downlit_0.4.3
 ```
 
@@ -116,13 +116,13 @@ len(pp)                                           # Count the Loaded Modules
 ```r
 # Python Configuration with R Package 'Reticulate'
 py_config()
-## python:         C:/Softwares/Python/Python3116/python.exe
-## libpython:      C:/Softwares/Python/Python3116/python311.dll
-## pythonhome:     C:/Softwares/Python/Python3116
-## version:        3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]
+## python:         C:/Softwares/Python/Python312/python.exe
+## libpython:      C:/Softwares/Python/Python312/python312.dll
+## pythonhome:     C:/Softwares/Python/Python312
+## version:        3.12.1 (tags/v3.12.1:2305ca5, Dec  7 2023, 22:03:25) [MSC v.1937 64 bit (AMD64)]
 ## Architecture:   64bit
-## numpy:          C:/Softwares/Python/Python3116/Lib/site-packages/numpy
-## numpy_version:  1.26.0
+## numpy:          C:/Softwares/Python/Python312/Lib/site-packages/numpy
+## numpy_version:  1.26.3
 ## 
 ## NOTE: Python version was forced by use_python() function
 ```

@@ -262,7 +262,7 @@ data(package = 'dplyr')$results[ , 'Item']        #Load or List Datasets
 ## [4] "starwars"          "storms"
 
 dim(dplyr::storms)
-## [1] 19066    13
+## [1] 19537    13
 
 loc <- 'data/R_03_iris.rds'                                 #PATH
 if(!exists(loc)) {# Headers | Replace '.' by '_' | To lowercase 

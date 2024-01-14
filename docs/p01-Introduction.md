@@ -630,11 +630,11 @@ os.getcwd()         # Working Directory
 
 ```r
 strsplit(R.version.string, ' ')[[1]][3]           # R Version
-## [1] "4.3.1"
+## [1] "4.3.2"
 
 # The loaded packages and namespaces are searched before the libraries
 packageVersion('knitr')                           # Package Version: knitr
-## [1] '1.44'
+## [1] '1.45'
 ```
 
 </div><br></div>
@@ -665,12 +665,12 @@ invisible(system('where.exe python'))
 ```python
 # Sys Executable Path
 os.path.dirname(sys.executable)
-## 'C:/Softwares/Python/Python3116'
+## 'C:/Softwares/Python/Python312'
 
 print(sys.version.split()[0])           # Python Version
-## 3.11.6
+## 3.12.1
 print(pd.__version__)                   # Module Version: pandas
-## 2.1.1
+## 2.1.4
 ```
 
 ## Install & Update of R Packages and Python Modules
