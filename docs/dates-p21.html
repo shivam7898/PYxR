@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Dates | PYxR</title>
+<meta name="author" content="Shivam Upadhyay">
+<meta name="description" content="9.1 Basics Test Function to identify various null values in columns having dates in different formats and to get minimum and maximum dates out of those  Python def datecols(dfs=None, inc=None,...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Dates | PYxR">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://shivam7898.github.io/PYxR/dates-p21.html">
+<meta property="og:description" content="9.1 Basics Test Function to identify various null values in columns having dates in different formats and to get minimum and maximum dates out of those  Python def datecols(dfs=None, inc=None,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Dates | PYxR">
+<meta name="twitter:description" content="9.1 Basics Test Function to identify various null values in columns having dates in different formats and to get minimum and maximum dates out of those  Python def datecols(dfs=None, inc=None,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PYxR</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="introduction-p01.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="structures-p02.html"><span class="header-section-number">2</span> Data Structures</a></li>
+<li><a class="" href="list-dict-p03.html"><span class="header-section-number">3</span> R List &amp; Python Dictionary</a></li>
+<li><a class="" href="df-p04.html"><span class="header-section-number">4</span> Data Frame</a></li>
+<li><a class="" href="mat-p05.html"><span class="header-section-number">5</span> Matrix &amp; NumPy Array</a></li>
+<li><a class="" href="in-out-p06.html"><span class="header-section-number">6</span> Import - Export</a></li>
+<li><a class="" href="window-p11.html"><span class="header-section-number">7</span> Window Functions</a></li>
+<li><a class="" href="credit-p12.html"><span class="header-section-number">8</span> Credit Card Fraud</a></li>
+<li><a class="active" href="dates-p21.html"><span class="header-section-number">9</span> Dates</a></li>
+<li><a class="" href="so-q01.html"><span class="header-section-number">10</span> SO 01-10</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/shivam7898/PYxR">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dates-p21" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Dates<a class="anchor" aria-label="anchor" href="#dates-p21"><i class="fas fa-link"></i></a>
+</h1>
+<div id="basics-5" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Basics<a class="anchor" aria-label="anchor" href="#basics-5"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Test Function to identify various null values in columns having dates in different formats and to get minimum and maximum dates out of those</li>
+</ul>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="dates-p21.html#cb130-1" tabindex="-1"></a><span class="kw">def</span> datecols(dfs<span class="op">=</span><span class="va">None</span>, inc<span class="op">=</span><span class="va">None</span>, exc<span class="op">=</span><span class="va">None</span>, date_strings<span class="op">=</span><span class="va">None</span>, na_dates<span class="op">=</span><span class="va">None</span>, justified<span class="op">=</span><span class="dv">20</span>, max_print<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb130-2"><a href="dates-p21.html#cb130-2" tabindex="-1"></a>                skip_warn<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb130-3"><a href="dates-p21.html#cb130-3" tabindex="-1"></a>    <span class="im">import</span> traceback <span class="co">#To get Line Numbers of Errors from Imported or Read Function Code</span></span>
+<span id="cb130-4"><a href="dates-p21.html#cb130-4" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb130-5"><a href="dates-p21.html#cb130-5" tabindex="-1"></a>        <span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb130-6"><a href="dates-p21.html#cb130-6" tabindex="-1"></a>        <span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb130-7"><a href="dates-p21.html#cb130-7" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-8"><a href="dates-p21.html#cb130-8" tabindex="-1"></a>        <span class="cf">if</span> dfs <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb130-9"><a href="dates-p21.html#cb130-9" tabindex="-1"></a>            <span class="co">#Default Test Case</span></span>
+<span id="cb130-10"><a href="dates-p21.html#cb130-10" tabindex="-1"></a>            tst <span class="op">=</span> pd.DataFrame() <span class="co">#NULL DataFrame</span></span>
+<span id="cb130-11"><a href="dates-p21.html#cb130-11" tabindex="-1"></a>            <span class="co">#YYYY-MM-DD Dates as Strings: OK, NOT 29, OK, NOT 30, OK Month, OK 99 Split, OK 2000</span></span>
+<span id="cb130-12"><a href="dates-p21.html#cb130-12" tabindex="-1"></a>            tst[<span class="st">'org'</span>]<span class="op">=</span>[<span class="st">'2023-02-28'</span>, <span class="st">'2023-02-29'</span>, <span class="st">'2024-02-29'</span>, <span class="st">'2024-02-30'</span>, <span class="st">'2024-03-01'</span>, </span>
+<span id="cb130-13"><a href="dates-p21.html#cb130-13" tabindex="-1"></a>                        <span class="st">'1999-11-30'</span>, <span class="st">'2000-02-01'</span>, </span>
+<span id="cb130-14"><a href="dates-p21.html#cb130-14" tabindex="-1"></a>                        <span class="st">'1900-01-01'</span>, <span class="st">'0'</span>, <span class="st">'NULL'</span>, <span class="va">None</span>]</span>
+<span id="cb130-15"><a href="dates-p21.html#cb130-15" tabindex="-1"></a>            tst[<span class="st">'aok'</span>]<span class="op">=</span>[<span class="st">'2024-01-15'</span>] <span class="op">*</span> tst.shape[<span class="dv">0</span>]</span>
+<span id="cb130-16"><a href="dates-p21.html#cb130-16" tabindex="-1"></a>            <span class="co">#Case-Insensitive Replacement of various kinds of NULLS by 'np.nan'</span></span>
+<span id="cb130-17"><a href="dates-p21.html#cb130-17" tabindex="-1"></a>            <span class="co">#Source is 'na_values' argument of pd.read_excel()</span></span>
+<span id="cb130-18"><a href="dates-p21.html#cb130-18" tabindex="-1"></a>            na_values <span class="op">=</span>[<span class="st">' '</span>, <span class="st">'#N/A'</span>, <span class="st">'#N/A N/A'</span>, <span class="st">'#NA'</span>, <span class="st">'-1.#IND'</span>, <span class="st">'-1.#QNAN'</span>, <span class="st">'-NaN'</span>, <span class="st">'-nan'</span>, </span>
+<span id="cb130-19"><a href="dates-p21.html#cb130-19" tabindex="-1"></a>                        <span class="st">'1.#IND'</span>, <span class="st">'1.#QNAN'</span>, <span class="st">'&lt;NA&gt;'</span>, <span class="st">'N/A'</span>, <span class="st">'NA'</span>, <span class="st">'NULL'</span>, <span class="st">'NaN'</span>, <span class="st">'None'</span>, <span class="st">'n/a'</span>, </span>
+<span id="cb130-20"><a href="dates-p21.html#cb130-20" tabindex="-1"></a>                        <span class="st">'nan'</span>, <span class="st">'np.nan'</span>, <span class="st">'0'</span>, <span class="st">'0.0'</span>, <span class="st">'0.00'</span>, <span class="st">''</span>]</span>
+<span id="cb130-21"><a href="dates-p21.html#cb130-21" tabindex="-1"></a>            tmp <span class="op">=</span> <span class="bu">dict</span>.fromkeys([<span class="st">'(?i)^</span><span class="sc">{}</span><span class="st">$'</span>.<span class="bu">format</span>(x) <span class="cf">for</span> x <span class="kw">in</span> na_values], np.nan)</span>
+<span id="cb130-22"><a href="dates-p21.html#cb130-22" tabindex="-1"></a>            tst[<span class="st">'ymd'</span>] <span class="op">=</span> tst[<span class="st">'org'</span>].astype(<span class="bu">str</span>).replace(</span>
+<span id="cb130-23"><a href="dates-p21.html#cb130-23" tabindex="-1"></a>                            to_replace<span class="op">=</span>tmp.keys(), value<span class="op">=</span>tmp.values(), regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb130-24"><a href="dates-p21.html#cb130-24" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-25"><a href="dates-p21.html#cb130-25" tabindex="-1"></a>            tst[<span class="st">'tms'</span>] <span class="op">=</span> pd.to_datetime(tst[<span class="st">'ymd'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'ISO8601'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="co">#TimeStamp</span></span>
+<span id="cb130-26"><a href="dates-p21.html#cb130-26" tabindex="-1"></a>            tst[<span class="st">'dat'</span>] <span class="op">=</span> tst[<span class="st">'tms'</span>].dt.date                                            <span class="co">#Date</span></span>
+<span id="cb130-27"><a href="dates-p21.html#cb130-27" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-28"><a href="dates-p21.html#cb130-28" tabindex="-1"></a>            <span class="co">#Get N characters</span></span>
+<span id="cb130-29"><a href="dates-p21.html#cb130-29" tabindex="-1"></a>            dd <span class="op">=</span> tst[<span class="st">'ymd'</span>].<span class="bu">str</span>[<span class="op">-</span><span class="dv">2</span>:] <span class="co">#Last 2</span></span>
+<span id="cb130-30"><a href="dates-p21.html#cb130-30" tabindex="-1"></a>            mm <span class="op">=</span> tst[<span class="st">'ymd'</span>].<span class="bu">str</span>[<span class="dv">5</span>:<span class="dv">7</span>] <span class="co">#Middle</span></span>
+<span id="cb130-31"><a href="dates-p21.html#cb130-31" tabindex="-1"></a>            yy <span class="op">=</span> tst[<span class="st">'ymd'</span>].<span class="bu">str</span>[:<span class="dv">4</span>]  <span class="co">#First 4</span></span>
+<span id="cb130-32"><a href="dates-p21.html#cb130-32" tabindex="-1"></a>            tst[<span class="st">'mdy'</span>] <span class="op">=</span> mm <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> dd <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> yy</span>
+<span id="cb130-33"><a href="dates-p21.html#cb130-33" tabindex="-1"></a>            tst[<span class="st">'flt'</span>] <span class="op">=</span> (yy.<span class="bu">str</span>[<span class="op">-</span><span class="dv">2</span>:] <span class="op">+</span> mm <span class="op">+</span> dd).astype(<span class="bu">float</span>) <span class="co">#Float with NULLS</span></span>
+<span id="cb130-34"><a href="dates-p21.html#cb130-34" tabindex="-1"></a>            tst[<span class="st">'num'</span>] <span class="op">=</span> tst[<span class="st">'flt'</span>].fillna(<span class="dv">0</span>).astype(<span class="bu">int</span>)      <span class="co">#Integers of less than 6 length</span></span>
+<span id="cb130-35"><a href="dates-p21.html#cb130-35" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-36"><a href="dates-p21.html#cb130-36" tabindex="-1"></a>            letters <span class="op">=</span> <span class="st">'abcdefghijklmnopqrstuvwxyz'</span></span>
+<span id="cb130-37"><a href="dates-p21.html#cb130-37" tabindex="-1"></a>            tst[<span class="st">'abc'</span>] <span class="op">=</span> <span class="bu">list</span>(letters[ : tst.shape[<span class="dv">0</span>]])  <span class="co">#Character Column</span></span>
+<span id="cb130-38"><a href="dates-p21.html#cb130-38" tabindex="-1"></a>            tst[<span class="st">'drp'</span>] <span class="op">=</span> <span class="bu">list</span>(letters[<span class="op">-</span>tst.shape[<span class="dv">0</span>] : ]) <span class="co">#Exclude Column</span></span>
+<span id="cb130-39"><a href="dates-p21.html#cb130-39" tabindex="-1"></a>            tst[<span class="st">'nul'</span>] <span class="op">=</span> [<span class="va">None</span>]<span class="op">*</span>tst.shape[<span class="dv">0</span>]             <span class="co">#ALL NULLS</span></span>
+<span id="cb130-40"><a href="dates-p21.html#cb130-40" tabindex="-1"></a>            tst[<span class="st">'bol'</span>] <span class="op">=</span> [<span class="va">True</span>]<span class="op">*</span>tst.shape[<span class="dv">0</span>]             <span class="co">#Boolean</span></span>
+<span id="cb130-41"><a href="dates-p21.html#cb130-41" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-42"><a href="dates-p21.html#cb130-42" tabindex="-1"></a>            <span class="co">#Dictionary of DF of Dictionary of Column Formats</span></span>
+<span id="cb130-43"><a href="dates-p21.html#cb130-43" tabindex="-1"></a>            dft <span class="op">=</span> {<span class="st">'tst'</span>: {<span class="st">'ymd'</span>: <span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>, <span class="st">'mdy'</span>:<span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>}} </span>
+<span id="cb130-44"><a href="dates-p21.html#cb130-44" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">False</span>:</span>
+<span id="cb130-45"><a href="dates-p21.html#cb130-45" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), inc<span class="op">=</span>[<span class="st">'abc'</span>], exc<span class="op">=</span>[<span class="st">'drp'</span>])</span>
+<span id="cb130-46"><a href="dates-p21.html#cb130-46" tabindex="-1"></a>                cpy <span class="op">=</span> tst.copy().drop(columns<span class="op">=</span>[<span class="st">'abc'</span>])</span>
+<span id="cb130-47"><a href="dates-p21.html#cb130-47" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst, <span class="st">'cpy'</span>:cpy}), inc<span class="op">=</span>[<span class="st">'flt'</span>, <span class="st">'abc'</span>], exc<span class="op">=</span>[<span class="st">'drp'</span>])</span>
+<span id="cb130-48"><a href="dates-p21.html#cb130-48" tabindex="-1"></a>                <span class="cf">if</span> <span class="va">False</span>: datecols(dfs <span class="op">=</span> tst, exc<span class="op">=</span>[<span class="st">'drp'</span>]) <span class="co">#ERROR OK TST ONLY</span></span>
+<span id="cb130-49"><a href="dates-p21.html#cb130-49" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> [tst], exc<span class="op">=</span>[<span class="st">'drp'</span>]) <span class="co">#ERROR CAUGHT</span></span>
+<span id="cb130-50"><a href="dates-p21.html#cb130-50" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'drp'</span>], max_print<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb130-51"><a href="dates-p21.html#cb130-51" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'drp'</span>]) <span class="co">#OK without supplying NULLS</span></span>
+<span id="cb130-52"><a href="dates-p21.html#cb130-52" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'drp'</span>], na_dates<span class="op">=</span><span class="st">''</span>) <span class="co">#OK ERROR CAUGHT</span></span>
+<span id="cb130-53"><a href="dates-p21.html#cb130-53" tabindex="-1"></a>                tst[<span class="st">'tms_x'</span>] <span class="op">=</span> tst[<span class="st">'tms'</span>].copy()</span>
+<span id="cb130-54"><a href="dates-p21.html#cb130-54" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'tms_x'</span>], skip_warn<span class="op">=</span><span class="va">True</span>) <span class="co">#OK</span></span>
+<span id="cb130-55"><a href="dates-p21.html#cb130-55" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'tms_x'</span>]) <span class="co">#OK</span></span>
+<span id="cb130-56"><a href="dates-p21.html#cb130-56" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), na_dates<span class="op">=</span>[<span class="st">'1900-01-01'</span>]) <span class="co">#OK</span></span>
+<span id="cb130-57"><a href="dates-p21.html#cb130-57" tabindex="-1"></a>                datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), date_strings<span class="op">=</span>dft, na_dates<span class="op">=</span>[<span class="st">'1900-01-01'</span>]) <span class="co">#OK</span></span>
+<span id="cb130-58"><a href="dates-p21.html#cb130-58" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-59"><a href="dates-p21.html#cb130-59" tabindex="-1"></a>            datecols(dfs <span class="op">=</span> <span class="bu">dict</span>({<span class="st">'tst'</span>:tst}), exc<span class="op">=</span>[<span class="st">'aok'</span>,<span class="st">'abc'</span>,<span class="st">'drp'</span>,<span class="st">'nul'</span>,<span class="st">'bol'</span>], date_strings<span class="op">=</span>dft, </span>
+<span id="cb130-60"><a href="dates-p21.html#cb130-60" tabindex="-1"></a>                        na_dates<span class="op">=</span>[<span class="st">'1900-01-01'</span>], skip_warn<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb130-61"><a href="dates-p21.html#cb130-61" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span> <span class="co">#Required to Stop Debug</span></span>
+<span id="cb130-62"><a href="dates-p21.html#cb130-62" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-63"><a href="dates-p21.html#cb130-63" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">type</span>(dfs) <span class="kw">is</span> <span class="kw">not</span> pd.core.frame.DataFrame <span class="kw">and</span> <span class="bu">type</span>(dfs) <span class="kw">is</span> <span class="kw">not</span> <span class="bu">dict</span>:</span>
+<span id="cb130-64"><a href="dates-p21.html#cb130-64" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="ss">f"type('dfs') (DF or dict(DF)) != </span><span class="sc">{</span><span class="bu">type</span>(dfs)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb130-65"><a href="dates-p21.html#cb130-65" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">type</span>(dfs) <span class="kw">is</span> pd.core.frame.DataFrame:</span>
+<span id="cb130-66"><a href="dates-p21.html#cb130-66" tabindex="-1"></a>            nm <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">globals</span>() <span class="cf">if</span> <span class="bu">globals</span>()[x] <span class="kw">is</span> dfs][<span class="dv">0</span>]</span>
+<span id="cb130-67"><a href="dates-p21.html#cb130-67" tabindex="-1"></a>            dfs <span class="op">=</span> <span class="bu">dict</span>({nm: dfs})</span>
+<span id="cb130-68"><a href="dates-p21.html#cb130-68" tabindex="-1"></a>            date_strings <span class="op">=</span> <span class="bu">dict</span>({nm: date_strings})</span>
+<span id="cb130-69"><a href="dates-p21.html#cb130-69" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-70"><a href="dates-p21.html#cb130-70" tabindex="-1"></a>        <span class="cf">if</span> na_dates <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> <span class="bu">type</span>(na_dates) <span class="kw">is</span> <span class="kw">not</span> <span class="bu">list</span> <span class="kw">and</span> <span class="bu">type</span>(na_dates) <span class="kw">is</span> <span class="kw">not</span> <span class="bu">str</span>:</span>
+<span id="cb130-71"><a href="dates-p21.html#cb130-71" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="ss">f"type('na_dates') (date string or list) != </span><span class="sc">{</span><span class="bu">type</span>(na_dates)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb130-72"><a href="dates-p21.html#cb130-72" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">type</span>(na_dates) <span class="kw">is</span> <span class="bu">str</span>:</span>
+<span id="cb130-73"><a href="dates-p21.html#cb130-73" tabindex="-1"></a>            na_dates <span class="op">=</span> [na_dates]</span>
+<span id="cb130-74"><a href="dates-p21.html#cb130-74" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-75"><a href="dates-p21.html#cb130-75" tabindex="-1"></a>        <span class="co">#Convert User supplied Null Dates from List of String Dates to List of DATETIME</span></span>
+<span id="cb130-76"><a href="dates-p21.html#cb130-76" tabindex="-1"></a>        <span class="cf">if</span> na_dates <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: </span>
+<span id="cb130-77"><a href="dates-p21.html#cb130-77" tabindex="-1"></a>            na_dates <span class="op">=</span> pd.to_datetime(na_dates)</span>
+<span id="cb130-78"><a href="dates-p21.html#cb130-78" tabindex="-1"></a>            <span class="cf">if</span> na_dates.isna().<span class="bu">any</span>(): <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Invalid 'na_dates': </span><span class="sc">{</span>na_dates<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb130-79"><a href="dates-p21.html#cb130-79" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-80"><a href="dates-p21.html#cb130-80" tabindex="-1"></a>        warn_miss<span class="op">=</span> <span class="bu">dict</span>()</span>
+<span id="cb130-81"><a href="dates-p21.html#cb130-81" tabindex="-1"></a>        warn_101 <span class="op">=</span> <span class="bu">dict</span>()</span>
+<span id="cb130-82"><a href="dates-p21.html#cb130-82" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-83"><a href="dates-p21.html#cb130-83" tabindex="-1"></a>        <span class="cf">for</span> key, df <span class="kw">in</span> dfs.items():</span>
+<span id="cb130-84"><a href="dates-p21.html#cb130-84" tabindex="-1"></a>            <span class="co">#Subset Columns: (All ∩ Included) - Excluded | Deep Copy | Reset Index</span></span>
+<span id="cb130-85"><a href="dates-p21.html#cb130-85" tabindex="-1"></a>            cols <span class="op">=</span> df.columns.to_list()</span>
+<span id="cb130-86"><a href="dates-p21.html#cb130-86" tabindex="-1"></a>            <span class="cf">if</span> inc <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: cols <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> cols <span class="cf">if</span> i <span class="kw">in</span> inc]</span>
+<span id="cb130-87"><a href="dates-p21.html#cb130-87" tabindex="-1"></a>            <span class="cf">if</span> exc <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: cols <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> cols <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> exc]</span>
+<span id="cb130-88"><a href="dates-p21.html#cb130-88" tabindex="-1"></a>            <span class="co">#Get a list of DateTime Columns that will not be considered</span></span>
+<span id="cb130-89"><a href="dates-p21.html#cb130-89" tabindex="-1"></a>            l_dtm <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'datetime64'</span>]).columns.to_list()</span>
+<span id="cb130-90"><a href="dates-p21.html#cb130-90" tabindex="-1"></a>            tmp <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(l_dtm).difference(cols))</span>
+<span id="cb130-91"><a href="dates-p21.html#cb130-91" tabindex="-1"></a>            <span class="cf">if</span> tmp <span class="op">!=</span> <span class="bu">list</span>(): warn_miss[key] <span class="op">=</span> tmp</span>
+<span id="cb130-92"><a href="dates-p21.html#cb130-92" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-93"><a href="dates-p21.html#cb130-93" tabindex="-1"></a>            df <span class="op">=</span> df[cols].copy(deep<span class="op">=</span><span class="va">True</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb130-94"><a href="dates-p21.html#cb130-94" tabindex="-1"></a>            <span class="co">#Show DF</span></span>
+<span id="cb130-95"><a href="dates-p21.html#cb130-95" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">False</span>:</span>
+<span id="cb130-96"><a href="dates-p21.html#cb130-96" tabindex="-1"></a>                <span class="cf">with</span> pd.option_context( <span class="st">'display.max_rows'</span>, <span class="va">None</span>, <span class="st">'display.max_columns'</span>, <span class="va">None</span>, </span>
+<span id="cb130-97"><a href="dates-p21.html#cb130-97" tabindex="-1"></a>                                    <span class="st">'display.width'</span>, <span class="va">None</span>): display(df.head(<span class="dv">20</span>))</span>
+<span id="cb130-98"><a href="dates-p21.html#cb130-98" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-99"><a href="dates-p21.html#cb130-99" tabindex="-1"></a>            l_rows <span class="op">=</span> [] <span class="co">#Empty List to be appended with a dictionary in each iteration</span></span>
+<span id="cb130-100"><a href="dates-p21.html#cb130-100" tabindex="-1"></a>            njust <span class="op">=</span> <span class="bu">len</span>(<span class="bu">max</span>(cols <span class="op">+</span> [key], key<span class="op">=</span><span class="bu">len</span>)) <span class="co">#Get Maximum Length from a List of Strings</span></span>
+<span id="cb130-101"><a href="dates-p21.html#cb130-101" tabindex="-1"></a>            <span class="cf">for</span> idx, c <span class="kw">in</span> <span class="bu">enumerate</span>(cols):</span>
+<span id="cb130-102"><a href="dates-p21.html#cb130-102" tabindex="-1"></a>                org <span class="op">=</span> df[c]</span>
+<span id="cb130-103"><a href="dates-p21.html#cb130-103" tabindex="-1"></a>                mod <span class="op">=</span> org.copy()</span>
+<span id="cb130-104"><a href="dates-p21.html#cb130-104" tabindex="-1"></a>                <span class="co">#Convert Numerics to Strings</span></span>
+<span id="cb130-105"><a href="dates-p21.html#cb130-105" tabindex="-1"></a>                <span class="cf">if</span> mod.dtype.kind <span class="kw">in</span> <span class="st">'f'</span>: mod <span class="op">=</span> pd.Series(np.where(mod.isnull(), <span class="va">None</span>, </span>
+<span id="cb130-106"><a href="dates-p21.html#cb130-106" tabindex="-1"></a>                                                mod.<span class="bu">apply</span>(<span class="st">'</span><span class="sc">{:.0f}</span><span class="st">'</span>.<span class="bu">format</span>))) <span class="co">#floats</span></span>
+<span id="cb130-107"><a href="dates-p21.html#cb130-107" tabindex="-1"></a>                <span class="cf">if</span> mod.dtype.kind <span class="kw">in</span> <span class="st">'i'</span>: mod <span class="op">=</span> mod.astype(<span class="bu">str</span>)              <span class="co">#integers</span></span>
+<span id="cb130-108"><a href="dates-p21.html#cb130-108" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-109"><a href="dates-p21.html#cb130-109" tabindex="-1"></a>                <span class="cf">if</span> mod.dtype.kind <span class="kw">in</span> <span class="st">'O'</span>:</span>
+<span id="cb130-110"><a href="dates-p21.html#cb130-110" tabindex="-1"></a>                    <span class="co">#Cast as String to Convert 'datetime.date' to Strings</span></span>
+<span id="cb130-111"><a href="dates-p21.html#cb130-111" tabindex="-1"></a>                    tmp <span class="op">=</span> mod[mod.notna()].astype(<span class="bu">str</span>)</span>
+<span id="cb130-112"><a href="dates-p21.html#cb130-112" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">len</span>(tmp) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb130-113"><a href="dates-p21.html#cb130-113" tabindex="-1"></a>                        lmax <span class="op">=</span> <span class="bu">len</span>(<span class="bu">max</span>(tmp, key<span class="op">=</span><span class="bu">len</span>))</span>
+<span id="cb130-114"><a href="dates-p21.html#cb130-114" tabindex="-1"></a>                        lmin <span class="op">=</span> <span class="bu">len</span>(<span class="bu">min</span>(tmp, key<span class="op">=</span><span class="bu">len</span>))</span>
+<span id="cb130-115"><a href="dates-p21.html#cb130-115" tabindex="-1"></a>                        <span class="cf">if</span> lmax <span class="op">==</span> <span class="dv">6</span> <span class="kw">and</span> lmax <span class="op">!=</span> lmin: mod <span class="op">=</span> mod.<span class="bu">str</span>.zfill(lmax) <span class="co">#zero-padding</span></span>
+<span id="cb130-116"><a href="dates-p21.html#cb130-116" tabindex="-1"></a>                    <span class="co">#</span></span>
+<span id="cb130-117"><a href="dates-p21.html#cb130-117" tabindex="-1"></a>                    <span class="cf">if</span> (mod<span class="op">==</span><span class="st">'000101'</span>).<span class="bu">any</span>():</span>
+<span id="cb130-118"><a href="dates-p21.html#cb130-118" tabindex="-1"></a>                        <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> warn_101.keys(): warn_101[key] <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb130-119"><a href="dates-p21.html#cb130-119" tabindex="-1"></a>                        warn_101[key] <span class="op">=</span> warn_101[key] <span class="op">+</span> [c]</span>
+<span id="cb130-120"><a href="dates-p21.html#cb130-120" tabindex="-1"></a>                    <span class="co">#</span></span>
+<span id="cb130-121"><a href="dates-p21.html#cb130-121" tabindex="-1"></a>                    <span class="co">#YY between 00 and 30 to be taken as 21st Century [2000, 2099]</span></span>
+<span id="cb130-122"><a href="dates-p21.html#cb130-122" tabindex="-1"></a>                    <span class="cf">if</span> lmax<span class="op">==</span><span class="dv">6</span>: mod <span class="op">=</span> pd.Series(np.where(</span>
+<span id="cb130-123"><a href="dates-p21.html#cb130-123" tabindex="-1"></a>                                        mod.<span class="bu">str</span>[:<span class="dv">2</span>].astype(<span class="bu">float</span>) <span class="op">&lt;=</span> <span class="dv">30</span>, <span class="st">'20'</span><span class="op">+</span>mod, <span class="st">'19'</span><span class="op">+</span>mod))</span>
+<span id="cb130-124"><a href="dates-p21.html#cb130-124" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-125"><a href="dates-p21.html#cb130-125" tabindex="-1"></a>                <span class="co">#If available, Get User-Supplied String Format</span></span>
+<span id="cb130-126"><a href="dates-p21.html#cb130-126" tabindex="-1"></a>                u_dt_str <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb130-127"><a href="dates-p21.html#cb130-127" tabindex="-1"></a>                is_dt_str<span class="op">=</span> (date_strings <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> key <span class="kw">in</span> date_strings.keys() </span>
+<span id="cb130-128"><a href="dates-p21.html#cb130-128" tabindex="-1"></a>                            <span class="kw">and</span> date_strings[key] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> c <span class="kw">in</span> date_strings[key].keys())</span>
+<span id="cb130-129"><a href="dates-p21.html#cb130-129" tabindex="-1"></a>                <span class="cf">if</span> is_dt_str: u_dt_str <span class="op">=</span> date_strings[key][c]</span>
+<span id="cb130-130"><a href="dates-p21.html#cb130-130" tabindex="-1"></a>                <span class="co">#If User Supplies wrong-format for DF-Column combination, </span></span>
+<span id="cb130-131"><a href="dates-p21.html#cb130-131" tabindex="-1"></a>                <span class="co">#...it would result in lots of Nulls</span></span>
+<span id="cb130-132"><a href="dates-p21.html#cb130-132" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-133"><a href="dates-p21.html#cb130-133" tabindex="-1"></a>                mod <span class="op">=</span> pd.to_datetime(mod, errors<span class="op">=</span><span class="st">'coerce'</span>, <span class="bu">format</span><span class="op">=</span>u_dt_str) <span class="co">#Get DateTime</span></span>
+<span id="cb130-134"><a href="dates-p21.html#cb130-134" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-135"><a href="dates-p21.html#cb130-135" tabindex="-1"></a>                <span class="co">#If Value is NOT in User NULLS, Then Keep the Value, Else NULL</span></span>
+<span id="cb130-136"><a href="dates-p21.html#cb130-136" tabindex="-1"></a>                <span class="cf">if</span> na_dates <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: mod <span class="op">=</span> mod.where(<span class="op">~</span>mod.isin(na_dates), pd.NaT)</span>
+<span id="cb130-137"><a href="dates-p21.html#cb130-137" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-138"><a href="dates-p21.html#cb130-138" tabindex="-1"></a>                tmp <span class="op">=</span> pd.DataFrame({<span class="st">'original'</span>: org, <span class="st">'modified'</span>: mod})</span>
+<span id="cb130-139"><a href="dates-p21.html#cb130-139" tabindex="-1"></a>                <span class="co">#display(tmp)</span></span>
+<span id="cb130-140"><a href="dates-p21.html#cb130-140" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-141"><a href="dates-p21.html#cb130-141" tabindex="-1"></a>                sum_na  <span class="op">=</span> tmp[<span class="st">'modified'</span>].isna().<span class="bu">sum</span>()  <span class="co">#Select Column by Name and Count Nulls</span></span>
+<span id="cb130-142"><a href="dates-p21.html#cb130-142" tabindex="-1"></a>                sum_na_o<span class="op">=</span> tmp.iloc[ :, <span class="dv">0</span>].isna().<span class="bu">sum</span>()  <span class="co">#Select Column by Position</span></span>
+<span id="cb130-143"><a href="dates-p21.html#cb130-143" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-144"><a href="dates-p21.html#cb130-144" tabindex="-1"></a>                <span class="co">#'Minimum'.center(justified)</span></span>
+<span id="cb130-145"><a href="dates-p21.html#cb130-145" tabindex="-1"></a>                one_row <span class="op">=</span> {<span class="st">'Columns'</span>: c,  <span class="st">'Minimum'</span>: <span class="st">''</span>, <span class="st">'Maximum'</span>:<span class="st">''</span>, <span class="st">'Nulls'</span>: <span class="st">''</span>, </span>
+<span id="cb130-146"><a href="dates-p21.html#cb130-146" tabindex="-1"></a>                            <span class="st">'pct'</span>:<span class="st">''</span>, <span class="st">'orig'</span>:<span class="st">''</span>, <span class="st">'uniq'</span>:<span class="st">''</span>, <span class="st">'samples'</span>:<span class="st">''</span>}</span>
+<span id="cb130-147"><a href="dates-p21.html#cb130-147" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-148"><a href="dates-p21.html#cb130-148" tabindex="-1"></a>                no_nulls<span class="op">=</span> tmp.query(<span class="st">"modified.notna()"</span>)</span>
+<span id="cb130-149"><a href="dates-p21.html#cb130-149" tabindex="-1"></a>                uniq_nul<span class="op">=</span> tmp.query(<span class="st">"original.notna() and modified.isna()"</span></span>
+<span id="cb130-150"><a href="dates-p21.html#cb130-150" tabindex="-1"></a>                                    )[<span class="st">'original'</span>].unique().tolist()</span>
+<span id="cb130-151"><a href="dates-p21.html#cb130-151" tabindex="-1"></a>                <span class="co">#Find Min/Max Value in Modified Column | Get corresponding Original |</span></span>
+<span id="cb130-152"><a href="dates-p21.html#cb130-152" tabindex="-1"></a>                <span class="co">#Pull First Row Value using Position | To String | Left Justified by N</span></span>
+<span id="cb130-153"><a href="dates-p21.html#cb130-153" tabindex="-1"></a>                <span class="cf">if</span> no_nulls.shape[<span class="dv">0</span>] <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb130-154"><a href="dates-p21.html#cb130-154" tabindex="-1"></a>                    one_row[<span class="st">'Minimum'</span>] <span class="op">=</span> <span class="bu">str</span>(no_nulls.query(<span class="st">"modified == modified.min()"</span></span>
+<span id="cb130-155"><a href="dates-p21.html#cb130-155" tabindex="-1"></a>                                            )[<span class="st">'original'</span>].iloc[<span class="dv">0</span>]).ljust(justified)</span>
+<span id="cb130-156"><a href="dates-p21.html#cb130-156" tabindex="-1"></a>                    one_row[<span class="st">'Maximum'</span>] <span class="op">=</span> <span class="bu">str</span>(no_nulls.query(<span class="st">"modified == modified.max()"</span></span>
+<span id="cb130-157"><a href="dates-p21.html#cb130-157" tabindex="-1"></a>                                            )[<span class="st">'original'</span>].iloc[<span class="dv">0</span>]).ljust(justified)</span>
+<span id="cb130-158"><a href="dates-p21.html#cb130-158" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-159"><a href="dates-p21.html#cb130-159" tabindex="-1"></a>                <span class="cf">if</span> sum_na <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb130-160"><a href="dates-p21.html#cb130-160" tabindex="-1"></a>                    <span class="co">#Percentage Cleanup</span></span>
+<span id="cb130-161"><a href="dates-p21.html#cb130-161" tabindex="-1"></a>                    pct <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> sum_na<span class="op">/</span>df.shape[<span class="dv">0</span>]</span>
+<span id="cb130-162"><a href="dates-p21.html#cb130-162" tabindex="-1"></a>                    <span class="cf">if</span> pct <span class="op">==</span> <span class="dv">100</span>:</span>
+<span id="cb130-163"><a href="dates-p21.html#cb130-163" tabindex="-1"></a>                        pct <span class="op">=</span> <span class="st">'100%'</span></span>
+<span id="cb130-164"><a href="dates-p21.html#cb130-164" tabindex="-1"></a>                    <span class="cf">elif</span> pct <span class="op">&gt;</span> <span class="dv">99</span>:</span>
+<span id="cb130-165"><a href="dates-p21.html#cb130-165" tabindex="-1"></a>                        pct <span class="op">=</span> <span class="st">'&gt;99%'</span></span>
+<span id="cb130-166"><a href="dates-p21.html#cb130-166" tabindex="-1"></a>                    <span class="cf">elif</span> pct <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb130-167"><a href="dates-p21.html#cb130-167" tabindex="-1"></a>                        pct <span class="op">=</span> <span class="st">' &lt;1%'</span></span>
+<span id="cb130-168"><a href="dates-p21.html#cb130-168" tabindex="-1"></a>                    <span class="cf">else</span>:</span>
+<span id="cb130-169"><a href="dates-p21.html#cb130-169" tabindex="-1"></a>                        pct <span class="op">=</span> (<span class="bu">str</span>(<span class="bu">round</span>(pct)) <span class="op">+</span> <span class="st">'%'</span>).rjust(<span class="dv">4</span>)</span>
+<span id="cb130-170"><a href="dates-p21.html#cb130-170" tabindex="-1"></a>                    <span class="co">#</span></span>
+<span id="cb130-171"><a href="dates-p21.html#cb130-171" tabindex="-1"></a>                    one_row[<span class="st">'Nulls'</span>] <span class="op">=</span> sum_na</span>
+<span id="cb130-172"><a href="dates-p21.html#cb130-172" tabindex="-1"></a>                    one_row[<span class="st">'pct'</span>]   <span class="op">=</span> pct</span>
+<span id="cb130-173"><a href="dates-p21.html#cb130-173" tabindex="-1"></a>                    <span class="cf">if</span> sum_na <span class="op">!=</span> sum_na_o: one_row[<span class="st">'orig'</span>]<span class="op">=</span> sum_na_o</span>
+<span id="cb130-174"><a href="dates-p21.html#cb130-174" tabindex="-1"></a>                    one_row[<span class="st">'uniq'</span>]   <span class="op">=</span> <span class="bu">len</span>(uniq_nul)</span>
+<span id="cb130-175"><a href="dates-p21.html#cb130-175" tabindex="-1"></a>                    one_row[<span class="st">'samples'</span>]<span class="op">=</span> uniq_nul[ :max_print]</span>
+<span id="cb130-176"><a href="dates-p21.html#cb130-176" tabindex="-1"></a>                <span class="co">#</span></span>
+<span id="cb130-177"><a href="dates-p21.html#cb130-177" tabindex="-1"></a>                l_rows.append(one_row)</span>
+<span id="cb130-178"><a href="dates-p21.html#cb130-178" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-179"><a href="dates-p21.html#cb130-179" tabindex="-1"></a>            out <span class="op">=</span> pd.DataFrame(l_rows) <span class="co">#List of Dictionary to DataFrame</span></span>
+<span id="cb130-180"><a href="dates-p21.html#cb130-180" tabindex="-1"></a>            out.rename(columns <span class="op">=</span> {<span class="st">'Columns'</span>: key}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb130-181"><a href="dates-p21.html#cb130-181" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-182"><a href="dates-p21.html#cb130-182" tabindex="-1"></a>            <span class="co">#Print ALL Columns and ALL Rows of the DataFrame</span></span>
+<span id="cb130-183"><a href="dates-p21.html#cb130-183" tabindex="-1"></a>            <span class="cf">with</span> pd.option_context( <span class="st">'display.max_rows'</span>, <span class="va">None</span>, <span class="st">'display.max_columns'</span>, <span class="va">None</span>, </span>
+<span id="cb130-184"><a href="dates-p21.html#cb130-184" tabindex="-1"></a>                                    <span class="st">'display.width'</span>, <span class="va">None</span>):</span>
+<span id="cb130-185"><a href="dates-p21.html#cb130-185" tabindex="-1"></a>                display(out)</span>
+<span id="cb130-186"><a href="dates-p21.html#cb130-186" tabindex="-1"></a>            <span class="co">#</span></span>
+<span id="cb130-187"><a href="dates-p21.html#cb130-187" tabindex="-1"></a>            <span class="bu">print</span>()</span>
+<span id="cb130-188"><a href="dates-p21.html#cb130-188" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-189"><a href="dates-p21.html#cb130-189" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> skip_warn: </span>
+<span id="cb130-190"><a href="dates-p21.html#cb130-190" tabindex="-1"></a>            <span class="cf">if</span> warn_miss <span class="op">!=</span> <span class="bu">dict</span>(): <span class="bu">print</span>(<span class="ss">f"Warning: Missed DateTime Columns: </span><span class="sc">{</span>warn_miss<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb130-191"><a href="dates-p21.html#cb130-191" tabindex="-1"></a>            <span class="cf">if</span> warn_101  <span class="op">!=</span> <span class="bu">dict</span>(): <span class="bu">print</span>(<span class="ss">f"Warning: '101' == 2000-01-01 != 1900-01-01: </span><span class="sc">{</span>warn_101<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb130-192"><a href="dates-p21.html#cb130-192" tabindex="-1"></a>            <span class="bu">print</span>()</span>
+<span id="cb130-193"><a href="dates-p21.html#cb130-193" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb130-194"><a href="dates-p21.html#cb130-194" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb130-195"><a href="dates-p21.html#cb130-195" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb130-196"><a href="dates-p21.html#cb130-196" tabindex="-1"></a>        <span class="bu">print</span>(traceback.format_exc())</span>
+<span id="cb130-197"><a href="dates-p21.html#cb130-197" tabindex="-1"></a>        <span class="cf">raise</span> <span class="co">#To Stop Code Execution after Errors</span></span>
+<span id="cb130-198"><a href="dates-p21.html#cb130-198" tabindex="-1"></a>    <span class="co">#</span></span>
+<span id="cb130-199"><a href="dates-p21.html#cb130-199" tabindex="-1"></a><span class="co">#</span></span></code></pre></div>
+</div>
+<br>
+</div>
+<div class="decocode">
+<div style="background-color:inherit">
+<p><span style="font-size:100%;color:#FFD94C"><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#FFD94C;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg><b> Python</b></span></p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb131-1"><a href="dates-p21.html#cb131-1" tabindex="-1"></a>datecols()</span>
+<span id="cb131-2"><a href="dates-p21.html#cb131-2" tabindex="-1"></a><span class="co">##    tst               Minimum               Maximum  Nulls   pct  orig  uniq  \</span></span>
+<span id="cb131-3"><a href="dates-p21.html#cb131-3" tabindex="-1"></a><span class="co">## 0  org  1999-11-30            2024-03-01                6   55%     1     5   </span></span>
+<span id="cb131-4"><a href="dates-p21.html#cb131-4" tabindex="-1"></a><span class="co">## 1  ymd  1999-11-30            2024-03-01                6   55%     3     3   </span></span>
+<span id="cb131-5"><a href="dates-p21.html#cb131-5" tabindex="-1"></a><span class="co">## 2  tms  1999-11-30 00:00:00   2024-03-01 00:00:00       6   55%     5     1   </span></span>
+<span id="cb131-6"><a href="dates-p21.html#cb131-6" tabindex="-1"></a><span class="co">## 3  dat  1999-11-30            2024-03-01                6   55%     5     1   </span></span>
+<span id="cb131-7"><a href="dates-p21.html#cb131-7" tabindex="-1"></a><span class="co">## 4  mdy  11/30/1999            03/01/2024                6   55%     3     3   </span></span>
+<span id="cb131-8"><a href="dates-p21.html#cb131-8" tabindex="-1"></a><span class="co">## 5  flt  991130.0              240301.0                  5   45%     3     2   </span></span>
+<span id="cb131-9"><a href="dates-p21.html#cb131-9" tabindex="-1"></a><span class="co">## 6  num  991130                240301                    5   45%     0     3   </span></span>
+<span id="cb131-10"><a href="dates-p21.html#cb131-10" tabindex="-1"></a><span class="co">## </span></span>
+<span id="cb131-11"><a href="dates-p21.html#cb131-11" tabindex="-1"></a><span class="co">##                                 samples  </span></span>
+<span id="cb131-12"><a href="dates-p21.html#cb131-12" tabindex="-1"></a><span class="co">## 0  [2023-02-29, 2024-02-30, 1900-01-01]  </span></span>
+<span id="cb131-13"><a href="dates-p21.html#cb131-13" tabindex="-1"></a><span class="co">## 1  [2023-02-29, 2024-02-30, 1900-01-01]  </span></span>
+<span id="cb131-14"><a href="dates-p21.html#cb131-14" tabindex="-1"></a><span class="co">## 2                 [1900-01-01 00:00:00]  </span></span>
+<span id="cb131-15"><a href="dates-p21.html#cb131-15" tabindex="-1"></a><span class="co">## 3                          [1900-01-01]  </span></span>
+<span id="cb131-16"><a href="dates-p21.html#cb131-16" tabindex="-1"></a><span class="co">## 4  [02/29/2023, 02/30/2024, 01/01/1900]  </span></span>
+<span id="cb131-17"><a href="dates-p21.html#cb131-17" tabindex="-1"></a><span class="co">## 5                  [230229.0, 240230.0]  </span></span>
+<span id="cb131-18"><a href="dates-p21.html#cb131-18" tabindex="-1"></a><span class="co">## 6                   [230229, 240230, 0]</span></span></code></pre></div>
+</div>
+<br>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="credit-p12.html"><span class="header-section-number">8</span> Credit Card Fraud</a></div>
+<div class="next"><a href="so-q01.html"><span class="header-section-number">10</span> SO 01-10</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dates-p21"><span class="header-section-number">9</span> Dates</a></li>
+<li><a class="nav-link" href="#basics-5"><span class="header-section-number">9.1</span> Basics</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/shivam7898/PYxR/blob/main/p21-Dates.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/shivam7898/PYxR/edit/main/p21-Dates.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2024-01-15.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
