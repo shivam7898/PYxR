@@ -7,7 +7,7 @@
 <title>Chapter 1 Introduction | PYxR</title>
 <meta name="author" content="Shivam Upadhyay">
 <meta name="description" content="1.1 Basics Both R and Python are case-sensitive Both R and Python use the Hash sign # to comment out anything after it, till the newline Both R and Python keep the Backslash \ as reserved to...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Introduction | PYxR">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://shivam7898.github.io/PYxR/introduction-p01.html">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="1.1 Basics Both R and Python are case-sensitive Both R and Python use the Hash sign # to comment out anything after it, till the newline Both R and Python keep the Backslash \ as reserved to...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -910,11 +910,11 @@ In R, Everything that happens is a function call.</p>
 <p><span style="font-size:100%;color:#4C78DB"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#4C78DB;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><b> R</b></span></p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">R.version.string</span>, <span class="st">' '</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>           <span class="co"># R Version</span></span>
-<span><span class="co">## [1] "4.3.1"</span></span>
+<span><span class="co">## [1] "4.3.2"</span></span>
 <span></span>
 <span><span class="co"># The loaded packages and namespaces are searched before the libraries</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">'knitr'</span><span class="op">)</span>                           <span class="co"># Package Version: knitr</span></span>
-<span><span class="co">## [1] '1.44'</span></span></code></pre></div>
+<span><span class="co">## [1] '1.45'</span></span></code></pre></div>
 </div>
 <br>
 </div>
@@ -954,12 +954,12 @@ In R, Everything that happens is a function call.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">'where.exe python'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="introduction-p01.html#cb25-1" tabindex="-1"></a><span class="co"># Sys Executable Path</span></span>
 <span id="cb25-2"><a href="introduction-p01.html#cb25-2" tabindex="-1"></a>os.path.dirname(sys.executable)</span>
-<span id="cb25-3"><a href="introduction-p01.html#cb25-3" tabindex="-1"></a><span class="co">## 'C:/Softwares/Python/Python3116'</span></span>
+<span id="cb25-3"><a href="introduction-p01.html#cb25-3" tabindex="-1"></a><span class="co">## 'C:/Softwares/Python/Python312'</span></span>
 <span id="cb25-4"><a href="introduction-p01.html#cb25-4" tabindex="-1"></a></span>
 <span id="cb25-5"><a href="introduction-p01.html#cb25-5" tabindex="-1"></a><span class="bu">print</span>(sys.version.split()[<span class="dv">0</span>])           <span class="co"># Python Version</span></span>
-<span id="cb25-6"><a href="introduction-p01.html#cb25-6" tabindex="-1"></a><span class="co">## 3.11.6</span></span>
+<span id="cb25-6"><a href="introduction-p01.html#cb25-6" tabindex="-1"></a><span class="co">## 3.12.1</span></span>
 <span id="cb25-7"><a href="introduction-p01.html#cb25-7" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)                   <span class="co"># Module Version: pandas</span></span>
-<span id="cb25-8"><a href="introduction-p01.html#cb25-8" tabindex="-1"></a><span class="co">## 2.1.1</span></span></code></pre></div>
+<span id="cb25-8"><a href="introduction-p01.html#cb25-8" tabindex="-1"></a><span class="co">## 2.1.4</span></span></code></pre></div>
 </div>
 <div id="install-update-of-r-packages-and-python-modules" class="section level2" number="1.16">
 <h2>
@@ -1141,7 +1141,7 @@ In R, Everything that happens is a function call.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2023-10-07.</p>
+    <p>"<strong>PYxR</strong>" was written by Shivam Upadhyay. It was last built on 2024-01-15.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
