@@ -22,6 +22,8 @@ rmd_files:
     "p11-WindowFun.Rmd",
     "p12-CreditCard.Rmd",
     
+    "p21-Dates.Rmd",
+    
     "q01-SO.Rmd"
   ]
 
